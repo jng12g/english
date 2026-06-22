@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Tenses Interactive Exercises</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        max-width: 1000px;
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        h1 {
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .exercise-section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background: #f9fbfc;
+            border-left: 5px solid #3498db;
+            border-radius: 5px;
+        }
+        .pc-section {
+            border-left-color: #e74c3c;
+        }
+        .question {
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .question-number {
+            font-weight: bold;
+            color: #555;
+            min-width: 30px;
+        }
+        input[type="text"] {
+            padding: 5px 10px;
+            font-size: 1em;
+            border: 2px solid #bdc3c7;
+            border-radius: 4px;
+            width: 150px;
+            transition: border-color 0.3s;
+        }
+        input[type="text"]:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+        .choice-btn {
+            padding: 5px 15px;
+            margin: 0 5px;
+            font-size: 1em;
+            cursor: pointer;
+            border: 2px solid #bdc3c7;
+            background: #fff;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        .choice-btn.selected {
+            background: #34495e;
+            color: #fff;
+            border-color: #34495e;
+        }
+        .choice-btn:hover:not(.selected) {
+            background: #ecf0f1;
+        }
+        .correct {
+            color: #27ae60;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        .incorrect {
+            color: #c0392b;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        .feedback-input-correct {
+            border-color: #27ae60 !important;
+            background-color: #eafaf1;
+        }
+        .feedback-input-incorrect {
+            border-color: #c0392b !important;
+            background-color: #fceceb;
+        }
+        .feedback-btn-correct {
+            background-color: #27ae60 !important;
+            border-color: #27ae60 !important;
+            color: #fff;
+        }
+        .feedback-btn-incorrect {
+            text-decoration: line-through;
+            background-color: #c0392b !important;
+            border-color: #c0392b !important;
+            color: #fff;
+            opacity: 0.6;
+        }
+        .check-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2em;
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: background 0.3s;
+        }
+        .check-btn:hover {
+            background-color: #1a252f;
+        }
+        #results {
+            text-align: center;
+            font-size: 1.5em;
+            margin-top: 20px;
+            font-weight: bold;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Interactive English Tenses</h1>
+    
+    <div class="exercise-section" id="ps-fill-section">
+        <h2>Present Simple (Fill in the blanks)</h2>
+        <p>Type the correct form of the verb in brackets.</p>
+        <div id="ps-fill-container"></div>
+    </div>
+
+    <div class="exercise-section" id="ps-click-section">
+        <h2>Present Simple (Select the correct option)</h2>
+        <p>Click on the correct verb form. The incorrect one will be crossed out on check.</p>
+        <div id="ps-click-container"></div>
+    </div>
+
+    <div class="exercise-section pc-section" id="pc-fill-section">
+        <h2>Present Continuous (Fill in the blanks)</h2>
+        <p>Type the correct form of the verb in brackets (am/is/are + -ing).</p>
+        <div id="pc-fill-container"></div>
+    </div>
+
+    <div class="exercise-section pc-section" id="pc-click-section">
+        <h2>Present Continuous (Select the correct option)</h2>
+        <p>Click on the correct verb form. The incorrect one will be crossed out on check.</p>
+        <div id="pc-click-container"></div>
+    </div>
+
+    <button class="check-btn" onclick="checkAllAnswers()">Check All Answers</button>
+    <div id="results"></div>
+</div>
+
+<script>
+    // 50 Present Simple Exercises (25 Fill, 25 Click)
+    const psFill = [
+        { text: "She {input} (go) to the gym every morning.", answer: "goes" },
+        { text: "They {input} (play) football on Sundays.", answer: "play" },
+        { text: "I {input} (not/like) spicy food.", answer: "do not like|don't like" },
+        { text: "He {input} (work) in a bank.", answer: "works" },
+        { text: "The train {input} (leave) at 8 AM.", answer: "leaves" },
+        { text: "{input} (you/speak) English?", answer: "do you speak" },
+        { text: "My mother {input} (cook) dinner every day.", answer: "cooks" },
+        { text: "We {input} (live) in Madrid.", answer: "live" },
+        { text: "It {input} (rain) a lot in winter.", answer: "rains" },
+        { text: "The sun {input} (rise) in the east.", answer: "rises" },
+        { text: "Water {input} (boil) at 100 degrees.", answer: "boils" },
+        { text: "Cats {input} (catch) mice.", answer: "catch" },
+        { text: "He {input} (not/watch) TV often.", answer: "does not watch|doesn't watch" },
+        { text: "{input} (she/know) the answer?", answer: "does she know" },
+        { text: "I always {input} (wake) up early.", answer: "wake" },
+        { text: "The store {input} (open) at 9:00 AM.", answer: "opens" },
+        { text: "Birds {input} (fly) south for winter.", answer: "fly" },
+        { text: "My brother {input} (study) engineering.", answer: "studies" },
+        { text: "They {input} (not/have) a car.", answer: "do not have|don't have" },
+        { text: "John {input} (brush) his teeth twice a day.", answer: "brushes" },
+        { text: "Teachers {input} (help) students learn.", answer: "help" },
+        { text: "She {input} (wash) her car on weekends.", answer: "washes" },
+        { text: "{input} (they/visit) their grandparents?", answer: "do they visit" },
+        { text: "The movie {input} (start) at 7 PM.", answer: "starts" },
+        { text: "I {input} (read) a book before bed.", answer: "read" }
+    ];
+
+    const psClick = [
+        { pre: "He ", opt1: "drive", opt2: "drives", post: " carefully.", answer: "drives" },
+        { pre: "We ", opt1: "enjoys", opt2: "enjoy", post: " music.", answer: "enjoy" },
+        { pre: "My dog ", opt1: "bark", opt2: "barks", post: " loudly.", answer: "barks" },
+        { pre: "They never ", opt1: "arrives", opt2: "arrive", post: " on time.", answer: "arrive" },
+        { pre: "She ", opt1: "don't", opt2: "doesn't", post: " eat meat.", answer: "doesn't" },
+        { pre: "Do you ", opt1: "wants", opt2: "want", post: " some tea?", answer: "want" },
+        { pre: "The earth ", opt1: "goes", opt2: "go", post: " around the sun.", answer: "goes" },
+        { pre: "I usually ", opt1: "have", opt2: "has", post: " breakfast at 7.", answer: "have" },
+        { pre: "His sister ", opt1: "cry", opt2: "cries", post: " easily.", answer: "cries" },
+        { pre: "Does he ", opt1: "play", opt2: "plays", post: " tennis?", answer: "play" },
+        { pre: "Children ", opt1: "loves", opt2: "love", post: " ice cream.", answer: "love" },
+        { pre: "My friend ", opt1: "tries", opt2: "try", post: " hard.", answer: "tries" },
+        { pre: "You always ", opt1: "forgets", opt2: "forget", post: " my birthday.", answer: "forget" },
+        { pre: "The bus ", opt1: "stops", opt2: "stop", post: " here.", answer: "stops" },
+        { pre: "We ", opt1: "don't", opt2: "doesn't", post: " work on Sundays.", answer: "don't" },
+        { pre: "She ", opt1: "teach", opt2: "teaches", post: " Spanish.", answer: "teaches" },
+        { pre: "Does the cat ", opt1: "sleeps", opt2: "sleep", post: " on the bed?", answer: "sleep" },
+        { pre: "I ", opt1: "think", opt2: "thinks", post: " you are right.", answer: "think" },
+        { pre: "They ", opt1: "does", opt2: "do", post: " their homework.", answer: "do" },
+        { pre: "He ", opt1: "mixes", opt2: "mix", post: " the colors.", answer: "mixes" },
+        { pre: "People ", opt1: "needs", opt2: "need", post: " water.", answer: "need" },
+        { pre: "My dad ", opt1: "fix", opt2: "fixes", post: " cars.", answer: "fixes" },
+        { pre: "She ", opt1: "has", opt2: "have", post: " a new phone.", answer: "has" },
+        { pre: "Do they ", opt1: "understands", opt2: "understand", post: " the rules?", answer: "understand" },
+        { pre: "It ", opt1: "costs", opt2: "cost", post: " ten dollars.", answer: "costs" }
+    ];
+
+    // 50 Present Continuous Exercises (25 Fill, 25 Click)
+    const pcFill = [
+        { text: "I {input} (read) a great book right now.", answer: "am reading|'m reading" },
+        { text: "Look! The baby {input} (walk).", answer: "is walking|'s walking" },
+        { text: "They {input} (not/listen) to the teacher.", answer: "are not listening|aren't listening" },
+        { text: "We {input} (have) dinner at the moment.", answer: "are having|'re having" },
+        { text: "{input} (you/wait) for the bus?", answer: "are you waiting" },
+        { text: "She {input} (study) for her exams this week.", answer: "is studying|'s studying" },
+        { text: "The dog {input} (run) in the garden.", answer: "is running|'s running" },
+        { text: "I {input} (not/use) the computer right now.", answer: "am not using|'m not using" },
+        { text: "{input} (he/sleep) upstairs?", answer: "is he sleeping" },
+        { text: "My friends {input} (play) tennis.", answer: "are playing|'re playing" },
+        { text: "It {input} (rain) outside.", answer: "is raining|'s raining" },
+        { text: "The birds {input} (sing) in the trees.", answer: "are singing|'re singing" },
+        { text: "We {input} (travel) to Paris tomorrow.", answer: "are traveling|'re traveling" },
+        { text: "{input} (what/you/do)?", answer: "what are you doing" },
+        { text: "He {input} (watch) a movie.", answer: "is watching|'s watching" },
+        { text: "They {input} (build) a new house.", answer: "are building|'re building" },
+        { text: "I {input} (make) a cake.", answer: "am making|'m making" },
+        { text: "She {input} (not/wear) a jacket.", answer: "is not wearing|isn't wearing" },
+        { text: "The kids {input} (laugh) at the clown.", answer: "are laughing|'re laughing" },
+        { text: "My phone {input} (ring).", answer: "is ringing|'s ringing" },
+        { text: "We {input} (learn) English.", answer: "are learning|'re learning" },
+        { text: "Who {input} (you/talk) to?", answer: "are you talking" },
+        { text: "The water {input} (boil), turn it off.", answer: "is boiling|'s boiling" },
+        { text: "She {input} (sit) on the chair.", answer: "is sitting|'s sitting" },
+        { text: "They {input} (dance) in the living room.", answer: "are dancing|'re dancing" }
+    ];
+
+    const pcClick = [
+        { pre: "I ", opt1: "am writing", opt2: "is writing", post: " an email.", answer: "am writing" },
+        { pre: "She ", opt1: "are cooking", opt2: "is cooking", post: " lunch.", answer: "is cooking" },
+        { pre: "They ", opt1: "is swimming", opt2: "are swimming", post: " in the pool.", answer: "are swimming" },
+        { pre: "We ", opt1: "aren't watching", opt2: "isn't watching", post: " TV.", answer: "aren't watching" },
+        { pre: "Look! The bus ", opt1: "are coming", opt2: "is coming", post: ".", answer: "is coming" },
+        { pre: "He ", opt1: "is taking", opt2: "are taking", post: " a shower.", answer: "is taking" },
+        { pre: "You ", opt1: "am driving", opt2: "are driving", post: " too fast.", answer: "are driving" },
+        { pre: "The cat ", opt1: "is hiding", opt2: "are hiding", post: " under the bed.", answer: "is hiding" },
+        { pre: "I ", opt1: "am not joking", opt2: "isn't joking", post: ".", answer: "am not joking" },
+        { pre: "What ", opt1: "is she doing", opt2: "are she doing", post: "?", answer: "is she doing" },
+        { pre: "My parents ", opt1: "is working", opt2: "are working", post: " late.", answer: "are working" },
+        { pre: "The baby ", opt1: "is crying", opt2: "are crying", post: ".", answer: "is crying" },
+        { pre: "Are you ", opt1: "listens", opt2: "listening", post: " to me?", answer: "listening" },
+        { pre: "John ", opt1: "isn't playing", opt2: "aren't playing", post: " today.", answer: "isn't playing" },
+        { pre: "We ", opt1: "is leaving", opt2: "are leaving", post: " now.", answer: "are leaving" },
+        { pre: "She ", opt1: "is wearing", opt2: "am wearing", post: " a red dress.", answer: "is wearing" },
+        { pre: "They ", opt1: "are talking", opt2: "is talking", post: " loudly.", answer: "are talking" },
+        { pre: "The machine ", opt1: "aren't working", opt2: "isn't working", post: ".", answer: "isn't working" },
+        { pre: "I ", opt1: "am getting", opt2: "is getting", post: " tired.", answer: "am getting" },
+        { pre: "Are they ", opt1: "coming", opt2: "comes", post: " to the party?", answer: "coming" },
+        { pre: "He ", opt1: "is typing", opt2: "are typing", post: " a report.", answer: "is typing" },
+        { pre: "The wind ", opt1: "are blowing", opt2: "is blowing", post: " hard.", answer: "is blowing" },
+        { pre: "We ", opt1: "are staying", opt2: "is staying", post: " at a hotel.", answer: "are staying" },
+        { pre: "Who ", opt1: "is knocking", opt2: "are knocking", post: " at the door?", answer: "is knocking" },
+        { pre: "I ", opt1: "am fixing", opt2: "is fixing", post: " the bike.", answer: "am fixing" }
+    ];
+
+    // State to track selected options for click exercises
+    const userSelections = {};
+
+    function renderFillSection(containerId, data, prefix) {
+        const container = document.getElementById(containerId);
+        data.forEach((item, index) => {
+            const id = `${prefix}-${index}`;
+            const parts = item.text.split('{input}');
+            const div = document.createElement('div');
+            div.className = 'question';
+            div.innerHTML = `
+                <span class="question-number">${index + 1}.</span>
+                <span>${parts[0]}</span>
+                <input type="text" id="${id}" data-answer="${item.answer}" autocomplete="off">
+                <span>${parts[1]}</span>
+                <span id="feedback-${id}"></span>
+            `;
+            container.appendChild(div);
+        });
+    }
+
+    function renderClickSection(containerId, data, prefix) {
+        const container = document.getElementById(containerId);
+        data.forEach((item, index) => {
+            const id = `${prefix}-${index}`;
+            const div = document.createElement('div');
+            div.className = 'question';
+            div.innerHTML = `
+                <span class="question-number">${index + 1}.</span>
+                <span>${item.pre}</span>
+                <button class="choice-btn" id="${id}-opt1" onclick="selectOption('${id}', 'opt1', '${item.opt1}', '${item.answer}')">${item.opt1}</button>
+                <button class="choice-btn" id="${id}-opt2" onclick="selectOption('${id}', 'opt2', '${item.opt2}', '${item.answer}')">${item.opt2}</button>
+                <span>${item.post}</span>
+                <span id="feedback-${id}"></span>
+            `;
+            container.appendChild(div);
+        });
+    }
+
+    function selectOption(qId, optId, value, correctAnswer) {
+        document.getElementById(`${qId}-opt1`).classList.remove('selected');
+        document.getElementById(`${qId}-opt2`).classList.remove('selected');
+        document.getElementById(`${qId}-${optId}`).classList.add('selected');
+        userSelections[qId] = { selected: value, correctAnswer: correctAnswer, selectedBtnId: `${qId}-${optId}` };
+    }
+
+    function checkAllAnswers() {
+        let score = 0;
+        let total = 100; // 50 PS + 50 PC
+
+        // Check Fill-in-the-blanks
+        const checkFill = (prefix, data) => {
+            data.forEach((item, index) => {
+                const id = `${prefix}-${index}`;
+                const inputEl = document.getElementById(id);
+                const feedbackEl = document.getElementById(`feedback-${id}`);
+                const userAnswer = inputEl.value.trim().toLowerCase();
+                const possibleAnswers = inputEl.getAttribute('data-answer').split('|');
+                
+                inputEl.classList.remove('feedback-input-correct', 'feedback-input-incorrect');
+
+                if (possibleAnswers.includes(userAnswer)) {
+                    score++;
+                    inputEl.classList.add('feedback-input-correct');
+                    feedbackEl.innerHTML = '✔';
+                    feedbackEl.className = 'correct';
+                } else {
+                    inputEl.classList.add('feedback-input-incorrect');
+                    feedbackEl.innerHTML = `✘ (Ans: ${possibleAnswers[0]})`;
+                    feedbackEl.className = 'incorrect';
+                }
+            });
+        };
+
+        checkFill('ps-fill', psFill);
+        checkFill('pc-fill', pcFill);
+
+        // Check Click sections
+        const checkClick = (prefix, data) => {
+            data.forEach((item, index) => {
+                const qId = `${prefix}-${index}`;
+                const feedbackEl = document.getElementById(`feedback-${qId}`);
+                const opt1Btn = document.getElementById(`${qId}-opt1`);
+                const opt2Btn = document.getElementById(`${qId}-opt2`);
+                
+                opt1Btn.classList.remove('feedback-btn-correct', 'feedback-btn-incorrect');
+                opt2Btn.classList.remove('feedback-btn-correct', 'feedback-btn-incorrect');
+
+                const selection = userSelections[qId];
+                
+                if (selection && selection.selected === selection.correctAnswer) {
+                    score++;
+                    document.getElementById(selection.selectedBtnId).classList.add('feedback-btn-correct');
+                    feedbackEl.innerHTML = '✔';
+                    feedbackEl.className = 'correct';
+                    // Cross out the wrong one visually
+                    if (selection.selectedBtnId.endsWith('opt1')) opt2Btn.classList.add('feedback-btn-incorrect');
+                    else opt1Btn.classList.add('feedback-btn-incorrect');
+                } else {
+                    if (selection) {
+                        document.getElementById(selection.selectedBtnId).classList.add('feedback-btn-incorrect');
+                    }
+                    // Highlight the correct one
+                    if (opt1Btn.innerText === item.answer) opt1Btn.classList.add('feedback-btn-correct');
+                    if (opt2Btn.innerText === item.answer) opt2Btn.classList.add('feedback-btn-correct');
+                    
+                    feedbackEl.innerHTML = '✘';
+                    feedbackEl.className = 'incorrect';
+                }
+            });
+        };
+
+        checkClick('ps-click', psClick);
+        checkClick('pc-click', pcClick);
+
+        // Display total score
+        const resultsEl = document.getElementById('results');
+        resultsEl.style.display = 'block';
+        resultsEl.innerHTML = `You scored ${score} out of ${total}!`;
+        resultsEl.style.color = score === total ? '#27ae60' : (score > 50 ? '#d35400' : '#c0392b');
+        
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+
+    // Initialize the page
+    window.onload = () => {
+        renderFillSection('ps-fill-container', psFill, 'ps-fill');
+        renderClickSection('ps-click-container', psClick, 'ps-click');
+        renderFillSection('pc-fill-container', pcFill, 'pc-fill');
+        renderClickSection('pc-click-container', pcClick, 'pc-click');
+    };
+</script>
+
+</body>
+</html>
