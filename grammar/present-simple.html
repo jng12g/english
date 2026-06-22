@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>El Present Simple — Guía completa (A1–C1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #fff; }
+  .doc {
+    box-sizing: border-box; max-width: 8.5in; margin: 0 auto;
+    background: inherit;
+    padding: 64px clamp(24px, 5vw, 0.85in) 96px;
+    font-family: "Source Serif 4", Georgia, serif;
+    color: #1c1d20; font-size: 15.5px; line-height: 1.62;
+    font-variant-ligatures: common-ligatures;
+  }
+  .doc-frame { width: 100%; border-collapse: collapse; }
+  .doc-frame td { padding: 0; }
+  .running-hdr, .running-ftr, .hdr-space, .ftr-space { display: none; }
+
+  /* ---- color + type tokens ---- */
+  /* ink #1c1d20 · blue ink #1f3d6b · blue accent #2f5da8 · tint #eef3fa · hairline #d8dde6 */
+
+  h1, h2, h3, h4 { font-family: "Newsreader", Georgia, serif; text-wrap: balance; color: #16243a; }
+  p, li { text-wrap: pretty; }
+
+  .eyebrow {
+    font-family: "IBM Plex Mono", monospace; font-size: 11px; font-weight: 500;
+    letter-spacing: 0.16em; text-transform: uppercase; color: #2f5da8;
+    margin: 0 0 6px;
+  }
+
+  /* cover */
+  .cover { padding: 24px 0 40px; border-bottom: 2px solid #16243a; margin-bottom: 40px; }
+  .cover .kicker {
+    font-family: "IBM Plex Mono", monospace; font-size: 12px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: #2f5da8; margin: 0 0 18px;
+  }
+  .cover h1 {
+    font-size: 64px; line-height: 1.0; font-weight: 600; margin: 0 0 10px; letter-spacing: -0.015em;
+  }
+  .cover h1 em { font-style: italic; font-weight: 500; color: #2f5da8; }
+  .cover .sub { font-size: 20px; font-style: italic; color: #4a4d55; margin: 0 0 28px; max-width: 26em; }
+  .cover .meta {
+    display: flex; gap: 28px; flex-wrap: wrap;
+    font-family: "IBM Plex Mono", monospace; font-size: 12px; color: #5a5d66; letter-spacing: 0.04em;
+  }
+  .cover .meta b { color: #16243a; font-weight: 600; }
+
+  /* table of contents */
+  .toc { margin: 0 0 56px; }
+  .toc ol { list-style: none; counter-reset: toc; padding: 0; margin: 14px 0 0;
+    columns: 2; column-gap: 48px; }
+  .toc li { counter-increment: toc; break-inside: avoid; display: flex; gap: 12px;
+    padding: 7px 0; border-bottom: 1px solid #e7eaef; font-size: 14.5px; align-items: baseline; }
+  .toc li::before { content: counter(toc, decimal-leading-zero);
+    font-family: "IBM Plex Mono", monospace; font-size: 12px; color: #2f5da8; font-weight: 600; }
+
+  /* sections */
+  .sec { margin: 0 0 14px; padding-top: 16px; }
+  .sec-head { display: flex; align-items: flex-start; gap: 18px; margin: 40px 0 18px;
+    padding-top: 26px; border-top: 1px solid #d8dde6; }
+  .sec-head .n {
+    font-family: "IBM Plex Mono", monospace; font-size: 13px; font-weight: 600; color: #fff;
+    background: #2f5da8; border-radius: 4px; padding: 4px 9px; line-height: 1.2; margin-top: 8px; flex: none;
+  }
+  .sec-head h2 { font-size: 30px; font-weight: 600; line-height: 1.12; margin: 0; letter-spacing: -0.01em; }
+  .sec-head .h2sub { font-size: 14px; font-style: italic; color: #6a6d76; margin: 4px 0 0; }
+
+  h3 { font-size: 20px; font-weight: 600; margin: 28px 0 8px; }
+  h4 { font-size: 15px; font-weight: 600; margin: 18px 0 6px; color: #2f5da8;
+    font-family: "IBM Plex Mono", monospace; letter-spacing: 0.02em; text-transform: none; }
+  p { margin: 0 0 12px; }
+  .lead { font-size: 18px; line-height: 1.55; color: #33363d; margin-bottom: 18px; }
+
+  strong { font-weight: 600; color: #16243a; }
+  .en { font-weight: 600; color: #16243a; }
+  .es { color: #6a6d76; font-style: italic; }
+  .ph { font-family: "IBM Plex Mono", monospace; font-size: 0.86em; color: #2f5da8; }
+
+  /* example tables */
+  table.gt { width: 100%; border-collapse: collapse; margin: 12px 0 18px; font-size: 14.5px; }
+  table.gt caption { text-align: left; font-family: "IBM Plex Mono", monospace; font-size: 11px;
+    letter-spacing: 0.1em; text-transform: uppercase; color: #2f5da8; padding: 0 0 8px; }
+  table.gt th { text-align: left; font-family: "IBM Plex Mono", monospace; font-size: 10.5px;
+    letter-spacing: 0.08em; text-transform: uppercase; color: #5a5d66; font-weight: 500;
+    border-bottom: 1.5px solid #16243a; padding: 6px 12px 6px 0; }
+  table.gt td { border-bottom: 1px solid #e7eaef; padding: 8px 12px 8px 0; vertical-align: top; }
+  table.gt td.eng { font-weight: 600; color: #16243a; width: 48%; }
+  table.gt td.spa { color: #6a6d76; font-style: italic; }
+  table.gt tr:last-child td { border-bottom: none; }
+
+  /* formula bar */
+  .formula { display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+    background: #eef3fa; border: 1px solid #d4ddec; border-radius: 6px;
+    padding: 14px 18px; margin: 14px 0 18px; font-family: "IBM Plex Mono", monospace; font-size: 14px; }
+  .formula .chip { background: #fff; border: 1px solid #c4d0e4; border-radius: 4px; padding: 4px 10px;
+    color: #16243a; font-weight: 500; }
+  .formula .chip.key { background: #2f5da8; color: #fff; border-color: #2f5da8; }
+  .formula .op { color: #2f5da8; font-weight: 600; }
+  .formula .arrow { color: #9aa0ab; }
+
+  /* callouts */
+  .callout { background: #eef3fa; border-left: 3px solid #2f5da8; border-radius: 0 6px 6px 0;
+    padding: 14px 18px; margin: 16px 0; font-size: 14.5px; }
+  .callout .lbl { font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: #2f5da8; font-weight: 600; display: block; margin-bottom: 5px; }
+  .callout.warn { background: #fdf4ef; border-left-color: #c2683a; }
+  .callout.warn .lbl { color: #c2683a; }
+
+  /* right / wrong */
+  .rw { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0 18px; }
+  .rw .box { border: 1px solid #e0e3ea; border-radius: 6px; padding: 12px 14px; font-size: 14px; }
+  .rw .box.bad { background: #fdf4f2; border-color: #e7cfc8; }
+  .rw .box.good { background: #eef6f1; border-color: #cfe2d6; }
+  .rw .tag { font-family: "IBM Plex Mono", monospace; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.08em; display: block; margin-bottom: 6px; }
+  .rw .bad .tag { color: #b5482f; }
+  .rw .good .tag { color: #2f7d50; }
+  .rw s { color: #b5482f; text-decoration-color: #d99; }
+
+  /* frequency scale */
+  .freq { display: flex; flex-direction: column; gap: 0; margin: 14px 0 18px; border: 1px solid #e0e3ea;
+    border-radius: 8px; overflow: hidden; }
+  .freq .row { display: grid; grid-template-columns: 130px 56px 1fr; align-items: center;
+    padding: 9px 16px; border-bottom: 1px solid #eef0f4; font-size: 14px; }
+  .freq .row:last-child { border-bottom: none; }
+  .freq .row:nth-child(odd) { background: #fafbfd; }
+  .freq .w { font-weight: 600; color: #16243a; }
+  .freq .pct { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: #2f5da8; }
+  .freq .es2 { color: #6a6d76; font-style: italic; }
+
+  /* word list / vocab */
+  .vocab { columns: 2; column-gap: 40px; margin: 12px 0 18px; }
+  .vocab .item { break-inside: avoid; padding: 7px 0; border-bottom: 1px solid #eef0f4; }
+  .vocab .item .w { font-weight: 600; color: #16243a; }
+  .vocab .item .t { color: #6a6d76; font-style: italic; }
+
+  /* exercises */
+  .exwrap { margin-top: 8px; }
+  .exblock { margin: 22px 0; }
+  .exblock .bh { display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px; }
+  .exblock .bh .id { font-family: "IBM Plex Mono", monospace; font-weight: 600; color: #fff;
+    background: #16243a; border-radius: 4px; padding: 2px 8px; font-size: 12px; }
+  .exblock .bh h3 { margin: 0; font-size: 17px; }
+  .exblock .instr { font-size: 13.5px; font-style: italic; color: #6a6d76; margin: 0 0 12px; }
+  ol.ex { list-style: none; counter-reset: ex; padding: 0; margin: 0;
+    columns: 2; column-gap: 40px; }
+  ol.ex li { counter-increment: ex; break-inside: avoid; padding: 6px 0 6px 30px; position: relative;
+    font-size: 14.5px; line-height: 1.5; }
+  ol.ex li::before { content: counter(ex) "."; position: absolute; left: 0; top: 6px;
+    font-family: "IBM Plex Mono", monospace; font-size: 12.5px; color: #2f5da8; font-weight: 600; }
+  .blank { display: inline-block; min-width: 64px; border-bottom: 1.5px solid #9aa6bb; }
+  .cue { color: #6a6d76; font-style: italic; }
+
+  /* answer key */
+  .answers { columns: 3; column-gap: 32px; font-family: "IBM Plex Mono", monospace; font-size: 12px;
+    line-height: 1.7; margin-top: 10px; }
+  .answers .ag { break-inside: avoid; margin-bottom: 14px; }
+  .answers .ag .agh { color: #2f5da8; font-weight: 600; letter-spacing: 0.06em; margin-bottom: 3px; }
+  .answers .ag div { color: #33363d; }
+  .answers .ag b { color: #16243a; }
+
+  hr.soft { border: none; border-top: 1px solid #e7eaef; margin: 22px 0; }
+
+  @page { size: letter; margin: 0; }
+  @media print {
+    html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    html, body { margin: 0; padding: 0; }
+    .doc { max-width: none !important; margin: 0 !important;
+           padding: 0 0.75in !important; box-shadow: none !important; border: none !important; }
+    #dc-root, .sc-host { height: auto !important; }
+    .hdr-space, .ftr-space { display: table-cell; height: 0.7in !important; }
+    .running-hdr, .running-ftr { display: flex !important; justify-content: space-between;
+      align-items: baseline; position: fixed !important; left: 0; right: 0; margin: 0 !important;
+      font-family: "IBM Plex Mono", monospace; font-size: 10px; letter-spacing: 0.08em;
+      text-transform: uppercase; color: #8a8d96; }
+    .running-hdr { top: 0; padding: 0.32in 0.75in 0 !important; }
+    .running-ftr { bottom: 0; padding: 0 0.75in 0.32in !important; }
+    h1, h2, h3, h4 { break-after: avoid; }
+    .sec-head, table.gt, .formula, .callout, .rw, .freq, .exblock, figure, blockquote, tr { break-inside: avoid; }
+    p, li { orphans: 3; widows: 3; }
+    .screen-only { display: none !important; }
+  }
+</style>
+</head>
+<body>
+<main class="doc">
+  <table class="doc-frame" role="presentation">
+    <thead><tr><td class="hdr-space"></td></tr></thead>
+    <tbody><tr><td>
+
+      <div class="running-hdr"><span>Present Simple · Guía completa</span><span>Inglés A1–C1</span></div>
+      <div class="running-ftr"><span>Gramática inglesa</span><span>Aprende inglés</span></div>
+
+      <!-- ============ COVER ============ -->
+      <header class="cover">
+        <p class="kicker">Gramática inglesa · Cuaderno de estudio</p>
+        <h1>El <em>Present Simple</em></h1>
+        <p class="sub">Guía completa del presente simple en inglés, con explicaciones en español, ejemplos en inglés y fonética en las palabras difíciles.</p>
+        <div class="meta">
+          <span><b>Nivel</b> &nbsp;A1 → C1</span>
+          <span><b>Incluye</b> &nbsp;60 ejercicios + soluciones</span>
+          <span><b>Formato</b> &nbsp;Teoría · Práctica · Repaso</span>
+        </div>
+      </header>
+
+      <!-- ============ TOC ============ -->
+      <nav class="toc">
+        <p class="eyebrow">Contenido</p>
+        <ol>
+          <li>¿Qué es el present simple?</li>
+          <li>¿Cuándo se usa? Los usos</li>
+          <li>Estructura: afirmativa, negativa, interrogativa</li>
+          <li>Conjugación y la <span class="ph">-s</span> de tercera persona</li>
+          <li>Reglas ortográficas: <span class="ph">-s / -es / -ies</span></li>
+          <li>Pronunciación de la <span class="ph">-s</span> final</li>
+          <li>Los verbos <em>to be · to have · to do</em></li>
+          <li>Adverbios de frecuencia</li>
+          <li>Vocabulario: rutinas diarias</li>
+          <li>Errores comunes</li>
+          <li>Ejercicios de práctica (60)</li>
+          <li>Soluciones</li>
+        </ol>
+      </nav>
+
+      <!-- ============ 1 ============ -->
+      <section class="sec">
+        <div class="sec-head"><span class="n">01</span>
+          <div><h2>¿Qué es el present simple?</h2>
+          <p class="h2sub">The present simple tense</p></div>
+        </div>
+        <p class="lead">El <strong>present simple</strong> (presente simple) es el tiempo verbal que usamos para hablar de <strong>hábitos, rutinas, hechos generales y situaciones permanentes</strong>. Es el primer tiempo que se aprende en inglés y el más utilizado en la conversación cotidiana.</p>
+        <p>A diferencia del español, en inglés el verbo casi no cambia: usa la misma forma para todas las personas <em>excepto</em> en la tercera persona del singular (<span class="en">he, she, it</span>), donde se añade una <span class="ph">-s</span>. Esa <span class="ph">-s</span> es la clave de todo el tiempo verbal, y a ella dedicaremos buena parte de esta guía.</p>
+        <table class="gt">
+          <caption>Comparación rápida</caption>
+          <thead><tr><th>English</th><th>Español</th></tr></thead>
+          <tbody>
+            <tr><td class="eng">I <u>work</u> every day.</td><td class="spa">Trabajo todos los días.</td></tr>
+            <tr><td class="eng">She <u>work<b>s</b></u> in a hospital.</td><td class="spa">Ella trabaja en un hospital.</td></tr>
+            <tr><td class="eng">Water <u>boil<b>s</b></u> at 100 °C.</td><td class="spa">El agua hierve a 100 °C.</td></tr>
+          </tbody>
+        </table>
+        <div class="callout"><span class="lbl">Idea clave</span>
+          El present simple <strong>no</strong> describe lo que ocurre <em>en este momento</em> (eso es el present continuous). Describe lo que ocurre <strong>en general, siempre o habitualmente</strong>.</div>
+      </section>
+
+      <!-- ============ 2 ============ -->
+      <section class="sec">
+        <div class="sec-head"><span class="n">02</span>
+          <div><h2>¿Cuándo se usa? Los usos</h2>
+          <p class="h2sub">Uses of the present simple</p></div>
+        </div>
+
+        <h3>1. Hábitos y rutinas</h3>
+        <p>Acciones que repetimos con regularidad. Suelen acompañarse de adverbios de frecuencia (<em>always, usually, often…</em>) o expresiones como <em>every day, on Mondays</em>.</p>
+        <table class="gt">
+          <tbody>
+            <tr><td class="eng">I get up at seven o'clock.</td><td class="spa">Me levanto a las siete.</td></tr>
+            <tr><td class="eng">We <strong>usually</strong> have dinner at nine.</td><td class="spa">Solemos cenar a las nueve.</td></tr>
+            <tr><td class="eng">He plays tennis <strong>on Sundays</strong>.</td><td class="spa">Juega al tenis los domingos.</td></tr>
+          </tbody>
+        </table>
+
+        <h3>2. Verdades generales y hechos</h3>
+        <p>Cosas que son siempre ciertas: ciencia, naturaleza, hechos del mundo.</p>
+        <table class="gt">
+          <tbody>
+            <tr><td class="eng">The sun <strong>rises</strong> <span class="ph">/ˈraɪzɪz/</span> in the east.</td><td class="spa">El sol sale por el este.</td></tr>
+            <tr><td class="eng">Ice <strong>melts</strong> in the sun.</td><td class="spa">El hielo se derrite al sol.</td></tr>
+            <tr><td class="eng">Bees <strong>make</strong> honey.</td><td class="spa">Las abejas hacen miel.</td></tr>
+          </tbody>
+        </table>
+
+        <h3>3. Horarios y programas</h3>
+        <p>Para eventos fijos según un calendario o un horario (trenes, clases, cine), aunque se refieran al futuro.</p>
+        <table class="gt">
+          <tbody>
+            <tr><td class="eng">The train <strong>leaves</strong> at 6:45.</td><td class="spa">El tren sale a las 6:45.</td></tr>
+            <tr><td class="eng">The film <strong>starts</strong> at eight tonight.</td><td class="spa">La película empieza a las ocho esta noche.</td></tr>
+          </tbody>
+        </table>
+
+        <h3>4. Estados permanentes</h3>
+        <p>Situaciones estables: dónde vivimos, qué hacemos, cómo somos.</p>
+        <table class="gt">
+          <tbody>
+            <tr><td class="eng">They <strong>live</strong> in Valencia.</td><td class="spa">Viven en Valencia.</td></tr>
+            <tr><td class="eng">She <strong>works</strong> as a nurse.</td><td class="spa">Trabaja de enfermera.</td></tr>
+          </tbody>
+        </table>
+
+        <h3>5. Verbos de estado (opiniones, sentimientos, sentidos)</h3>
+        <p>Verbos como <em>like, want, know, believe, understand, love, hate, need</em> casi siempre van en present simple, incluso para el momento actual.</p>
+        <table class="gt">
+          <tbody>
+            <tr><td class="eng">I <strong>know</strong> <span class="ph">/noʊ/</span> the answer.</td><td class="spa">Sé la respuesta.</td></tr>
+            <tr><td class="eng">She <strong>doesn't believe</strong> you.</td><td class="spa">No te cree.</td></tr>
+          </tbody>
+        </table>
+
+        <h3>6. Instrucciones, indicaciones y recetas <span style="font-size:13px;color:#9aa0ab;font-family:'IBM Plex Mono',monospace">B2–C1</span></h3>
+        <p>Para dar instrucciones paso a paso o explicar cómo llegar a un sitio.</p>
+        <table class="gt">
+          <tbody>
+            <tr><td class="eng">You <strong>turn</strong> left and then you <strong>cross</strong> the bridge.</td><td class="spa">Giras a la izquierda y luego cruzas el puente.</td></tr>
+            <tr><td class="eng">First, you <strong>mix</strong> the eggs and the sugar.</td><td class="spa">Primero, mezclas los huevos y el azúcar.</td></tr>
+          </tbody>
+        </table>
+
+        <h3>7. Narración y titulares <span style="font-size:13px;color:#9aa0ab;font-family:'IBM Plex Mono',monospace">C1</span></h3>
+        <p>En comentarios deportivos, resúmenes de tramas, chistes y titulares de prensa, el present simple da inmediatez.</p>
+        <table class="gt">
+          <tbody>
+            <tr><td class="eng">Messi <strong>passes</strong> the ball and Suárez <strong>scores</strong>!</td><td class="spa">Messi pasa el balón y ¡Suárez marca!</td></tr>
+            <tr><td class="eng">In the film, a young woman <strong>discovers</strong> a secret.</td><td class="spa">En la película, una joven descubre un secreto.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ============ 3 ============ -->
+      <section class="sec">
+        <div class="sec-head"><span class="n">03</span>
+          <div><h2>Estructura: afirmativa, negativa, interrogativa</h2>
+          <p class="h2sub">Affirmative · Negative · Questions</p></div>
+        </div>
+
+        <h3>Frase afirmativa</h3>
+        <div class="formula">
+          <span class="chip key">Sujeto</span><span class="op">+</span>
+          <span class="chip">verbo</span><span class="arrow">(</span><span class="chip" style="background:#2f5da8;color:#fff;border-color:#2f5da8">+ s con he/she/it</span><span class="arrow">)</span><span class="op">+</span>
+          <span class="chip">complemento</span>
+        </div>
+        <table class="gt">
+          <tbody>
+            <tr><td class="eng">I / You / We / They <strong>speak</strong> English.</td><td class="spa">Hablo / Hablas / Hablamos… inglés.</td></tr>
+            <tr><td class="eng">He / She / It <strong>speak<u>s</u></strong> English.</td><td class="spa">Él / Ella habla inglés.</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Frase negativa</h3>
+        <p>Usamos el auxiliar <span class="en">do not (don't)</span> o, en tercera persona, <span class="en">does not (doesn't)</span>. El verbo principal vuelve a su forma base <strong>sin la <span class="ph">-s</span></strong>.</p>
+        <div class="formula">
+          <span class="chip key">Sujeto</span><span class="op">+</span>
+          <span class="chip">don't / doesn't</span><span class="op">+</span>
+          <span class="chip">verbo base</span>
+        </div>
+        <table class="gt">
+          <tbody>
+            <tr><td class="eng">I <strong>don't</strong> like coffee.</td><td class="spa">No me gusta el café.</td></tr>
+            <tr><td class="eng">She <strong>doesn't</strong> <u>work</u> here.</td><td class="spa">Ella no trabaja aquí.</td></tr>
+          </tbody>
+        </table>
+        <div class="callout warn"><span class="lbl">¡Ojo!</span>
+          Si usas <span class="en">doesn't</span>, la <span class="ph">-s</span> ya está en el auxiliar: el verbo va sin <span class="ph">-s</span>. <br><s>She doesn't works</s> → <span class="en">She doesn't work.</span></div>
+
+        <h3>Frase interrogativa</h3>
+        <p>Las preguntas empiezan con el auxiliar <span class="en">Do</span> / <span class="en">Does</span>. De nuevo, el verbo va en forma base.</p>
+        <div class="formula">
+          <span class="chip key">Do / Does</span><span class="op">+</span>
+          <span class="chip">sujeto</span><span class="op">+</span>
+          <span class="chip">verbo base</span><span class="op">+</span>
+          <span class="chip">…?</span>
+        </div>
+        <table class="gt">
+          <tbody>
+            <tr><td class="eng"><strong>Do</strong> you like coffee?</td><td class="spa">¿Te gusta el café?</td></tr>
+            <tr><td class="eng"><strong>Does</strong> she <u>work</u> here?</td><td class="spa">¿Trabaja ella aquí?</td></tr>
+            <tr><td class="eng"><strong>Where do</strong> they live?</td><td class="spa">¿Dónde viven?</td></tr>
+          </tbody>
+        </table>
+
+        <h4>Respuestas cortas</h4>
+        <table class="gt">
+          <thead><tr><th>Pregunta</th><th>Sí / No</th></tr></thead>
+          <tbody>
+            <tr><td class="eng">Do you speak French?</td><td class="spa">Yes, I do. / No, I don't.</td></tr>
+            <tr><td class="eng">Does he drive?</td><td class="spa">Yes, he does. / No, he doesn't.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ============ 4 ============ -->
+      <section class="sec">
+        <div class="sec-head"><span class="n">04</span>
+          <div><h2>Conjugación y la <span class="ph" style="font-size:0.8em">-s</span> de tercera persona</h2>
+          <p class="h2sub">Conjugation &amp; the third-person -s</p></div>
+        </div>
+        <p>El present simple es muy sencillo de conjugar: el verbo es idéntico para todas las personas y solo cambia en <strong>he / she / it</strong>, donde añadimos <span class="ph">-s</span>. Observa el verbo <span class="en">to work</span> (trabajar) en sus tres formas.</p>
+        <table class="gt">
+          <caption>Verbo regular · to work</caption>
+          <thead><tr><th>Persona</th><th>Afirmativa</th><th>Negativa</th></tr></thead>
+          <tbody>
+            <tr><td class="eng">I</td><td>work</td><td>don't work</td></tr>
+            <tr><td class="eng">You</td><td>work</td><td>don't work</td></tr>
+            <tr><td class="eng">He / She / It</td><td><strong>works</strong></td><td>doesn't work</td></tr>
+            <tr><td class="eng">We</td><td>work</td><td>don't work</td></tr>
+            <tr><td class="eng">You</td><td>work</td><td>don't work</td></tr>
+            <tr><td class="eng">They</td><td>work</td><td>don't work</td></tr>
+          </tbody>
+        </table>
+        <div class="callout"><span class="lbl">Regla de oro</span>
+          La <span class="ph">-s</span> de tercera persona solo aparece en la <strong>frase afirmativa</strong>. En negativas y preguntas, esa <span class="ph">-s</span> "se la lleva" el auxiliar <span class="en">does</span>.</div>
+      </section>
+
+      <!-- ============ 5 ============ -->
+      <section class="sec">
+        <div class="sec-head"><span class="n">05</span>
+          <div><h2>Reglas ortográficas: <span class="ph" style="font-size:0.8em">-s / -es / -ies</span></h2>
+          <p class="h2sub">Spelling rules for he / she / it</p></div>
+        </div>
+        <p>¿Cómo se añade la <span class="ph">-s</span> exactamente? Depende de la terminación del verbo. Hay tres casos.</p>
+
+        <h4>Regla 1 · La mayoría → + s</h4>
+        <table class="gt">
+          <tbody>
+            <tr><td class="eng">work → work<strong>s</strong></td><td class="spa">read → reads · play → plays · eat → eats</td></tr>
+          </tbody>
+        </table>
+
+        <h4>Regla 2 · Termina en -s, -ss, -sh, -ch, -x, -o → + es</h4>
+        <table class="gt">
+          <tbody>
+            <tr><td class="eng">go → go<strong>es</strong> <span class="ph">/ɡoʊz/</span></td><td class="spa">watch → watches · wash → washes</td></tr>
+            <tr><td class="eng">fix → fix<strong>es</strong></td><td class="spa">kiss → kisses · do → does <span class="ph">/dʌz/</span></td></tr>
+          </tbody>
+        </table>
+
+        <h4>Regla 3 · Consonante + y → quita la y, añade -ies</h4>
+        <table class="gt">
+          <tbody>
+            <tr><td class="eng">study → stud<strong>ies</strong> <span class="ph">/ˈstʌdiz/</span></td><td class="spa">fly → flies · carry → carries · cry → cries</td></tr>
+          </tbody>
+        </table>
+        <div class="callout"><span class="lbl">Excepción</span>
+          Si antes de la <span class="ph">-y</span> hay una <strong>vocal</strong>, no cambia nada: simplemente añade <span class="ph">-s</span>. <br><span class="en">play → plays · say → says · buy → buys · enjoy → enjoys.</span></div>
+
+        <table class="gt">
+          <caption>Verbos irregulares en la ortografía</caption>
+          <thead><tr><th>Base</th><th>He / She / It</th></tr></thead>
+          <tbody>
+            <tr><td class="eng">have</td><td><strong>has</strong> <span class="ph">/hæz/</span></td></tr>
+            <tr><td class="eng">go</td><td><strong>goes</strong> <span class="ph">/ɡoʊz/</span></td></tr>
+            <tr><td class="eng">do</td><td><strong>does</strong> <span class="ph">/dʌz/</span></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ============ 6 ============ -->
+      <section class="sec">
+        <div class="sec-head"><span class="n">06</span>
+          <div><h2>Pronunciación de la <span class="ph" style="font-size:0.8em">-s</span> final</h2>
+          <p class="h2sub">How to pronounce the final -s</p></div>
+        </div>
+        <p>La <span class="ph">-s</span> de tercera persona se pronuncia de tres maneras según el sonido anterior. Es el mismo patrón que los plurales.</p>
+        <table class="gt">
+          <thead><tr><th>Sonido</th><th>Cuándo</th><th>Ejemplos</th></tr></thead>
+          <tbody>
+            <tr><td class="eng">/s/</td><td class="spa">tras sonido sordo: p, t, k, f</td><td>sleeps <span class="ph">/sliːps/</span>, works, laughs</td></tr>
+            <tr><td class="eng">/z/</td><td class="spa">tras sonido sonoro o vocal</td><td>plays <span class="ph">/pleɪz/</span>, runs, goes</td></tr>
+            <tr><td class="eng">/ɪz/</td><td class="spa">tras s, z, sh, ch, ge, x</td><td>watches <span class="ph">/ˈwɒtʃɪz/</span>, uses, washes</td></tr>
+          </tbody>
+        </table>
+        <div class="callout"><span class="lbl">Truco</span>
+          Si no puedes pronunciar la <span class="ph">-s</span> sin abrir una sílaba nueva (watch·<strong>es</strong>), entonces suena <span class="ph">/ɪz/</span>. En los demás casos, escucha si tu garganta "vibra": si vibra → <span class="ph">/z/</span>; si no → <span class="ph">/s/</span>.</div>
+      </section>
+
+      <!-- ============ 7 ============ -->
+      <section class="sec">
+        <div class="sec-head"><span class="n">07</span>
+          <div><h2>Los verbos <em>to be · to have · to do</em></h2>
+          <p class="h2sub">Three special verbs</p></div>
+        </div>
+
+        <h3>To be — ser / estar</h3>
+        <p>El verbo <span class="en">to be</span> es especial: <strong>no</strong> usa <span class="en">do/does</span>. Forma negativas y preguntas por sí mismo.</p>
+        <table class="gt">
+          <thead><tr><th>Persona</th><th>Afirmativa</th><th>Negativa</th></tr></thead>
+          <tbody>
+            <tr><td class="eng">I</td><td>am <span class="es">('m)</span></td><td>am not</td></tr>
+            <tr><td class="eng">He / She / It</td><td>is <span class="es">('s)</span></td><td>isn't</td></tr>
+            <tr><td class="eng">You / We / They</td><td>are <span class="es">('re)</span></td><td>aren't</td></tr>
+          </tbody>
+        </table>
+        <table class="gt">
+          <tbody>
+            <tr><td class="eng">She <strong>is</strong> a teacher.</td><td class="spa">Es profesora.</td></tr>
+            <tr><td class="eng"><strong>Are</strong> you ready?</td><td class="spa">¿Estás listo?</td></tr>
+          </tbody>
+        </table>
+
+        <h3>To have — tener</h3>
+        <p>Verbo normal: en tercera persona se transforma en <span class="en">has</span>. Usa <span class="en">do/does</span> para negar y preguntar.</p>
+        <table class="gt">
+          <tbody>
+            <tr><td class="eng">I <strong>have</strong> two brothers.</td><td class="spa">Tengo dos hermanos.</td></tr>
+            <tr><td class="eng">He <strong>has</strong> a dog.</td><td class="spa">Tiene un perro.</td></tr>
+            <tr><td class="eng"><strong>Does</strong> she <strong>have</strong> a car?</td><td class="spa">¿Tiene coche?</td></tr>
+          </tbody>
+        </table>
+
+        <h3>To do — hacer (y auxiliar)</h3>
+        <p>El verbo <span class="en">do</span> tiene una doble vida: es un verbo con significado propio (<em>hacer</em>) <strong>y</strong> el auxiliar que forma negativas y preguntas. Por eso a veces aparece dos veces en la misma frase.</p>
+        <table class="gt">
+          <tbody>
+            <tr><td class="eng">I <strong>do</strong> my homework.</td><td class="spa">Hago mis deberes.</td></tr>
+            <tr><td class="eng"><strong>Does</strong> he <strong>do</strong> the dishes?</td><td class="spa">¿Friega los platos? <span class="es">(does = auxiliar; do = verbo)</span></td></tr>
+            <tr><td class="eng">She <strong>doesn't do</strong> sport.</td><td class="spa">No hace deporte.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ============ 8 ============ -->
+      <section class="sec">
+        <div class="sec-head"><span class="n">08</span>
+          <div><h2>Adverbios de frecuencia</h2>
+          <p class="h2sub">Adverbs of frequency</p></div>
+        </div>
+        <p>Indican <strong>con qué frecuencia</strong> ocurre una acción. Son el compañero natural del present simple.</p>
+        <div class="freq">
+          <div class="row"><span class="w">always</span><span class="pct">100%</span><span class="es2">siempre</span></div>
+          <div class="row"><span class="w">usually</span><span class="pct">90%</span><span class="es2">normalmente</span></div>
+          <div class="row"><span class="w">often</span><span class="pct">70%</span><span class="es2">a menudo · <span class="ph">/ˈɒf(t)ən/</span></span></div>
+          <div class="row"><span class="w">sometimes</span><span class="pct">50%</span><span class="es2">a veces</span></div>
+          <div class="row"><span class="w">rarely / seldom</span><span class="pct">10%</span><span class="es2">rara vez</span></div>
+          <div class="row"><span class="w">never</span><span class="pct">0%</span><span class="es2">nunca</span></div>
+        </div>
+
+        <h4>¿Dónde se colocan?</h4>
+        <p>La regla es sencilla y tiene dos partes:</p>
+        <div class="formula">
+          <span class="chip">sujeto</span><span class="op">+</span><span class="chip key">adverbio</span><span class="op">+</span><span class="chip">verbo principal</span>
+        </div>
+        <p style="margin-top:-4px"><strong>Pero</strong> con el verbo <span class="en">to be</span>, el adverbio va <em>después</em>:</p>
+        <div class="formula">
+          <span class="chip">sujeto</span><span class="op">+</span><span class="chip">be</span><span class="op">+</span><span class="chip key">adverbio</span>
+        </div>
+        <table class="gt">
+          <tbody>
+            <tr><td class="eng">I <strong>always</strong> drink coffee.</td><td class="spa">Siempre bebo café. <span class="es">(verbo normal → antes)</span></td></tr>
+            <tr><td class="eng">She is <strong>never</strong> late.</td><td class="spa">Nunca llega tarde. <span class="es">(to be → después)</span></td></tr>
+          </tbody>
+        </table>
+        <div class="callout"><span class="lbl">Nota C1</span>
+          <em>Usually, often, sometimes</em> también pueden ir al principio o al final de la frase para dar énfasis: <span class="en">Sometimes I work from home.</span> En cambio, <em>always</em> y <em>never</em> normalmente <strong>no</strong> se ponen al final.</div>
+      </section>
+
+      <!-- ============ 9 ============ -->
+      <section class="sec">
+        <div class="sec-head"><span class="n">09</span>
+          <div><h2>Vocabulario: rutinas diarias</h2>
+          <p class="h2sub">Daily routine vocabulary</p></div>
+        </div>
+        <p>El present simple y las rutinas van de la mano. Aquí tienes las expresiones más útiles, con fonética en las difíciles.</p>
+        <div class="vocab">
+          <div class="item"><span class="w">wake up</span> <span class="ph">/weɪk ʌp/</span> — <span class="t">despertarse</span></div>
+          <div class="item"><span class="w">get up</span> — <span class="t">levantarse</span></div>
+          <div class="item"><span class="w">have a shower</span> <span class="ph">/ˈʃaʊə/</span> — <span class="t">ducharse</span></div>
+          <div class="item"><span class="w">brush my teeth</span> <span class="ph">/brʌʃ … tiːθ/</span> — <span class="t">lavarse los dientes</span></div>
+          <div class="item"><span class="w">get dressed</span> — <span class="t">vestirse</span></div>
+          <div class="item"><span class="w">have breakfast</span> <span class="ph">/ˈbrekfəst/</span> — <span class="t">desayunar</span></div>
+          <div class="item"><span class="w">go to work</span> — <span class="t">ir al trabajo</span></div>
+          <div class="item"><span class="w">catch the bus</span> <span class="ph">/kætʃ/</span> — <span class="t">coger el autobús</span></div>
+          <div class="item"><span class="w">start work</span> — <span class="t">empezar a trabajar</span></div>
+          <div class="item"><span class="w">have lunch</span> <span class="ph">/lʌntʃ/</span> — <span class="t">comer / almorzar</span></div>
+          <div class="item"><span class="w">finish work</span> — <span class="t">terminar de trabajar</span></div>
+          <div class="item"><span class="w">do the shopping</span> — <span class="t">hacer la compra</span></div>
+          <div class="item"><span class="w">cook dinner</span> — <span class="t">cocinar la cena</span></div>
+          <div class="item"><span class="w">watch TV</span> — <span class="t">ver la tele</span></div>
+          <div class="item"><span class="w">go to bed</span> — <span class="t">irse a la cama</span></div>
+          <div class="item"><span class="w">fall asleep</span> <span class="ph">/əˈsliːp/</span> — <span class="t">quedarse dormido</span></div>
+        </div>
+        <h4>Expresiones de frecuencia útiles</h4>
+        <div class="vocab">
+          <div class="item"><span class="w">every day / week</span> — <span class="t">cada día / semana</span></div>
+          <div class="item"><span class="w">once a week</span> <span class="ph">/wʌns/</span> — <span class="t">una vez por semana</span></div>
+          <div class="item"><span class="w">twice a month</span> <span class="ph">/twaɪs/</span> — <span class="t">dos veces al mes</span></div>
+          <div class="item"><span class="w">three times a year</span> — <span class="t">tres veces al año</span></div>
+          <div class="item"><span class="w">on Mondays</span> — <span class="t">los lunes</span></div>
+          <div class="item"><span class="w">at the weekend</span> — <span class="t">el fin de semana</span></div>
+          <div class="item"><span class="w">in the morning</span> — <span class="t">por la mañana</span></div>
+          <div class="item"><span class="w">from time to time</span> — <span class="t">de vez en cuando</span></div>
+        </div>
+      </section>
+
+      <!-- ============ 10 ============ -->
+      <section class="sec">
+        <div class="sec-head"><span class="n">10</span>
+          <div><h2>Errores comunes</h2>
+          <p class="h2sub">Common mistakes to avoid</p></div>
+        </div>
+
+        <h4>1. Olvidar la -s de tercera persona</h4>
+        <div class="rw">
+          <div class="box bad"><span class="tag">✗ INCORRECTO</span><s>He live in Paris.</s></div>
+          <div class="box good"><span class="tag">✓ CORRECTO</span>He live<strong>s</strong> in Paris.</div>
+        </div>
+
+        <h4>2. Poner la -s también en negativas o preguntas</h4>
+        <div class="rw">
+          <div class="box bad"><span class="tag">✗ INCORRECTO</span><s>She doesn't likes tea.</s><br><s>Does he plays?</s></div>
+          <div class="box good"><span class="tag">✓ CORRECTO</span>She doesn't <strong>like</strong> tea.<br>Does he <strong>play</strong>?</div>
+        </div>
+
+        <h4>3. Usar el verbo to be con do/does</h4>
+        <div class="rw">
+          <div class="box bad"><span class="tag">✗ INCORRECTO</span><s>Do you are happy?</s></div>
+          <div class="box good"><span class="tag">✓ CORRECTO</span><strong>Are</strong> you happy?</div>
+        </div>
+
+        <h4>4. Traducir literalmente "hago" como auxiliar</h4>
+        <div class="rw">
+          <div class="box bad"><span class="tag">✗ INCORRECTO</span><s>I no work on Sundays.</s></div>
+          <div class="box good"><span class="tag">✓ CORRECTO</span>I <strong>don't</strong> work on Sundays.</div>
+        </div>
+
+        <h4>5. Confundir present simple con present continuous</h4>
+        <div class="rw">
+          <div class="box bad"><span class="tag">✗ MATIZ</span><s>Look! She works.</s> <span class="es">(ahora mismo)</span></div>
+          <div class="box good"><span class="tag">✓ MEJOR</span>Look! She <strong>is working</strong>. <span class="es">(acción en curso)</span></div>
+        </div>
+      </section>
+
+      <!-- ============ 11 EXERCISES ============ -->
+      <section class="sec">
+        <div class="sec-head"><span class="n">11</span>
+          <div><h2>Ejercicios de práctica</h2>
+          <p class="h2sub">60 exercises · escribe tus respuestas y compáralas en la sección 12</p></div>
+        </div>
+
+        <div class="exwrap">
+          <div class="exblock">
+            <div class="bh"><span class="id">A</span><h3>Afirmativa</h3></div>
+            <p class="instr">Completa con la forma correcta del verbo entre paréntesis.</p>
+            <ol class="ex">
+              <li>I <span class="blank"></span> in a bank. <span class="cue">(work)</span></li>
+              <li>She <span class="blank"></span> in Madrid. <span class="cue">(live)</span></li>
+              <li>They <span class="blank"></span> football on Sundays. <span class="cue">(play)</span></li>
+              <li>He <span class="blank"></span> English every day. <span class="cue">(study)</span></li>
+              <li>We <span class="blank"></span> TV in the evening. <span class="cue">(watch)</span></li>
+              <li>My brother <span class="blank"></span> to school by bus. <span class="cue">(go)</span></li>
+              <li>The shop <span class="blank"></span> at nine. <span class="cue">(open)</span></li>
+              <li>Cats <span class="blank"></span> milk. <span class="cue">(like)</span></li>
+              <li>You <span class="blank"></span> three languages. <span class="cue">(speak)</span></li>
+              <li>Anna <span class="blank"></span> her homework after dinner. <span class="cue">(do)</span></li>
+            </ol>
+          </div>
+
+          <div class="exblock">
+            <div class="bh"><span class="id">B</span><h3>Tercera persona</h3></div>
+            <p class="instr">Escribe la forma de <em>he / she / it</em> (-s, -es o -ies).</p>
+            <ol class="ex">
+              <li>fly → <span class="blank"></span></li>
+              <li>teach → <span class="blank"></span></li>
+              <li>carry → <span class="blank"></span></li>
+              <li>fix → <span class="blank"></span></li>
+              <li>enjoy → <span class="blank"></span></li>
+              <li>miss → <span class="blank"></span></li>
+              <li>cry → <span class="blank"></span></li>
+              <li>wash → <span class="blank"></span></li>
+              <li>say → <span class="blank"></span></li>
+              <li>push → <span class="blank"></span></li>
+            </ol>
+          </div>
+
+          <div class="exblock">
+            <div class="bh"><span class="id">C</span><h3>Negativa</h3></div>
+            <p class="instr">Reescribe cada frase en forma negativa (don't / doesn't).</p>
+            <ol class="ex">
+              <li>I like coffee. <span class="blank" style="min-width:120px"></span></li>
+              <li>She speaks French. <span class="blank" style="min-width:120px"></span></li>
+              <li>They live here. <span class="blank" style="min-width:120px"></span></li>
+              <li>He works on Saturdays. <span class="blank" style="min-width:120px"></span></li>
+              <li>We watch the news. <span class="blank" style="min-width:120px"></span></li>
+              <li>The train arrives at six. <span class="blank" style="min-width:120px"></span></li>
+              <li>You understand the question. <span class="blank" style="min-width:120px"></span></li>
+              <li>My parents travel a lot. <span class="blank" style="min-width:120px"></span></li>
+              <li>It rains in summer. <span class="blank" style="min-width:120px"></span></li>
+              <li>Tom plays the guitar. <span class="blank" style="min-width:120px"></span></li>
+            </ol>
+          </div>
+
+          <div class="exblock">
+            <div class="bh"><span class="id">D</span><h3>Preguntas</h3></div>
+            <p class="instr">Forma la pregunta con Do / Does.</p>
+            <ol class="ex">
+              <li>you / like / pizza? <span class="blank" style="min-width:110px"></span></li>
+              <li>she / work / here? <span class="blank" style="min-width:110px"></span></li>
+              <li>they / speak / English? <span class="blank" style="min-width:110px"></span></li>
+              <li>he / play / tennis? <span class="blank" style="min-width:110px"></span></li>
+              <li>the film / start / at eight? <span class="blank" style="min-width:110px"></span></li>
+              <li>we / need / a visa? <span class="blank" style="min-width:110px"></span></li>
+              <li>your sister / study / medicine? <span class="blank" style="min-width:110px"></span></li>
+              <li>the buses / run / on Sundays? <span class="blank" style="min-width:110px"></span></li>
+              <li>it / cost / a lot? <span class="blank" style="min-width:110px"></span></li>
+              <li>you / remember / me? <span class="blank" style="min-width:110px"></span></li>
+            </ol>
+          </div>
+
+          <div class="exblock">
+            <div class="bh"><span class="id">E</span><h3>To be</h3></div>
+            <p class="instr">Completa con am / is / are.</p>
+            <ol class="ex">
+              <li>I <span class="blank"></span> a student.</li>
+              <li>She <span class="blank"></span> from Italy.</li>
+              <li>They <span class="blank"></span> at home.</li>
+              <li>We <span class="blank"></span> happy.</li>
+              <li>He <span class="blank"></span> tired.</li>
+              <li>You <span class="blank"></span> right.</li>
+              <li>It <span class="blank"></span> cold today.</li>
+              <li>My friends <span class="blank"></span> very kind.</li>
+            </ol>
+          </div>
+
+          <div class="exblock">
+            <div class="bh"><span class="id">F</span><h3>Adverbios de frecuencia</h3></div>
+            <p class="instr">Coloca el adverbio en el lugar correcto.</p>
+            <ol class="ex">
+              <li>I am late. <span class="cue">(never)</span> <span class="blank" style="min-width:110px"></span></li>
+              <li>She drinks tea. <span class="cue">(usually)</span> <span class="blank" style="min-width:110px"></span></li>
+              <li>They are happy. <span class="cue">(always)</span> <span class="blank" style="min-width:110px"></span></li>
+              <li>We go to the gym. <span class="cue">(sometimes)</span> <span class="blank" style="min-width:110px"></span></li>
+              <li>He is at work before nine. <span class="cue">(often)</span> <span class="blank" style="min-width:110px"></span></li>
+              <li>I eat meat. <span class="cue">(rarely)</span> <span class="blank" style="min-width:110px"></span></li>
+            </ol>
+          </div>
+
+          <div class="exblock">
+            <div class="bh"><span class="id">G</span><h3>Corrige el error</h3></div>
+            <p class="instr">Cada frase tiene un error. Escríbela correctamente.</p>
+            <ol class="ex">
+              <li>She don't like fish. <span class="blank" style="min-width:120px"></span></li>
+              <li>He go to work by car. <span class="blank" style="min-width:120px"></span></li>
+              <li>Do she speak English? <span class="blank" style="min-width:120px"></span></li>
+              <li>They doesn't live here. <span class="blank" style="min-width:120px"></span></li>
+              <li>I plays tennis. <span class="blank" style="min-width:120px"></span></li>
+              <li>Does he likes coffee? <span class="blank" style="min-width:120px"></span></li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 12 ANSWERS ============ -->
+      <section class="sec">
+        <div class="sec-head"><span class="n">12</span>
+          <div><h2>Soluciones</h2>
+          <p class="h2sub">Answer key</p></div>
+        </div>
+        <div class="answers">
+          <div class="ag"><div class="agh">A · Afirmativa</div>
+            <div>1 <b>work</b> · 2 <b>lives</b> · 3 <b>play</b> · 4 <b>studies</b> · 5 <b>watch</b> · 6 <b>goes</b> · 7 <b>opens</b> · 8 <b>like</b> · 9 <b>speak</b> · 10 <b>does</b></div></div>
+          <div class="ag"><div class="agh">B · Tercera persona</div>
+            <div>1 <b>flies</b> · 2 <b>teaches</b> · 3 <b>carries</b> · 4 <b>fixes</b> · 5 <b>enjoys</b> · 6 <b>misses</b> · 7 <b>cries</b> · 8 <b>washes</b> · 9 <b>says</b> · 10 <b>pushes</b></div></div>
+          <div class="ag"><div class="agh">C · Negativa</div>
+            <div>1 don't like · 2 doesn't speak · 3 don't live · 4 doesn't work · 5 don't watch · 6 doesn't arrive · 7 don't understand · 8 don't travel · 9 doesn't rain · 10 doesn't play</div></div>
+          <div class="ag"><div class="agh">D · Preguntas</div>
+            <div>1 Do you like pizza? · 2 Does she work here? · 3 Do they speak English? · 4 Does he play tennis? · 5 Does the film start at eight? · 6 Do we need a visa? · 7 Does your sister study medicine? · 8 Do the buses run on Sundays? · 9 Does it cost a lot? · 10 Do you remember me?</div></div>
+          <div class="ag"><div class="agh">E · To be</div>
+            <div>1 <b>am</b> · 2 <b>is</b> · 3 <b>are</b> · 4 <b>are</b> · 5 <b>is</b> · 6 <b>are</b> · 7 <b>is</b> · 8 <b>are</b></div></div>
+          <div class="ag"><div class="agh">F · Frecuencia</div>
+            <div>1 I am never late. · 2 She usually drinks tea. · 3 They are always happy. · 4 We sometimes go to the gym. · 5 He is often at work before nine. · 6 I rarely eat meat.</div></div>
+          <div class="ag"><div class="agh">G · Corrige</div>
+            <div>1 She doesn't like fish. · 2 He goes to work by car. · 3 Does she speak English? · 4 They don't live here. · 5 I play tennis. · 6 Does he like coffee?</div></div>
+        </div>
+        <hr class="soft">
+        <p style="text-align:center;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#9aa0ab;text-transform:uppercase;">Fin · The Present Simple · Keep practising every day</p>
+      </section>
+
+    </td></tr></tbody>
+    <tfoot><tr><td class="ftr-space"></td></tr></tfoot>
+  </table>
+</main>
+</body>
+</html>
