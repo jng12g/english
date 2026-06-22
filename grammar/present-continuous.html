@@ -1,1 +1,658 @@
-ejemplo
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>El Present Continuous — Guía completa (A1–C1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #fff; }
+  .doc {
+    box-sizing: border-box; max-width: 8.5in; margin: 0 auto;
+    background: inherit;
+    padding: 64px clamp(24px, 5vw, 0.85in) 96px;
+    font-family: "Source Serif 4", Georgia, serif;
+    color: #1c1d20; font-size: 15.5px; line-height: 1.62;
+    font-variant-ligatures: common-ligatures;
+  }
+  .doc-frame { width: 100%; border-collapse: collapse; }
+  .doc-frame td { padding: 0; }
+  .running-hdr, .running-ftr, .hdr-space, .ftr-space { display: none; }
+
+  /* ---- color + type tokens ---- */
+  h1, h2, h3, h4 { font-family: "Newsreader", Georgia, serif; text-wrap: balance; color: #16243a; }
+  p, li { text-wrap: pretty; }
+
+  .eyebrow {
+    font-family: "IBM Plex Mono", monospace; font-size: 11px; font-weight: 500;
+    letter-spacing: 0.16em; text-transform: uppercase; color: #2f5da8;
+    margin: 0 0 6px;
+  }
+
+  /* cover */
+  .cover { padding: 24px 0 40px; border-bottom: 2px solid #16243a; margin-bottom: 40px; }
+  .cover .kicker {
+    font-family: "IBM Plex Mono", monospace; font-size: 12px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: #2f5da8; margin: 0 0 18px;
+  }
+  .cover h1 {
+    font-size: 64px; line-height: 1.0; font-weight: 600; margin: 0 0 10px; letter-spacing: -0.015em;
+  }
+  .cover h1 em { font-style: italic; font-weight: 500; color: #2f5da8; }
+  .cover .sub { font-size: 20px; font-style: italic; color: #4a4d55; margin: 0 0 28px; max-width: 26em; }
+  .cover .meta {
+    display: flex; gap: 28px; flex-wrap: wrap;
+    font-family: "IBM Plex Mono", monospace; font-size: 12px; color: #5a5d66; letter-spacing: 0.04em;
+  }
+  .cover .meta b { color: #16243a; font-weight: 600; }
+
+  /* table of contents */
+  .toc { margin: 0 0 56px; }
+  .toc ol { list-style: none; counter-reset: toc; padding: 0; margin: 14px 0 0;
+    columns: 2; column-gap: 48px; }
+  .toc li { counter-increment: toc; break-inside: avoid; display: flex; gap: 12px;
+    padding: 7px 0; border-bottom: 1px solid #e7eaef; font-size: 14.5px; align-items: baseline; }
+  .toc li::before { content: counter(toc, decimal-leading-zero);
+    font-family: "IBM Plex Mono", monospace; font-size: 12px; color: #2f5da8; font-weight: 600; }
+
+  /* sections */
+  .sec { margin: 0 0 14px; padding-top: 16px; }
+  .sec-head { display: flex; align-items: flex-start; gap: 18px; margin: 40px 0 18px;
+    padding-top: 26px; border-top: 1px solid #d8dde6; }
+  .sec-head .n {
+    font-family: "IBM Plex Mono", monospace; font-size: 13px; font-weight: 600; color: #fff;
+    background: #2f5da8; border-radius: 4px; padding: 4px 9px; line-height: 1.2; margin-top: 8px; flex: none;
+  }
+  .sec-head h2 { font-size: 30px; font-weight: 600; line-height: 1.12; margin: 0; letter-spacing: -0.01em; }
+  .sec-head .h2sub { font-size: 14px; font-style: italic; color: #6a6d76; margin: 4px 0 0; }
+
+  h3 { font-size: 20px; font-weight: 600; margin: 28px 0 8px; }
+  h4 { font-size: 15px; font-weight: 600; margin: 18px 0 6px; color: #2f5da8;
+    font-family: "IBM Plex Mono", monospace; letter-spacing: 0.02em; text-transform: none; }
+  p { margin: 0 0 12px; }
+  .lead { font-size: 18px; line-height: 1.55; color: #33363d; margin-bottom: 18px; }
+
+  strong { font-weight: 600; color: #16243a; }
+  .en { font-weight: 600; color: #16243a; }
+  .es { color: #6a6d76; font-style: italic; }
+  .ph { font-family: "IBM Plex Mono", monospace; font-size: 0.86em; color: #2f5da8; }
+
+  /* example tables */
+  table.gt { width: 100%; border-collapse: collapse; margin: 12px 0 18px; font-size: 14.5px; }
+  table.gt caption { text-align: left; font-family: "IBM Plex Mono", monospace; font-size: 11px;
+    letter-spacing: 0.1em; text-transform: uppercase; color: #2f5da8; padding: 0 0 8px; }
+  table.gt th { text-align: left; font-family: "IBM Plex Mono", monospace; font-size: 10.5px;
+    letter-spacing: 0.08em; text-transform: uppercase; color: #5a5d66; font-weight: 500;
+    border-bottom: 1.5px solid #16243a; padding: 6px 12px 6px 0; }
+  table.gt td { border-bottom: 1px solid #e7eaef; padding: 8px 12px 8px 0; vertical-align: top; }
+  table.gt td.eng { font-weight: 600; color: #16243a; width: 48%; }
+  table.gt td.spa { color: #6a6d76; font-style: italic; }
+  table.gt tr:last-child td { border-bottom: none; }
+
+  /* formula bar */
+  .formula { display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+    background: #eef3fa; border: 1px solid #d4ddec; border-radius: 6px;
+    padding: 14px 18px; margin: 14px 0 18px; font-family: "IBM Plex Mono", monospace; font-size: 14px; }
+  .formula .chip { background: #fff; border: 1px solid #c4d0e4; border-radius: 4px; padding: 4px 10px;
+    color: #16243a; font-weight: 500; }
+  .formula .chip.key { background: #2f5da8; color: #fff; border-color: #2f5da8; }
+  .formula .op { color: #2f5da8; font-weight: 600; }
+  .formula .arrow { color: #9aa0ab; }
+
+  /* callouts */
+  .callout { background: #eef3fa; border-left: 3px solid #2f5da8; border-radius: 0 6px 6px 0;
+    padding: 14px 18px; margin: 16px 0; font-size: 14.5px; }
+  .callout .lbl { font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: #2f5da8; font-weight: 600; display: block; margin-bottom: 5px; }
+  .callout.warn { background: #fdf4ef; border-left-color: #c2683a; }
+  .callout.warn .lbl { color: #c2683a; }
+
+  /* right / wrong */
+  .rw { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0 18px; }
+  .rw .box { border: 1px solid #e0e3ea; border-radius: 6px; padding: 12px 14px; font-size: 14px; }
+  .rw .box.bad { background: #fdf4f2; border-color: #e7cfc8; }
+  .rw .box.good { background: #eef6f1; border-color: #cfe2d6; }
+  .rw .tag { font-family: "IBM Plex Mono", monospace; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.08em; display: block; margin-bottom: 6px; }
+  .rw .bad .tag { color: #b5482f; }
+  .rw .good .tag { color: #2f7d50; }
+  .rw s { color: #b5482f; text-decoration-color: #d99; }
+
+  /* word list / vocab */
+  .vocab { columns: 2; column-gap: 40px; margin: 12px 0 18px; }
+  .vocab .item { break-inside: avoid; padding: 7px 0; border-bottom: 1px solid #eef0f4; }
+  .vocab .item .w { font-weight: 600; color: #16243a; }
+  .vocab .item .t { color: #6a6d76; font-style: italic; }
+
+  /* exercises */
+  .exwrap { margin-top: 8px; }
+  .exblock { margin: 22px 0; }
+  .exblock .bh { display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px; }
+  .exblock .bh .id { font-family: "IBM Plex Mono", monospace; font-weight: 600; color: #fff;
+    background: #16243a; border-radius: 4px; padding: 2px 8px; font-size: 12px; }
+  .exblock .bh h3 { margin: 0; font-size: 17px; }
+  .exblock .instr { font-size: 13.5px; font-style: italic; color: #6a6d76; margin: 0 0 12px; }
+  ol.ex { list-style: none; counter-reset: ex; padding: 0; margin: 0;
+    columns: 2; column-gap: 40px; }
+  ol.ex li { counter-increment: ex; break-inside: avoid; padding: 6px 0 6px 30px; position: relative;
+    font-size: 14.5px; line-height: 1.5; }
+  ol.ex li::before { content: counter(ex) "."; position: absolute; left: 0; top: 6px;
+    font-family: "IBM Plex Mono", monospace; font-size: 12.5px; color: #2f5da8; font-weight: 600; }
+  .cue { color: #6a6d76; font-style: italic; }
+
+  /* Interactive Inputs */
+  .interact-input {
+    border: none; border-bottom: 1.5px solid #9aa6bb; background: #fafbfd;
+    font-family: inherit; font-size: inherit; color: #2f5da8; font-weight: 600;
+    min-width: 100px; padding: 2px 6px; transition: all 0.2s; border-radius: 2px 2px 0 0;
+  }
+  .interact-input:focus { outline: none; border-bottom-color: #2f5da8; background: #eef3fa; }
+  .interact-input.correct { border-bottom-color: #2f7d50; color: #2f7d50; background: #eef6f1; }
+  .interact-input.incorrect { border-bottom-color: #b5482f; color: #b5482f; background: #fdf4f2; }
+  
+  .btn-check {
+    display: block; width: 100%; max-width: 300px; margin: 30px auto;
+    background: #16243a; color: #fff; border: none; border-radius: 6px;
+    padding: 14px 24px; font-family: "IBM Plex Mono", monospace; font-size: 14px;
+    font-weight: 600; letter-spacing: 0.05em; cursor: pointer; transition: background 0.2s;
+  }
+  .btn-check:hover { background: #2f5da8; }
+
+  /* answer key */
+  .answers { columns: 3; column-gap: 32px; font-family: "IBM Plex Mono", monospace; font-size: 12px;
+    line-height: 1.7; margin-top: 10px; }
+  .answers .ag { break-inside: avoid; margin-bottom: 14px; }
+  .answers .ag .agh { color: #2f5da8; font-weight: 600; letter-spacing: 0.06em; margin-bottom: 3px; }
+  .answers .ag div { color: #33363d; }
+  .answers .ag b { color: #16243a; }
+
+  hr.soft { border: none; border-top: 1px solid #e7eaef; margin: 22px 0; }
+
+  @page { size: letter; margin: 0; }
+  @media print {
+    html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    html, body { margin: 0; padding: 0; }
+    .doc { max-width: none !important; margin: 0 !important;
+           padding: 0 0.75in !important; box-shadow: none !important; border: none !important; }
+    .btn-check { display: none !important; }
+    .interact-input { background: transparent !important; }
+    .running-hdr, .running-ftr { display: flex !important; justify-content: space-between;
+      align-items: baseline; position: fixed !important; left: 0; right: 0; margin: 0 !important;
+      font-family: "IBM Plex Mono", monospace; font-size: 10px; letter-spacing: 0.08em;
+      text-transform: uppercase; color: #8a8d96; }
+    .running-hdr { top: 0; padding: 0.32in 0.75in 0 !important; }
+    .running-ftr { bottom: 0; padding: 0 0.75in 0.32in !important; }
+    h1, h2, h3, h4 { break-after: avoid; }
+    .sec-head, table.gt, .formula, .callout, .rw, .freq, .exblock, figure, blockquote, tr { break-inside: avoid; }
+    p, li { orphans: 3; widows: 3; }
+  }
+</style>
+</head>
+<body>
+<main class="doc">
+  <table class="doc-frame" role="presentation">
+    <thead><tr><td class="hdr-space"></td></tr></thead>
+    <tbody><tr><td>
+
+      <div class="running-hdr"><span>Present Continuous · Guía completa</span><span>Inglés A1–C1</span></div>
+      <div class="running-ftr"><span>Gramática inglesa</span><span>Aprende inglés</span></div>
+
+      <header class="cover">
+        <p class="kicker">Gramática inglesa · Cuaderno de estudio</p>
+        <h1>El <em>Present Continuous</em></h1>
+        <p class="sub">Guía interactiva del presente continuo (o progresivo) en inglés. Explicaciones detalladas, contrastes de nivel avanzado y ejercicios para completar.</p>
+        <div class="meta">
+          <span><b>Nivel</b> &nbsp;A1 → C1</span>
+          <span><b>Incluye</b> &nbsp;60 ejercicios interactivos</span>
+          <span><b>Formato</b> &nbsp;Teoría · Práctica · Autocorrección</span>
+        </div>
+      </header>
+
+      <nav class="toc">
+        <p class="eyebrow">Contenido</p>
+        <ol>
+          <li>¿Qué es el present continuous?</li>
+          <li>¿Cuándo se usa? (Niveles A1 a C1)</li>
+          <li>Estructura: afirmativa, negativa, interrogativa</li>
+          <li>Reglas ortográficas para la terminación <span class="ph">-ing</span></li>
+          <li>Los verbos de estado (Stative Verbs)</li>
+          <li>Present Continuous vs Present Simple</li>
+          <li>Vocabulario: Expresiones de tiempo</li>
+          <li>Errores comunes</li>
+          <li>Ejercicios interactivos (60)</li>
+          <li>Soluciones</li>
+        </ol>
+      </nav>
+
+      <section class="sec">
+        <div class="sec-head"><span class="n">01</span>
+          <div><h2>¿Qué es el present continuous?</h2>
+          <p class="h2sub">The present continuous tense</p></div>
+        </div>
+        <p class="lead">El <strong>present continuous</strong> (presente continuo), también llamado <em>present progressive</em>, es el tiempo verbal que usamos principalmente para hablar de <strong>acciones que están ocurriendo en este mismo momento</strong> o situaciones temporales.</p>
+        <p>A diferencia del <em>present simple</em>, que describe la rutina habitual, el continuo nos da la sensación de que la acción está "en curso" y aún no ha terminado. Se forma siempre combinando el verbo <strong>to be</strong> (am/is/are) con un verbo principal terminado en <strong>-ing</strong>.</p>
+        <table class="gt">
+          <caption>Comparación rápida</caption>
+          <thead><tr><th>English</th><th>Español</th></tr></thead>
+          <tbody>
+            <tr><td class="eng">I <u>am working</u> right now.</td><td class="spa">Estoy trabajando ahora mismo.</td></tr>
+            <tr><td class="eng">She <u>is studying</u> English.</td><td class="spa">Ella está estudiando inglés.</td></tr>
+            <tr><td class="eng">They <u>are playing</u> a video game.</td><td class="spa">Están jugando a un videojuego.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="sec">
+        <div class="sec-head"><span class="n">02</span>
+          <div><h2>¿Cuándo se usa? Los usos</h2>
+          <p class="h2sub">Uses from A1 to C1</p></div>
+        </div>
+
+        <h3>1. Acciones en progreso (A1)</h3>
+        <p>Cosas que están sucediendo exactamente en el momento de hablar.</p>
+        <table class="gt">
+          <tbody>
+            <tr><td class="eng">Please be quiet. The baby <strong>is sleeping</strong>.</td><td class="spa">Por favor, silencio. El bebé está durmiendo.</td></tr>
+            <tr><td class="eng">Look! It <strong>is raining</strong> <span class="ph">/ˈreɪnɪŋ/</span>.</td><td class="spa">¡Mira! Está lloviendo.</td></tr>
+          </tbody>
+        </table>
+
+        <h3>2. Situaciones temporales (A2)</h3>
+        <p>Acciones que ocurren "alrededor del momento actual" (estos días, este mes), aunque no sea justo en el segundo en que se habla. Indica que la situación no es permanente.</p>
+        <table class="gt">
+          <tbody>
+            <tr><td class="eng">I <strong>am living</strong> in Killarney for a few months.</td><td class="spa">Estoy viviendo en Killarney unos meses.</td></tr>
+            <tr><td class="eng">She <strong>is reading</strong> a great book these days.</td><td class="spa">Está leyendo un libro genial estos días.</td></tr>
+          </tbody>
+        </table>
+
+        <h3>3. Planes fijos de futuro (B1)</h3>
+        <p>Se usa para <em>arrangements</em>: planes confirmados en el futuro cercano, normalmente cuando ya sabemos la hora y el lugar.</p>
+        <table class="gt">
+          <tbody>
+            <tr><td class="eng">I <strong>am meeting</strong> the doctor at 5 PM tomorrow.</td><td class="spa">He quedado con el médico a las 5 mañana.</td></tr>
+            <tr><td class="eng">We <strong>are flying</strong> to Spain next week.</td><td class="spa">Volamos a España la semana que viene.</td></tr>
+          </tbody>
+        </table>
+
+        <h3>4. Hábitos molestos con <em>always</em> (B2)</h3>
+        <p>Para quejarnos de algo que ocurre repetidamente y nos resulta irritante. En este caso sí se usan adverbios como <em>always</em> o <em>constantly</em>.</p>
+        <table class="gt">
+          <tbody>
+            <tr><td class="eng">You <strong>are always losing</strong> your keys!</td><td class="spa">¡Siempre estás perdiendo las llaves!</td></tr>
+            <tr><td class="eng">He <strong>is constantly complaining</strong>.</td><td class="spa">Se está quejando constantemente.</td></tr>
+          </tbody>
+        </table>
+
+        <h3>5. Tendencias y situaciones cambiantes (B2–C1)</h3>
+        <p>Para hablar de algo que está evolucionando gradualmente en la sociedad o el mundo.</p>
+        <table class="gt">
+          <tbody>
+            <tr><td class="eng">The climate <strong>is changing</strong> very fast.</td><td class="spa">El clima está cambiando muy rápido.</td></tr>
+            <tr><td class="eng">More and more people <strong>are working</strong> from home.</td><td class="spa">Cada vez más gente está trabajando desde casa.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="sec">
+        <div class="sec-head"><span class="n">03</span>
+          <div><h2>Estructura: afirmativa, negativa, interrogativa</h2>
+          <p class="h2sub">Affirmative · Negative · Questions</p></div>
+        </div>
+
+        <h3>Frase afirmativa</h3>
+        <div class="formula">
+          <span class="chip key">Sujeto</span><span class="op">+</span>
+          <span class="chip" style="background:#2f5da8;color:#fff;border-color:#2f5da8">am / is / are</span><span class="op">+</span>
+          <span class="chip">verbo terminado en -ing</span>
+        </div>
+        <table class="gt">
+          <tbody>
+            <tr><td class="eng">I <strong>am working</strong> <span class="es">('m working)</span>.</td><td class="spa">Estoy trabajando.</td></tr>
+            <tr><td class="eng">He / She / It <strong>is working</strong> <span class="es">('s working)</span>.</td><td class="spa">Él / Ella está trabajando.</td></tr>
+            <tr><td class="eng">You / We / They <strong>are working</strong> <span class="es">('re working)</span>.</td><td class="spa">Estás / Estamos... trabajando.</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Frase negativa</h3>
+        <p>Para negar, solo añadimos <strong>not</strong> al verbo <em>to be</em>.</p>
+        <div class="formula">
+          <span class="chip key">Sujeto</span><span class="op">+</span>
+          <span class="chip">am not / isn't / aren't</span><span class="op">+</span>
+          <span class="chip">verbo -ing</span>
+        </div>
+        <table class="gt">
+          <tbody>
+            <tr><td class="eng">I <strong>am not ('m not)</strong> working.</td><td class="spa">No estoy trabajando.</td></tr>
+            <tr><td class="eng">She <strong>is not (isn't)</strong> working.</td><td class="spa">Ella no está trabajando.</td></tr>
+            <tr><td class="eng">They <strong>are not (aren't)</strong> working.</td><td class="spa">No están trabajando.</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Frase interrogativa</h3>
+        <p>Invertimos el orden: el verbo <em>to be</em> pasa delante del sujeto.</p>
+        <div class="formula">
+          <span class="chip key">Am / Is / Are</span><span class="op">+</span>
+          <span class="chip">sujeto</span><span class="op">+</span>
+          <span class="chip">verbo -ing</span><span class="op">+</span>
+          <span class="chip">…?</span>
+        </div>
+        <table class="gt">
+          <tbody>
+            <tr><td class="eng"><strong>Are</strong> you <strong>working</strong>?</td><td class="spa">¿Estás trabajando?</td></tr>
+            <tr><td class="eng"><strong>Is</strong> he <strong>sleeping</strong>?</td><td class="spa">¿Está durmiendo?</td></tr>
+            <tr><td class="eng">What <strong>are</strong> they <strong>doing</strong>?</td><td class="spa">¿Qué están haciendo?</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="sec">
+        <div class="sec-head"><span class="n">04</span>
+          <div><h2>Reglas ortográficas para la terminación <span class="ph" style="font-size:0.8em">-ing</span></h2>
+          <p class="h2sub">Spelling rules for the -ing form</p></div>
+        </div>
+        
+        <h4>Regla 1 · La regla general</h4>
+        <p>A la inmensa mayoría de los verbos simplemente se les añade <strong>-ing</strong> al final.</p>
+        <table class="gt">
+          <tbody>
+            <tr><td class="eng">work → work<strong>ing</strong></td><td class="spa">play → play<strong>ing</strong> · read → read<strong>ing</strong></td></tr>
+          </tbody>
+        </table>
+
+        <h4>Regla 2 · Verbos terminados en -e</h4>
+        <p>Si el verbo termina en una "e" muda, <strong>quitamos la -e</strong> y añadimos -ing.</p>
+        <table class="gt">
+          <tbody>
+            <tr><td class="eng">make → mak<strong>ing</strong></td><td class="spa">write → writ<strong>ing</strong> · use → us<strong>ing</strong></td></tr>
+          </tbody>
+        </table>
+
+        <h4>Regla 3 · CVC (Consonante - Vocal - Consonante)</h4>
+        <p>En verbos cortos de una sílaba que terminan en Consonante + Vocal + Consonante, <strong>doblamos la consonante final</strong>.</p>
+        <table class="gt">
+          <tbody>
+            <tr><td class="eng">run → run<strong>ning</strong></td><td class="spa">stop → stop<strong>ping</strong> · swim → swim<strong>ming</strong></td></tr>
+          </tbody>
+        </table>
+        <div class="callout"><span class="lbl">Excepción ortográfica</span>
+          No se dobla la consonante si la palabra termina en <strong>-w, -x, -y</strong> (ej: <em>fix → fixing</em>, <em>snow → snowing</em>) ni si la sílaba tónica no es la última (ej: <em>listen → listening</em>).</div>
+
+        <h4>Regla 4 · Verbos terminados en -ie</h4>
+        <p>La <strong>-ie</strong> se transforma en una <strong>-y</strong> y añadimos -ing.</p>
+        <table class="gt">
+          <tbody>
+            <tr><td class="eng">die → d<strong>ying</strong></td><td class="spa">lie → l<strong>ying</strong> · tie → t<strong>ying</strong></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="sec">
+        <div class="sec-head"><span class="n">05</span>
+          <div><h2>Los verbos de estado (Stative Verbs)</h2>
+          <p class="h2sub">Verbs that are NOT used in the continuous form</p></div>
+        </div>
+        <p>Hay ciertos verbos que describen <strong>estados, sentimientos o posesiones</strong> en lugar de acciones físicas. Como norma general, estos verbos <strong>no se usan en tiempos continuos</strong>, incluso si hablamos de algo que ocurre ahora mismo.</p>
+        
+        <div class="vocab">
+          <div class="item"><span class="w">Sentimientos:</span> <span class="t">like, love, hate, want, prefer</span></div>
+          <div class="item"><span class="w">Pensamiento:</span> <span class="t">know, believe, understand, remember</span></div>
+          <div class="item"><span class="w">Posesión:</span> <span class="t">belong, own, cost</span></div>
+          <div class="item"><span class="w">Sentidos:</span> <span class="t">hear, smell, taste</span></div>
+        </div>
+
+        <div class="rw">
+          <div class="box bad"><span class="tag">✗ INCORRECTO</span><s>I am knowing the answer.</s><br><s>I am wanting a coffee.</s></div>
+          <div class="box good"><span class="tag">✓ CORRECTO</span>I <strong>know</strong> the answer.<br>I <strong>want</strong> a coffee.</div>
+        </div>
+
+        <div class="callout warn"><span class="lbl">Verbos con doble significado (B2)</span>
+          Verbos como <strong>think</strong> y <strong>have</strong> pueden ser continuos si indican acción, pero estáticos si indican opinión/posesión.<br>
+          • <em>I <strong>think</strong> it's a bad idea.</em> (Opinión = estado)<br>
+          • <em>I <strong>am thinking</strong> about buying a PC.</em> (Proceso mental = acción)<br>
+          • <em>She <strong>has</strong> a cat.</em> (Posesión = estado)<br>
+          • <em>She <strong>is having</strong> a shower.</em> (Rutina = acción)
+        </div>
+      </section>
+
+      <section class="sec">
+        <div class="sec-head"><span class="n">06</span>
+          <div><h2>Present Continuous vs Present Simple</h2>
+          <p class="h2sub">Permanent vs Temporary</p></div>
+        </div>
+        <table class="gt">
+          <thead><tr><th>Present Simple (Permanente / Rutina)</th><th>Present Continuous (Temporal / Ahora)</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="eng">I <strong>work</strong> in a hospital.<br><span class="spa">(Es mi profesión habitual, permanente)</span></td>
+              <td class="eng">I <strong>am working</strong> in a hospital this month.<br><span class="spa">(Contrato temporal, cambiará)</span></td>
+            </tr>
+            <tr>
+              <td class="eng">I usually <strong>drink</strong> coffee.<br><span class="spa">(Mi hábito diario)</span></td>
+              <td class="eng">But today I <strong>am drinking</strong> tea.<br><span class="spa">(Excepción en el momento actual)</span></td>
+            </tr>
+            <tr>
+              <td class="eng">Water <strong>boils</strong> at 100°C.<br><span class="spa">(Verdad científica)</span></td>
+              <td class="eng">Turn off the stove! The water <strong>is boiling</strong>.<br><span class="spa">(Está sucediendo frente a mis ojos)</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="sec">
+        <div class="sec-head"><span class="n">07</span>
+          <div><h2>Vocabulario: Expresiones de tiempo</h2>
+          <p class="h2sub">Time markers for the continuous tense</p></div>
+        </div>
+        <p>Estas palabras te dan la pista clave de que necesitas usar el <em>present continuous</em>.</p>
+        <div class="vocab">
+          <div class="item"><span class="w">now</span> <span class="ph">/naʊ/</span> — <span class="t">ahora</span></div>
+          <div class="item"><span class="w">right now</span> — <span class="t">ahora mismo</span></div>
+          <div class="item"><span class="w">at the moment</span> — <span class="t">en este momento</span></div>
+          <div class="item"><span class="w">today</span> — <span class="t">hoy</span></div>
+          <div class="item"><span class="w">this week / month</span> — <span class="t">esta semana / este mes</span></div>
+          <div class="item"><span class="w">currently</span> <span class="ph">/ˈkʌrəntli/</span> — <span class="t">actualmente</span></div>
+          <div class="item"><span class="w">these days</span> — <span class="t">estos días</span></div>
+          <div class="item"><span class="w">Look! / Listen!</span> — <span class="t">¡Mira! / ¡Escucha!</span></div>
+        </div>
+      </section>
+
+      <section class="sec">
+        <div class="sec-head"><span class="n">08</span>
+          <div><h2>Errores comunes</h2>
+          <p class="h2sub">Common mistakes to avoid</p></div>
+        </div>
+
+        <h4>1. Olvidar el verbo 'to be'</h4>
+        <div class="rw">
+          <div class="box bad"><span class="tag">✗ INCORRECTO</span><s>I working today.</s><br><s>He listening to music.</s></div>
+          <div class="box good"><span class="tag">✓ CORRECTO</span>I <strong>am</strong> working today.<br>He <strong>is</strong> listening to music.</div>
+        </div>
+
+        <h4>2. Usar do/does para negativas y preguntas</h4>
+        <div class="rw">
+          <div class="box bad"><span class="tag">✗ INCORRECTO</span><s>She doesn't sleeping.</s><br><s>Do you playing?</s></div>
+          <div class="box good"><span class="tag">✓ CORRECTO</span>She <strong>isn't</strong> sleeping.<br><strong>Are</strong> you playing?</div>
+        </div>
+
+        <h4>3. Aplicar mal las reglas de ortografía</h4>
+        <div class="rw">
+          <div class="box bad"><span class="tag">✗ INCORRECTO</span><s>makeing, runing, dieing</s></div>
+          <div class="box good"><span class="tag">✓ CORRECTO</span><strong>making, running, dying</strong></div>
+        </div>
+      </section>
+
+      <section class="sec">
+        <div class="sec-head"><span class="n">09</span>
+          <div><h2>Ejercicios interactivos</h2>
+          <p class="h2sub">60 exercises · Escribe tu respuesta en los huecos y pulsa "Comprobar"</p></div>
+        </div>
+
+        <div class="exwrap">
+          <div class="exblock">
+            <div class="bh"><span class="id">A</span><h3>Afirmativa</h3></div>
+            <p class="instr">Completa con <strong>am / is / are + verbo en -ing</strong>.</p>
+            <ol class="ex">
+              <li>I <input type="text" class="interact-input" data-answer="am studying|'m studying"> English now. <span class="cue">(study)</span></li>
+              <li>She <input type="text" class="interact-input" data-answer="is working|'s working"> in a hospital today. <span class="cue">(work)</span></li>
+              <li>They <input type="text" class="interact-input" data-answer="are playing|'re playing"> a new video game. <span class="cue">(play)</span></li>
+              <li>We <input type="text" class="interact-input" data-answer="are living|'re living"> in Killarney this month. <span class="cue">(live)</span></li>
+              <li>He <input type="text" class="interact-input" data-answer="is cooking|'s cooking"> dinner at the moment. <span class="cue">(cook)</span></li>
+              <li>The cat <input type="text" class="interact-input" data-answer="is sleeping|'s sleeping"> on the sofa. <span class="cue">(sleep)</span></li>
+              <li>Look! It <input type="text" class="interact-input" data-answer="is raining|'s raining"> outside. <span class="cue">(rain)</span></li>
+              <li>You <input type="text" class="interact-input" data-answer="are reading|'re reading"> an excellent guide. <span class="cue">(read)</span></li>
+              <li>Anna <input type="text" class="interact-input" data-answer="is listening|'s listening"> to a podcast. <span class="cue">(listen)</span></li>
+              <li>My brother <input type="text" class="interact-input" data-answer="is building|'s building"> a new PC. <span class="cue">(build)</span></li>
+            </ol>
+          </div>
+
+          <div class="exblock">
+            <div class="bh"><span class="id">B</span><h3>Negativa</h3></div>
+            <p class="instr">Completa usando <strong>am not / isn't / aren't + verbo en -ing</strong>.</p>
+            <ol class="ex" start="11">
+              <li>I <input type="text" class="interact-input" data-answer="am not watching|'m not watching"> TV. <span class="cue">(not / watch)</span></li>
+              <li>She <input type="text" class="interact-input" data-answer="isn't working|is not working"> this week. <span class="cue">(not / work)</span></li>
+              <li>They <input type="text" class="interact-input" data-answer="aren't traveling|are not traveling|aren't travelling"> to Spain. <span class="cue">(not / travel)</span></li>
+              <li>He <input type="text" class="interact-input" data-answer="isn't listening|is not listening"> to me. <span class="cue">(not / listen)</span></li>
+              <li>We <input type="text" class="interact-input" data-answer="aren't using|are not using"> the car today. <span class="cue">(not / use)</span></li>
+              <li>The computer <input type="text" class="interact-input" data-answer="isn't working|is not working"> well. <span class="cue">(not / work)</span></li>
+              <li>You <input type="text" class="interact-input" data-answer="aren't paying|are not paying"> attention. <span class="cue">(not / pay)</span></li>
+              <li>It <input type="text" class="interact-input" data-answer="isn't snowing|is not snowing"> right now. <span class="cue">(not / snow)</span></li>
+              <li>The cats <input type="text" class="interact-input" data-answer="aren't eating|are not eating"> their food. <span class="cue">(not / eat)</span></li>
+              <li>I <input type="text" class="interact-input" data-answer="am not feeling|'m not feeling"> well today. <span class="cue">(not / feel)</span></li>
+            </ol>
+          </div>
+
+          <div class="exblock">
+            <div class="bh"><span class="id">C</span><h3>Interrogativa</h3></div>
+            <p class="instr">Escribe la pregunta correctamente usando <strong>Am / Is / Are</strong>.</p>
+            <ol class="ex" start="21">
+              <li><input type="text" class="interact-input" style="width:160px" data-answer="are you studying"> for the exam? <span class="cue">(you / study)</span></li>
+              <li><input type="text" class="interact-input" style="width:160px" data-answer="is she sleeping"> right now? <span class="cue">(she / sleep)</span></li>
+              <li><input type="text" class="interact-input" style="width:160px" data-answer="are they playing"> football? <span class="cue">(they / play)</span></li>
+              <li><input type="text" class="interact-input" style="width:160px" data-answer="is he using"> the laptop? <span class="cue">(he / use)</span></li>
+              <li>What <input type="text" class="interact-input" style="width:160px" data-answer="are you doing">? <span class="cue">(you / do)</span></li>
+              <li>Where <input type="text" class="interact-input" style="width:160px" data-answer="are we going">? <span class="cue">(we / go)</span></li>
+              <li>Why <input type="text" class="interact-input" style="width:160px" data-answer="is it making"> that noise? <span class="cue">(it / make)</span></li>
+              <li><input type="text" class="interact-input" style="width:160px" data-answer="is claudia working"> at the clinic today? <span class="cue">(Claudia / work)</span></li>
+              <li><input type="text" class="interact-input" style="width:160px" data-answer="am i speaking"> too fast? <span class="cue">(I / speak)</span></li>
+              <li>Who <input type="text" class="interact-input" style="width:160px" data-answer="are you talking"> to? <span class="cue">(you / talk)</span></li>
+            </ol>
+          </div>
+
+          <div class="exblock">
+            <div class="bh"><span class="id">D</span><h3>Ortografía (Spelling)</h3></div>
+            <p class="instr">Escribe solo el verbo terminado en <strong>-ing</strong>.</p>
+            <ol class="ex" start="31">
+              <li>run → <input type="text" class="interact-input" data-answer="running"></li>
+              <li>make → <input type="text" class="interact-input" data-answer="making"></li>
+              <li>die → <input type="text" class="interact-input" data-answer="dying"></li>
+              <li>swim → <input type="text" class="interact-input" data-answer="swimming"></li>
+              <li>sit → <input type="text" class="interact-input" data-answer="sitting"></li>
+              <li>write → <input type="text" class="interact-input" data-answer="writing"></li>
+              <li>lie → <input type="text" class="interact-input" data-answer="lying"></li>
+              <li>begin → <input type="text" class="interact-input" data-answer="beginning"></li>
+              <li>happen → <input type="text" class="interact-input" data-answer="happening"></li>
+              <li>stop → <input type="text" class="interact-input" data-answer="stopping"></li>
+            </ol>
+          </div>
+
+          <div class="exblock">
+            <div class="bh"><span class="id">E</span><h3>Present Simple vs Continuous</h3></div>
+            <p class="instr">Conjuga el verbo en Simple o Continuo según el contexto.</p>
+            <ol class="ex" start="41">
+              <li>I usually <input type="text" class="interact-input" data-answer="drink"> coffee... <span class="cue">(drink)</span></li>
+              <li>...but today I <input type="text" class="interact-input" data-answer="am drinking|'m drinking"> tea. <span class="cue">(drink)</span></li>
+              <li>Water <input type="text" class="interact-input" data-answer="boils"> at 100 degrees. <span class="cue">(boil)</span></li>
+              <li>Look! The water <input type="text" class="interact-input" data-answer="is boiling|'s boiling">. <span class="cue">(boil)</span></li>
+              <li>He <input type="text" class="interact-input" data-answer="speaks"> three languages. <span class="cue">(speak)</span></li>
+              <li>Be quiet! The baby <input type="text" class="interact-input" data-answer="is sleeping|'s sleeping">. <span class="cue">(sleep)</span></li>
+              <li>They <input type="text" class="interact-input" data-answer="play"> tennis every Sunday. <span class="cue">(play)</span></li>
+              <li>We <input type="text" class="interact-input" data-answer="are going|'re going"> to the cinema tonight. <span class="cue">(go)</span></li>
+              <li>I <input type="text" class="interact-input" data-answer="don't understand|do not understand"> this question. <span class="cue">(not / understand)</span></li>
+              <li>I <input type="text" class="interact-input" data-answer="am reading|'m reading"> a great book these days. <span class="cue">(read)</span></li>
+            </ol>
+          </div>
+
+          <div class="exblock">
+            <div class="bh"><span class="id">F</span><h3>Stative Verbs y Casos Especiales</h3></div>
+            <p class="instr">Elige la forma correcta (Continuous si es acción, Simple si es estado).</p>
+            <ol class="ex" start="51">
+              <li>I <input type="text" class="interact-input" data-answer="am meeting|'m meeting"> the doctor tomorrow. <span class="cue">(meet)</span></li>
+              <li>You <input type="text" class="interact-input" data-answer="are always losing|'re always losing"> your keys! <span class="cue">(always / lose)</span></li>
+              <li>The climate <input type="text" class="interact-input" data-answer="is changing|'s changing"> very fast. <span class="cue">(change)</span></li>
+              <li>I <input type="text" class="interact-input" data-answer="am thinking|'m thinking"> about buying a monitor. <span class="cue">(think)</span></li>
+              <li>I <input type="text" class="interact-input" data-answer="think"> that's a bad idea. <span class="cue">(think)</span></li>
+              <li>She <input type="text" class="interact-input" data-answer="is having|'s having"> a shower right now. <span class="cue">(have)</span></li>
+              <li>She <input type="text" class="interact-input" data-answer="has"> three cats. <span class="cue">(have)</span></li>
+              <li>We <input type="text" class="interact-input" data-answer="are flying|'re flying"> to Germany next week. <span class="cue">(fly)</span></li>
+              <li>People <input type="text" class="interact-input" data-answer="are working|'re working"> from home more now. <span class="cue">(work)</span></li>
+              <li>He <input type="text" class="interact-input" data-answer="is always complaining|'s always complaining">! <span class="cue">(always / complain)</span></li>
+            </ol>
+          </div>
+          
+          <button class="btn-check" onclick="checkAnswers()">Comprobar soluciones</button>
+
+        </div>
+      </section>
+
+      <section class="sec">
+        <div class="sec-head"><span class="n">10</span>
+          <div><h2>Soluciones</h2>
+          <p class="h2sub">Answer key</p></div>
+        </div>
+        <div class="answers">
+          <div class="ag"><div class="agh">A · Afirmativa</div>
+            <div>1 <b>am studying</b> · 2 <b>is working</b> · 3 <b>are playing</b> · 4 <b>are living</b> · 5 <b>is cooking</b> · 6 <b>is sleeping</b> · 7 <b>is raining</b> · 8 <b>are reading</b> · 9 <b>is listening</b> · 10 <b>is building</b></div></div>
+          <div class="ag"><div class="agh">B · Negativa</div>
+            <div>11 <b>am not watching</b> · 12 <b>isn't working</b> · 13 <b>aren't traveling</b> · 14 <b>isn't listening</b> · 15 <b>aren't using</b> · 16 <b>isn't working</b> · 17 <b>aren't paying</b> · 18 <b>isn't snowing</b> · 19 <b>aren't eating</b> · 20 <b>am not feeling</b></div></div>
+          <div class="ag"><div class="agh">C · Interrogativa</div>
+            <div>21 <b>Are you studying</b> · 22 <b>Is she sleeping</b> · 23 <b>Are they playing</b> · 24 <b>Is he using</b> · 25 <b>are you doing</b> · 26 <b>are we going</b> · 27 <b>is it making</b> · 28 <b>Is Claudia working</b> · 29 <b>Am I speaking</b> · 30 <b>are you talking</b></div></div>
+          <div class="ag"><div class="agh">D · Ortografía</div>
+            <div>31 <b>running</b> · 32 <b>making</b> · 33 <b>dying</b> · 34 <b>swimming</b> · 35 <b>sitting</b> · 36 <b>writing</b> · 37 <b>lying</b> · 38 <b>beginning</b> · 39 <b>happening</b> · 40 <b>stopping</b></div></div>
+          <div class="ag"><div class="agh">E · Simple vs Continuous</div>
+            <div>41 <b>drink</b> · 42 <b>am drinking</b> · 43 <b>boils</b> · 44 <b>is boiling</b> · 45 <b>speaks</b> · 46 <b>is sleeping</b> · 47 <b>play</b> · 48 <b>are going</b> · 49 <b>don't understand</b> · 50 <b>am reading</b></div></div>
+          <div class="ag"><div class="agh">F · Stative & Especiales</div>
+            <div>51 <b>am meeting</b> · 52 <b>are always losing</b> · 53 <b>is changing</b> · 54 <b>am thinking</b> · 55 <b>think</b> · 56 <b>is having</b> · 57 <b>has</b> · 58 <b>are flying</b> · 59 <b>are working</b> · 60 <b>is always complaining</b></div></div>
+        </div>
+        <hr class="soft">
+        <p style="text-align:center;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#9aa0ab;text-transform:uppercase;">Fin · The Present Continuous · Keep practising every day</p>
+      </section>
+
+    </td></tr></tbody>
+    <tfoot><tr><td class="ftr-space"></td></tr></tfoot>
+  </table>
+</main>
+
+<script>
+  // Simple script to evaluate interactive exercises
+  function checkAnswers() {
+    const inputs = document.querySelectorAll('.interact-input');
+    inputs.forEach(input => {
+      // Remove previous states
+      input.classList.remove('correct', 'incorrect');
+      
+      const userValue = input.value.trim().toLowerCase().replace(/\s+/g, ' ');
+      const acceptedAnswers = input.getAttribute('data-answer').split('|');
+      
+      if (userValue === '') return; // Skip empty fields
+
+      if (acceptedAnswers.includes(userValue)) {
+        input.classList.add('correct');
+      } else {
+        input.classList.add('incorrect');
+      }
+    });
+  }
+
+  // Clear colors on edit
+  document.querySelectorAll('.interact-input').forEach(input => {
+    input.addEventListener('input', function() {
+      this.classList.remove('correct', 'incorrect');
+    });
+  });
+</script>
+</body>
+</html>
