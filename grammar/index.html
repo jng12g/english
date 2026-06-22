@@ -1,1 +1,415 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gramática · Tiempos verbales</title>
+<meta name="description" content="Los doce tiempos verbales del inglés organizados por tiempo y aspecto, explicados en español.">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --paper:    #F5F7F2;
+    --card:     #FFFFFF;
+    --ink:      #16271E;
+    --ink-soft: #5C6C62;
+    --line:     rgba(22,39,30,.12);
+    --green:    #169B62;
+    --orange:   #FF883E;
+    --serif: "Instrument Serif", Georgia, serif;
+    --sans: "Inter", -apple-system, system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+
+  body{
+    font-family:var(--sans);
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+  }
+
+  .wrap{
+    width:100%;
+    max-width:1000px;
+    margin-inline:auto;
+    padding:0 28px;
+  }
+
+  /* ---------- Cabecera ---------- */
+  header{ padding-top:34px; }
+  .topbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid var(--line);
+    padding-bottom:18px;
+  }
+  .back{
+    font-size:.92rem;
+    font-weight:500;
+    color:var(--ink-soft);
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    transition:color .2s ease;
+  }
+  .back:hover{ color:var(--green); }
+  .back .arrow{ transition:transform .2s ease; }
+  .back:hover .arrow{ transform:translateX(-3px); }
+
+  .flag{
+    display:inline-flex;
+    width:33px; height:22px;
+    border-radius:3px; overflow:hidden;
+    box-shadow:0 1px 3px rgba(22,39,30,.18);
+    flex-shrink:0;
+  }
+  .flag span{ flex:1; }
+  .flag .g{ background:var(--green); }
+  .flag .w{ background:#fff; }
+  .flag .o{ background:var(--orange); }
+
+  /* ---------- Hero ---------- */
+  .hero{ padding:64px 0 8px; }
+  .eyebrow{
+    font-size:.78rem; font-weight:600;
+    letter-spacing:.16em; text-transform:uppercase;
+    color:var(--ink-soft); margin-bottom:20px;
+  }
+  .hero h1{
+    font-family:var(--serif); font-weight:400;
+    font-size:clamp(2.6rem, 7vw, 4.6rem);
+    line-height:1.04; letter-spacing:-.5px;
+  }
+  .hero h1 em{ font-style:italic; color:var(--green); }
+
+  .rule{
+    display:flex; width:148px; height:5px;
+    border-radius:3px; overflow:hidden;
+    margin:28px 0 22px;
+  }
+  .rule span{ flex:1; }
+  .rule .g{ background:var(--green); }
+  .rule .w{ background:#E7EBE4; }
+  .rule .o{ background:var(--orange); }
+
+  .lede{
+    font-size:1.1rem; color:var(--ink-soft);
+    max-width:54ch;
+  }
+  .lede b{ color:var(--ink); font-weight:600; }
+
+  /* ---------- Matriz de tiempos ---------- */
+  .matrix{ padding:44px 0 8px; }
+
+  /* fila de cabecera con los aspectos (solo escritorio) */
+  .legend{
+    display:grid;
+    grid-template-columns:108px repeat(4, 1fr);
+    gap:14px;
+    margin-bottom:14px;
+  }
+  .legend .aspect{
+    font-size:.72rem; font-weight:600;
+    letter-spacing:.1em; text-transform:uppercase;
+    color:var(--ink-soft);
+    padding-left:2px;
+  }
+
+  .tense-row{
+    display:grid;
+    grid-template-columns:108px repeat(4, 1fr);
+    gap:14px;
+    margin-bottom:14px;
+    align-items:stretch;
+  }
+  .time-label{
+    display:flex;
+    align-items:center;
+    font-family:var(--serif);
+    font-size:1.5rem;
+    line-height:1.05;
+    color:var(--ink);
+  }
+
+  /* celda = un tiempo verbal (todas son enlace) */
+  .cell{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:16px 16px 15px;
+    text-decoration:none;
+    color:inherit;
+    min-height:118px;
+    transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+    overflow:hidden;
+  }
+  .cell::before{
+    content:"";
+    position:absolute; left:0; top:0; bottom:0;
+    width:4px; background:var(--green);
+    transform:scaleY(0); transform-origin:top;
+    transition:transform .22s ease;
+  }
+  .cell:hover,
+  .cell:focus-visible{
+    transform:translateY(-3px);
+    box-shadow:0 12px 26px -16px rgba(22,39,30,.4);
+    border-color:rgba(22,39,30,.2);
+    outline:none;
+  }
+  .cell:hover::before,
+  .cell:focus-visible::before{ transform:scaleY(1); }
+
+  .cell .name{
+    font-family:var(--serif);
+    font-size:1.28rem;
+    line-height:1.08;
+    margin-bottom:3px;
+  }
+  .cell .es{
+    font-size:.78rem;
+    color:var(--ink-soft);
+    margin-bottom:auto;
+  }
+  .cell .ex{
+    font-family:var(--mono);
+    font-size:.8rem;
+    color:var(--ink);
+    margin-top:12px;
+  }
+  /* flecha de afordancia, aparece al pasar el ratón */
+  .cell .go{
+    position:absolute; top:15px; right:15px;
+    color:var(--green);
+    opacity:0; transform:translateX(-4px);
+    transition:opacity .22s ease, transform .22s ease;
+  }
+  .cell:hover .go,
+  .cell:focus-visible .go{ opacity:1; transform:none; }
+
+  /* nota bajo la matriz */
+  .note{
+    margin-top:26px;
+    font-size:.92rem;
+    color:var(--ink-soft);
+    border-left:3px solid var(--green);
+    padding:4px 0 4px 16px;
+    max-width:64ch;
+  }
+  .note em{ font-style:italic; }
+
+  /* ---------- Pie ---------- */
+  footer{ margin-top:auto; padding:54px 0 40px; }
+  .footer-inner{
+    border-top:1px solid var(--line);
+    padding-top:22px;
+    display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+  }
+  .footer-inner .credit{ font-size:.92rem; color:var(--ink-soft); }
+  .footer-inner .credit strong{ color:var(--ink); font-weight:600; }
+
+  /* ---------- Animación ---------- */
+  .reveal{ opacity:0; transform:translateY(14px); }
+  .ready .reveal{
+    opacity:1; transform:none;
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .ready .reveal.d1{ transition-delay:.05s; }
+  .ready .reveal.d2{ transition-delay:.12s; }
+  .ready .reveal.d3{ transition-delay:.19s; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:760px){
+    .legend{ display:none; }
+    .tense-row{
+      grid-template-columns:repeat(2, 1fr);
+      gap:12px;
+      margin-bottom:30px;
+    }
+    .time-label{
+      grid-column:1 / -1;
+      font-size:1.7rem;
+      margin-bottom:2px;
+    }
+    .cell{ min-height:108px; }
+  }
+  @media (max-width:420px){
+    .tense-row{ grid-template-columns:1fr; }
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *{ transition:none !important; scroll-behavior:auto; }
+    .reveal{ opacity:1 !important; transform:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="topbar">
+      <a class="back" href="../"><span class="arrow">←</span> Inicio</a>
+      <span class="flag" role="img" aria-label="Bandera de Irlanda">
+        <span class="g"></span><span class="w"></span><span class="o"></span>
+      </span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <p class="eyebrow reveal">Gramática</p>
+    <h1 class="reveal d1">Los <em>tiempos verbales</em><br>del inglés</h1>
+    <div class="rule reveal d2" aria-hidden="true">
+      <span class="g"></span><span class="w"></span><span class="o"></span>
+    </div>
+    <p class="lede reveal d3">Todo el sistema en una cuadrícula: <b>3 tiempos</b> (presente, pasado, futuro) por <b>4 aspectos</b> (simple, continuo, perfecto y perfecto continuo).</p>
+  </section>
+
+  <section class="matrix wrap">
+
+    <!-- Cabecera de aspectos (oculta en móvil) -->
+    <div class="legend reveal" aria-hidden="true">
+      <span></span>
+      <span class="aspect">Simple</span>
+      <span class="aspect">Continuo</span>
+      <span class="aspect">Perfecto</span>
+      <span class="aspect">Perfecto continuo</span>
+    </div>
+
+    <!-- ================= PRESENTE ================= -->
+    <div class="tense-row reveal">
+      <div class="time-label">Presente</div>
+
+      <a class="cell" href="present-simple.html">
+        <span class="go" aria-hidden="true">→</span>
+        <span class="name">Present Simple</span>
+        <span class="es">Presente simple</span>
+        <span class="ex">I work</span>
+      </a>
+
+      <a class="cell" href="present-continuous.html">
+        <span class="go" aria-hidden="true">→</span>
+        <span class="name">Present Continuous</span>
+        <span class="es">Presente continuo</span>
+        <span class="ex">I am working</span>
+      </a>
+
+      <a class="cell" href="present-perfect.html">
+        <span class="go" aria-hidden="true">→</span>
+        <span class="name">Present Perfect</span>
+        <span class="es">Pretérito perfecto</span>
+        <span class="ex">I have worked</span>
+      </a>
+
+      <a class="cell" href="present-perfect-continuous.html">
+        <span class="go" aria-hidden="true">→</span>
+        <span class="name">Present Perfect Cont.</span>
+        <span class="es">Pret. perfecto continuo</span>
+        <span class="ex">I have been working</span>
+      </a>
+    </div>
+
+    <!-- ================= PASADO ================= -->
+    <div class="tense-row reveal">
+      <div class="time-label">Pasado</div>
+
+      <a class="cell" href="past-simple.html">
+        <span class="go" aria-hidden="true">→</span>
+        <span class="name">Past Simple</span>
+        <span class="es">Pasado simple</span>
+        <span class="ex">I worked</span>
+      </a>
+
+      <a class="cell" href="past-continuous.html">
+        <span class="go" aria-hidden="true">→</span>
+        <span class="name">Past Continuous</span>
+        <span class="es">Pasado continuo</span>
+        <span class="ex">I was working</span>
+      </a>
+
+      <a class="cell" href="past-perfect.html">
+        <span class="go" aria-hidden="true">→</span>
+        <span class="name">Past Perfect</span>
+        <span class="es">Pluscuamperfecto</span>
+        <span class="ex">I had worked</span>
+      </a>
+
+      <a class="cell" href="past-perfect-continuous.html">
+        <span class="go" aria-hidden="true">→</span>
+        <span class="name">Past Perfect Cont.</span>
+        <span class="es">Pluscuamperfecto continuo</span>
+        <span class="ex">I had been working</span>
+      </a>
+    </div>
+
+    <!-- ================= FUTURO ================= -->
+    <div class="tense-row reveal">
+      <div class="time-label">Futuro</div>
+
+      <a class="cell" href="future-simple.html">
+        <span class="go" aria-hidden="true">→</span>
+        <span class="name">Future Simple</span>
+        <span class="es">Futuro simple</span>
+        <span class="ex">I will work</span>
+      </a>
+
+      <a class="cell" href="future-continuous.html">
+        <span class="go" aria-hidden="true">→</span>
+        <span class="name">Future Continuous</span>
+        <span class="es">Futuro continuo</span>
+        <span class="ex">I will be working</span>
+      </a>
+
+      <a class="cell" href="future-perfect.html">
+        <span class="go" aria-hidden="true">→</span>
+        <span class="name">Future Perfect</span>
+        <span class="es">Futuro perfecto</span>
+        <span class="ex">I will have worked</span>
+      </a>
+
+      <a class="cell" href="future-perfect-continuous.html">
+        <span class="go" aria-hidden="true">→</span>
+        <span class="name">Future Perfect Cont.</span>
+        <span class="es">Futuro perfecto continuo</span>
+        <span class="ex">I will have been working</span>
+      </a>
+    </div>
+
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <span class="flag" role="img" aria-label="Bandera de Irlanda">
+        <span class="g"></span><span class="w"></span><span class="o"></span>
+      </span>
+      <span class="credit">Creada por <strong>Juan Carlos Navarro</strong></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  window.addEventListener('load', function(){
+    document.body.classList.add('ready');
+  });
+</script>
+
+</body>
+</html>
