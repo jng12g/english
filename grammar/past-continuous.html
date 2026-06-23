@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Past Continuous · A1 → C1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F4EFE4; --paper-2:#ECE4D3; --panel:#FBF8F1;
+  --ink:#241F1A; --ink-soft:#6B6253; --ink-faint:#9A9183;
+  --flow:#14605F; --flow-soft:#2A8A85; --flow-wash:#E0EEEC;
+  --break:#7A1F2B; --break-wash:#F3E4E2;
+  --good:#2F7D4F; --good-wash:#E4F0E7;
+  --bad:#B23A2E; --bad-wash:#F7E5E1;
+  --line:rgba(36,31,26,.14); --line-2:rgba(36,31,26,.28);
+  --display:'Fraunces',Georgia,serif;
+  --body:'Instrument Sans',system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --r:14px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--body); font-size:17px; line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%}
+::selection{background:var(--flow);color:#fff}
+
+/* ---------- Layout ---------- */
+.wrap{max-width:880px;margin:0 auto;padding:0 22px}
+section{padding:54px 0;border-top:1px solid var(--line)}
+section:first-of-type{border-top:none}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.1;letter-spacing:-.01em}
+h2{font-size:clamp(26px,4.4vw,38px);margin:0 0 6px}
+h3{font-size:22px;margin:34px 0 10px;font-weight:600}
+p{margin:0 0 14px}
+.lead{font-size:19px;color:var(--ink-soft)}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--flow);font-weight:500;margin:0 0 12px}
+.en{font-style:normal}
+b,strong{font-weight:600}
+code,.k{font-family:var(--mono);font-size:.9em;background:var(--paper-2);padding:1px 6px;border-radius:6px}
+
+/* ---------- Hero ---------- */
+.hero{padding:74px 0 60px;text-align:left}
+.hero h1{font-size:clamp(42px,9vw,84px);font-weight:700;margin:0 0 8px;letter-spacing:-.03em}
+.hero h1 .ing{color:var(--flow);font-style:italic;font-weight:500}
+.hero .sub{font-family:var(--mono);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)}
+.levelpills{display:flex;gap:6px;flex-wrap:wrap;margin:22px 0 30px}
+.levelpills span{font-family:var(--mono);font-size:12px;font-weight:500;padding:4px 11px;border-radius:999px;border:1px solid var(--line-2);color:var(--ink-soft)}
+.levelpills span:first-child{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+/* ---------- Signature timeline ---------- */
+.tl{position:relative;margin:26px 0;padding:30px 18px 40px;background:var(--panel);border:1px solid var(--line);border-radius:var(--r)}
+.tl-track{position:relative;height:3px;background:var(--line-2);border-radius:3px;margin:34px 12px 10px}
+.tl-flow{position:absolute;top:50%;left:8%;right:18%;height:8px;transform:translateY(-50%);
+  border-radius:8px;background:repeating-linear-gradient(90deg,var(--flow) 0 10px,var(--flow-soft) 10px 20px);
+  background-size:40px 100%;animation:flow 1.1s linear infinite}
+@keyframes flow{to{background-position:40px 0}}
+.tl-flow.short{left:8%;right:54%}
+.tl-flow.short2{left:46%;right:10%}
+.tl-break{position:absolute;top:-12px;bottom:-12px;width:3px;background:var(--break);left:74%}
+.tl-break::after{content:"";position:absolute;left:50%;top:-2px;transform:translateX(-50%);
+  border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:9px solid var(--break)}
+.tl-lab{position:absolute;font-family:var(--mono);font-size:11px;color:var(--ink-soft);transform:translateX(-50%)}
+.tl-lab.flow{top:-26px;left:34%;color:var(--flow);font-weight:500}
+.tl-lab.brk{top:-26px;left:74%;color:var(--break);font-weight:500}
+.tl-lab.t0{bottom:-28px;left:8%}
+.tl-lab.tx{bottom:-28px;left:74%}
+.tl-cap{font-family:var(--mono);font-size:12.5px;color:var(--ink-soft);margin-top:18px}
+.tl-cap .blue{color:var(--flow);font-weight:500}
+.tl-cap .red{color:var(--break);font-weight:500}
+
+/* ---------- Nav ---------- */
+nav.toc{position:sticky;top:0;z-index:40;background:rgba(244,239,228,.86);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);padding:9px 0}
+nav.toc .wrap{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+nav.toc .wrap::-webkit-scrollbar{display:none}
+nav.toc a{flex:none;font-family:var(--mono);font-size:12px;color:var(--ink-soft);text-decoration:none;
+  padding:5px 11px;border-radius:999px;white-space:nowrap}
+nav.toc a:hover{background:var(--paper-2);color:var(--ink)}
+
+/* ---------- Cards / tables ---------- */
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:22px 24px;margin:18px 0}
+.note{background:var(--flow-wash);border-left:3px solid var(--flow);border-radius:0 10px 10px 0;padding:14px 18px;margin:18px 0;font-size:15.5px}
+.warn{background:var(--break-wash);border-left:3px solid var(--break);border-radius:0 10px 10px 0;padding:14px 18px;margin:18px 0;font-size:15.5px}
+.note b,.warn b{font-family:var(--body)}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:15.5px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);font-weight:500}
+td .k{background:var(--paper-2)}
+.formula{font-family:var(--mono);font-size:16px;text-align:center;padding:18px;background:var(--paper-2);border-radius:10px;margin:14px 0;line-height:2}
+.formula .v{color:var(--flow);font-weight:700}
+.formula .b{color:var(--break);font-weight:700}
+ul.clean{list-style:none;padding:0;margin:14px 0}
+ul.clean li{padding:8px 0 8px 28px;position:relative;border-bottom:1px solid var(--line)}
+ul.clean li::before{content:"›";position:absolute;left:6px;top:7px;color:var(--flow);font-weight:700}
+ul.clean li:last-child{border-bottom:none}
+.ex{font-family:var(--mono);font-size:14.5px;background:var(--paper-2);padding:9px 13px;border-radius:8px;margin:6px 0;display:block}
+.ex .ing{color:var(--flow);font-weight:500}
+.ex .ps{color:var(--break);font-weight:500}
+.ex .x{color:var(--bad);text-decoration:line-through}
+.ex .ok{color:var(--good)}
+.lvltag{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.06em;padding:2px 7px;border-radius:5px;background:var(--ink);color:var(--paper);vertical-align:middle;margin-left:8px}
+
+/* ---------- Score bar ---------- */
+.scorebar{position:sticky;bottom:0;z-index:45;background:var(--ink);color:var(--paper);
+  border-radius:12px 12px 0 0;padding:11px 18px;display:flex;align-items:center;gap:14px;
+  box-shadow:0 -6px 24px rgba(36,31,26,.16);font-family:var(--mono);font-size:13px}
+.scorebar .track{flex:1;height:6px;background:rgba(244,239,228,.22);border-radius:6px;overflow:hidden}
+.scorebar .fill{height:100%;width:0;background:var(--flow-soft);border-radius:6px;transition:width .4s}
+.scorebar b{color:#fff;font-weight:700}
+.scorebar button{font-family:var(--mono);font-size:12px;background:transparent;color:var(--paper);
+  border:1px solid rgba(244,239,228,.4);border-radius:8px;padding:5px 10px;cursor:pointer}
+.scorebar button:hover{background:rgba(244,239,228,.12)}
+
+/* ---------- Exercises ---------- */
+.exblock{margin:30px 0}
+.exhead{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:4px}
+.exhead .num{font-family:var(--mono);font-size:13px;color:var(--flow);font-weight:700}
+.exhead h3{margin:0;font-size:20px}
+.exhint{font-size:14.5px;color:var(--ink-soft);margin:2px 0 16px}
+.q{padding:13px 0;border-bottom:1px solid var(--line)}
+.q:last-child{border-bottom:none}
+.qtxt{font-size:16px;margin-bottom:8px}
+.qtxt .qn{font-family:var(--mono);font-size:12px;color:var(--ink-faint);margin-right:8px}
+.qtxt .es{color:var(--ink-soft);font-size:13.5px;font-style:italic}
+.fillin{font-family:var(--mono);font-size:15px;border:none;border-bottom:2px solid var(--line-2);
+  background:transparent;padding:2px 6px;min-width:120px;color:var(--break);font-weight:500}
+.fillin:focus{outline:none;border-bottom-color:var(--flow)}
+.fillin.ok{border-bottom-color:var(--good);color:var(--good)}
+.fillin.no{border-bottom-color:var(--bad);color:var(--bad)}
+.opts{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.opt{font-family:var(--mono);font-size:14px;padding:7px 14px;border:1px solid var(--line-2);
+  border-radius:9px;background:var(--panel);cursor:pointer;transition:.12s}
+.opt:hover{border-color:var(--flow);color:var(--flow)}
+.opt.sel{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.opt.ok{background:var(--good-wash);border-color:var(--good);color:var(--good)}
+.opt.no{background:var(--bad-wash);border-color:var(--bad);color:var(--bad)}
+.opt:disabled{cursor:default}
+.fb{font-size:14px;margin-top:9px;padding:9px 13px;border-radius:9px;display:none}
+.fb.show{display:block}
+.fb.ok{background:var(--good-wash);color:var(--good)}
+.fb.no{background:var(--bad-wash);color:var(--bad)}
+.fb .sol{font-family:var(--mono);color:var(--ink)}
+.btnrow{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+.btn{font-family:var(--mono);font-size:13px;font-weight:500;padding:9px 18px;border-radius:10px;cursor:pointer;border:1px solid transparent}
+.btn.primary{background:var(--flow);color:#fff}
+.btn.primary:hover{background:var(--flow-soft)}
+.btn.ghost{background:transparent;border-color:var(--line-2);color:var(--ink-soft)}
+.btn.ghost:hover{border-color:var(--ink);color:var(--ink)}
+
+/* ---------- Matching ---------- */
+.match{position:relative;margin-top:8px}
+.match svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+.match-cols{display:flex;justify-content:space-between;gap:60px;position:relative;z-index:2}
+.match-col{flex:1;display:flex;flex-direction:column;gap:10px}
+.mitem{font-size:14.5px;padding:11px 14px;border:1px solid var(--line-2);border-radius:10px;background:var(--panel);cursor:pointer;transition:.12s;line-height:1.35}
+.match-col.left .mitem{font-family:var(--mono);font-size:13.5px}
+.mitem:hover{border-color:var(--flow)}
+.mitem.active{border-color:var(--flow);background:var(--flow-wash);box-shadow:0 0 0 2px var(--flow-wash)}
+.mitem.linked{border-color:var(--ink)}
+.mitem.ok{border-color:var(--good);background:var(--good-wash)}
+.mitem.no{border-color:var(--bad);background:var(--bad-wash)}
+
+/* ---------- Crossword ---------- */
+.cw-wrap{display:flex;gap:28px;flex-wrap:wrap;margin-top:10px}
+.cw-scroll{overflow-x:auto;max-width:100%;padding-bottom:6px}
+.cw-grid{display:grid;gap:2px;background:transparent;width:max-content}
+.cw-cell{width:34px;height:34px;position:relative}
+.cw-cell.block{background:transparent}
+.cw-cell input{width:100%;height:100%;border:1px solid var(--line-2);background:var(--panel);
+  text-align:center;font-family:var(--mono);font-size:16px;text-transform:uppercase;color:var(--break);
+  border-radius:4px;padding:0}
+.cw-cell input:focus{outline:none;border-color:var(--flow);background:var(--flow-wash)}
+.cw-cell input.ok{border-color:var(--good);color:var(--good);background:var(--good-wash)}
+.cw-cell input.no{border-color:var(--bad);color:var(--bad);background:var(--bad-wash)}
+.cw-num{position:absolute;top:1px;left:2px;font-family:var(--mono);font-size:9px;color:var(--ink-faint);z-index:2;pointer-events:none}
+.cw-clues{flex:1;min-width:240px;font-size:14.5px}
+.cw-clues h4{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--flow);margin:0 0 8px}
+.cw-clues ol{margin:0 0 18px;padding-left:22px}
+.cw-clues li{margin-bottom:6px;color:var(--ink-soft)}
+.cw-clues b{color:var(--ink);font-family:var(--mono)}
+
+footer{padding:40px 0 90px;text-align:center;color:var(--ink-faint);font-family:var(--mono);font-size:12px}
+footer .sig{color:var(--break)}
+
+@media(max-width:620px){
+  body{font-size:16px}
+  .match-cols{gap:30px}
+  .cw-cell{width:30px;height:30px}
+  section{padding:42px 0}
+}
+@media(prefers-reduced-motion:reduce){
+  .tl-flow{animation:none}
+  *{transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="wrap">
+    <p class="sub">Grammar Workbook · English for Spanish speakers</p>
+    <h1>The Past<br>Cont<span class="ing">inuous</span></h1>
+    <div class="levelpills">
+      <span>A1</span><span>A2</span><span>B1</span><span>B2</span><span>C1</span>
+    </div>
+    <p class="lead">Una guía completa del <b>pasado continuo</b>, desde la primera frase hasta el matiz más fino. Teoría visual, comparaciones con el pasado simple y <b>60 ejercicios interactivos</b> que se corrigen solos.</p>
+
+    <div class="tl" aria-hidden="true">
+      <div class="tl-track">
+        <div class="tl-flow"></div>
+        <div class="tl-break"></div>
+        <span class="tl-lab flow">I was reading</span>
+        <span class="tl-lab brk">the phone rang</span>
+        <span class="tl-lab t0">PAST</span>
+        <span class="tl-lab tx">8:00</span>
+      </div>
+      <p class="tl-cap">La acción <span class="blue">en curso</span> ya estaba pasando cuando algo <span class="red">la interrumpió</span>. Ese es el corazón del pasado continuo.</p>
+    </div>
+  </div>
+</header>
+
+<!-- ============ NAV ============ -->
+<nav class="toc">
+  <div class="wrap">
+    <a href="#concepto">Concepto</a>
+    <a href="#forma">Formación</a>
+    <a href="#spelling">Ortografía -ing</a>
+    <a href="#usos">Usos A1–C1</a>
+    <a href="#vs">Vs. Past Simple</a>
+    <a href="#stative">Stative verbs</a>
+    <a href="#senales">Señales</a>
+    <a href="#errores">Errores típicos</a>
+    <a href="#ejercicios">60 Ejercicios</a>
+    <a href="#crucigrama">Crucigrama</a>
+  </div>
+</nav>
+
+<!-- ============ CONCEPTO ============ -->
+<section id="concepto">
+  <div class="wrap">
+    <p class="eyebrow">01 · La idea</p>
+    <h2>¿Qué expresa el pasado continuo?</h2>
+    <p class="lead">El <b>past continuous</b> (también llamado <i>past progressive</i>) describe una acción que estaba <b>en desarrollo</b> en un momento concreto del pasado. No nos interesa si terminó o no; nos interesa que estaba <b>ocurriendo</b>.</p>
+
+    <p>Compáralo con una fotografía frente a un vídeo. El <b>pasado simple</b> es la foto: una acción completa, un hecho cerrado (<span class="k">I cooked dinner</span>). El <b>pasado continuo</b> es el vídeo en marcha: te asomas a un momento y la acción ya está sucediendo a tu alrededor (<span class="k">I was cooking dinner</span>).</p>
+
+    <div class="note"><b>En una frase:</b> <i>was/were</i> + <i>-ing</i> = «estaba/estábamos haciendo algo». Equivale a tu <b>estaba + gerundio</b> español, pero con reglas propias que conviene no calcar a ciegas.</div>
+
+    <h3>El gesto mental que debes hacer</h3>
+    <p>Antes de elegir este tiempo, pregúntate: <i>¿quiero presentar la acción como un proceso abierto, como el telón de fondo de otra cosa?</i> Si la respuesta es sí, vas hacia el continuo. Si solo quieres contar <i>qué pasó</i> de principio a fin, vas hacia el simple.</p>
+  </div>
+</section>
+
+<!-- ============ FORMA ============ -->
+<section id="forma">
+  <div class="wrap">
+    <p class="eyebrow">02 · La forma <span class="lvltag">A1</span></p>
+    <h2>Cómo se construye</h2>
+    <p>Solo necesitas dos piezas: el verbo <b>be</b> en pasado (<i>was / were</i>) y el verbo principal en <b>-ing</b>.</p>
+
+    <div class="formula"><span class="v">SUJETO</span> + <span class="b">was / were</span> + <span class="v">verbo-ing</span></div>
+
+    <p><b>was</b> va con <i>I, he, she, it</i>. <b>were</b> va con <i>you, we, they</i>. Esta es la única conjugación que cambia; el <i>-ing</i> es igual para todas las personas.</p>
+
+    <table>
+      <tr><th>Forma</th><th>Estructura</th><th>Ejemplo</th></tr>
+      <tr><td>Afirmativa</td><td>was/were + -ing</td><td class="en">She <b>was working</b>.</td></tr>
+      <tr><td>Negativa</td><td>wasn't/weren't + -ing</td><td class="en">She <b>wasn't working</b>.</td></tr>
+      <tr><td>Pregunta</td><td>Was/Were + sujeto + -ing?</td><td class="en"><b>Was</b> she <b>working</b>?</td></tr>
+      <tr><td>Respuesta corta</td><td>Yes/No, sujeto + was(n't)…</td><td class="en">Yes, she <b>was</b>. / No, she <b>wasn't</b>.</td></tr>
+      <tr><td>Pregunta-Wh</td><td>Wh- + was/were + sujeto + -ing?</td><td class="en"><b>What were</b> you <b>doing</b>?</td></tr>
+    </table>
+
+    <div class="note"><b>Contracciones:</b> <span class="k">was not → wasn't</span> · <span class="k">were not → weren't</span>. En conversación natural casi siempre se contrae la negativa.</div>
+
+    <h3>Tabla de conjugación completa</h3>
+    <table>
+      <tr><th>Sujeto</th><th>Afirmativa</th><th>Negativa</th></tr>
+      <tr><td>I</td><td class="en">I was eating</td><td class="en">I wasn't eating</td></tr>
+      <tr><td>You</td><td class="en">You were eating</td><td class="en">You weren't eating</td></tr>
+      <tr><td>He / She / It</td><td class="en">He was eating</td><td class="en">He wasn't eating</td></tr>
+      <tr><td>We</td><td class="en">We were eating</td><td class="en">We weren't eating</td></tr>
+      <tr><td>They</td><td class="en">They were eating</td><td class="en">They weren't eating</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ============ SPELLING ============ -->
+<section id="spelling">
+  <div class="wrap">
+    <p class="eyebrow">03 · Ortografía <span class="lvltag">A2</span></p>
+    <h2>Reglas del <i>-ing</i></h2>
+    <p>Añadir <i>-ing</i> no siempre es pegar tres letras. Hay cuatro patrones que debes dominar.</p>
+
+    <table>
+      <tr><th>Regla</th><th>Cómo</th><th>Ejemplos</th></tr>
+      <tr><td>Regla general</td><td>+ ing</td><td class="en">play → play<b>ing</b> · read → read<b>ing</b></td></tr>
+      <tr><td>Termina en <i>-e</i> muda</td><td>quita la e + ing</td><td class="en">make → mak<b>ing</b> · write → writ<b>ing</b></td></tr>
+      <tr><td>1 sílaba: CVC*</td><td>dobla la consonante</td><td class="en">run → ru<b>nn</b>ing · sit → si<b>tt</b>ing · swim → swi<b>mm</b>ing</td></tr>
+      <tr><td>Termina en <i>-ie</i></td><td>ie → y + ing</td><td class="en">lie → l<b>y</b>ing · die → d<b>y</b>ing</td></tr>
+    </table>
+    <p style="font-size:14px;color:var(--ink-soft)">*CVC = consonante + vocal + consonante (y la sílaba va acentuada). Por eso <i>begin</i> → <i>beginning</i> (acento final, se dobla), pero <i>open</i> → <i>opening</i> (acento inicial, no se dobla).</p>
+
+    <div class="warn"><b>Ojo, hispanohablante:</b> verbos en <i>-w, -x, -y</i> nunca doblan: <span class="k">snowing</span>, <span class="k">fixing</span>, <span class="k">playing</span>. Y en inglés británico la <i>-l</i> final sí dobla aunque no esté acentuada: <span class="k">travel → travelling</span>.</p>
+  </div>
+</section>
+
+<!-- ============ USOS ============ -->
+<section id="usos">
+  <div class="wrap">
+    <p class="eyebrow">04 · Los usos, nivel a nivel</p>
+    <h2>Para qué se usa</h2>
+    <p class="lead">El mismo tiempo cubre cosas muy distintas según tu nivel. Aquí van ordenadas de lo más básico a lo más sutil.</p>
+
+    <h3>1. Acción en curso en un momento del pasado <span class="lvltag">A1</span></h3>
+    <p>La acción ya estaba pasando en un punto concreto del tiempo. Suele acompañarse de una hora o expresión temporal.</p>
+    <span class="ex">At 8 p.m. I <span class="ing">was having</span> dinner.</span>
+    <span class="ex">This time last year we <span class="ing">were living</span> in Madrid.</span>
+
+    <h3>2. Acción interrumpida: <i>when</i> + <i>while</i> <span class="lvltag">A2</span></h3>
+    <p>Una acción larga estaba en marcha (continuo) cuando otra acción corta la interrumpió (simple). Es el uso estrella.</p>
+    <div class="tl" aria-hidden="true">
+      <div class="tl-track">
+        <div class="tl-flow"></div>
+        <div class="tl-break"></div>
+        <span class="tl-lab flow">was watching TV</span>
+        <span class="tl-lab brk">she arrived</span>
+      </div>
+      <p class="tl-cap"><span class="blue">While</span> I <span class="blue">was watching TV</span>, she <span class="red">arrived</span>. · I <span class="blue">was watching TV</span> <span class="red">when</span> she <span class="red">arrived</span>.</p>
+    </div>
+    <div class="note"><b>Truco:</b> <i>while</i> + acción larga (continuo); <i>when</i> + acción corta (simple). <span class="k">While I was cooking, the bell rang.</span> = <span class="k">When the bell rang, I was cooking.</span></div>
+
+    <h3>3. Dos acciones paralelas <span class="lvltag">B1</span></h3>
+    <p>Dos cosas ocurriendo a la vez, ambas en desarrollo, unidas por <i>while</i>.</p>
+    <span class="ex">While she <span class="ing">was cooking</span>, he <span class="ing">was setting</span> the table.</span>
+
+    <h3>4. Telón de fondo de una narración <span class="lvltag">B2</span></h3>
+    <p>En relatos, el continuo pinta la escena (el fondo) y el simple aporta los hechos que avanzan la historia (la acción).</p>
+    <span class="ex">The rain <span class="ing">was falling</span> and the wind <span class="ing">was howling</span>. Suddenly, a door <span class="ps">slammed</span>.</span>
+
+    <h3>5. Hábitos molestos con <i>always</i> <span class="lvltag">B2</span></h3>
+    <p>Con <i>always, constantly, forever</i>, el continuo expresa una repetición que irrita o exagera. No describe un hábito neutro, sino una queja o sorpresa.</p>
+    <span class="ex">He <span class="ing">was always losing</span> his keys. <span class="es">(queja: ¡siempre los perdía!)</span></span>
+    <span class="ex">My computer <span class="ing">was constantly crashing</span> last week.</span>
+
+    <h3>6. Cortesía y tentativa <span class="lvltag">C1</span></h3>
+    <p>El continuo suaviza una petición o una pregunta y la hace más educada y menos directa que el pasado simple.</p>
+    <span class="ex">I <span class="ing">was wondering</span> if you could help me. <span class="es">(más suave que «I wondered…»)</span></span>
+    <span class="ex">I <span class="ing">was hoping</span> we could talk later.</span>
+
+    <h3>7. Futuro en el pasado: planes <span class="lvltag">C1</span></h3>
+    <p>Para expresar un plan o arreglo visto desde un punto del pasado (el equivalente pasado de «I'm leaving tomorrow»).</p>
+    <span class="ex">She told me she <span class="ing">was leaving</span> the next day. <span class="es">(plan ya fijado entonces)</span></span>
+    <span class="ex">We couldn't meet because I <span class="ing">was flying</span> to Dublin that evening.</span>
+
+    <div class="note"><b>Matiz C1:</b> el continuo puede sugerir que algo era <b>temporal</b> o <b>incompleto</b> frente al simple, que lo presenta como permanente o terminado. <span class="k">I was living in Cork</span> (temporal) vs. <span class="k">I lived in Cork for years</span> (etapa cerrada).</div>
+  </div>
+</section>
+
+<!-- ============ VS ============ -->
+<section id="vs">
+  <div class="wrap">
+    <p class="eyebrow">05 · La gran comparación <span class="lvltag">B1</span></p>
+    <h2>Past Continuous vs. Past Simple</h2>
+    <p>Esta pareja es la fuente del 80 % de los errores. La diferencia es de <b>perspectiva</b>, no de tiempo: ambos hablan del pasado.</p>
+
+    <table>
+      <tr><th></th><th>Past Continuous</th><th>Past Simple</th></tr>
+      <tr><td>Pregunta clave</td><td>¿Estaba en proceso?</td><td>¿Pasó y se acabó?</td></tr>
+      <tr><td>Imagen</td><td>vídeo / fondo</td><td>foto / hecho</td></tr>
+      <tr><td>En interrupción</td><td>la acción larga</td><td>la acción corta</td></tr>
+      <tr><td>Ejemplo</td><td class="en">I <b>was reading</b> when…</td><td class="en">…the lights <b>went</b> out.</td></tr>
+    </table>
+
+    <h3>Cómo cambia el significado</h3>
+    <span class="ex">When she <span class="ps">arrived</span>, I <span class="ps">made</span> coffee. <span class="es">(primero llegó, luego hice café — secuencia)</span></span>
+    <span class="ex">When she <span class="ps">arrived</span>, I <span class="ing">was making</span> coffee. <span class="es">(yo ya estaba haciéndolo — simultáneo)</span></span>
+    <p>La misma frase con dos tiempos cuenta dos historias. Esa sensibilidad es lo que separa un B1 de un B2.</p>
+  </div>
+</section>
+
+<!-- ============ STATIVE ============ -->
+<section id="stative">
+  <div class="wrap">
+    <p class="eyebrow">06 · La gran excepción <span class="lvltag">B1</span></p>
+    <h2>Verbos de estado (stative verbs)</h2>
+    <p>Algunos verbos describen <b>estados</b>, no acciones: emociones, sentidos, posesión, opinión. Estos verbos <b>no</b> suelen usarse en continuo, ni en presente ni en pasado.</p>
+
+    <table>
+      <tr><th>Categoría</th><th>Verbos</th></tr>
+      <tr><td>Opinión / mente</td><td class="en">know, believe, think (=opinar), understand, remember, agree</td></tr>
+      <tr><td>Emoción</td><td class="en">like, love, hate, want, need, prefer</td></tr>
+      <tr><td>Posesión</td><td class="en">have (=tener), own, belong</td></tr>
+      <tr><td>Sentidos / ser</td><td class="en">see, hear, seem, look (=parecer), be</td></tr>
+    </table>
+
+    <span class="ex"><span class="x">I was knowing the answer.</span> → <span class="ok">I knew the answer.</span></span>
+    <span class="ex"><span class="x">She was wanting to leave.</span> → <span class="ok">She wanted to leave.</span></span>
+
+    <div class="warn"><b>Excepción de nivel C1:</b> algunos cambian de significado. <span class="k">I was having dinner</span> (have = comer, acción → ✓ continuo) frente a <span class="k">I had a car</span> (have = poseer, estado → ✗ continuo). Igual con <span class="k">thinking about</span> (=considerar, ✓) vs. <span class="k">think</span> (=opinar, ✗).</div>
+  </div>
+</section>
+
+<!-- ============ SEÑALES ============ -->
+<section id="senales">
+  <div class="wrap">
+    <p class="eyebrow">07 · Palabras señal</p>
+    <h2>Expresiones que lo activan</h2>
+    <p>Ciertas palabras te avisan de que probablemente toca el pasado continuo. No son leyes, pero son pistas muy fiables.</p>
+    <ul class="clean">
+      <li><b class="k">while</b> — mientras (casi siempre con continuo): <i>while I was sleeping</i></li>
+      <li><b class="k">when</b> — cuando (introduce la interrupción en simple): <i>when it happened</i></li>
+      <li><b class="k">as</b> — a medida que / mientras: <i>as she was leaving</i></li>
+      <li><b class="k">at that moment / at 7 o'clock</b> — un punto exacto del pasado</li>
+      <li><b class="k">all day / all morning / all night</b> — duración prolongada: <i>it was raining all day</i></li>
+      <li><b class="k">this time last week/year</b> — un momento equivalente en el pasado</li>
+      <li><b class="k">still</b> — todavía (acción aún en curso): <i>she was still working</i></li>
+      <li><b class="k">always / constantly / forever</b> — repetición molesta (uso B2)</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ ERRORES ============ -->
+<section id="errores">
+  <div class="wrap">
+    <p class="eyebrow">08 · Trampas para hispanohablantes</p>
+    <h2>Errores típicos a evitar</h2>
+
+    <h3>1. Confundir <i>was</i> y <i>were</i></h3>
+    <span class="ex"><span class="x">They was playing.</span> → <span class="ok">They were playing.</span></span>
+
+    <h3>2. Olvidar el <i>-ing</i> o el verbo <i>be</i></h3>
+    <span class="ex"><span class="x">I was play football.</span> → <span class="ok">I was playing football.</span></span>
+    <span class="ex"><span class="x">She reading a book.</span> → <span class="ok">She was reading a book.</span></span>
+
+    <h3>3. Usar continuo con verbos de estado</h3>
+    <span class="ex"><span class="x">I was needing help.</span> → <span class="ok">I needed help.</span></span>
+
+    <h3>4. Calcar el gerundio español a todo</h3>
+    <p>En español dices «llevo dos horas estudiando» o «¿qué haces?», pero ahí el inglés NO siempre usa continuo. Y a la inversa: «de repente sonó el teléfono» es simple (<i>rang</i>), no continuo. No traduzcas estructura por estructura; traduce <b>el sentido</b>.</p>
+    <span class="ex"><span class="x">When I arrived, she was leaving suddenly.</span> → <span class="ok">When I arrived, she left suddenly.</span> <span class="es">(acción puntual)</span></span>
+
+    <h3>5. Doblar mal la consonante</h3>
+    <span class="ex"><span class="x">I was openning the door.</span> → <span class="ok">I was opening the door.</span> <span class="es">(acento inicial, no se dobla)</span></span>
+  </div>
+</section>
+
+<!-- ============ EJERCICIOS ============ -->
+<section id="ejercicios">
+  <div class="wrap">
+    <p class="eyebrow">09 · Práctica</p>
+    <h2>60 ejercicios interactivos</h2>
+    <p class="lead">Se corrigen al instante y cada respuesta lleva una breve explicación de profesor. Tómatelos por bloques; el marcador de abajo cuenta tu progreso.</p>
+
+    <div id="exercises"></div>
+  </div>
+</section>
+
+<!-- ============ CRUCIGRAMA ============ -->
+<section id="crucigrama">
+  <div class="wrap">
+    <p class="eyebrow">10 · Bonus</p>
+    <h2>Crucigrama de formas <i>-ing</i></h2>
+    <p class="exhint">Escribe el gerundio (forma <i>-ing</i>) del infinitivo de cada pista. Respeta las reglas de ortografía. Mayúsculas o minúsculas, da igual.</p>
+    <div id="crossword" class="cw-wrap"></div>
+    <div class="btnrow">
+      <button class="btn primary" onclick="checkCrossword()">Comprobar crucigrama</button>
+      <button class="btn ghost" onclick="revealCrossword()">Ver solución</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    English Grammar Workbook · The Past Continuous · A1–C1<br>
+    Hecho como profesor de inglés, <span class="sig">para practicar de verdad</span>.
+  </div>
+</footer>
+
+<!-- ============ SCORE BAR ============ -->
+<div class="scorebar">
+  <span>Aciertos <b id="scoreNum">0</b> / <b id="scoreTot">60</b></span>
+  <div class="track"><div class="fill" id="scoreFill"></div></div>
+  <button onclick="resetAll()">Reiniciar</button>
+</div>
+
+<script>
+/* ============================================================
+   ESTADO GLOBAL DE PUNTUACIÓN
+============================================================ */
+const answered = {};          // id -> true(correcto)/false(fallo)
+let TOTAL = 60;
+function register(id, correct){
+  answered[id] = correct;
+  updateScore();
+}
+function updateScore(){
+  let ok = 0, done = 0;
+  for(const k in answered){ done++; if(answered[k]) ok++; }
+  document.getElementById('scoreNum').textContent = ok;
+  document.getElementById('scoreFill').style.width = (ok/TOTAL*100)+'%';
+}
+function resetAll(){ location.reload(); }
+
+/* ============================================================
+   DATOS DE LOS EJERCICIOS
+============================================================ */
+
+/* --- Bloque 1: Fill, afirmativa (A1) — 8 --- */
+const fillAff = [
+  {q:"At 9 p.m. I ___ (sleep).", a:["was sleeping"], fb:"<i>I</i> → was. Verbo <i>sleep</i> → sleeping (general + ing)."},
+  {q:"They ___ (play) football in the park.", a:["were playing"], fb:"<i>They</i> → were. <i>play</i> → playing."},
+  {q:"She ___ (write) an email.", a:["was writing"], fb:"<i>She</i> → was. <i>write</i> pierde la -e → writing."},
+  {q:"We ___ (run) to the station.", a:["were running"], fb:"<i>We</i> → were. <i>run</i> (CVC, 1 sílaba) dobla → running."},
+  {q:"He ___ (have) lunch at noon.", a:["was having"], fb:"Aquí <i>have</i> = comer (acción), por eso sí va en continuo: having."},
+  {q:"It ___ (rain) all morning.", a:["was raining"], fb:"<i>It</i> → was. <i>rain</i> → raining."},
+  {q:"You ___ (study) when I called.", a:["were studying"], fb:"<i>You</i> → were. <i>study</i> → studying (la y se queda)."},
+  {q:"My parents ___ (watch) TV.", a:["were watching"], fb:"Sujeto plural → were. <i>watch</i> → watching."}
+];
+
+/* --- Bloque 2: Fill, negativa e interrogativa (A2) — 6 --- */
+const fillNegQ = [
+  {q:"She ___ (not / listen) to me.", a:["wasn't listening","was not listening"], fb:"<i>She</i> → wasn't + listening."},
+  {q:"We ___ (not / work) yesterday at 10.", a:["weren't working","were not working"], fb:"<i>We</i> → weren't + working."},
+  {q:"___ you ___ (sleep) when I arrived?", a:["were sleeping"], fb:"Pregunta: <b>Were</b> you <b>sleeping</b>? Escribe solo «were sleeping»."},
+  {q:"What ___ they ___ (do)? (escribe: were doing)", a:["were doing"], fb:"<i>What were they doing?</i> El verbo <i>do</i> → doing."},
+  {q:"I ___ (not / lie), I promise.", a:["wasn't lying","was not lying"], fb:"<i>lie</i> → lying (ie → y). Y <i>I</i> → wasn't."},
+  {q:"___ it ___ (snow) in the photo? (escribe: was snowing)", a:["was snowing"], fb:"<i>Was it snowing?</i> <i>snow</i> nunca dobla la w → snowing."}
+];
+
+/* --- Bloque 3: Fill, ortografía -ing (A2) — 6 --- */
+const fillSpell = [
+  {q:"sit → I was ___.", a:["sitting"], fb:"CVC de 1 sílaba: dobla la t → sitting."},
+  {q:"make → She was ___ a cake.", a:["making"], fb:"Termina en -e muda: mak + ing → making."},
+  {q:"die → The plant was ___.", a:["dying"], fb:"-ie → y: d + ying → dying."},
+  {q:"begin → The film was ___.", a:["beginning"], fb:"Acento en la última sílaba: dobla la n → beginning."},
+  {q:"travel → We were ___ to Kerry.", a:["travelling","traveling"], fb:"Británico: travelling (dobla la l). Americano: traveling. Las dos valen."},
+  {q:"open → He was ___ the box.", a:["opening"], fb:"Acento inicial: NO se dobla → opening (no «openning»)."}
+];
+
+/* --- Bloque 4: Multiple choice, was/were (A1-A2) — 6 --- */
+const mcWasWere = [
+  {q:"The children ___ playing outside.", opts:["was","were"], a:1, fb:"<i>The children</i> es plural → were."},
+  {q:"I ___ reading a great book.", opts:["was","were"], a:0, fb:"<i>I</i> → was."},
+  {q:"___ your sister cooking dinner?", opts:["Was","Were"], a:0, fb:"<i>your sister</i> (she) → Was."},
+  {q:"We ___ not expecting visitors.", opts:["was","were"], a:1, fb:"<i>We</i> → were (not)."},
+  {q:"It ___ getting dark.", opts:["was","were"], a:0, fb:"<i>It</i> → was."},
+  {q:"You and Tom ___ laughing loudly.", opts:["was","were"], a:1, fb:"<i>You and Tom</i> = plural → were."}
+];
+
+/* --- Bloque 5: Multiple choice, continuo vs simple (B1) — 8 --- */
+const mcVs = [
+  {q:"While I ___ TV, the power went out.", opts:["watched","was watching"], a:1, fb:"Acción larga interrumpida → continuo: was watching."},
+  {q:"When the alarm rang, everyone ___.", opts:["was sleeping","slept"], a:0, fb:"Estaban dormidos cuando sonó (fondo en curso) → was sleeping."},
+  {q:"She ___ when she saw the spider.", opts:["was screaming","screamed"], a:1, fb:"Reacción puntual y breve → past simple: screamed."},
+  {q:"As we ___ home, it started to rain.", opts:["walked","were walking"], a:1, fb:"<i>as</i> + acción en curso → were walking."},
+  {q:"I dropped my phone while I ___.", opts:["was texting","texted"], a:0, fb:"<i>while</i> + acción larga → was texting."},
+  {q:"He ___ three goals in the match.", opts:["was scoring","scored"], a:1, fb:"Hecho completo, sin fondo → simple: scored."},
+  {q:"They ___ dinner when the guests arrived.", opts:["had","were having"], a:1, fb:"La cena estaba en marcha cuando llegaron → were having."},
+  {q:"The sun ___ when we left the house.", opts:["was shining","shone"], a:0, fb:"El sol brillaba (escena de fondo) → was shining."}
+];
+
+/* --- Bloque 9: Multiple choice avanzado, usos C1 (C1) — 8 --- */
+const mcAdv = [
+  {q:"My flatmate ___ borrowing my things without asking! (queja)", opts:["always borrowed","was always borrowing"], a:1, fb:"<i>always</i> + continuo = hábito molesto: was always borrowing."},
+  {q:"I ___ if you could lend me a hand. (petición educada)", opts:["was wondering","wondered"], a:0, fb:"<i>was wondering</i> suena más suave y cortés."},
+  {q:"He said he ___ the country the following week. (plan)", opts:["was leaving","left"], a:0, fb:"Futuro en el pasado (plan fijado) → was leaving."},
+  {q:"At the time, I ___ in a tiny flat — just temporarily.", opts:["was living","lived"], a:0, fb:"El continuo marca lo temporal: was living."},
+  {q:"We ___ hoping you'd join us tonight.", opts:["were","--"], a:0, fb:"<i>were hoping</i> = invitación tentativa y amable."},
+  {q:"Sorry I missed the call — I ___ a patient at that moment.", opts:["examined","was examining"], a:1, fb:"Acción en curso en ese momento → was examining."},
+  {q:"The computer ___ crashing all week. It drove me mad.", opts:["was constantly","constantly"], a:0, fb:"<i>was constantly crashing</i> = repetición exasperante."},
+  {q:"She ___ to understand the instructions, but they made no sense.", opts:["was trying","tried"], a:0, fb:"Esfuerzo en proceso, sin resultado → was trying."}
+];
+
+/* ============================================================
+   RENDERIZADORES
+============================================================ */
+let blockN = 0;
+const root = document.getElementById('exercises');
+
+function norm(s){ return s.trim().toLowerCase().replace(/\s+/g,' ').replace(/[’]/g,"'"); }
+
+function makeBlock(title, hint, lvl){
+  blockN++;
+  const div = document.createElement('div');
+  div.className = 'exblock';
+  div.innerHTML = `<div class="exhead"><span class="num">B${blockN}</span><h3>${title}</h3>`+
+    (lvl?`<span class="lvltag">${lvl}</span>`:'')+`</div><p class="exhint">${hint}</p>`;
+  return div;
+}
+
+/* ---- FILL IN ---- */
+function renderFill(data, title, hint, lvl, idp){
+  const block = makeBlock(title, hint, lvl);
+  data.forEach((item, i)=>{
+    const id = idp+i;
+    const q = document.createElement('div'); q.className='q';
+    const parts = item.q.split('___');
+    q.innerHTML = `<div class="qtxt"><span class="qn">${i+1}.</span>${parts[0]}`+
+      `<input class="fillin" data-id="${id}" autocomplete="off" spellcheck="false">`+
+      `${parts[1]||''}</div><div class="fb" id="fb_${id}"></div>`;
+    const input = q.querySelector('input');
+    input.dataset.answers = JSON.stringify(item.a);
+    input.dataset.fb = item.fb;
+    block.appendChild(q);
+  });
+  const row = document.createElement('div'); row.className='btnrow';
+  row.innerHTML = `<button class="btn primary">Comprobar</button><button class="btn ghost">Ver respuestas</button>`;
+  row.children[0].onclick = ()=>checkFill(block,false);
+  row.children[1].onclick = ()=>checkFill(block,true);
+  block.appendChild(row);
+  root.appendChild(block);
+}
+function checkFill(block, reveal){
+  block.querySelectorAll('input.fillin').forEach(inp=>{
+    const ans = JSON.parse(inp.dataset.answers);
+    const fb = document.getElementById('fb_'+inp.dataset.id);
+    const val = norm(inp.value);
+    const correct = ans.some(a=>norm(a)===val);
+    inp.classList.remove('ok','no');
+    if(reveal && !correct){
+      inp.value = ans[0]; inp.classList.add('no');
+      fb.className='fb show no'; fb.innerHTML = `Solución: <span class="sol">${ans[0]}</span> · ${inp.dataset.fb}`;
+      register(inp.dataset.id,false);
+    } else if(val===''){ return; }
+    else if(correct){
+      inp.classList.add('ok');
+      fb.className='fb show ok'; fb.innerHTML = `✓ ${inp.dataset.fb}`;
+      register(inp.dataset.id,true);
+    } else {
+      inp.classList.add('no');
+      fb.className='fb show no'; fb.innerHTML = `Casi. Solución: <span class="sol">${ans[0]}</span> · ${inp.dataset.fb}`;
+      register(inp.dataset.id,false);
+    }
+  });
+}
+
+/* ---- MULTIPLE CHOICE ---- */
+function renderMC(data, title, hint, lvl, idp){
+  const block = makeBlock(title, hint, lvl);
+  data.forEach((item,i)=>{
+    const id = idp+i;
+    const q = document.createElement('div'); q.className='q';
+    q.innerHTML = `<div class="qtxt"><span class="qn">${i+1}.</span>${item.q}</div>`;
+    const opts = document.createElement('div'); opts.className='opts';
+    item.opts.forEach((o,oi)=>{
+      const b = document.createElement('button'); b.className='opt'; b.textContent=o;
+      b.onclick = ()=>{
+        if(opts.dataset.done) return;
+        opts.dataset.done='1';
+        opts.querySelectorAll('.opt').forEach(x=>x.disabled=true);
+        const fb = document.getElementById('fb_'+id);
+        if(oi===item.a){
+          b.classList.add('ok'); fb.className='fb show ok'; fb.innerHTML='✓ '+item.fb;
+          register(id,true);
+        } else {
+          b.classList.add('no');
+          opts.querySelectorAll('.opt')[item.a].classList.add('ok');
+          fb.className='fb show no'; fb.innerHTML='✗ '+item.fb;
+          register(id,false);
+        }
+      };
+      opts.appendChild(b);
+    });
+    q.appendChild(opts);
+    const fbDiv = document.createElement('div');
+    fbDiv.className = 'fb'; fbDiv.id = 'fb_'+id;
+    q.appendChild(fbDiv);
+    block.appendChild(q);
+  });
+  root.appendChild(block);
+}
+
+/* ---- MATCHING (unir con flechas) ---- */
+function renderMatch(cfg){
+  const block = makeBlock(cfg.title, cfg.hint, cfg.lvl);
+  const wrap = document.createElement('div'); wrap.className='match';
+  const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+  const cols = document.createElement('div'); cols.className='match-cols';
+  const left = document.createElement('div'); left.className='match-col left';
+  const right = document.createElement('div'); right.className='match-col right';
+
+  cfg.pairs.forEach((p,i)=>{
+    const l = document.createElement('div'); l.className='mitem'; l.textContent=p.l;
+    l.dataset.k = i; left.appendChild(l);
+  });
+  // barajar la columna derecha
+  const order = cfg.pairs.map((_,i)=>i).sort(()=>Math.random()-0.5);
+  order.forEach(i=>{
+    const r = document.createElement('div'); r.className='mitem'; r.innerHTML=cfg.pairs[i].r;
+    r.dataset.k = i; right.appendChild(r);
+  });
+
+  cols.appendChild(left); cols.appendChild(right);
+  wrap.appendChild(svg); wrap.appendChild(cols);
+  block.appendChild(wrap);
+
+  const state = { links:{}, active:null };  // links: leftK -> rightK
+  function redraw(){
+    while(svg.firstChild) svg.removeChild(svg.firstChild);
+    const wr = wrap.getBoundingClientRect();
+    for(const lk in state.links){
+      const rk = state.links[lk];
+      const le = left.querySelector(`[data-k="${lk}"]`);
+      const re = right.querySelector(`[data-k="${rk}"]`);
+      if(!le||!re) continue;
+      const lb = le.getBoundingClientRect(), rb = re.getBoundingClientRect();
+      const x1 = lb.right-wr.left, y1 = lb.top+lb.height/2-wr.top;
+      const x2 = rb.left-wr.left, y2 = rb.top+rb.height/2-wr.top;
+      const line = document.createElementNS('http://www.w3.org/2000/svg','path');
+      const mx = (x1+x2)/2;
+      line.setAttribute('d',`M ${x1} ${y1} C ${mx} ${y1}, ${mx} ${y2}, ${x2} ${y2}`);
+      line.setAttribute('fill','none');
+      line.setAttribute('stroke', state.checked ? (lk==rk?'var(--good)':'var(--bad)') : 'var(--flow)');
+      line.setAttribute('stroke-width','2.5');
+      svg.appendChild(line);
+    }
+  }
+  function clearActive(){ left.querySelectorAll('.mitem').forEach(x=>x.classList.remove('active')); }
+
+  left.querySelectorAll('.mitem').forEach(l=>{
+    l.onclick = ()=>{
+      if(state.checked) return;
+      clearActive(); l.classList.add('active'); state.active = l.dataset.k;
+    };
+  });
+  right.querySelectorAll('.mitem').forEach(r=>{
+    r.onclick = ()=>{
+      if(state.checked || state.active===null) return;
+      // quitar cualquier left que ya apuntara a este right
+      for(const lk in state.links){ if(state.links[lk]==r.dataset.k) delete state.links[lk]; }
+      state.links[state.active] = r.dataset.k;
+      left.querySelector(`[data-k="${state.active}"]`).classList.add('linked');
+      clearActive(); state.active=null; redraw();
+    };
+  });
+
+  const row = document.createElement('div'); row.className='btnrow';
+  row.innerHTML = `<button class="btn primary">Comprobar</button><button class="btn ghost">Reiniciar líneas</button>`;
+  row.children[0].onclick = ()=>{
+    state.checked = true;
+    cfg.pairs.forEach((_,i)=>{
+      const le = left.querySelector(`[data-k="${i}"]`);
+      const re = right.querySelector(`[data-k="${i}"]`);
+      const ok = state.links[i]==i;
+      le.classList.remove('linked');
+      le.classList.add(ok?'ok':'no');
+      re.classList.add(ok?'ok':'no');
+      register(cfg.idp+i, ok);
+    });
+    redraw();
+  };
+  row.children[1].onclick = ()=>{
+    state.links={}; state.checked=false; state.active=null;
+    left.querySelectorAll('.mitem').forEach(x=>x.className='mitem');
+    right.querySelectorAll('.mitem').forEach(x=>x.className='mitem');
+    redraw();
+  };
+  block.appendChild(row);
+  root.appendChild(block);
+  window.addEventListener('resize', redraw);
+}
+
+/* ============================================================
+   MONTAJE DE BLOQUES (60 ítems)
+============================================================ */
+renderFill(fillAff,  "Completa con la forma afirmativa", "Escribe el verbo entre paréntesis en pasado continuo. Ej.: <i>was sleeping</i>.", "A1", "f1_");
+renderFill(fillNegQ, "Negativas y preguntas", "Sigue la indicación entre paréntesis. Usa contracciones cuando puedas.", "A2", "f2_");
+renderFill(fillSpell,"Ortografía del -ing", "Aplica las reglas de doblar consonante, -e muda e -ie → y.", "A2", "f3_");
+renderMC(mcWasWere,  "Elige: was o were", "Toca la opción correcta según el sujeto.", "A1", "m1_");
+renderMC(mcVs,       "¿Continuo o simple?", "Decide qué tiempo encaja: acción en curso vs. hecho puntual.", "B1", "m2_");
+
+renderMatch({
+  title:"Une cada frase con su función", lvl:"B1", idp:"u1_",
+  hint:"Toca una frase de la izquierda y luego su uso en la derecha. Repite y pulsa Comprobar.",
+  pairs:[
+    {l:"It was raining all day.", r:"Acción larga que duró todo el día"},
+    {l:"I was cooking when she called.", r:"Acción interrumpida por otra"},
+    {l:"He was always complaining.", r:"Hábito molesto y repetitivo"},
+    {l:"At 7, we were having dinner.", r:"Acción en curso en un momento exacto"},
+    {l:"While he read, she was knitting.", r:"Dos acciones a la vez"},
+    {l:"I was wondering if you'd help.", r:"Petición educada y suave"}
+  ]
+});
+
+renderMatch({
+  title:"Une el infinitivo con su -ing", lvl:"A2", idp:"u2_",
+  hint:"Empareja cada verbo con su forma -ing correctamente escrita.",
+  pairs:[
+    {l:"run",   r:"running"},
+    {l:"write", r:"writing"},
+    {l:"lie",   r:"lying"},
+    {l:"begin", r:"beginning"},
+    {l:"open",  r:"opening"},
+    {l:"travel",r:"travelling"}
+  ]
+});
+
+renderMC(mcAdv, "Usos avanzados", "Matices de C1: quejas con <i>always</i>, cortesía, futuro en el pasado.", "C1", "m3_");
+
+/* Bloque de corrección de errores (B2-C1) — 6, lo montamos como fill especial */
+const errCorr = [
+  {q:"Corrige: <i>They was watching a film.</i>", a:["they were watching a film","they were watching a film."], fb:"<i>They</i> → were, no was."},
+  {q:"Corrige: <i>I was needing more time.</i>", a:["i needed more time","i needed more time."], fb:"<i>need</i> es verbo de estado: no va en continuo → needed."},
+  {q:"Corrige: <i>She was play the piano.</i>", a:["she was playing the piano","she was playing the piano."], fb:"Falta el -ing: was playing."},
+  {q:"Corrige: <i>He reading when I arrived.</i>", a:["he was reading when i arrived","he was reading when i arrived."], fb:"Falta el verbo be: was reading."},
+  {q:"Corrige: <i>I was openning the window.</i>", a:["i was opening the window","i was opening the window."], fb:"<i>open</i> no dobla la n → opening."},
+  {q:"Corrige: <i>While I slept, the storm was starting.</i>", a:["while i was sleeping, the storm started","while i was sleeping the storm started","while i was sleeping, the storm started."], fb:"Invierte: la acción larga (sleeping) va en continuo y la corta (started) en simple."}
+];
+function renderErr(data,title,hint,lvl,idp){
+  const block = makeBlock(title, hint, lvl);
+  data.forEach((item,i)=>{
+    const id = idp+i;
+    const q = document.createElement('div'); q.className='q';
+    q.innerHTML = `<div class="qtxt"><span class="qn">${i+1}.</span>${item.q}</div>`+
+      `<input class="fillin" data-id="${id}" style="min-width:280px" autocomplete="off" spellcheck="false" placeholder="escribe la frase corregida">`+
+      `<div class="fb" id="fb_${id}"></div>`;
+    const inp = q.querySelector('input');
+    inp.dataset.answers = JSON.stringify(item.a);
+    inp.dataset.fb = item.fb;
+    block.appendChild(q);
+  });
+  const row = document.createElement('div'); row.className='btnrow';
+  row.innerHTML = `<button class="btn primary">Comprobar</button><button class="btn ghost">Ver respuestas</button>`;
+  row.children[0].onclick = ()=>checkFill(block,false);
+  row.children[1].onclick = ()=>checkFill(block,true);
+  block.appendChild(row);
+  root.appendChild(block);
+}
+renderErr(errCorr, "Encuentra y corrige el error", "Reescribe cada frase corregida. Acepta la frase completa correcta (la puntuación no cuenta).", "B2", "e1_");
+
+/* recuento total exacto:
+   f1 8 + f2 6 + f3 6 + m1 6 + m2 8 + u1 6 + u2 6 + m3 8 + e1 6 = 60 */
+TOTAL = 60;
+document.getElementById('scoreTot').textContent = TOTAL;
+
+/* ============================================================
+   CRUCIGRAMA
+============================================================ */
+/* Definición: cada palabra con fila, col, dirección y pista.
+   Coordenadas pensadas para que crucen entre sí. */
+const cwWords = [
+  {n:1, word:"WRITING",   r:0, c:1, dir:"D", clue:"to write"},
+  {n:2, word:"HAVING",    r:0, c:6, dir:"D", clue:"to have (= comer)"},
+  {n:3, word:"MAKING",    r:2, c:4, dir:"D", clue:"to make"},
+  {n:4, word:"COOKING",   r:3, c:8, dir:"D", clue:"to cook"},
+  {n:5, word:"LYING",     r:3, c:10,dir:"D", clue:"to lie (= mentir / tumbarse)"},
+  {n:6, word:"SNOWING",   r:5, c:0, dir:"A", clue:"to snow"},
+  {n:7, word:"BEGINNING", r:7, c:2, dir:"A", clue:"to begin"},
+  {n:8, word:"OPENING",   r:9, c:2, dir:"A", clue:"to open"}
+];
+function buildCrossword(){
+  // calcular dimensiones
+  let maxR=0, maxC=0;
+  cwWords.forEach(w=>{
+    for(let i=0;i<w.word.length;i++){
+      const rr = w.dir==="D" ? w.r+i : w.r;
+      const cc = w.dir==="A" ? w.c+i : w.c;
+      maxR=Math.max(maxR,rr); maxC=Math.max(maxC,cc);
+    }
+  });
+  const rows=maxR+1, colsN=maxC+1;
+  const cell = {};  // "r_c" -> {letter, num}
+  cwWords.forEach(w=>{
+    for(let i=0;i<w.word.length;i++){
+      const rr = w.dir==="D" ? w.r+i : w.r;
+      const cc = w.dir==="A" ? w.c+i : w.c;
+      const key = rr+"_"+cc;
+      if(!cell[key]) cell[key]={letter:w.word[i]};
+      if(i===0) cell[key].num = w.n;
+    }
+  });
+  const cont = document.getElementById('crossword');
+  const grid = document.createElement('div'); grid.className='cw-grid';
+  grid.style.gridTemplateColumns = `repeat(${colsN}, 34px)`;
+  for(let r=0;r<rows;r++){
+    for(let c=0;c<colsN;c++){
+      const key = r+"_"+c;
+      const cellDiv = document.createElement('div'); cellDiv.className='cw-cell';
+      if(cell[key]){
+        if(cell[key].num) cellDiv.innerHTML = `<span class="cw-num">${cell[key].num}</span>`;
+        const inp = document.createElement('input');
+        inp.maxLength=1; inp.dataset.letter=cell[key].letter; inp.dataset.key=key;
+        inp.addEventListener('input',e=>{ if(e.target.value) focusNext(grid,r,c,colsN,rows); });
+        cellDiv.appendChild(inp);
+      } else { cellDiv.classList.add('block'); }
+      grid.appendChild(cellDiv);
+    }
+  }
+  const scroller = document.createElement('div'); scroller.className='cw-scroll';
+  scroller.appendChild(grid);
+  cont.appendChild(scroller);
+  // pistas
+  const clues = document.createElement('div'); clues.className='cw-clues';
+  const ac = cwWords.filter(w=>w.dir==="A"), dn = cwWords.filter(w=>w.dir==="D");
+  let html='<h4>Horizontales</h4><ol>';
+  ac.forEach(w=> html+=`<li value="${w.n}"><b>${w.clue}</b></li>`);
+  html+='</ol><h4>Verticales</h4><ol>';
+  dn.forEach(w=> html+=`<li value="${w.n}"><b>${w.clue}</b></li>`);
+  html+='</ol>';
+  clues.innerHTML = html;
+  cont.appendChild(clues);
+}
+function focusNext(grid,r,c,cols,rows){
+  // intenta avanzar a la derecha; si no hay input, hacia abajo
+  const right = grid.querySelector(`.cw-cell:nth-child(${r*cols+(c+1)+1}) input`);
+  if(right){ right.focus(); return; }
+  const down = grid.querySelector(`.cw-cell:nth-child(${(r+1)*cols+c+1}) input`);
+  if(down){ down.focus(); }
+}
+function checkCrossword(){
+  let ok=true;
+  document.querySelectorAll('#crossword input').forEach(inp=>{
+    inp.classList.remove('ok','no');
+    if(inp.value.toUpperCase()===inp.dataset.letter){ inp.classList.add('ok'); }
+    else { inp.classList.add('no'); ok=false; }
+  });
+}
+function revealCrossword(){
+  document.querySelectorAll('#crossword input').forEach(inp=>{
+    inp.value = inp.dataset.letter; inp.classList.remove('no'); inp.classList.add('ok');
+  });
+}
+buildCrossword();
+</script>
+</body>
+</html>
