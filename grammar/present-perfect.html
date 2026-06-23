@@ -1,1 +1,1867 @@
--
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Present Perfect – Teoría completa y 60 ejercicios interactivos, de A1 a C1. Creada por Juan Carlos Navarro.">
+<title>Present Perfect · Grammar</title>
+<style>
+  :root {
+    --ink:       #1a1a2e;
+    --ink-soft:  #3d3d5c;
+    --paper:     #f8f6f1;
+    --paper-alt: #eeeae0;
+    --accent:    #2a5f8f;
+    --accent2:   #c0392b;
+    --gold:      #b8860b;
+    --green:     #1a6b3c;
+    --green-bg:  #e8f5ee;
+    --red-bg:    #fdecea;
+    --yellow-bg: #fef9e7;
+    --border:    #d4cfc4;
+    --code-bg:   #1a1a2e;
+    --code-text: #e0e7ff;
+    --ff-display: 'Georgia', 'Times New Roman', serif;
+    --ff-body:    'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    --ff-mono:    'Courier New', Courier, monospace;
+    --radius:     6px;
+    --shadow:     0 2px 8px rgba(0,0,0,0.08);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--ff-body);
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  /* ── NAV ── */
+  .top-bar {
+    background: var(--ink);
+    color: #fff;
+    padding: 0.6rem 1.5rem;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .top-bar a { color: #aab4cc; text-decoration: none; }
+  .top-bar a:hover { color: #fff; }
+  .top-bar .sep { color: #555; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--ink);
+    color: #fff;
+    padding: 3rem 2rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 60px,
+      rgba(255,255,255,0.02) 60px,
+      rgba(255,255,255,0.02) 61px
+    );
+  }
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #aab4cc;
+    margin-bottom: 0.75rem;
+  }
+  .hero h1 {
+    font-family: var(--ff-display);
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: normal;
+    line-height: 1.15;
+    margin-bottom: 0.5rem;
+  }
+  .hero h1 em { color: #7eb8f7; font-style: normal; }
+  .hero-sub {
+    font-size: 1.05rem;
+    color: #aab4cc;
+    max-width: 560px;
+    margin: 0 auto 1.5rem;
+  }
+  .hero-formula {
+    display: inline-block;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: var(--radius);
+    padding: 0.5rem 1.4rem;
+    font-family: var(--ff-mono);
+    font-size: 1.1rem;
+    color: #7eb8f7;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── LAYOUT ── */
+  .page-wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 1.2rem 4rem;
+  }
+
+  /* ── PROGRESS ── */
+  .progress-bar-wrap {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--paper);
+    border-bottom: 1px solid var(--border);
+    padding: 0.5rem 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .progress-label { font-size: 0.8rem; color: var(--ink-soft); white-space: nowrap; }
+  .progress-track {
+    flex: 1;
+    height: 6px;
+    background: var(--paper-alt);
+    border-radius: 99px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--green);
+    border-radius: 99px;
+    transition: width 0.4s ease;
+  }
+  .progress-count { font-size: 0.8rem; color: var(--green); font-weight: 600; white-space: nowrap; }
+
+  /* ── TOC ── */
+  .toc {
+    background: var(--paper-alt);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.2rem 1.5rem;
+    margin: 2rem 0;
+  }
+  .toc h2 { font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 0.75rem; }
+  .toc ol { padding-left: 1.2rem; }
+  .toc li { margin-bottom: 0.25rem; }
+  .toc a { color: var(--accent); text-decoration: none; font-size: 0.9rem; }
+  .toc a:hover { text-decoration: underline; }
+
+  /* ── SECTION TITLES ── */
+  .section-block { margin-top: 3rem; }
+
+  .section-title {
+    font-family: var(--ff-display);
+    font-size: 1.6rem;
+    font-weight: normal;
+    color: var(--ink);
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid var(--accent);
+    margin-bottom: 1.2rem;
+  }
+  .section-title span { color: var(--accent); font-size: 0.85rem; font-family: var(--ff-body); font-style: italic; }
+
+  h3.sub { font-size: 1.1rem; color: var(--accent); margin: 1.5rem 0 0.6rem; font-weight: 600; }
+  h4.mini { font-size: 0.95rem; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.08em; margin: 1.2rem 0 0.4rem; }
+
+  p { margin-bottom: 0.8rem; }
+
+  /* ── CALLOUTS ── */
+  .callout {
+    border-left: 4px solid;
+    padding: 0.9rem 1.2rem;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    margin: 1rem 0;
+    font-size: 0.93rem;
+  }
+  .callout-title { font-weight: 700; margin-bottom: 0.3rem; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  .callout.info    { border-color: var(--accent);  background: #e8f0f8; }
+  .callout.info    .callout-title { color: var(--accent); }
+  .callout.warning { border-color: var(--gold);    background: var(--yellow-bg); }
+  .callout.warning .callout-title { color: var(--gold); }
+  .callout.success { border-color: var(--green);   background: var(--green-bg); }
+  .callout.success .callout-title { color: var(--green); }
+  .callout.danger  { border-color: var(--accent2); background: var(--red-bg); }
+  .callout.danger  .callout-title { color: var(--accent2); }
+
+  /* ── TABLES ── */
+  .tbl-wrap { overflow-x: auto; margin: 1rem 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+  th {
+    background: var(--ink);
+    color: #fff;
+    padding: 0.6rem 0.9rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.82rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  td { padding: 0.55rem 0.9rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tr:nth-child(even) td { background: var(--paper-alt); }
+  td em { color: var(--accent2); font-style: normal; font-weight: 600; }
+  td strong { color: var(--accent); }
+
+  /* ── CODE / FORMULA ── */
+  .formula-block {
+    background: var(--code-bg);
+    color: var(--code-text);
+    border-radius: var(--radius);
+    padding: 1rem 1.4rem;
+    font-family: var(--ff-mono);
+    font-size: 1rem;
+    margin: 1rem 0;
+    line-height: 1.8;
+  }
+  .formula-block .kw  { color: #7eb8f7; }
+  .formula-block .vb  { color: #a8e6cf; }
+  .formula-block .cm  { color: #888; font-style: italic; }
+
+  code { font-family: var(--ff-mono); background: var(--paper-alt); padding: 0.1em 0.35em; border-radius: 3px; font-size: 0.9em; color: var(--accent2); }
+
+  /* ── EXAMPLE LIST ── */
+  .examples { list-style: none; margin: 0.6rem 0 1rem; }
+  .examples li {
+    padding: 0.45rem 0.9rem 0.45rem 2.2rem;
+    position: relative;
+    border-left: 3px solid var(--paper-alt);
+    margin-bottom: 0.4rem;
+    font-size: 0.95rem;
+  }
+  .examples li::before { content: '→'; position: absolute; left: 0.6rem; color: var(--accent); }
+  .examples li .tr { display: block; font-size: 0.83rem; color: var(--ink-soft); font-style: italic; }
+
+  /* ── CONTRAST BOX (PP vs PS) ── */
+  .contrast-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  @media (max-width: 560px) { .contrast-grid { grid-template-columns: 1fr; } }
+  .contrast-card {
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .contrast-card .ch {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .contrast-card.pp .ch { background: var(--accent); color: #fff; }
+  .contrast-card.ps .ch { background: var(--accent2); color: #fff; }
+  .contrast-card ul { list-style: none; padding: 0.7rem 0.9rem; font-size: 0.9rem; }
+  .contrast-card li { margin-bottom: 0.4rem; }
+  .contrast-card li::before { content: '• '; color: var(--ink-soft); }
+
+  /* ── LEVEL BADGE ── */
+  .level-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.15em 0.55em;
+    border-radius: 99px;
+    vertical-align: middle;
+    margin-left: 0.4rem;
+  }
+  .lvl-a1 { background: #d5e8d4; color: #1a6b3c; }
+  .lvl-a2 { background: #dae8fc; color: #1a4e8f; }
+  .lvl-b1 { background: #fff2cc; color: #7d6600; }
+  .lvl-b2 { background: #ffe6cc; color: #8f4300; }
+  .lvl-c1 { background: #f8cecc; color: #8f1a1a; }
+
+  /* ── EXERCISES ── */
+  .ex-section-title {
+    font-family: var(--ff-display);
+    font-size: 1.4rem;
+    font-weight: normal;
+    color: var(--ink);
+    margin: 3rem 0 0.3rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid var(--gold);
+  }
+  .ex-type-label {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
+    margin-bottom: 1.2rem;
+  }
+
+  .exercise {
+    background: #fff;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.1rem 1.3rem;
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow);
+    transition: border-color 0.2s;
+  }
+  .exercise.correct  { border-color: var(--green); background: var(--green-bg); }
+  .exercise.wrong    { border-color: var(--accent2); background: var(--red-bg); }
+  .exercise.revealed { border-color: var(--gold); background: var(--yellow-bg); }
+
+  .ex-num {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-soft);
+    margin-bottom: 0.35rem;
+  }
+  .ex-prompt { font-size: 0.97rem; margin-bottom: 0.75rem; line-height: 1.55; }
+  .ex-prompt .gap {
+    display: inline-block;
+    min-width: 110px;
+    border-bottom: 2px solid var(--accent);
+    padding: 0 0.25rem;
+    text-align: center;
+    vertical-align: bottom;
+  }
+  .ex-hint { font-size: 0.82rem; color: var(--ink-soft); font-style: italic; margin-bottom: 0.7rem; }
+
+  /* Fill-in input */
+  .ex-input {
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.45rem 0.75rem;
+    font-size: 0.97rem;
+    font-family: var(--ff-body);
+    background: var(--paper);
+    color: var(--ink);
+    min-width: 180px;
+    width: auto;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .ex-input:focus { border-color: var(--accent); }
+  .exercise.correct .ex-input  { border-color: var(--green); background: #d5f0e0; }
+  .exercise.wrong   .ex-input  { border-color: var(--accent2); background: #fde8e8; }
+  .exercise.revealed .ex-input { border-color: var(--gold); background: #fef5d8; }
+
+  /* MCQ */
+  .mcq-options { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.6rem; }
+  .mcq-btn {
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    background: var(--paper);
+    color: var(--ink);
+    transition: all 0.15s;
+    font-family: var(--ff-body);
+  }
+  .mcq-btn:hover:not(:disabled) { border-color: var(--accent); background: #e8f0f8; }
+  .mcq-btn.selected-correct { background: var(--green-bg); border-color: var(--green); color: var(--green); font-weight: 700; }
+  .mcq-btn.selected-wrong   { background: var(--red-bg);   border-color: var(--accent2); color: var(--accent2); font-weight: 700; }
+  .mcq-btn.reveal-correct   { background: var(--yellow-bg); border-color: var(--gold); font-weight: 700; }
+  .mcq-btn:disabled { cursor: default; }
+
+  /* Error ID */
+  .err-sent {
+    font-size: 0.97rem;
+    padding: 0.6rem 0.9rem;
+    background: var(--paper-alt);
+    border-radius: var(--radius);
+    margin-bottom: 0.6rem;
+    font-family: var(--ff-mono);
+    line-height: 1.6;
+  }
+  .err-sent .wrong-part { text-decoration: underline wavy var(--accent2); color: var(--accent2); }
+
+  /* Reorder */
+  .reorder-wrap { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.6rem; }
+  .reorder-word {
+    border: 1.5px solid var(--accent);
+    border-radius: var(--radius);
+    padding: 0.3rem 0.7rem;
+    font-size: 0.93rem;
+    cursor: grab;
+    background: #e8f0f8;
+    user-select: none;
+    transition: background 0.15s, box-shadow 0.15s;
+  }
+  .reorder-word:active { cursor: grabbing; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+  .reorder-word.dragging { opacity: 0.4; }
+  .reorder-word.disabled { cursor: default; }
+
+  .reorder-slots { display: flex; flex-wrap: wrap; gap: 0.4rem; min-height: 44px; padding: 0.4rem; background: var(--paper-alt); border-radius: var(--radius); margin-bottom: 0.5rem; border: 1.5px dashed var(--border); }
+  .reorder-slot {
+    border: 1.5px solid var(--accent);
+    border-radius: var(--radius);
+    padding: 0.3rem 0.7rem;
+    font-size: 0.93rem;
+    background: #fff;
+    cursor: pointer;
+    min-width: 40px;
+    text-align: center;
+  }
+
+  /* Translate input */
+  .translate-input {
+    width: 100%;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.55rem 0.8rem;
+    font-size: 0.97rem;
+    font-family: var(--ff-body);
+    background: var(--paper);
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .translate-input:focus { border-color: var(--accent); }
+  .exercise.correct .translate-input  { border-color: var(--green); }
+  .exercise.wrong   .translate-input  { border-color: var(--accent2); }
+
+  /* Feedback */
+  .ex-feedback {
+    display: none;
+    margin-top: 0.6rem;
+    font-size: 0.88rem;
+    border-radius: var(--radius);
+    padding: 0.5rem 0.8rem;
+    line-height: 1.5;
+  }
+  .ex-feedback.show { display: block; }
+  .ex-feedback.fb-ok  { background: var(--green-bg);  color: var(--green);  border-left: 3px solid var(--green); }
+  .ex-feedback.fb-err { background: var(--red-bg);    color: var(--accent2); border-left: 3px solid var(--accent2); }
+  .ex-feedback.fb-rev { background: var(--yellow-bg); color: #7d6600;       border-left: 3px solid var(--gold); }
+
+  .ex-feedback strong { font-weight: 700; }
+
+  /* Buttons */
+  .btn-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.6rem; }
+  .btn {
+    padding: 0.4rem 1rem;
+    border-radius: var(--radius);
+    border: none;
+    font-size: 0.88rem;
+    font-family: var(--ff-body);
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.15s;
+  }
+  .btn-check  { background: var(--accent); color: #fff; }
+  .btn-check:hover  { background: #1a4e7a; }
+  .btn-reveal { background: var(--paper-alt); color: var(--ink-soft); border: 1.5px solid var(--border); }
+  .btn-reveal:hover { background: var(--border); }
+  .btn:disabled { opacity: 0.5; cursor: default; }
+
+  /* Score panel */
+  .score-panel {
+    background: var(--ink);
+    color: #fff;
+    border-radius: var(--radius);
+    padding: 1.5rem 2rem;
+    margin-top: 3rem;
+    text-align: center;
+  }
+  .score-panel h2 { font-family: var(--ff-display); font-size: 1.5rem; font-weight: normal; margin-bottom: 0.5rem; }
+  .score-big { font-size: 3rem; font-weight: 700; color: #7eb8f7; }
+  .score-sub { color: #aab4cc; font-size: 0.9rem; }
+  .score-msg { margin-top: 0.8rem; font-size: 1rem; color: #ddd; }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--border);
+    margin-top: 2rem;
+  }
+  .footer a { color: var(--accent); }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 1.8rem; }
+    .formula-block { font-size: 0.88rem; }
+  }
+
+  /* Smooth section anchor offset */
+  [id] { scroll-margin-top: 52px; }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <a href="https://jng12g.github.io/english/">← Inicio</a>
+  <span class="sep">›</span>
+  <a href="https://jng12g.github.io/english/grammar/index.html">Gramática</a>
+  <span class="sep">›</span>
+  <span style="color:#fff">Present Perfect</span>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Present Perfect · Pretérito Perfecto</div>
+  <h1>I <em>have</em> worked</h1>
+  <p class="hero-sub">Teoría completa de A1 a C1 · 60 ejercicios interactivos</p>
+  <div class="hero-formula">Subject + <span style="color:#a8e6cf">have/has</span> + <span style="color:#ffd700">past participle</span></div>
+</div>
+
+<!-- PROGRESS -->
+<div class="progress-bar-wrap">
+  <span class="progress-label">Ejercicios completados</span>
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  <span class="progress-count" id="progressCount">0 / 60</span>
+</div>
+
+<div class="page-wrap">
+
+<!-- TOC -->
+<nav class="toc">
+  <h2>Contenido</h2>
+  <ol>
+    <li><a href="#teoria">Teoría · ¿Qué es el Present Perfect?</a></li>
+    <li><a href="#forma">Forma: afirmativa, negativa, interrogativa</a></li>
+    <li><a href="#participles">El participio pasado (past participle)</a></li>
+    <li><a href="#usos">Los 5 usos principales</a></li>
+    <li><a href="#marcadores">Marcadores temporales clave</a></li>
+    <li><a href="#pp-vs-ps">Present Perfect vs. Past Simple</a></li>
+    <li><a href="#errores">Errores frecuentes de hispanohablantes</a></li>
+    <li><a href="#ejercicios-a1">Ejercicios A1 · Reconocimiento</a></li>
+    <li><a href="#ejercicios-a2">Ejercicios A2 · Forma básica</a></li>
+    <li><a href="#ejercicios-b1">Ejercicios B1 · Usos y contraste</a></li>
+    <li><a href="#ejercicios-b2">Ejercicios B2 · Precisión y estilo</a></li>
+    <li><a href="#ejercicios-c1">Ejercicios C1 · Dominio avanzado</a></li>
+  </ol>
+</nav>
+
+<!-- ════════════════════════════════════ TEORÍA ════════════════════════════════════ -->
+
+<section class="section-block" id="teoria">
+  <h2 class="section-title">1 · ¿Qué es el Present Perfect? <span>La clave conceptual</span></h2>
+
+  <p>El Present Perfect es el tiempo verbal inglés que conecta el <strong>pasado con el presente</strong>. Expresa acciones o estados que comenzaron en el pasado pero tienen <em>relevancia, resultado o conexión</em> con el momento actual.</p>
+
+  <div class="callout info">
+    <div class="callout-title">💡 El error conceptual más común</div>
+    En español, el pretérito perfecto (<em>he comido, has llegado</em>) y el indefinido (<em>comí, llegaste</em>) se confunden en muchos dialectos (especialmente el español peninsular los mezcla; el español latinoamericano los distingue más). En inglés, la distinción es <strong>obligatoria y sistemática</strong>. No es opcional.
+  </div>
+
+  <p>La idea central: cuando dices <em>I have lived in Madrid</em>, no importa <em>cuándo</em> viviste allí exactamente — lo que importa es que esa experiencia forma parte de tu historia personal <strong>hasta ahora</strong>. En cambio, <em>I lived in Madrid in 2005</em> sitúa la acción en un momento cerrado del pasado.</p>
+
+  <div class="callout warning">
+    <div class="callout-title">⚠️ El puente pasado–presente</div>
+    El Present Perfect siempre implica un puente invisible entre el pasado y el ahora. Si ese puente no existe, usa Past Simple.
+  </div>
+</section>
+
+<!-- FORMA -->
+<section class="section-block" id="forma">
+  <h2 class="section-title">2 · Forma <span>Afirmativa · Negativa · Interrogativa</span></h2>
+
+  <h3 class="sub">Afirmativa</h3>
+  <div class="formula-block">
+    <span class="kw">Subject</span> + <span class="vb">have / has</span> + <span class="vb">past participle</span>
+    <br><span class="cm">// have → I, you, we, they &nbsp;&nbsp; has → he, she, it</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Pronombre</th><th>Auxiliar</th><th>Forma contraída</th><th>Ejemplo</th></tr>
+      <tr><td>I</td><td>have</td><td>I've</td><td>I<em>'ve</em> finished</td></tr>
+      <tr><td>You</td><td>have</td><td>You've</td><td>You<em>'ve</em> seen it</td></tr>
+      <tr><td>He / She / It</td><td>has</td><td>He's / She's</td><td>She<em>'s</em> gone home</td></tr>
+      <tr><td>We</td><td>have</td><td>We've</td><td>We<em>'ve</em> been waiting</td></tr>
+      <tr><td>They</td><td>have</td><td>They've</td><td>They<em>'ve</em> arrived</td></tr>
+    </table>
+  </div>
+
+  <div class="callout warning">
+    <div class="callout-title">⚠️ She's gone vs. She's going</div>
+    <em>She's</em> puede ser la contracción de <em>she is</em> (Present Continuous/Simple) o de <em>she has</em> (Present Perfect). El contexto y el participio pasado lo aclaran: <em>She's gone</em> = she has gone. <em>She's going</em> = she is going.
+  </div>
+
+  <h3 class="sub">Negativa</h3>
+  <div class="formula-block">
+    <span class="kw">Subject</span> + <span class="vb">have / has</span> + <span class="kw">not</span> + <span class="vb">past participle</span>
+    <br><span class="cm">// contracciones: haven't, hasn't</span>
+  </div>
+  <ul class="examples">
+    <li>I <strong>haven't</strong> eaten today. <span class="tr">No he comido hoy.</span></li>
+    <li>She <strong>hasn't</strong> called yet. <span class="tr">No ha llamado todavía.</span></li>
+    <li>We <strong>have not</strong> decided yet. <span class="tr">Aún no hemos decidido. (forma enfática)</span></li>
+  </ul>
+
+  <h3 class="sub">Interrogativa</h3>
+  <div class="formula-block">
+    <span class="vb">Have / Has</span> + <span class="kw">subject</span> + <span class="vb">past participle</span> + <span class="cm">...?</span>
+  </div>
+  <ul class="examples">
+    <li><strong>Have</strong> you ever been to Ireland? <span class="tr">¿Has estado alguna vez en Irlanda?</span></li>
+    <li><strong>Has</strong> he finished the report? <span class="tr">¿Ha terminado el informe?</span></li>
+    <li><strong>Have</strong> they arrived yet? <span class="tr">¿Han llegado ya?</span></li>
+  </ul>
+
+  <h3 class="sub">Respuestas cortas</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Pregunta</th><th>Sí</th><th>No</th></tr>
+      <tr><td>Have you seen it?</td><td>Yes, I <strong>have</strong>.</td><td>No, I <strong>haven't</strong>.</td></tr>
+      <tr><td>Has she called?</td><td>Yes, she <strong>has</strong>.</td><td>No, she <strong>hasn't</strong>.</td></tr>
+    </table>
+  </div>
+  <div class="callout danger">
+    <div class="callout-title">🚫 Error clásico</div>
+    "Yes, I have seen." → <strong>INCORRECTO</strong>. En la respuesta corta solo se usa el auxiliar: "Yes, I <em>have</em>."
+  </div>
+</section>
+
+<!-- PARTICIPIOS -->
+<section class="section-block" id="participles">
+  <h2 class="section-title">3 · El Participio Pasado <span>La pieza clave</span></h2>
+
+  <p>El <strong>past participle</strong> es la forma del verbo que aparece después de <em>have/has</em>. Para los verbos regulares es idéntico al Past Simple (verb + <em>-ed</em>). Para los irregulares hay que aprenderlos.</p>
+
+  <h3 class="sub">Verbos regulares → verb + -ed</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Infinitivo</th><th>Past Simple</th><th>Past Participle</th></tr>
+      <tr><td>work</td><td>worked</td><td>worked</td></tr>
+      <tr><td>finish</td><td>finished</td><td>finished</td></tr>
+      <tr><td>live</td><td>lived</td><td>lived</td></tr>
+      <tr><td>travel</td><td>travelled</td><td>travelled</td></tr>
+    </table>
+  </div>
+
+  <h3 class="sub">Verbos irregulares esenciales (los más frecuentes)</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Infinitivo</th><th>Traducción</th><th>Past Simple</th><th><em>Past Participle</em></th></tr>
+      <tr><td>be</td><td>ser/estar</td><td>was/were</td><td><em>been</em></td></tr>
+      <tr><td>go</td><td>ir</td><td>went</td><td><em>gone / been*</em></td></tr>
+      <tr><td>have</td><td>tener</td><td>had</td><td><em>had</em></td></tr>
+      <tr><td>do</td><td>hacer</td><td>did</td><td><em>done</em></td></tr>
+      <tr><td>see</td><td>ver</td><td>saw</td><td><em>seen</em></td></tr>
+      <tr><td>eat</td><td>comer</td><td>ate</td><td><em>eaten</em></td></tr>
+      <tr><td>write</td><td>escribir</td><td>wrote</td><td><em>written</em></td></tr>
+      <tr><td>speak</td><td>hablar</td><td>spoke</td><td><em>spoken</em></td></tr>
+      <tr><td>take</td><td>tomar</td><td>took</td><td><em>taken</em></td></tr>
+      <tr><td>come</td><td>venir</td><td>came</td><td><em>come</em></td></tr>
+      <tr><td>give</td><td>dar</td><td>gave</td><td><em>given</em></td></tr>
+      <tr><td>know</td><td>saber/conocer</td><td>knew</td><td><em>known</em></td></tr>
+      <tr><td>get</td><td>conseguir/obtener</td><td>got</td><td><em>got / gotten (AmE)</em></td></tr>
+      <tr><td>make</td><td>hacer/fabricar</td><td>made</td><td><em>made</em></td></tr>
+      <tr><td>think</td><td>pensar</td><td>thought</td><td><em>thought</em></td></tr>
+      <tr><td>buy</td><td>comprar</td><td>bought</td><td><em>bought</em></td></tr>
+      <tr><td>find</td><td>encontrar</td><td>found</td><td><em>found</em></td></tr>
+      <tr><td>meet</td><td>conocer/reunirse</td><td>met</td><td><em>met</em></td></tr>
+      <tr><td>lose</td><td>perder</td><td>lost</td><td><em>lost</em></td></tr>
+      <tr><td>put</td><td>poner</td><td>put</td><td><em>put</em></td></tr>
+      <tr><td>read</td><td>leer</td><td>read /rɛd/</td><td><em>read /rɛd/</em></td></tr>
+      <tr><td>break</td><td>romper</td><td>broke</td><td><em>broken</em></td></tr>
+      <tr><td>choose</td><td>elegir</td><td>chose</td><td><em>chosen</em></td></tr>
+      <tr><td>drive</td><td>conducir</td><td>drove</td><td><em>driven</em></td></tr>
+      <tr><td>fly</td><td>volar</td><td>flew</td><td><em>flown</em></td></tr>
+    </table>
+  </div>
+
+  <div class="callout info">
+    <div class="callout-title">📌 gone vs. been con go</div>
+    <strong>She has gone to Paris</strong> → se fue y todavía está allí. No está aquí.<br>
+    <strong>She has been to Paris</strong> → ha visitado París (y ha vuelto). Es una experiencia.
+  </div>
+</section>
+
+<!-- USOS -->
+<section class="section-block" id="usos">
+  <h2 class="section-title">4 · Los 5 usos principales</h2>
+
+  <h3 class="sub">USO 1 · Experiencia de vida <span class="level-badge lvl-a2">A2</span></h3>
+  <p>Para hablar de experiencias que alguien ha tenido o no ha tenido a lo largo de su vida, sin especificar cuándo. El marcador típico es <code>ever</code> (¿alguna vez?) y <code>never</code> (nunca).</p>
+  <ul class="examples">
+    <li>I <strong>have visited</strong> Japan twice. <span class="tr">He visitado Japón dos veces. (en algún momento de mi vida)</span></li>
+    <li>Have you <strong>ever eaten</strong> sushi? <span class="tr">¿Has comido alguna vez sushi?</span></li>
+    <li>She <strong>has never driven</strong> a motorbike. <span class="tr">Nunca ha conducido una moto.</span></li>
+  </ul>
+
+  <h3 class="sub">USO 2 · Resultado presente de una acción pasada <span class="level-badge lvl-a2">A2</span></h3>
+  <p>La acción ocurrió en el pasado reciente y su resultado o consecuencia es visible en el presente. El <em>cuándo</em> no importa o no se menciona.</p>
+  <ul class="examples">
+    <li>I <strong>have lost</strong> my keys. <span class="tr">He perdido mis llaves. (y por eso ahora no puedo entrar)</span></li>
+    <li>He <strong>has broken</strong> his arm. <span class="tr">Se ha roto el brazo. (y ahora lo tiene escayolado)</span></li>
+    <li>They <strong>have built</strong> a new hospital. <span class="tr">Han construido un hospital nuevo. (está ahí ahora mismo)</span></li>
+  </ul>
+
+  <h3 class="sub">USO 3 · Acción reciente con just / already / yet <span class="level-badge lvl-b1">B1</span></h3>
+  <p>Describe acciones muy recientes o que se esperaban. Marcadores: <code>just</code> (acabar de), <code>already</code> (ya), <code>yet</code> (todavía / ya en negativos e interrogativos).</p>
+  <ul class="examples">
+    <li>I <strong>have just</strong> finished the report. <span class="tr">Acabo de terminar el informe.</span></li>
+    <li>She <strong>has already</strong> answered. <span class="tr">Ya ha contestado. (antes de lo esperado)</span></li>
+    <li><strong>Have</strong> you called the doctor <strong>yet</strong>? <span class="tr">¿Has llamado ya al médico?</span></li>
+    <li>He <strong>hasn't arrived yet</strong>. <span class="tr">Todavía no ha llegado.</span></li>
+  </ul>
+
+  <h3 class="sub">USO 4 · Situación que continúa hasta el presente: for / since <span class="level-badge lvl-b1">B1</span></h3>
+  <p>Acción o estado que comenzó en el pasado y <em>sigue activo</em> en el presente. <code>for</code> indica duración; <code>since</code> indica punto de inicio.</p>
+  <ul class="examples">
+    <li>I <strong>have lived</strong> in Yecla <strong>for</strong> ten years. <span class="tr">Llevo diez años viviendo en Yecla. (y sigo aquí)</span></li>
+    <li>She <strong>has worked</strong> here <strong>since</strong> 2018. <span class="tr">Trabaja aquí desde 2018.</span></li>
+    <li>We <strong>haven't spoken</strong> <strong>since</strong> the argument. <span class="tr">No hemos hablado desde la discusión.</span></li>
+  </ul>
+
+  <div class="callout danger">
+    <div class="callout-title">🚫 Trampa española con for/since</div>
+    En español usamos el <em>presente</em> para estas situaciones: "Llevo diez años aquí." En inglés es obligatorio usar el Present Perfect: "I <em>have lived</em> here for ten years." Usar el presente ("I live here for ten years") es incorrecto.
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>for + duración</th><th>since + punto de inicio</th></tr>
+      <tr><td>for two hours, for a week, for months, for years, for a long time</td><td>since 2010, since January, since I was a child, since the accident, since then</td></tr>
+    </table>
+  </div>
+
+  <h3 class="sub">USO 5 · Acción pasada en un período no terminado <span class="level-badge lvl-b2">B2</span></h3>
+  <p>Cuando el período de tiempo mencionado todavía no ha terminado: <em>today, this morning, this week, this year</em>…</p>
+  <ul class="examples">
+    <li>I <strong>have drunk</strong> three coffees <strong>today</strong>. <span class="tr">Hoy he tomado tres cafés. (el día no ha terminado)</span></li>
+    <li><strong>This year</strong> the team <strong>has won</strong> five matches. <span class="tr">Este año el equipo ha ganado cinco partidos.</span></li>
+    <li>I <strong>haven't seen</strong> him <strong>this week</strong>. <span class="tr">No le he visto esta semana.</span></li>
+  </ul>
+</section>
+
+<!-- MARCADORES -->
+<section class="section-block" id="marcadores">
+  <h2 class="section-title">5 · Marcadores temporales clave</h2>
+
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Marcador</th><th>Traducción / uso</th><th>Posición típica</th><th>Ejemplo</th></tr>
+      <tr><td><strong>just</strong></td><td>acabar de</td><td>entre have/has y participio</td><td>I have <em>just</em> arrived.</td></tr>
+      <tr><td><strong>already</strong></td><td>ya (antes de lo esperado)</td><td>entre have/has y participio</td><td>She has <em>already</em> left.</td></tr>
+      <tr><td><strong>yet</strong></td><td>ya (interrog.) / todavía (neg.)</td><td>final de frase</td><td>Have you eaten <em>yet</em>?</td></tr>
+      <tr><td><strong>ever</strong></td><td>alguna vez (experiencias)</td><td>entre have/has y participio</td><td>Have you <em>ever</em> seen it?</td></tr>
+      <tr><td><strong>never</strong></td><td>nunca</td><td>entre have/has y participio</td><td>I have <em>never</em> tried it.</td></tr>
+      <tr><td><strong>for</strong></td><td>durante (duración)</td><td>final de frase</td><td>for three days</td></tr>
+      <tr><td><strong>since</strong></td><td>desde (punto de inicio)</td><td>final de frase</td><td>since Monday</td></tr>
+      <tr><td><strong>recently</strong></td><td>recientemente</td><td>final o inicial</td><td>She has <em>recently</em> moved.</td></tr>
+      <tr><td><strong>lately</strong></td><td>últimamente</td><td>final de frase</td><td>I haven't slept well <em>lately</em>.</td></tr>
+      <tr><td><strong>so far</strong></td><td>hasta ahora</td><td>final de frase</td><td>We've done five chapters <em>so far</em>.</td></tr>
+      <tr><td><strong>up to now</strong></td><td>hasta ahora</td><td>final o inicial</td><td><em>Up to now</em>, nothing has changed.</td></tr>
+      <tr><td><strong>this week/year…</strong></td><td>período abierto</td><td>inicial o final</td><td><em>This year</em> I have visited six countries.</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- PP vs PS -->
+<section class="section-block" id="pp-vs-ps">
+  <h2 class="section-title">6 · Present Perfect vs. Past Simple <span>El contraste fundamental</span></h2>
+
+  <p>Esta es la distinción más importante — y la que más confunde a los hispanohablantes. La clave: el <strong>Past Simple</strong> sitúa la acción en un tiempo cerrado y terminado. El <strong>Present Perfect</strong> conecta esa acción con el presente.</p>
+
+  <div class="contrast-grid">
+    <div class="contrast-card pp">
+      <div class="ch">Present Perfect</div>
+      <ul>
+        <li>Tiempo no especificado o abierto</li>
+        <li>Conexión con el presente</li>
+        <li>Con: ever, never, just, already, yet, for, since, recently, so far, this year…</li>
+        <li>Resultado presente importa</li>
+        <li>"I <strong>have seen</strong> that film." (y puedo hablar de ella)</li>
+      </ul>
+    </div>
+    <div class="contrast-card ps">
+      <div class="ch">Past Simple</div>
+      <ul>
+        <li>Tiempo específico y terminado</li>
+        <li>Sin conexión con el presente</li>
+        <li>Con: yesterday, last week, in 2010, ago, when I was…, at 3pm…</li>
+        <li>La acción simplemente ocurrió</li>
+        <li>"I <strong>saw</strong> that film last night." (fecha cerrada)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tbl-wrap" style="margin-top:1rem">
+    <table>
+      <tr><th>Present Perfect ✔</th><th>Past Simple ✔</th></tr>
+      <tr><td>I <strong>have lost</strong> my wallet. (lo sigo buscando)</td><td>I <strong>lost</strong> my wallet last year. (ya lo encontré o pasó y fin)</td></tr>
+      <tr><td>She <strong>has never met</strong> the president.</td><td>She <strong>met</strong> the president in 2019.</td></tr>
+      <tr><td>We <strong>have been</strong> to Rome. (experiencia)</td><td>We <strong>went</strong> to Rome in June. (viaje concreto)</td></tr>
+      <tr><td><strong>Have</strong> you <strong>seen</strong> John today?</td><td><strong>Did</strong> you <strong>see</strong> John yesterday?</td></tr>
+      <tr><td>I <strong>have just</strong> finished.</td><td>I <strong>finished</strong> at 5 o'clock.</td></tr>
+    </table>
+  </div>
+
+  <div class="callout warning">
+    <div class="callout-title">⚠️ Regla práctica de oro</div>
+    Si en la frase hay (o se sobreentiende) una referencia temporal cerrada y específica como <em>yesterday, last night, in 2010, two hours ago, when I was young</em>… → <strong>Past Simple</strong>, siempre.<br>
+    Si la referencia temporal es <em>abierta, implícita o el presente importa</em> → <strong>Present Perfect</strong>.
+  </div>
+</section>
+
+<!-- ERRORES -->
+<section class="section-block" id="errores">
+  <h2 class="section-title">7 · Errores frecuentes de hispanohablantes</h2>
+
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>❌ Incorrecto</th><th>✔ Correcto</th><th>Por qué</th></tr>
+      <tr><td>"I have seen him yesterday."</td><td>"I <strong>saw</strong> him yesterday."</td><td><em>Yesterday</em> es tiempo cerrado → Past Simple</td></tr>
+      <tr><td>"I am living here since three years."</td><td>"I <strong>have lived</strong> here for three years."</td><td>Situación que continúa → PP + for</td></tr>
+      <tr><td>"Did you ever visit Paris?"</td><td>"Have you ever <strong>visited</strong> Paris?"</td><td>Experiencia de vida → PP</td></tr>
+      <tr><td>"I have already did it."</td><td>"I have already <strong>done</strong> it."</td><td>Se necesita participio, no Past Simple</td></tr>
+      <tr><td>"Has he arrived yesterday?"</td><td>"<strong>Did</strong> he arrive yesterday?"</td><td><em>Yesterday</em> cierra el tiempo → Past Simple</td></tr>
+      <tr><td>"Yes, I have seen." (respuesta corta)</td><td>"Yes, I <strong>have</strong>."</td><td>Respuesta corta: solo el auxiliar</td></tr>
+      <tr><td>"She has went home."</td><td>"She has <strong>gone</strong> home."</td><td><em>Went</em> es Past Simple; el participio es <em>gone</em></td></tr>
+      <tr><td>"Since three years"</td><td>"<strong>For</strong> three years"</td><td><em>Since</em> + punto de inicio, <em>for</em> + duración</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════ EJERCICIOS ════════════════════════════════════ -->
+
+<!-- A1 -->
+<section id="ejercicios-a1">
+  <h2 class="ex-section-title">Ejercicios · Nivel A1 <span class="level-badge lvl-a1">A1</span></h2>
+  <p class="ex-type-label">Reconocimiento y forma básica · Ejercicios 1–12</p>
+
+  <!-- E1 MCQ -->
+  <div class="exercise" id="ex1">
+    <div class="ex-num">Ejercicio 1 · Opción múltiple</div>
+    <p class="ex-prompt">¿Cuál es la forma correcta del Present Perfect?</p>
+    <div class="mcq-options" id="mcq1">
+      <button class="mcq-btn" onclick="checkMCQ(1,'A')">A) She go</button>
+      <button class="mcq-btn" onclick="checkMCQ(1,'B')">B) She has gone</button>
+      <button class="mcq-btn" onclick="checkMCQ(1,'C')">C) She have gone</button>
+      <button class="mcq-btn" onclick="checkMCQ(1,'D')">D) She gone</button>
+    </div>
+    <div class="ex-feedback" id="fb1"></div>
+    <div class="btn-row"><button class="btn btn-reveal" onclick="revealMCQ(1,'B')">Revelar</button></div>
+  </div>
+
+  <!-- E2 MCQ -->
+  <div class="exercise" id="ex2">
+    <div class="ex-num">Ejercicio 2 · Opción múltiple</div>
+    <p class="ex-prompt">Selecciona el participio pasado correcto de <em>eat</em>:</p>
+    <div class="mcq-options" id="mcq2">
+      <button class="mcq-btn" onclick="checkMCQ(2,'A')">A) eated</button>
+      <button class="mcq-btn" onclick="checkMCQ(2,'B')">B) ate</button>
+      <button class="mcq-btn" onclick="checkMCQ(2,'C')">C) eaten</button>
+      <button class="mcq-btn" onclick="checkMCQ(2,'D')">D) eating</button>
+    </div>
+    <div class="ex-feedback" id="fb2"></div>
+    <div class="btn-row"><button class="btn btn-reveal" onclick="revealMCQ(2,'C')">Revelar</button></div>
+  </div>
+
+  <!-- E3 Fill -->
+  <div class="exercise" id="ex3">
+    <div class="ex-num">Ejercicio 3 · Completa</div>
+    <p class="ex-prompt">I ________ (finish) my homework. <span class="ex-hint">Rellena con have/has + participio</span></p>
+    <input class="ex-input" id="ans3" placeholder="..." onkeydown="if(event.key==='Enter')checkFill(3)">
+    <div class="ex-feedback" id="fb3"></div>
+    <div class="btn-row">
+      <button class="btn btn-check" onclick="checkFill(3)">Comprobar</button>
+      <button class="btn btn-reveal" onclick="revealFill(3)">Revelar</button>
+    </div>
+  </div>
+
+  <!-- E4 Fill -->
+  <div class="exercise" id="ex4">
+    <div class="ex-num">Ejercicio 4 · Completa</div>
+    <p class="ex-prompt">She ________ (see) that film three times.</p>
+    <input class="ex-input" id="ans4" placeholder="..." onkeydown="if(event.key==='Enter')checkFill(4)">
+    <div class="ex-feedback" id="fb4"></div>
+    <div class="btn-row">
+      <button class="btn btn-check" onclick="checkFill(4)">Comprobar</button>
+      <button class="btn btn-reveal" onclick="revealFill(4)">Revelar</button>
+    </div>
+  </div>
+
+  <!-- E5 Fill -->
+  <div class="exercise" id="ex5">
+    <div class="ex-num">Ejercicio 5 · Completa</div>
+    <p class="ex-prompt">They ________ (not / arrive) yet.</p>
+    <input class="ex-input" id="ans5" placeholder="..." onkeydown="if(event.key==='Enter')checkFill(5)">
+    <div class="ex-feedback" id="fb5"></div>
+    <div class="btn-row">
+      <button class="btn btn-check" onclick="checkFill(5)">Comprobar</button>
+      <button class="btn btn-reveal" onclick="revealFill(5)">Revelar</button>
+    </div>
+  </div>
+
+  <!-- E6 MCQ -->
+  <div class="exercise" id="ex6">
+    <div class="ex-num">Ejercicio 6 · Opción múltiple</div>
+    <p class="ex-prompt">¿Cuál es el auxiliar correcto para <em>he/she/it</em> en Present Perfect?</p>
+    <div class="mcq-options" id="mcq6">
+      <button class="mcq-btn" onclick="checkMCQ(6,'A')">A) have</button>
+      <button class="mcq-btn" onclick="checkMCQ(6,'B')">B) has</button>
+      <button class="mcq-btn" onclick="checkMCQ(6,'C')">C) had</button>
+      <button class="mcq-btn" onclick="checkMCQ(6,'D')">D) is</button>
+    </div>
+    <div class="ex-feedback" id="fb6"></div>
+    <div class="btn-row"><button class="btn btn-reveal" onclick="revealMCQ(6,'B')">Revelar</button></div>
+  </div>
+
+  <!-- E7 Fill -->
+  <div class="exercise" id="ex7">
+    <div class="ex-num">Ejercicio 7 · Completa</div>
+    <p class="ex-prompt">________ you ever ________ (be) to London?</p>
+    <input class="ex-input" id="ans7" placeholder="..." onkeydown="if(event.key==='Enter')checkFill(7)">
+    <div class="ex-feedback" id="fb7"></div>
+    <div class="btn-row">
+      <button class="btn btn-check" onclick="checkFill(7)">Comprobar</button>
+      <button class="btn btn-reveal" onclick="revealFill(7)">Revelar</button>
+    </div>
+  </div>
+
+  <!-- E8 MCQ -->
+  <div class="exercise" id="ex8">
+    <div class="ex-num">Ejercicio 8 · Opción múltiple</div>
+    <p class="ex-prompt">Elige la frase correcta en Present Perfect:</p>
+    <div class="mcq-options" id="mcq8">
+      <button class="mcq-btn" onclick="checkMCQ(8,'A')">A) I have went there</button>
+      <button class="mcq-btn" onclick="checkMCQ(8,'B')">B) I went there</button>
+      <button class="mcq-btn" onclick="checkMCQ(8,'C')">C) I have been there</button>
+      <button class="mcq-btn" onclick="checkMCQ(8,'D')">D) I be there</button>
+    </div>
+    <div class="ex-feedback" id="fb8"></div>
+    <div class="btn-row"><button class="btn btn-reveal" onclick="revealMCQ(8,'C')">Revelar</button></div>
+  </div>
+
+  <!-- E9 Fill -->
+  <div class="exercise" id="ex9">
+    <div class="ex-num">Ejercicio 9 · Completa</div>
+    <p class="ex-prompt">We ________ (not / eat) dinner yet.</p>
+    <input class="ex-input" id="ans9" placeholder="..." onkeydown="if(event.key==='Enter')checkFill(9)">
+    <div class="ex-feedback" id="fb9"></div>
+    <div class="btn-row">
+      <button class="btn btn-check" onclick="checkFill(9)">Comprobar</button>
+      <button class="btn btn-reveal" onclick="revealFill(9)">Revelar</button>
+    </div>
+  </div>
+
+  <!-- E10 MCQ -->
+  <div class="exercise" id="ex10">
+    <div class="ex-num">Ejercicio 10 · Opción múltiple</div>
+    <p class="ex-prompt">El participio pasado de <em>write</em> es:</p>
+    <div class="mcq-options" id="mcq10">
+      <button class="mcq-btn" onclick="checkMCQ(10,'A')">A) wrote</button>
+      <button class="mcq-btn" onclick="checkMCQ(10,'B')">B) writed</button>
+      <button class="mcq-btn" onclick="checkMCQ(10,'C')">C) written</button>
+      <button class="mcq-btn" onclick="checkMCQ(10,'D')">D) writing</button>
+    </div>
+    <div class="ex-feedback" id="fb10"></div>
+    <div class="btn-row"><button class="btn btn-reveal" onclick="revealMCQ(10,'C')">Revelar</button></div>
+  </div>
+
+  <!-- E11 Fill -->
+  <div class="exercise" id="ex11">
+    <div class="ex-num">Ejercicio 11 · Completa</div>
+    <p class="ex-prompt">He ________ (buy) a new car.</p>
+    <input class="ex-input" id="ans11" placeholder="..." onkeydown="if(event.key==='Enter')checkFill(11)">
+    <div class="ex-feedback" id="fb11"></div>
+    <div class="btn-row">
+      <button class="btn btn-check" onclick="checkFill(11)">Comprobar</button>
+      <button class="btn btn-reveal" onclick="revealFill(11)">Revelar</button>
+    </div>
+  </div>
+
+  <!-- E12 MCQ -->
+  <div class="exercise" id="ex12">
+    <div class="ex-num">Ejercicio 12 · Respuesta corta</div>
+    <p class="ex-prompt">"Have they finished?" → Respuesta afirmativa corta correcta:</p>
+    <div class="mcq-options" id="mcq12">
+      <button class="mcq-btn" onclick="checkMCQ(12,'A')">A) Yes, they have finished.</button>
+      <button class="mcq-btn" onclick="checkMCQ(12,'B')">B) Yes, they have.</button>
+      <button class="mcq-btn" onclick="checkMCQ(12,'C')">C) Yes, they did.</button>
+      <button class="mcq-btn" onclick="checkMCQ(12,'D')">D) Yes, they do.</button>
+    </div>
+    <div class="ex-feedback" id="fb12"></div>
+    <div class="btn-row"><button class="btn btn-reveal" onclick="revealMCQ(12,'B')">Revelar</button></div>
+  </div>
+</section>
+
+<!-- A2 -->
+<section id="ejercicios-a2">
+  <h2 class="ex-section-title">Ejercicios · Nivel A2 <span class="level-badge lvl-a2">A2</span></h2>
+  <p class="ex-type-label">Forma y usos básicos · Ejercicios 13–24</p>
+
+  <!-- E13 Fill -->
+  <div class="exercise" id="ex13">
+    <div class="ex-num">Ejercicio 13 · Completa con just / already / yet</div>
+    <p class="ex-prompt">I can't eat more. I ________ ________ (just / eat) a big lunch.</p>
+    <p class="ex-hint">Usa "have just eaten"</p>
+    <input class="ex-input" id="ans13" placeholder="..." onkeydown="if(event.key==='Enter')checkFill(13)">
+    <div class="ex-feedback" id="fb13"></div>
+    <div class="btn-row">
+      <button class="btn btn-check" onclick="checkFill(13)">Comprobar</button>
+      <button class="btn btn-reveal" onclick="revealFill(13)">Revelar</button>
+    </div>
+  </div>
+
+  <!-- E14 Fill -->
+  <div class="exercise" id="ex14">
+    <div class="ex-num">Ejercicio 14 · Completa</div>
+    <p class="ex-prompt">She ________ (already / send) the email. There's no need to remind her.</p>
+    <input class="ex-input" id="ans14" placeholder="..." onkeydown="if(event.key==='Enter')checkFill(14)">
+    <div class="ex-feedback" id="fb14"></div>
+    <div class="btn-row">
+      <button class="btn btn-check" onclick="checkFill(14)">Comprobar</button>
+      <button class="btn btn-reveal" onclick="revealFill(14)">Revelar</button>
+    </div>
+  </div>
+
+  <!-- E15 MCQ -->
+  <div class="exercise" id="ex15">
+    <div class="ex-num">Ejercicio 15 · Opción múltiple</div>
+    <p class="ex-prompt">"Has the patient ________ the medication?" – ¿Cuál es correcta?</p>
+    <div class="mcq-options" id="mcq15">
+      <button class="mcq-btn" onclick="checkMCQ(15,'A')">A) take</button>
+      <button class="mcq-btn" onclick="checkMCQ(15,'B')">B) took</button>
+      <button class="mcq-btn" onclick="checkMCQ(15,'C')">C) taken</button>
+      <button class="mcq-btn" onclick="checkMCQ(15,'D')">D) taking</button>
+    </div>
+    <div class="ex-feedback" id="fb15"></div>
+    <div class="btn-row"><button class="btn btn-reveal" onclick="revealMCQ(15,'C')">Revelar</button></div>
+  </div>
+
+  <!-- E16 Fill -->
+  <div class="exercise" id="ex16">
+    <div class="ex-num">Ejercicio 16 · Completa (negativa)</div>
+    <p class="ex-prompt">I ________ (not / read) the report yet. I'll do it tonight.</p>
+    <input class="ex-input" id="ans16" placeholder="..." onkeydown="if(event.key==='Enter')checkFill(16)">
+    <div class="ex-feedback" id="fb16"></div>
+    <div class="btn-row">
+      <button class="btn btn-check" onclick="checkFill(16)">Comprobar</button>
+      <button class="btn btn-reveal" onclick="revealFill(16)">Revelar</button>
+    </div>
+  </div>
+
+  <!-- E17 MCQ -->
+  <div class="exercise" id="ex17">
+    <div class="ex-num">Ejercicio 17 · Experiencia de vida</div>
+    <p class="ex-prompt">"I ________ never ________ Thai food." – elige la opción correcta:</p>
+    <div class="mcq-options" id="mcq17">
+      <button class="mcq-btn" onclick="checkMCQ(17,'A')">A) did / try</button>
+      <button class="mcq-btn" onclick="checkMCQ(17,'B')">B) have / tried</button>
+      <button class="mcq-btn" onclick="checkMCQ(17,'C')">C) have / try</button>
+      <button class="mcq-btn" onclick="checkMCQ(17,'D')">D) has / tried</button>
+    </div>
+    <div class="ex-feedback" id="fb17"></div>
+    <div class="btn-row"><button class="btn btn-reveal" onclick="revealMCQ(17,'B')">Revelar</button></div>
+  </div>
+
+  <!-- E18 Fill -->
+  <div class="exercise" id="ex18">
+    <div class="ex-num">Ejercicio 18 · Transforma a interrogativa</div>
+    <p class="ex-prompt">Convierte: "They have found a solution." → pregunta</p>
+    <input class="ex-input" id="ans18" placeholder="..." style="width:100%;max-width:360px" onkeydown="if(event.key==='Enter')checkFill(18)">
+    <div class="ex-feedback" id="fb18"></div>
+    <div class="btn-row">
+      <button class="btn btn-check" onclick="checkFill(18)">Comprobar</button>
+      <button class="btn btn-reveal" onclick="revealFill(18)">Revelar</button>
+    </div>
+  </div>
+
+  <!-- E19 MCQ -->
+  <div class="exercise" id="ex19">
+    <div class="ex-num">Ejercicio 19 · Opción múltiple</div>
+    <p class="ex-prompt">I ________ my phone. I can't find it anywhere.</p>
+    <div class="mcq-options" id="mcq19">
+      <button class="mcq-btn" onclick="checkMCQ(19,'A')">A) lose</button>
+      <button class="mcq-btn" onclick="checkMCQ(19,'B')">B) lost</button>
+      <button class="mcq-btn" onclick="checkMCQ(19,'C')">C) have lost</button>
+      <button class="mcq-btn" onclick="checkMCQ(19,'D')">D) had lost</button>
+    </div>
+    <div class="ex-feedback" id="fb19"></div>
+    <div class="btn-row"><button class="btn btn-reveal" onclick="revealMCQ(19,'C')">Revelar</button></div>
+  </div>
+
+  <!-- E20 Fill -->
+  <div class="exercise" id="ex20">
+    <div class="ex-num">Ejercicio 20 · Completa</div>
+    <p class="ex-prompt">________ (you / ever / meet) a famous person?</p>
+    <input class="ex-input" id="ans20" placeholder="..." onkeydown="if(event.key==='Enter')checkFill(20)">
+    <div class="ex-feedback" id="fb20"></div>
+    <div class="btn-row">
+      <button class="btn btn-check" onclick="checkFill(20)">Comprobar</button>
+      <button class="btn btn-reveal" onclick="revealFill(20)">Revelar</button>
+    </div>
+  </div>
+
+  <!-- E21 MCQ -->
+  <div class="exercise" id="ex21">
+    <div class="ex-num">Ejercicio 21 · Opción múltiple</div>
+    <p class="ex-prompt">The doctor ________ the results. She's ready to tell you.</p>
+    <div class="mcq-options" id="mcq21">
+      <button class="mcq-btn" onclick="checkMCQ(21,'A')">A) receive</button>
+      <button class="mcq-btn" onclick="checkMCQ(21,'B')">B) received</button>
+      <button class="mcq-btn" onclick="checkMCQ(21,'C')">C) has received</button>
+      <button class="mcq-btn" onclick="checkMCQ(21,'D')">D) have received</button>
+    </div>
+    <div class="ex-feedback" id="fb21"></div>
+    <div class="btn-row"><button class="btn btn-reveal" onclick="revealMCQ(21,'C')">Revelar</button></div>
+  </div>
+
+  <!-- E22 Fill -->
+  <div class="exercise" id="ex22">
+    <div class="ex-num">Ejercicio 22 · Negativa + yet</div>
+    <p class="ex-prompt">The train ________ (not / leave) yet. We can still catch it!</p>
+    <input class="ex-input" id="ans22" placeholder="..." onkeydown="if(event.key==='Enter')checkFill(22)">
+    <div class="ex-feedback" id="fb22"></div>
+    <div class="btn-row">
+      <button class="btn btn-check" onclick="checkFill(22)">Comprobar</button>
+      <button class="btn btn-reveal" onclick="revealFill(22)">Revelar</button>
+    </div>
+  </div>
+
+  <!-- E23 Fill -->
+  <div class="exercise" id="ex23">
+    <div class="ex-num">Ejercicio 23 · Completa</div>
+    <p class="ex-prompt">My cat ________ (break) three vases this month.</p>
+    <input class="ex-input" id="ans23" placeholder="..." onkeydown="if(event.key==='Enter')checkFill(23)">
+    <div class="ex-feedback" id="fb23"></div>
+    <div class="btn-row">
+      <button class="btn btn-check" onclick="checkFill(23)">Comprobar</button>
+      <button class="btn btn-reveal" onclick="revealFill(23)">Revelar</button>
+    </div>
+  </div>
+
+  <!-- E24 MCQ -->
+  <div class="exercise" id="ex24">
+    <div class="ex-num">Ejercicio 24 · Opción múltiple</div>
+    <p class="ex-prompt">"I ________ that book. It's brilliant." – recomendación basada en experiencia.</p>
+    <div class="mcq-options" id="mcq24">
+      <button class="mcq-btn" onclick="checkMCQ(24,'A')">A) am reading</button>
+      <button class="mcq-btn" onclick="checkMCQ(24,'B')">B) read</button>
+      <button class="mcq-btn" onclick="checkMCQ(24,'C')">C) have read</button>
+      <button class="mcq-btn" onclick="checkMCQ(24,'D')">D) was reading</button>
+    </div>
+    <div class="ex-feedback" id="fb24"></div>
+    <div class="btn-row"><button class="btn btn-reveal" onclick="revealMCQ(24,'C')">Revelar</button></div>
+  </div>
+</section>
+
+<!-- B1 -->
+<section id="ejercicios-b1">
+  <h2 class="ex-section-title">Ejercicios · Nivel B1 <span class="level-badge lvl-b1">B1</span></h2>
+  <p class="ex-type-label">Usos, for/since, contraste PP vs PS · Ejercicios 25–36</p>
+
+  <!-- E25 MCQ for/since -->
+  <div class="exercise" id="ex25">
+    <div class="ex-num">Ejercicio 25 · for o since</div>
+    <p class="ex-prompt">I have known Maria ________ we were at university together.</p>
+    <div class="mcq-options" id="mcq25">
+      <button class="mcq-btn" onclick="checkMCQ(25,'A')">A) for</button>
+      <button class="mcq-btn" onclick="checkMCQ(25,'B')">B) since</button>
+      <button class="mcq-btn" onclick="checkMCQ(25,'C')">C) during</button>
+      <button class="mcq-btn" onclick="checkMCQ(25,'D')">D) from</button>
+    </div>
+    <div class="ex-feedback" id="fb25"></div>
+    <div class="btn-row"><button class="btn btn-reveal" onclick="revealMCQ(25,'B')">Revelar</button></div>
+  </div>
+
+  <!-- E26 MCQ for/since -->
+  <div class="exercise" id="ex26">
+    <div class="ex-num">Ejercicio 26 · for o since</div>
+    <p class="ex-prompt">She hasn't slept ________ three days. She's exhausted.</p>
+    <div class="mcq-options" id="mcq26">
+      <button class="mcq-btn" onclick="checkMCQ(26,'A')">A) since</button>
+      <button class="mcq-btn" onclick="checkMCQ(26,'B')">B) for</button>
+      <button class="mcq-btn" onclick="checkMCQ(26,'C')">C) during</button>
+      <button class="mcq-btn" onclick="checkMCQ(26,'D')">D) ago</button>
+    </div>
+    <div class="ex-feedback" id="fb26"></div>
+    <div class="btn-row"><button class="btn btn-reveal" onclick="revealMCQ(26,'B')">Revelar</button></div>
+  </div>
+
+  <!-- E27 Fill -->
+  <div class="exercise" id="ex27">
+    <div class="ex-num">Ejercicio 27 · Completa con for o since</div>
+    <p class="ex-prompt">He has been a neurologist ________ 2012.</p>
+    <input class="ex-input" id="ans27" placeholder="for / since" onkeydown="if(event.key==='Enter')checkFill(27)">
+    <div class="ex-feedback" id="fb27"></div>
+    <div class="btn-row">
+      <button class="btn btn-check" onclick="checkFill(27)">Comprobar</button>
+      <button class="btn btn-reveal" onclick="revealFill(27)">Revelar</button>
+    </div>
+  </div>
+
+  <!-- E28 PP vs PS MCQ -->
+  <div class="exercise" id="ex28">
+    <div class="ex-num">Ejercicio 28 · PP o Past Simple</div>
+    <p class="ex-prompt">I ________ (see) a great film last Saturday.</p>
+    <div class="mcq-options" id="mcq28">
+      <button class="mcq-btn" onclick="checkMCQ(28,'A')">A) have seen</button>
+      <button class="mcq-btn" onclick="checkMCQ(28,'B')">B) saw</button>
+      <button class="mcq-btn" onclick="checkMCQ(28,'C')">C) see</button>
+      <button class="mcq-btn" onclick="checkMCQ(28,'D')">D) seen</button>
+    </div>
+    <div class="ex-feedback" id="fb28"></div>
+    <div class="btn-row"><button class="btn btn-reveal" onclick="revealMCQ(28,'B')">Revelar</button></div>
+  </div>
+
+  <!-- E29 PP vs PS MCQ -->
+  <div class="exercise" id="ex29">
+    <div class="ex-num">Ejercicio 29 · PP o Past Simple</div>
+    <p class="ex-prompt">We ________ (not / hear) from him since the conference.</p>
+    <div class="mcq-options" id="mcq29">
+      <button class="mcq-btn" onclick="checkMCQ(29,'A')">A) didn't hear</button>
+      <button class="mcq-btn" onclick="checkMCQ(29,'B')">B) haven't heard</button>
+      <button class="mcq-btn" onclick="checkMCQ(29,'C')">C) don't hear</button>
+      <button class="mcq-btn" onclick="checkMCQ(29,'D')">D) hadn't heard</button>
+    </div>
+    <div class="ex-feedback" id="fb29"></div>
+    <div class="btn-row"><button class="btn btn-reveal" onclick="revealMCQ(29,'B')">Revelar</button></div>
+  </div>
+
+  <!-- E30 Fill PP vs PS -->
+  <div class="exercise" id="ex30">
+    <div class="ex-num">Ejercicio 30 · Elige y justifica</div>
+    <p class="ex-prompt">The hospital ________ (open) a new neurology unit this year.</p>
+    <input class="ex-input" id="ans30" placeholder="..." onkeydown="if(event.key==='Enter')checkFill(30)">
+    <div class="ex-feedback" id="fb30"></div>
+    <div class="btn-row">
+      <button class="btn btn-check" onclick="checkFill(30)">Comprobar</button>
+      <button class="btn btn-reveal" onclick="revealFill(30)">Revelar</button>
+    </div>
+  </div>
+
+  <!-- E31 Error ID -->
+  <div class="exercise" id="ex31">
+    <div class="ex-num">Ejercicio 31 · Identifica y corrige el error</div>
+    <div class="err-sent">I have seen him <span class="wrong-part">yesterday</span> at the clinic.</div>
+    <p class="ex-hint">¿Qué falla? Escribe la versión correcta.</p>
+    <input class="ex-input" id="ans31" placeholder="Frase corregida..." style="width:100%;max-width:360px" onkeydown="if(event.key==='Enter')checkFill(31)">
+    <div class="ex-feedback" id="fb31"></div>
+    <div class="btn-row">
+      <button class="btn btn-check" onclick="checkFill(31)">Comprobar</button>
+      <button class="btn btn-reveal" onclick="revealFill(31)">Revelar</button>
+    </div>
+  </div>
+
+  <!-- E32 Error ID -->
+  <div class="exercise" id="ex32">
+    <div class="ex-num">Ejercicio 32 · Identifica y corrige el error</div>
+    <div class="err-sent">She is living here <span class="wrong-part">since</span> five years.</div>
+    <input class="ex-input" id="ans32" placeholder="Frase corregida..." style="width:100%;max-width:400px" onkeydown="if(event.key==='Enter')checkFill(32)">
+    <div class="ex-feedback" id="fb32"></div>
+    <div class="btn-row">
+      <button class="btn btn-check" onclick="checkFill(32)">Comprobar</button>
+      <button class="btn btn-reveal" onclick="revealFill(32)">Revelar</button>
+    </div>
+  </div>
+
+  <!-- E33 Translate -->
+  <div class="exercise" id="ex33">
+    <div class="ex-num">Ejercicio 33 · Traducción ES→EN</div>
+    <p class="ex-prompt">Traduce: "Llevo tres años estudiando inglés." (uso de for + PP)</p>
+    <input class="ex-input" id="ans33" placeholder="I have..." style="width:100%;max-width:400px" onkeydown="if(event.key==='Enter')checkFill(33)">
+    <div class="ex-feedback" id="fb33"></div>
+    <div class="btn-row">
+      <button class="btn btn-check" onclick="checkFill(33)">Comprobar</button>
+      <button class="btn btn-reveal" onclick="revealFill(33)">Revelar</button>
+    </div>
+  </div>
+
+  <!-- E34 Translate -->
+  <div class="exercise" id="ex34">
+    <div class="ex-num">Ejercicio 34 · Traducción ES→EN</div>
+    <p class="ex-prompt">Traduce: "¿Alguna vez has conducido un coche eléctrico?"</p>
+    <input class="ex-input" id="ans34" placeholder="Have you..." style="width:100%;max-width:400px" onkeydown="if(event.key==='Enter')checkFill(34)">
+    <div class="ex-feedback" id="fb34"></div>
+    <div class="btn-row">
+      <button class="btn btn-check" onclick="checkFill(34)">Comprobar</button>
+      <button class="btn btn-reveal" onclick="revealFill(34)">Revelar</button>
+    </div>
+  </div>
+
+  <!-- E35 MCQ contextual -->
+  <div class="exercise" id="ex35">
+    <div class="ex-num">Ejercicio 35 · Contexto médico</div>
+    <p class="ex-prompt">The patient ________ (not / take) his medication since Monday. His BP is high now.</p>
+    <div class="mcq-options" id="mcq35">
+      <button class="mcq-btn" onclick="checkMCQ(35,'A')">A) didn't take</button>
+      <button class="mcq-btn" onclick="checkMCQ(35,'B')">B) hasn't taken</button>
+      <button class="mcq-btn" onclick="checkMCQ(35,'C')">C) don't take</button>
+      <button class="mcq-btn" onclick="checkMCQ(35,'D')">D) wasn't taking</button>
+    </div>
+    <div class="ex-feedback" id="fb35"></div>
+    <div class="btn-row"><button class="btn btn-reveal" onclick="revealMCQ(35,'B')">Revelar</button></div>
+  </div>
+
+  <!-- E36 Fill -->
+  <div class="exercise" id="ex36">
+    <div class="ex-num">Ejercicio 36 · Completa con el verbo correcto</div>
+    <p class="ex-prompt">I ________ (be) to Ireland twice. I love it there.</p>
+    <input class="ex-input" id="ans36" placeholder="..." onkeydown="if(event.key==='Enter')checkFill(36)">
+    <div class="ex-feedback" id="fb36"></div>
+    <div class="btn-row">
+      <button class="btn btn-check" onclick="checkFill(36)">Comprobar</button>
+      <button class="btn btn-reveal" onclick="revealFill(36)">Revelar</button>
+    </div>
+  </div>
+</section>
+
+<!-- B2 -->
+<section id="ejercicios-b2">
+  <h2 class="ex-section-title">Ejercicios · Nivel B2 <span class="level-badge lvl-b2">B2</span></h2>
+  <p class="ex-type-tail">Precisión, matices y contextos variados · Ejercicios 37–48</p>
+
+  <!-- E37 Error ID -->
+  <div class="exercise" id="ex37">
+    <div class="ex-num">Ejercicio 37 · Corrige el error</div>
+    <div class="err-sent">Did you ever <span class="wrong-part">work</span> in a hospital?</div>
+    <input class="ex-input" id="ans37" placeholder="Frase corregida..." style="width:100%;max-width:400px" onkeydown="if(event.key==='Enter')checkFill(37)">
+    <div class="ex-feedback" id="fb37"></div>
+    <div class="btn-row">
+      <button class="btn btn-check" onclick="checkFill(37)">Comprobar</button>
+      <button class="btn btn-reveal" onclick="revealFill(37)">Revelar</button>
+    </div>
+  </div>
+
+  <!-- E38 MCQ gone/been -->
+  <div class="exercise" id="ex38">
+    <div class="ex-num">Ejercicio 38 · gone vs. been</div>
+    <p class="ex-prompt">She's not here. She has ________ to the pharmacy.</p>
+    <div class="mcq-options" id="mcq38">
+      <button class="mcq-btn" onclick="checkMCQ(38,'A')">A) been</button>
+      <button class="mcq-btn" onclick="checkMCQ(38,'B')">B) gone</button>
+      <button class="mcq-btn" onclick="checkMCQ(38,'C')">C) went</button>
+      <button class="mcq-btn" onclick="checkMCQ(38,'D')">D) go</button>
+    </div>
+    <div class="ex-feedback" id="fb38"></div>
+    <div class="btn-row"><button class="btn btn-reveal" onclick="revealMCQ(38,'B')">Revelar</button></div>
+  </div>
+
+  <!-- E39 MCQ gone/been -->
+  <div class="exercise" id="ex39">
+    <div class="ex-num">Ejercicio 39 · gone vs. been</div>
+    <p class="ex-prompt">I have ________ to Tralee before. It's a beautiful town in Kerry.</p>
+    <div class="mcq-options" id="mcq39">
+      <button class="mcq-btn" onclick="checkMCQ(39,'A')">A) gone</button>
+      <button class="mcq-btn" onclick="checkMCQ(39,'B')">B) been</button>
+      <button class="mcq-btn" onclick="checkMCQ(39,'C')">C) went</button>
+      <button class="mcq-btn" onclick="checkMCQ(39,'D')">D) go</button>
+    </div>
+    <div class="ex-feedback" id="fb39"></div>
+    <div class="btn-row"><button class="btn btn-reveal" onclick="revealMCQ(39,'B')">Revelar</button></div>
+  </div>
+
+  <!-- E40 Translate -->
+  <div class="exercise" id="ex40">
+    <div class="ex-num">Ejercicio 40 · Traducción ES→EN</div>
+    <p class="ex-prompt">Traduce: "Esta semana he visto a tres pacientes con NMDA encefalitis."</p>
+    <input class="ex-input" id="ans40" placeholder="This week I have..." style="width:100%;max-width:460px" onkeydown="if(event.key==='Enter')checkFill(40)">
+    <div class="ex-feedback" id="fb40"></div>
+    <div class="btn-row">
+      <button class="btn btn-check" onclick="checkFill(40)">Comprobar</button>
+      <button class="btn btn-reveal" onclick="revealFill(40)">Revelar</button>
+    </div>
+  </div>
+
+  <!-- E41 MCQ already/yet/just -->
+  <div class="exercise" id="ex41">
+    <div class="ex-num">Ejercicio 41 · already / yet / just</div>
+    <p class="ex-prompt">Don't wake her up. She's ________ fallen asleep. She needs rest.</p>
+    <div class="mcq-options" id="mcq41">
+      <button class="mcq-btn" onclick="checkMCQ(41,'A')">A) yet</button>
+      <button class="mcq-btn" onclick="checkMCQ(41,'B')">B) already</button>
+      <button class="mcq-btn" onclick="checkMCQ(41,'C')">C) just</button>
+      <button class="mcq-btn" onclick="checkMCQ(41,'D')">D) ever</button>
+    </div>
+    <div class="ex-feedback" id="fb41"></div>
+    <div class="btn-row"><button class="btn btn-reveal" onclick="revealMCQ(41,'C')">Revelar</button></div>
+  </div>
+
+  <!-- E42 MCQ already/yet/just -->
+  <div class="exercise" id="ex42">
+    <div class="ex-num">Ejercicio 42 · already / yet / just</div>
+    <p class="ex-prompt">Have you spoken to Dr. Connolly ________? The meeting is in five minutes.</p>
+    <div class="mcq-options" id="mcq42">
+      <button class="mcq-btn" onclick="checkMCQ(42,'A')">A) just</button>
+      <button class="mcq-btn" onclick="checkMCQ(42,'B')">B) already</button>
+      <button class="mcq-btn" onclick="checkMCQ(42,'C')">C) ever</button>
+      <button class="mcq-btn" onclick="checkMCQ(42,'D')">D) yet</button>
+    </div>
+    <div class="ex-feedback" id="fb42"></div>
+    <div class="btn-row"><button class="btn btn-reveal" onclick="revealMCQ(42,'D')">Revelar</button></div>
+  </div>
+
+  <!-- E43 Fill -->
+  <div class="exercise" id="ex43">
+    <div class="ex-num">Ejercicio 43 · Completa el diálogo</div>
+    <p class="ex-prompt">"________ (you / ever / work) night shifts?" — "Yes, I ________ lots of them."</p>
+    <p class="ex-hint">Primera parte: pregunta; segunda: respuesta completa</p>
+    <input class="ex-input" id="ans43" placeholder="Have you ever... / I have done..." style="width:100%;max-width:460px" onkeydown="if(event.key==='Enter')checkFill(43)">
+    <div class="ex-feedback" id="fb43"></div>
+    <div class="btn-row">
+      <button class="btn btn-check" onclick="checkFill(43)">Comprobar</button>
+      <button class="btn btn-reveal" onclick="revealFill(43)">Revelar</button>
+    </div>
+  </div>
+
+  <!-- E44 Error multi -->
+  <div class="exercise" id="ex44">
+    <div class="ex-num">Ejercicio 44 · Detecta el error</div>
+    <div class="err-sent">He has <span class="wrong-part">went</span> to the conference last week.</div>
+    <input class="ex-input" id="ans44" placeholder="Frase corregida..." style="width:100%;max-width:460px" onkeydown="if(event.key==='Enter')checkFill(44)">
+    <div class="ex-feedback" id="fb44"></div>
+    <div class="btn-row">
+      <button class="btn btn-check" onclick="checkFill(44)">Comprobar</button>
+      <button class="btn btn-reveal" onclick="revealFill(44)">Revelar</button>
+    </div>
+  </div>
+
+  <!-- E45 Fill negative -->
+  <div class="exercise" id="ex45">
+    <div class="ex-num">Ejercicio 45 · Completa negativa</div>
+    <p class="ex-prompt">The results ________ (not / be) confirmed yet. We're still waiting.</p>
+    <input class="ex-input" id="ans45" placeholder="..." onkeydown="if(event.key==='Enter')checkFill(45)">
+    <div class="ex-feedback" id="fb45"></div>
+    <div class="btn-row">
+      <button class="btn btn-check" onclick="checkFill(45)">Comprobar</button>
+      <button class="btn btn-reveal" onclick="revealFill(45)">Revelar</button>
+    </div>
+  </div>
+
+  <!-- E46 Translate -->
+  <div class="exercise" id="ex46">
+    <div class="ex-num">Ejercicio 46 · Traducción</div>
+    <p class="ex-prompt">Traduce: "Nunca he perdido a ningún paciente de ese modo."</p>
+    <input class="ex-input" id="ans46" placeholder="I have never..." style="width:100%;max-width:460px" onkeydown="if(event.key==='Enter')checkFill(46)">
+    <div class="ex-feedback" id="fb46"></div>
+    <div class="btn-row">
+      <button class="btn btn-check" onclick="checkFill(46)">Comprobar</button>
+      <button class="btn btn-reveal" onclick="revealFill(46)">Revelar</button>
+    </div>
+  </div>
+
+  <!-- E47 MCQ lately/recently -->
+  <div class="exercise" id="ex47">
+    <div class="ex-num">Ejercicio 47 · lately / recently</div>
+    <p class="ex-prompt">I've been feeling tired ________. I think I need a holiday.</p>
+    <div class="mcq-options" id="mcq47">
+      <button class="mcq-btn" onclick="checkMCQ(47,'A')">A) ago</button>
+      <button class="mcq-btn" onclick="checkMCQ(47,'B')">B) yet</button>
+      <button class="mcq-btn" onclick="checkMCQ(47,'C')">C) lately</button>
+      <button class="mcq-btn" onclick="checkMCQ(47,'D')">D) since</button>
+    </div>
+    <div class="ex-feedback" id="fb47"></div>
+    <div class="btn-row"><button class="btn btn-reveal" onclick="revealMCQ(47,'C')">Revelar</button></div>
+  </div>
+
+  <!-- E48 Longer fill -->
+  <div class="exercise" id="ex48">
+    <div class="ex-num">Ejercicio 48 · Párrafo: pon los verbos correctamente</div>
+    <p class="ex-prompt">The patient is a 67-year-old man who ________ (live) in Cork since 1985. He ________ (have) hypertension for 20 years and ________ (not / take) his medication this week.</p>
+    <p class="ex-hint">Tres verbos: uno requiere for, uno since, uno this week</p>
+    <input class="ex-input" id="ans48" placeholder="has lived / has had / hasn't taken" style="width:100%;max-width:480px" onkeydown="if(event.key==='Enter')checkFill(48)">
+    <div class="ex-feedback" id="fb48"></div>
+    <div class="btn-row">
+      <button class="btn btn-check" onclick="checkFill(48)">Comprobar</button>
+      <button class="btn btn-reveal" onclick="revealFill(48)">Revelar</button>
+    </div>
+  </div>
+</section>
+
+<!-- C1 -->
+<section id="ejercicios-c1">
+  <h2 class="ex-section-title">Ejercicios · Nivel C1 <span class="level-badge lvl-c1">C1</span></h2>
+  <p class="ex-type-label">Dominio, matices sutiles y producción libre · Ejercicios 49–60</p>
+
+  <!-- E49 Error subtle -->
+  <div class="exercise" id="ex49">
+    <div class="ex-num">Ejercicio 49 · Error sutil — corrige</div>
+    <div class="err-sent">The committee <span class="wrong-part">have yet to reach</span> a decision, which is disappointing.</div>
+    <p class="ex-hint">¿Es realmente un error? Analiza y explica.</p>
+    <input class="ex-input" id="ans49" placeholder="Correcto o no + justificación..." style="width:100%;max-width:480px" onkeydown="if(event.key==='Enter')checkFill(49)">
+    <div class="ex-feedback" id="fb49"></div>
+    <div class="btn-row">
+      <button class="btn btn-check" onclick="checkFill(49)">Comprobar</button>
+      <button class="btn btn-reveal" onclick="revealFill(49)">Revelar</button>
+    </div>
+  </div>
+
+  <!-- E50 MCQ subtle -->
+  <div class="exercise" id="ex50">
+    <div class="ex-num">Ejercicio 50 · Matiz de relevancia presente</div>
+    <p class="ex-prompt">Contexto: tu colega te pregunta por un artículo. Tú lo leíste hace seis meses. Respuesta más adecuada:</p>
+    <div class="mcq-options" id="mcq50">
+      <button class="mcq-btn" onclick="checkMCQ(50,'A')">A) I read it six months ago.</button>
+      <button class="mcq-btn" onclick="checkMCQ(50,'B')">B) I have read it — the conclusions were interesting.</button>
+      <button class="mcq-btn" onclick="checkMCQ(50,'C')">C) I was reading it six months ago.</button>
+      <button class="mcq-btn" onclick="checkMCQ(50,'D')">D) I had read it.</button>
+    </div>
+    <div class="ex-feedback" id="fb50"></div>
+    <div class="btn-row"><button class="btn btn-reveal" onclick="revealMCQ(50,'B')">Revelar</button></div>
+  </div>
+
+  <!-- E51 MCQ formal -->
+  <div class="exercise" id="ex51">
+    <div class="ex-num">Ejercicio 51 · Registro formal</div>
+    <p class="ex-prompt">En un informe clínico: "The patient ________ experienced progressive dysarthria over the past two months."</p>
+    <div class="mcq-options" id="mcq51">
+      <button class="mcq-btn" onclick="checkMCQ(51,'A')">A) was</button>
+      <button class="mcq-btn" onclick="checkMCQ(51,'B')">B) had</button>
+      <button class="mcq-btn" onclick="checkMCQ(51,'C')">C) has</button>
+      <button class="mcq-btn" onclick="checkMCQ(51,'D')">D) did</button>
+    </div>
+    <div class="ex-feedback" id="fb51"></div>
+    <div class="btn-row"><button class="btn btn-reveal" onclick="revealMCQ(51,'C')">Revelar</button></div>
+  </div>
+
+  <!-- E52 Translate advanced -->
+  <div class="exercise" id="ex52">
+    <div class="ex-num">Ejercicio 52 · Traducción avanzada</div>
+    <p class="ex-prompt">Traduce con precisión: "Hasta la fecha no se ha identificado ninguna mutación causante en este paciente."</p>
+    <input class="ex-input" id="ans52" placeholder="To date, no..." style="width:100%;max-width:540px" onkeydown="if(event.key==='Enter')checkFill(52)">
+    <div class="ex-feedback" id="fb52"></div>
+    <div class="btn-row">
+      <button class="btn btn-check" onclick="checkFill(52)">Comprobar</button>
+      <button class="btn btn-reveal" onclick="revealFill(52)">Revelar</button>
+    </div>
+  </div>
+
+  <!-- E53 MCQ so far -->
+  <div class="exercise" id="ex53">
+    <div class="ex-num">Ejercicio 53 · so far</div>
+    <p class="ex-prompt">Elige la continuación más natural: "We have tested twelve hypotheses so far…"</p>
+    <div class="mcq-options" id="mcq53">
+      <button class="mcq-btn" onclick="checkMCQ(53,'A')">A) …and none of them work.</button>
+      <button class="mcq-btn" onclick="checkMCQ(53,'B')">B) …and none of them worked.</button>
+      <button class="mcq-btn" onclick="checkMCQ(53,'C')">C) …and none of them have proved conclusive.</button>
+      <button class="mcq-btn" onclick="checkMCQ(53,'D')">D) …and none of them were conclusive.</button>
+    </div>
+    <div class="ex-feedback" id="fb53"></div>
+    <div class="btn-row"><button class="btn btn-reveal" onclick="revealMCQ(53,'C')">Revelar</button></div>
+  </div>
+
+  <!-- E54 Error subtle passive -->
+  <div class="exercise" id="ex54">
+    <div class="ex-num">Ejercicio 54 · Corrige la frase</div>
+    <div class="err-sent">The diagnosis <span class="wrong-part">has been made</span> yesterday by the radiologist.</div>
+    <input class="ex-input" id="ans54" placeholder="Frase corregida..." style="width:100%;max-width:480px" onkeydown="if(event.key==='Enter')checkFill(54)">
+    <div class="ex-feedback" id="fb54"></div>
+    <div class="btn-row">
+      <button class="btn btn-check" onclick="checkFill(54)">Comprobar</button>
+      <button class="btn btn-reveal" onclick="revealFill(54)">Revelar</button>
+    </div>
+  </div>
+
+  <!-- E55 Open writing -->
+  <div class="exercise" id="ex55">
+    <div class="ex-num">Ejercicio 55 · Producción libre</div>
+    <p class="ex-prompt">Escribe una frase en Present Perfect sobre tus logros como neurólogo. Usa <em>have + past participle</em> y un marcador temporal.</p>
+    <textarea id="ans55" style="width:100%;border:1.5px solid var(--border);border-radius:var(--radius);padding:0.55rem 0.8rem;font-size:0.95rem;font-family:var(--ff-body);background:var(--paper);resize:vertical;min-height:70px;outline:none;" placeholder="Over the past few years, I have..."></textarea>
+    <div class="ex-feedback" id="fb55"></div>
+    <div class="btn-row"><button class="btn btn-check" onclick="checkOpenWriting(55)">Ver consejo</button></div>
+  </div>
+
+  <!-- E56 MCQ nuance -->
+  <div class="exercise" id="ex56">
+    <div class="ex-num">Ejercicio 56 · Matiz: I've lived vs I lived</div>
+    <p class="ex-prompt">Eliges entre dos frases en una entrevista de trabajo en Irlanda. ¿Cuál suena más natural si todavía vives allí?</p>
+    <div class="mcq-options" id="mcq56">
+      <button class="mcq-btn" onclick="checkMCQ(56,'A')">A) "I lived in Spain all my life."</button>
+      <button class="mcq-btn" onclick="checkMCQ(56,'B')">B) "I have lived in Spain all my life."</button>
+    </div>
+    <div class="ex-feedback" id="fb56"></div>
+    <div class="btn-row"><button class="btn btn-reveal" onclick="revealMCQ(56,'B')">Revelar</button></div>
+  </div>
+
+  <!-- E57 Error clinical -->
+  <div class="exercise" id="ex57">
+    <div class="ex-num">Ejercicio 57 · Contexto clínico — corrige</div>
+    <div class="err-sent">The MRI scan <span class="wrong-part">showed</span> new lesions since the last visit.</div>
+    <input class="ex-input" id="ans57" placeholder="Frase corregida..." style="width:100%;max-width:480px" onkeydown="if(event.key==='Enter')checkFill(57)">
+    <div class="ex-feedback" id="fb57"></div>
+    <div class="btn-row">
+      <button class="btn btn-check" onclick="checkFill(57)">Comprobar</button>
+      <button class="btn btn-reveal" onclick="revealFill(57)">Revelar</button>
+    </div>
+  </div>
+
+  <!-- E58 MCQ yet/already advanced -->
+  <div class="exercise" id="ex58">
+    <div class="ex-num">Ejercicio 58 · yet / already (avanzado)</div>
+    <p class="ex-prompt">"I know the hospital well — I've ________ been to three departments this morning."</p>
+    <div class="mcq-options" id="mcq58">
+      <button class="mcq-btn" onclick="checkMCQ(58,'A')">A) yet</button>
+      <button class="mcq-btn" onclick="checkMCQ(58,'B')">B) never</button>
+      <button class="mcq-btn" onclick="checkMCQ(58,'C')">C) already</button>
+      <button class="mcq-btn" onclick="checkMCQ(58,'D')">D) ever</button>
+    </div>
+    <div class="ex-feedback" id="fb58"></div>
+    <div class="btn-row"><button class="btn btn-reveal" onclick="revealMCQ(58,'C')">Revelar</button></div>
+  </div>
+
+  <!-- E59 Translate formal -->
+  <div class="exercise" id="ex59">
+    <div class="ex-num">Ejercicio 59 · Traducción formal (informe)</div>
+    <p class="ex-prompt">Traduce para un informe médico: "Los síntomas han mejorado progresivamente desde el inicio del tratamiento con rituximab."</p>
+    <input class="ex-input" id="ans59" placeholder="The symptoms have..." style="width:100%;max-width:560px" onkeydown="if(event.key==='Enter')checkFill(59)">
+    <div class="ex-feedback" id="fb59"></div>
+    <div class="btn-row">
+      <button class="btn btn-check" onclick="checkFill(59)">Comprobar</button>
+      <button class="btn btn-reveal" onclick="revealFill(59)">Revelar</button>
+    </div>
+  </div>
+
+  <!-- E60 Open clinical -->
+  <div class="exercise" id="ex60">
+    <div class="ex-num">Ejercicio 60 · Producción libre clínica</div>
+    <p class="ex-prompt">Escribe 2–3 frases en inglés como si redactaras un párrafo de evolución clínica de un paciente, usando el Present Perfect al menos dos veces. Contexto: paciente con ictus isquémico, tres semanas de evolución.</p>
+    <textarea id="ans60" style="width:100%;border:1.5px solid var(--border);border-radius:var(--radius);padding:0.55rem 0.8rem;font-size:0.95rem;font-family:var(--ff-body);background:var(--paper);resize:vertical;min-height:90px;outline:none;" placeholder="The patient has been admitted for three weeks. Since the stroke..."></textarea>
+    <div class="ex-feedback" id="fb60"></div>
+    <div class="btn-row"><button class="btn btn-check" onclick="checkOpenWriting(60)">Ver consejo</button></div>
+  </div>
+</section>
+
+<!-- SCORE -->
+<div class="score-panel" id="scorePanel" style="display:none">
+  <h2>Resultado final</h2>
+  <div class="score-big" id="scoreBig">–</div>
+  <div class="score-sub" id="scoreSub">de los 58 ejercicios evaluables</div>
+  <div class="score-msg" id="scoreMsg"></div>
+</div>
+
+<div style="text-align:center;margin-top:2rem">
+  <button class="btn btn-check" style="font-size:1rem;padding:0.7rem 2rem" onclick="showScore()">Ver mi puntuación final</button>
+</div>
+
+</div><!-- /page-wrap -->
+
+<footer class="footer">
+  <p>Creada por <strong>Juan Carlos Navarro</strong> · <a href="https://jng12g.github.io/english/grammar/index.html">← Volver a Gramática</a> · <a href="https://neurotools.es">NEUROTOOLS</a></p>
+</footer>
+
+<script>
+// ─── DATA ───────────────────────────────────────────────────────────────────
+const FILL_DATA = {
+  3:  { answers: ['have finished'], hint: 'have + participio de finish' },
+  4:  { answers: ['has seen'], hint: 'she → has + seen (participio de see)' },
+  5:  { answers: ["haven't arrived","have not arrived"], hint: 'they → have not (haven\'t) + arrived' },
+  7:  { answers: ['have you ever been'], hint: 'have + you + ever + been (participio de be)' },
+  9:  { answers: ["haven't eaten","have not eaten"], hint: 'we → haven\'t + eaten (participio de eat)' },
+  11: { answers: ['has bought'], hint: 'he → has + bought (participio de buy)' },
+  13: { answers: ['have just eaten'], hint: 'have + just + eaten (participio de eat)' },
+  14: { answers: ['has already sent'], hint: 'she → has + already + sent (participio de send)' },
+  16: { answers: ["haven't read","have not read"], hint: 'I → haven\'t + read (participio de read, pronunciado /rɛd/)' },
+  18: { answers: ['have they found a solution?','have they found a solution'], hint: 'Have + they + found a solution?' },
+  20: { answers: ['have you ever met'], hint: 'Have + you + ever + met (participio de meet)' },
+  22: { answers: ["hasn't left","has not left"], hint: 'the train (it) → hasn\'t + left (participio de leave)' },
+  23: { answers: ['has broken'], hint: 'my cat (she/it) → has + broken (participio de break)' },
+  27: { answers: ['since'], hint: '2012 es un punto en el tiempo → since' },
+  30: { answers: ['has opened'], hint: 'this year = período abierto → PP; the hospital → has opened' },
+  31: { answers: ['i saw him yesterday at the clinic','i saw him yesterday','saw him yesterday at the clinic'], hint: '"Yesterday" cierra el tiempo → Past Simple: "I saw him yesterday at the clinic."' },
+  32: { answers: ["she has lived here for five years","she's lived here for five years"], hint: 'Situación continua → PP; duración → for: "She has lived here for five years."' },
+  33: { answers: ['i have studied english for three years',"i've studied english for three years",'i have been studying english for three years'], hint: '"I have studied English for three years." (o "have been studying")' },
+  34: { answers: ['have you ever driven an electric car?','have you ever driven an electric car'], hint: '"Have you ever driven an electric car?"' },
+  36: { answers: ['have been'], hint: 'experiencia de visita → have been to (no gone, porque has vuelto)' },
+  37: { answers: ['have you ever worked in a hospital?','have you ever worked in a hospital'], hint: '"Ever" en experiencias → Present Perfect: "Have you ever worked in a hospital?"' },
+  40: { answers: ['this week i have seen three patients with nmda encephalitis',"this week i've seen three patients with nmda encephalitis",'i have seen three patients with nmda encephalitis this week'], hint: '"This week I have seen three patients with NMDA encephalitis."' },
+  43: { answers: ['have you ever worked night shifts / i have done','have you ever worked night shifts? / yes, i have done lots of them'], hint: '"Have you ever worked night shifts?" / "I have done lots of them."' },
+  44: { answers: ['he went to the conference last week'], hint: '"Last week" → Past Simple: "He went to the conference last week."' },
+  45: { answers: ["haven't been confirmed","have not been confirmed"], hint: 'negativa PP pasiva: "haven\'t been confirmed"' },
+  46: { answers: ['i have never lost a patient in that way',"i've never lost a patient in that way"], hint: '"I have never lost a patient in that way."' },
+  48: { answers: ['has lived / has had / hasn\'t taken','has lived, has had, hasn\'t taken'], hint: '"has lived" (since 1985) / "has had" (for 20 years) / "hasn\'t taken" (this week)' },
+  49: { answers: ['correct','correcto','es correcto'], hint: '"Have yet to + infinitivo" es una construcción formal correcta en inglés, equivalente a "todavía no han..." Es estándar en inglés formal/escrito.' },
+  52: { answers: ['to date, no causative mutation has been identified in this patient','to date no causative mutation has been identified in this patient'], hint: '"To date, no causative mutation has been identified in this patient."' },
+  54: { answers: ['the diagnosis was made yesterday by the radiologist'], hint: '"Yesterday" → Past Simple pasiva: "The diagnosis was made yesterday by the radiologist."' },
+  57: { answers: ['the mri scan has shown new lesions since the last visit'], hint: '"Since" implica conexión con el presente → PP: "The MRI scan has shown new lesions since the last visit."' },
+  59: { answers: ['the symptoms have improved progressively since the initiation of rituximab','the symptoms have progressively improved since the start of rituximab treatment','the symptoms have improved progressively since the start of rituximab'], hint: '"The symptoms have improved progressively since the initiation of rituximab treatment."' },
+};
+
+const MCQ_DATA = {
+  1:  { answer: 'B', explanation: '"She has gone" = she + has (3ª persona sing.) + gone (participio de go). Opción C usa "have" con she, que es incorrecto.' },
+  2:  { answer: 'C', explanation: '"Eaten" es el participio pasado de "eat". "Ate" es el Past Simple. En PP siempre necesitas el participio.' },
+  6:  { answer: 'B', explanation: 'He/she/it usan "has" como auxiliar del Present Perfect. El resto de pronombres usan "have".' },
+  8:  { answer: 'C', explanation: '"I have been there" = experiencia (he visitado ese lugar). "I went" es Past Simple. "Went" no es participio: el participio de "go" es "gone/been".' },
+  10: { answer: 'C', explanation: '"Written" es el participio pasado de "write". "Wrote" es Past Simple. En PP siempre se usa el participio.' },
+  12: { answer: 'B', explanation: 'Las respuestas cortas en PP usan solo el auxiliar: "Yes, they have." Nunca se repite el participio ni se usa "did" o "do".' },
+  15: { answer: 'C', explanation: 'Después de "has" siempre va el participio pasado. El participio de "take" es "taken", no "took" (Past Simple).' },
+  17: { answer: 'B', explanation: '"I" + "have" (no "has") + "never" + "tried" (participio de try). "I have never tried" es la forma correcta para experiencias negativas.' },
+  19: { answer: 'C', explanation: '"I can\'t find it" = el resultado es presente, la acción conecta con ahora → Present Perfect: "I have lost".' },
+  21: { answer: 'C', explanation: '"The doctor" = she → "has received". El resultado es presente (está lista para hablar contigo ahora).' },
+  24: { answer: 'C', explanation: 'Recomendación basada en experiencia personal → PP: "I have read that book." El tiempo exacto no importa.' },
+  25: { answer: 'B', explanation: '"We were at university together" es un punto de inicio en el tiempo → "since". "For" se usa con duraciones.' },
+  26: { answer: 'B', explanation: '"Three days" es una duración → "for". Si fuera un punto de inicio usaríamos "since": "since Monday".' },
+  28: { answer: 'B', explanation: '"Last Saturday" es tiempo cerrado y terminado → Past Simple: "saw". Nunca se combina PP con "yesterday/last...".' },
+  29: { answer: 'B', explanation: '"Since the conference" + negativo → PP negativo: "haven\'t heard". La situación sigue abierta hasta el presente.' },
+  35: { answer: 'B', explanation: '"Since Monday" = desde un punto pasado hasta ahora → PP negativo. El resultado (BP alta) es presente.' },
+  38: { answer: 'B', explanation: '"Gone to" = se fue y sigue allí. "Been to" = fue y volvió. La frase dice "She\'s not here" → todavía está allí → "gone".' },
+  39: { answer: 'B', explanation: '"I have been to Tralee" = experiencia de visita (y has vuelto). "Gone" significaría que todavía estás allí.' },
+  41: { answer: 'C', explanation: '"Just" = hace muy poco tiempo. "Don\'t wake her up" + acción muy reciente → "just fallen asleep".' },
+  42: { answer: 'D', explanation: '"Yet" en interrogativas = ¿ya? / ¿todavía? Señala que la acción era esperada. En preguntas siempre al final.' },
+  47: { answer: 'C', explanation: '"Lately" = últimamente, en un período reciente sin especificar. Va al final y funciona perfectamente con PP.' },
+  50: { answer: 'B', explanation: 'Si el artículo es relevante para la conversación ahora (puedes hablar sobre él), usas PP aunque lo leyeras hace meses. La opción A también es válida, pero B es más natural cuando quieres conectar con la conversación presente.' },
+  51: { answer: 'C', explanation: '"Over the past two months" = período que llega hasta el presente → PP: "has experienced". El paciente sigue teniendo síntomas ahora.' },
+  53: { answer: 'C', explanation: '"So far" sugiere que la investigación sigue → la continuación más coherente también usa PP: "have proved". La opción B (Past Simple) cortaría esa continuidad temporal.' },
+  56: { answer: 'B', explanation: 'Si todavía vives en España (situación que continúa), el PP es obligatorio: "I have lived in Spain all my life." El Past Simple daría a entender que ya no vives allí.' },
+  58: { answer: 'C', explanation: '"Already" con afirmativas = ya (más de lo esperado o antes de lo previsto). "I\'ve already been to three departments this morning."' },
+};
+
+// ─── STATE ──────────────────────────────────────────────────────────────────
+const completed = new Set();
+const totalEvaluable = 58; // 60 - 2 open writing
+
+function updateProgress() {
+  const n = completed.size;
+  document.getElementById('progressFill').style.width = (n / 60 * 100) + '%';
+  document.getElementById('progressCount').textContent = n + ' / 60';
+}
+
+// ─── MCQ ────────────────────────────────────────────────────────────────────
+function checkMCQ(num, chosen) {
+  const data = MCQ_DATA[num];
+  const wrap = document.getElementById('ex' + num);
+  const fb   = document.getElementById('fb'  + num);
+  const btns = document.querySelectorAll('#mcq' + num + ' .mcq-btn');
+
+  btns.forEach(b => b.disabled = true);
+
+  btns.forEach(b => {
+    const letter = b.textContent.trim()[0];
+    if (letter === data.answer) b.classList.add('selected-correct');
+  });
+
+  if (chosen === data.answer) {
+    wrap.classList.add('correct');
+    fb.className = 'ex-feedback show fb-ok';
+    fb.innerHTML = '✅ <strong>Correcto.</strong> ' + data.explanation;
+    if (!completed.has('ex' + num)) { completed.add('ex' + num); updateProgress(); }
+  } else {
+    wrap.classList.add('wrong');
+    const btn = document.querySelector('#mcq' + num + ' .mcq-btn:nth-child(' +
+      (['A','B','C','D'].indexOf(chosen)+1) + ')');
+    if (btn) btn.classList.add('selected-wrong');
+    fb.className = 'ex-feedback show fb-err';
+    fb.innerHTML = '❌ <strong>Incorrecto.</strong> ' + data.explanation;
+    if (!completed.has('ex' + num)) { completed.add('ex' + num); updateProgress(); }
+  }
+}
+
+function revealMCQ(num, answer) {
+  const data = MCQ_DATA[num];
+  const wrap = document.getElementById('ex' + num);
+  const fb   = document.getElementById('fb'  + num);
+  const btns = document.querySelectorAll('#mcq' + num + ' .mcq-btn');
+  btns.forEach(b => b.disabled = true);
+  btns.forEach(b => {
+    if (b.textContent.trim()[0] === answer) b.classList.add('reveal-correct');
+  });
+  wrap.classList.add('revealed');
+  fb.className = 'ex-feedback show fb-rev';
+  fb.innerHTML = '💡 <strong>Respuesta:</strong> ' + answer + '. ' + (data ? data.explanation : '');
+  if (!completed.has('ex' + num)) { completed.add('ex' + num); updateProgress(); }
+}
+
+// ─── FILL-IN ─────────────────────────────────────────────────────────────────
+function normalize(s) {
+  return s.toLowerCase()
+    .replace(/[áàä]/g,'a')
+    .replace(/[éèë]/g,'e')
+    .replace(/[íìï]/g,'i')
+    .replace(/[óòö]/g,'o')
+    .replace(/[úùü]/g,'u')
+    .replace(/[¿¡]/g,'')
+    .replace(/\s+/g,' ')
+    .trim();
+}
+
+function checkFill(num) {
+  const data = FILL_DATA[num];
+  const input = document.getElementById('ans' + num);
+  const fb    = document.getElementById('fb'  + num);
+  const wrap  = document.getElementById('ex'  + num);
+  const val   = normalize(input.value);
+
+  if (!val) return;
+
+  const isOk = data.answers.some(a => normalize(a) === val || val.includes(normalize(a)));
+
+  wrap.classList.remove('correct','wrong','revealed');
+  if (isOk) {
+    wrap.classList.add('correct');
+    fb.className = 'ex-feedback show fb-ok';
+    fb.innerHTML = '✅ <strong>¡Correcto!</strong> ' + (data.explanation || '');
+    if (!completed.has('ex' + num)) { completed.add('ex' + num); updateProgress(); }
+  } else {
+    wrap.classList.add('wrong');
+    fb.className = 'ex-feedback show fb-err';
+    fb.innerHTML = '❌ <strong>Repasa:</strong> ' + data.hint;
+    if (!completed.has('ex' + num)) { completed.add('ex' + num); updateProgress(); }
+  }
+  input.disabled = true;
+}
+
+function revealFill(num) {
+  const data  = FILL_DATA[num];
+  const input = document.getElementById('ans' + num);
+  const fb    = document.getElementById('fb'  + num);
+  const wrap  = document.getElementById('ex'  + num);
+  input.value = data.answers[0];
+  input.disabled = true;
+  wrap.classList.remove('correct','wrong');
+  wrap.classList.add('revealed');
+  fb.className = 'ex-feedback show fb-rev';
+  fb.innerHTML = '💡 <strong>Respuesta:</strong> ' + data.hint;
+  if (!completed.has('ex' + num)) { completed.add('ex' + num); updateProgress(); }
+}
+
+// ─── OPEN WRITING ────────────────────────────────────────────────────────────
+const OPEN_TIPS = {
+  55: 'Comprueba: ¿Has usado <em>have/has + participio</em>? ¿Hay un marcador como <em>over the past years, recently, so far, for/since</em>? Ejemplo: <em>"Over the past twelve years, I have treated hundreds of stroke patients and developed several clinical decision-support tools."</em>',
+  60: 'Ejemplo: <em>"The patient has been admitted for three weeks following an ischaemic stroke in the MCA territory. Since admission, his motor function has improved significantly, although mild dysarthria persists. He has undergone two sessions of physiotherapy and has not experienced any new neurological deficits."</em> ¿Has mantenido el PP para lo que conecta con el presente?',
+};
+
+function checkOpenWriting(num) {
+  const ta = document.getElementById('ans' + num);
+  const fb = document.getElementById('fb'  + num);
+  const wrap = document.getElementById('ex' + num);
+  if (!ta.value.trim()) { alert('Escribe algo primero.'); return; }
+  wrap.classList.add('revealed');
+  fb.className = 'ex-feedback show fb-rev';
+  fb.innerHTML = '💡 <strong>Consejo:</strong> ' + OPEN_TIPS[num];
+  if (!completed.has('ex' + num)) { completed.add('ex' + num); updateProgress(); }
+}
+
+// ─── SCORE ───────────────────────────────────────────────────────────────────
+function showScore() {
+  const correct = [...completed].filter(id => {
+    const el = document.getElementById(id);
+    return el && el.classList.contains('correct');
+  }).length;
+  const done = completed.size;
+  const panel = document.getElementById('scorePanel');
+  panel.style.display = 'block';
+  document.getElementById('scoreBig').textContent = correct + ' / ' + done;
+  document.getElementById('scoreSub').textContent = 'ejercicios completados';
+  let msg = '';
+  const pct = done ? correct / done : 0;
+  if (pct >= 0.9)      msg = '🏆 Excelente dominio del Present Perfect. ¡Sigue así!';
+  else if (pct >= 0.75) msg = '👍 Muy buen trabajo. Repasa los errores y vuelve a intentarlos.';
+  else if (pct >= 0.5)  msg = '📚 Buen esfuerzo. Revisa la teoría de los usos que más fallan.';
+  else                  msg = '💪 Sigue practicando. La constancia es la clave.';
+  document.getElementById('scoreMsg').textContent = msg;
+  panel.scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
