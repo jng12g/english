@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Past Simple · Neuro-Workbook (A1–C1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Instrument+Sans:ital,wght@0,400..700;1,400..600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f4efe6;
+  --paper-2:#ece3d4;
+  --paper-3:#e3d8c4;
+  --ink:#2b2420;
+  --ink-soft:#5a4f46;
+  --burgundy:#7a1f2b;
+  --burgundy-2:#9c3340;
+  --gold:#b4862f;
+  --sage:#4d6b54;
+  --sage-bg:#e4ecdf;
+  --clay:#b5552f;
+  --clay-bg:#f3e2d6;
+  --line:#d8cbb4;
+  --shadow:0 1px 2px rgba(43,36,32,.06),0 8px 24px -12px rgba(43,36,32,.18);
+  --r:14px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Instrument Sans",system-ui,sans-serif;
+  font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(circle at 12% 6%,rgba(180,134,47,.05),transparent 40%),radial-gradient(circle at 88% 2%,rgba(122,31,43,.05),transparent 38%);
+}
+.wrap{max-width:880px;margin:0 auto;padding:0 22px}
+
+/* ---------- top progress bar ---------- */
+.topbar{position:sticky;top:0;z-index:60;background:rgba(244,239,230,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:16px;padding-top:10px;padding-bottom:10px}
+.brand{font-family:"Fraunces",serif;font-weight:600;font-size:18px;letter-spacing:-.01em;white-space:nowrap}
+.brand b{color:var(--burgundy)}
+.progress{flex:1;height:9px;border-radius:99px;background:var(--paper-3);overflow:hidden;border:1px solid var(--line)}
+.progress>span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--burgundy),var(--gold));transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.score{font-family:"JetBrains Mono",monospace;font-size:13px;font-weight:700;white-space:nowrap}
+.score b{color:var(--burgundy)}
+
+/* ---------- hero ---------- */
+.hero{padding:64px 0 28px;position:relative;overflow:hidden}
+.eyebrow{font-family:"JetBrains Mono",monospace;font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--burgundy);font-weight:700}
+.hero h1{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(40px,8vw,72px);line-height:.98;letter-spacing:-.025em;margin:.32em 0 .18em}
+.hero h1 em{font-style:italic;color:var(--burgundy)}
+.hero .lede{font-size:19px;color:var(--ink-soft);max-width:60ch}
+.sig{margin:34px 0 6px}
+/* signature: la línea del tiempo */
+.timeline{position:relative;height:96px;margin:26px 0 6px}
+.timeline svg{width:100%;height:100%;overflow:visible}
+.tl-label{font-family:"JetBrains Mono",monospace;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;fill:var(--ink-soft)}
+.tl-now{fill:var(--ink-soft)}
+.tl-point{fill:var(--burgundy)}
+.tl-tag{font-family:"Fraunces",serif;font-style:italic;font-size:18px;fill:var(--burgundy)}
+
+/* ---------- modules ---------- */
+.module{padding:46px 0;border-top:1px solid var(--line)}
+.mod-head{display:flex;align-items:baseline;gap:14px;margin-bottom:6px;flex-wrap:wrap}
+.level{font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:700;letter-spacing:.08em;color:#fff;background:var(--burgundy);padding:3px 9px;border-radius:7px}
+.level.a2{background:var(--gold)}
+.level.b1{background:var(--sage)}
+.level.b2{background:var(--clay)}
+.level.c1{background:var(--ink)}
+.modnum{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--ink-soft);letter-spacing:.1em}
+h2{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(26px,5vw,38px);line-height:1.05;letter-spacing:-.02em;margin:.1em 0 .5em}
+h3{font-family:"Fraunces",serif;font-weight:600;font-size:22px;letter-spacing:-.01em;margin:1.8em 0 .4em}
+p{margin:0 0 1em}
+.en{font-style:italic;color:var(--burgundy-2)}
+strong{font-weight:700}
+code,.mono{font-family:"JetBrains Mono",monospace;font-size:.9em;background:var(--paper-2);padding:1px 6px;border-radius:5px}
+
+/* formula / sintaxis blocks */
+.formula{font-family:"JetBrains Mono",monospace;background:var(--ink);color:var(--paper);border-radius:var(--r);padding:18px 20px;font-size:15px;line-height:1.9;overflow-x:auto;margin:18px 0}
+.formula .k{color:var(--gold)}
+.formula .v{color:#e8a7af}
+.formula .o{color:#9fcf9a}
+.formula .c{color:#8a8378;font-style:italic}
+
+/* neuro card */
+.neuro{position:relative;background:var(--paper-2);border:1px solid var(--line);border-left:5px solid var(--burgundy);border-radius:var(--r);padding:18px 20px 18px 22px;margin:20px 0;box-shadow:var(--shadow)}
+.neuro .tag{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--burgundy);font-weight:700;display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.neuro .tag svg{width:16px;height:16px}
+.neuro p:last-child{margin-bottom:0}
+.contrast{border-left-color:var(--gold)}
+.contrast .tag{color:var(--gold)}
+.warn{border-left-color:var(--clay);background:var(--clay-bg)}
+.warn .tag{color:var(--clay)}
+
+/* tables */
+.tbl{width:100%;border-collapse:collapse;margin:18px 0;font-size:15.5px;background:#fff;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+.tbl th{background:var(--ink);color:var(--paper);text-align:left;padding:10px 13px;font-weight:600;font-size:13px;letter-spacing:.04em}
+.tbl td{padding:9px 13px;border-top:1px solid var(--line);vertical-align:top}
+.tbl tr:nth-child(even) td{background:var(--paper)}
+.tbl .ipa{font-family:"JetBrains Mono",monospace;color:var(--burgundy)}
+.tbl .ex{color:var(--ink-soft);font-style:italic}
+
+/* ---------- exercise blocks ---------- */
+.ex{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;margin:26px 0;box-shadow:var(--shadow)}
+.ex-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:4px;flex-wrap:wrap}
+.ex-kicker{font-family:"JetBrains Mono",monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--burgundy);font-weight:700}
+.ex-type{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--ink-soft);background:var(--paper-2);padding:2px 8px;border-radius:6px}
+.ex h3{margin:.1em 0 .2em;font-size:20px}
+.ex .hint{color:var(--ink-soft);font-size:15px;margin-bottom:14px}
+
+/* fill-in items */
+.item{margin:11px 0;line-height:2.1}
+.item .num{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--burgundy);font-weight:700;margin-right:8px}
+.fill{font-family:"JetBrains Mono",monospace;font-size:15px;border:none;border-bottom:2px solid var(--burgundy);background:var(--paper);min-width:90px;width:130px;padding:4px 8px;border-radius:6px 6px 0 0;color:var(--ink);text-align:center}
+.fill:focus{outline:none;background:#fff;box-shadow:0 2px 0 var(--burgundy)}
+.fill.ok{border-color:var(--sage);background:var(--sage-bg);color:var(--sage)}
+.fill.no{border-color:var(--clay);background:var(--clay-bg);color:var(--clay)}
+.cue{color:var(--ink-soft);font-style:italic;font-size:14px}
+.sol{display:none;font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--sage);margin-left:6px}
+.sol.show{display:inline}
+
+/* MCQ */
+.q{margin:14px 0}
+.q .stem{margin-bottom:8px}
+.q .stem .num{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--burgundy);font-weight:700;margin-right:6px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{font-family:"Instrument Sans",sans-serif;font-size:15px;border:1.5px solid var(--line);background:var(--paper);padding:7px 13px;border-radius:10px;cursor:pointer;transition:.15s;color:var(--ink)}
+.opt:hover{border-color:var(--burgundy);transform:translateY(-1px)}
+.opt.sel{border-color:var(--burgundy);background:#fff;box-shadow:inset 0 0 0 1px var(--burgundy)}
+.opt.ok{border-color:var(--sage);background:var(--sage-bg);color:var(--sage);font-weight:600}
+.opt.no{border-color:var(--clay);background:var(--clay-bg);color:var(--clay)}
+.opt:disabled{cursor:default}
+
+/* sort chips (pronunciation) */
+.sortrow{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px dashed var(--line);flex-wrap:wrap}
+.sortrow:last-child{border-bottom:none}
+.sortword{font-family:"JetBrains Mono",monospace;font-size:16px;font-weight:700}
+.sortword .num{color:var(--burgundy);font-size:12px;margin-right:8px}
+.chips{display:flex;gap:6px}
+.chip{font-family:"JetBrains Mono",monospace;font-size:14px;border:1.5px solid var(--line);background:var(--paper);padding:5px 11px;border-radius:9px;cursor:pointer;transition:.15s;color:var(--ink)}
+.chip:hover{border-color:var(--burgundy)}
+.chip.sel{border-color:var(--burgundy);background:#fff;box-shadow:inset 0 0 0 1px var(--burgundy)}
+.chip.ok{border-color:var(--sage);background:var(--sage-bg);color:var(--sage)}
+.chip.no{border-color:var(--clay);background:var(--clay-bg);color:var(--clay)}
+
+/* matching with arrows */
+.match{position:relative;margin:6px 0}
+.match-cols{display:flex;justify-content:space-between;gap:90px}
+.match-col{flex:1;display:flex;flex-direction:column;gap:10px}
+.match-item{font-family:"JetBrains Mono",monospace;font-size:15px;font-weight:600;border:1.5px solid var(--line);background:var(--paper);padding:10px 14px;border-radius:10px;cursor:pointer;text-align:center;transition:.15s;position:relative;z-index:2}
+.match-item:hover{border-color:var(--burgundy)}
+.match-item.active{border-color:var(--burgundy);background:#fff;box-shadow:0 0 0 2px var(--burgundy)}
+.match-item.linked{background:#fff}
+.match-item.ok{border-color:var(--sage);background:var(--sage-bg);color:var(--sage)}
+.match-item.no{border-color:var(--clay);background:var(--clay-bg);color:var(--clay)}
+.match-lines{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;overflow:visible}
+
+/* word order */
+.bank{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0}
+.tray{display:flex;flex-wrap:wrap;gap:8px;min-height:46px;border:1.5px dashed var(--line);border-radius:12px;padding:8px;margin:10px 0;background:var(--paper)}
+.tray.ok{border-color:var(--sage);border-style:solid;background:var(--sage-bg)}
+.tray.no{border-color:var(--clay);border-style:solid;background:var(--clay-bg)}
+.word{font-family:"Instrument Sans",sans-serif;font-size:15px;border:1.5px solid var(--line);background:#fff;padding:6px 12px;border-radius:9px;cursor:pointer;transition:.12s;user-select:none}
+.word:hover{border-color:var(--burgundy);transform:translateY(-1px)}
+.bank .word.used{opacity:.32;pointer-events:none}
+.wo-target{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--sage);display:none;margin-top:6px}
+.wo-target.show{display:block}
+
+/* crossword */
+.cwgrid{display:inline-grid;gap:3px;margin:8px 0;background:transparent}
+.cwcell{width:42px;height:42px;position:relative}
+.cwcell.blank{background:transparent}
+.cwcell input{width:100%;height:100%;border:1.5px solid var(--ink);border-radius:6px;background:#fff;text-align:center;text-transform:uppercase;font-family:"JetBrains Mono",monospace;font-size:18px;font-weight:700;color:var(--ink);padding:0}
+.cwcell input:focus{outline:none;border-color:var(--burgundy);box-shadow:0 0 0 2px rgba(122,31,43,.25)}
+.cwcell input.ok{background:var(--sage-bg);border-color:var(--sage);color:var(--sage)}
+.cwcell input.no{background:var(--clay-bg);border-color:var(--clay)}
+.cwnum{position:absolute;top:1px;left:3px;font-family:"JetBrains Mono",monospace;font-size:10px;font-weight:700;color:var(--burgundy);z-index:2;pointer-events:none}
+.clues{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:14px}
+.clues h4{font-family:"Fraunces",serif;font-size:16px;margin:0 0 6px;color:var(--burgundy)}
+.clues ol{margin:0;padding-left:20px;font-size:14.5px}
+.clues li{margin:3px 0}
+
+/* check button + feedback */
+.ex-foot{display:flex;align-items:center;gap:12px;margin-top:16px;flex-wrap:wrap}
+.btn{font-family:"Instrument Sans",sans-serif;font-size:14.5px;font-weight:600;border:none;background:var(--burgundy);color:#fff;padding:9px 18px;border-radius:10px;cursor:pointer;transition:.15s}
+.btn:hover{background:var(--burgundy-2);transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--burgundy);border:1.5px solid var(--burgundy)}
+.btn.ghost:hover{background:var(--paper-2)}
+.feedback{font-family:"JetBrains Mono",monospace;font-size:13.5px;font-weight:700;min-height:20px}
+.feedback.ok{color:var(--sage)}
+.feedback.partial{color:var(--gold)}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding:40px 0 70px;text-align:center;color:var(--ink-soft);font-size:14px}
+footer .brand{font-size:16px}
+.kbd{font-family:"JetBrains Mono",monospace;background:var(--paper-2);border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:12px}
+
+@media(max-width:620px){
+  body{font-size:16px}
+  .match-cols{gap:54px}
+  .clues{grid-template-columns:1fr}
+  .cwcell{width:36px;height:36px}
+  .cwcell input{font-size:15px}
+  .topbar .wrap{flex-wrap:wrap}
+  .brand{font-size:15px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:4px}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand">NEURO·<b>EN</b> · Past Simple</div>
+    <div class="progress" aria-label="Progreso"><span id="bar"></span></div>
+    <div class="score">Resueltos <b id="done">0</b>/<span id="total">0</span></div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Cuaderno neurodidáctico · A1 → C1</div>
+    <h1>The <em>Past Simple</em><br>tense, sin atajos.</h1>
+    <p class="lede">Una guía completa del pasado simple inglés diseñada para tu cerebro hispanohablante: contrastando con el español, atacando las interferencias reales y fijando todo con práctica espaciada. 60+ ejercicios interactivos con corrección inmediata.</p>
+
+    <div class="timeline sig" aria-hidden="true">
+      <svg viewBox="0 0 840 96" preserveAspectRatio="xMidYMid meet">
+        <line x1="20" y1="62" x2="820" y2="62" stroke="#d8cbb4" stroke-width="2"/>
+        <!-- now marker -->
+        <circle cx="760" cy="62" r="6" class="tl-now"/>
+        <text x="760" y="86" text-anchor="middle" class="tl-label">now</text>
+        <!-- past point -->
+        <circle cx="300" cy="62" r="9" class="tl-point"/>
+        <text x="300" y="86" text-anchor="middle" class="tl-label" fill="#7a1f2b">past simple</text>
+        <text x="300" y="40" text-anchor="middle" class="tl-tag">I worked.</text>
+        <!-- arrow -->
+        <path d="M756 56 L760 62 L756 68" fill="none" stroke="#5a4f46" stroke-width="2"/>
+        <text x="40" y="40" class="tl-label">finished · acabado · cerrado</text>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- ============ MÓDULO 0 ============ -->
+<section class="module">
+  <div class="mod-head"><span class="level">NEURO</span><span class="modnum">MÓDULO 00</span></div>
+  <h2>Cómo aprende tu cerebro un tiempo verbal</h2>
+  <p>Antes de la gramática, el principio. Tu cerebro no almacena reglas: almacena <strong>patrones que ha visto y producido muchas veces</strong>. Tres mecanismos rigen este cuaderno:</p>
+
+  <div class="neuro">
+    <div class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3a3 3 0 0 0-3 3 3 3 0 0 0-2 5 3 3 0 0 0 1 5 3 3 0 0 0 6 1V5a3 3 0 0 0-2-2Z"/><path d="M15 3a3 3 0 0 1 3 3 3 3 0 0 1 2 5 3 3 0 0 1-1 5 3 3 0 0 1-6 1"/></svg>Recuperación activa (testing effect)</div>
+    <p>Leer una regla la deja en memoria frágil. <strong>Recuperarla</strong> bajo esfuerzo —rellenar, elegir, producir— es lo que crea memoria duradera. Por eso aquí teoría y práctica se alternan: cada concepto se usa inmediatamente.</p>
+  </div>
+
+  <div class="neuro contrast">
+    <div class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3v18M16 3v18M3 8h18M3 16h18"/></svg>Interferencia L1 → L2</div>
+    <p>El español es tu mapa por defecto. La mayoría de tus errores no serán azar: serán tu lengua materna <em>filtrándose</em>. Anticiparlos (las tarjetas <span style="color:var(--gold)">CONTRASTE</span>) desactiva el automatismo antes de que se fosilice.</p>
+  </div>
+
+  <div class="neuro">
+    <div class="tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg>Espaciado e interleaving</div>
+    <p>Mezclar tipos de ejercicio (regular / irregular / negativa / pregunta) en lugar de agruparlos en bloques rígidos cuesta más en el momento pero retiene mucho más. Notarás ese "esfuerzo deseable": es la señal de que estás aprendiendo.</p>
+  </div>
+</section>
+
+<!-- ============ MÓDULO 1 ============ -->
+<section class="module">
+  <div class="mod-head"><span class="level">A1</span><span class="modnum">MÓDULO 01</span></div>
+  <h2>El concepto: una acción terminada en el pasado</h2>
+  <p>El past simple expresa una acción <strong>completa, situada en un punto cerrado del pasado</strong>, sin conexión gramatical con el presente. Es el tiempo de la narración y del relato cerrado.</p>
+  <p class="en">Yesterday I studied English. · We arrived at six. · She lived in Cork for ten years.</p>
+
+  <div class="neuro contrast">
+    <div class="tag">CONTRASTE · ES → EN</div>
+    <p>El gran nudo: el español reparte el pasado entre <strong>indefinido</strong> (<em>estudié</em>), <strong>imperfecto</strong> (<em>estudiaba</em>) y <strong>pretérito perfecto</strong> (<em>he estudiado</em>). El inglés mete buena parte de esos casos en <strong>un solo</strong> past simple. Resultado: no busques "el equivalente exacto del indefinido" — funciona distinto. La regla operativa es: ¿la acción está <em>acabada</em> y en un <em>momento del pasado</em>? → past simple.</p>
+  </div>
+
+  <h3>La forma: una sola para todas las personas</h3>
+  <p>Buena noticia para tu memoria de trabajo: el verbo léxico <strong>no cambia con la persona</strong>. <code>I / you / he / she / it / we / they</code> → <span class="en">worked</span>. No hay <em>-s</em> de tercera persona como en presente.</p>
+</section>
+
+<!-- ============ MÓDULO 2 ============ -->
+<section class="module">
+  <div class="mod-head"><span class="level a2">A1·A2</span><span class="modnum">MÓDULO 02</span></div>
+  <h2>Verbos regulares: la terminación <em>-ed</em> y su ortografía</h2>
+  <p>Los verbos regulares forman el pasado añadiendo <strong>-ed</strong>. Pero la grafía cambia según cómo termine el infinitivo. Cinco reglas:</p>
+
+  <table class="tbl">
+    <tr><th>Regla</th><th>Infinitivo</th><th>Pasado</th></tr>
+    <tr><td>Regla general: + <strong>-ed</strong></td><td class="ex">work, play, watch</td><td>worked, played, watched</td></tr>
+    <tr><td>Termina en <strong>-e</strong>: solo + <strong>-d</strong></td><td class="ex">live, love, arrive</td><td>lived, loved, arrived</td></tr>
+    <tr><td>Consonante + <strong>-y</strong>: <strong>y → ied</strong></td><td class="ex">study, try, carry</td><td>studied, tried, carried</td></tr>
+    <tr><td>Vocal + <strong>-y</strong>: se mantiene + <strong>-ed</strong></td><td class="ex">play, stay, enjoy</td><td>played, stayed, enjoyed</td></tr>
+    <tr><td>1 sílaba, C-V-C tónica: <strong>doble consonante</strong></td><td class="ex">stop, plan, beg</td><td>stopped, planned, begged</td></tr>
+  </table>
+
+  <div class="neuro warn">
+    <div class="tag">ERROR FRECUENTE</div>
+    <p>La duplicación pide <strong>acento en la última sílaba</strong>. Por eso <code>prefer → preferred</code> (acento final, dobla) pero <code>visit → visited</code> (acento inicial, <em>no</em> dobla). En inglés británico <code>travel → travelled</code> dobla la <em>l</em> aunque el acento no sea final; en americano, <code>traveled</code>.</p>
+  </div>
+
+  <!-- EX A: spelling fill -->
+  <div class="ex" data-ex="A">
+    <div class="ex-head"><span class="ex-kicker">Ejercicio 01–08</span><span class="ex-type">rellenar · ortografía</span></div>
+    <h3>Escribe el pasado regular correcto</h3>
+    <p class="hint">Aplica las reglas de grafía. Escribe solo el verbo en pasado.</p>
+    <div class="item"><span class="num">01</span><span class="cue">to study</span> → <input class="fill" data-answers="studied"> <span class="sol"></span></div>
+    <div class="item"><span class="num">02</span><span class="cue">to stop</span> → <input class="fill" data-answers="stopped"> <span class="sol"></span></div>
+    <div class="item"><span class="num">03</span><span class="cue">to arrive</span> → <input class="fill" data-answers="arrived"> <span class="sol"></span></div>
+    <div class="item"><span class="num">04</span><span class="cue">to play</span> → <input class="fill" data-answers="played"> <span class="sol"></span></div>
+    <div class="item"><span class="num">05</span><span class="cue">to carry</span> → <input class="fill" data-answers="carried"> <span class="sol"></span></div>
+    <div class="item"><span class="num">06</span><span class="cue">to plan</span> → <input class="fill" data-answers="planned"> <span class="sol"></span></div>
+    <div class="item"><span class="num">07</span><span class="cue">to enjoy</span> → <input class="fill" data-answers="enjoyed"> <span class="sol"></span></div>
+    <div class="item"><span class="num">08</span><span class="cue">to prefer</span> → <input class="fill" data-answers="preferred"> <span class="sol"></span></div>
+    <div class="ex-foot">
+      <button class="btn" data-check="A">Comprobar</button>
+      <button class="btn ghost" data-reveal="A">Ver soluciones</button>
+      <span class="feedback" data-fb="A"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MÓDULO 3 ============ -->
+<section class="module">
+  <div class="mod-head"><span class="level a2">A2</span><span class="modnum">MÓDULO 03</span></div>
+  <h2>Pronunciación de <em>-ed</em>: tres sonidos, no uno</h2>
+  <p>Una grafía, tres pronunciaciones. Esta es una de las mayores interferencias del hispanohablante: tendemos a pronunciar todo como <span class="en">/ed/</span> ("worked-ed"), y casi nunca es así. La regla depende del <strong>último sonido del infinitivo</strong>, no de la letra:</p>
+
+  <table class="tbl">
+    <tr><th>Sonido final del verbo</th><th>-ed suena</th><th>Ejemplos</th></tr>
+    <tr><td>Sonido <strong>sordo</strong> (/p, k, f, s, ʃ, tʃ/)</td><td class="ipa">/t/</td><td class="ex">worked, stopped, washed, watched</td></tr>
+    <tr><td>Sonido <strong>sonoro</strong> o vocal (/b, g, v, z, m, n, l, r…/)</td><td class="ipa">/d/</td><td class="ex">played, lived, called, opened</td></tr>
+    <tr><td>Termina en <strong>/t/ o /d/</strong></td><td class="ipa">/ɪd/</td><td class="ex">wanted, needed, decided, started</td></tr>
+  </table>
+
+  <div class="neuro">
+    <div class="tag">TRUCO MOTOR</div>
+    <p>Pon la mano en la garganta. Si el último sonido <em>vibra</em> (sonoro) → <span class="ipa">/d/</span>. Si <em>no</em> vibra (sordo) → <span class="ipa">/t/</span>. Solo cuando ya hay un <span class="ipa">/t/</span> o <span class="ipa">/d/</span> añadimos una sílaba entera <span class="ipa">/ɪd/</span>, porque no puedes pegar dos /t/ seguidas sin vocal.</p>
+  </div>
+
+  <!-- EX B: sort pronunciation (MCQ-style chips) -->
+  <div class="ex" data-ex="B">
+    <div class="ex-head"><span class="ex-kicker">Ejercicio 09–17</span><span class="ex-type">clasificar · fonética</span></div>
+    <h3>¿Cómo suena la <em>-ed</em>?</h3>
+    <p class="hint">Marca el sonido correcto para cada verbo.</p>
+    <div class="sortrow"><div class="sortword"><span class="num">09</span>wanted</div><div class="chips" data-ans="ɪd"><button class="chip">/t/</button><button class="chip">/d/</button><button class="chip">/ɪd/</button></div></div>
+    <div class="sortrow"><div class="sortword"><span class="num">10</span>played</div><div class="chips" data-ans="d"><button class="chip">/t/</button><button class="chip">/d/</button><button class="chip">/ɪd/</button></div></div>
+    <div class="sortrow"><div class="sortword"><span class="num">11</span>watched</div><div class="chips" data-ans="t"><button class="chip">/t/</button><button class="chip">/d/</button><button class="chip">/ɪd/</button></div></div>
+    <div class="sortrow"><div class="sortword"><span class="num">12</span>decided</div><div class="chips" data-ans="ɪd"><button class="chip">/t/</button><button class="chip">/d/</button><button class="chip">/ɪd/</button></div></div>
+    <div class="sortrow"><div class="sortword"><span class="num">13</span>stopped</div><div class="chips" data-ans="t"><button class="chip">/t/</button><button class="chip">/d/</button><button class="chip">/ɪd/</button></div></div>
+    <div class="sortrow"><div class="sortword"><span class="num">14</span>lived</div><div class="chips" data-ans="d"><button class="chip">/t/</button><button class="chip">/d/</button><button class="chip">/ɪd/</button></div></div>
+    <div class="sortrow"><div class="sortword"><span class="num">15</span>needed</div><div class="chips" data-ans="ɪd"><button class="chip">/t/</button><button class="chip">/d/</button><button class="chip">/ɪd/</button></div></div>
+    <div class="sortrow"><div class="sortword"><span class="num">16</span>washed</div><div class="chips" data-ans="t"><button class="chip">/t/</button><button class="chip">/d/</button><button class="chip">/ɪd/</button></div></div>
+    <div class="sortrow"><div class="sortword"><span class="num">17</span>called</div><div class="chips" data-ans="d"><button class="chip">/t/</button><button class="chip">/d/</button><button class="chip">/ɪd/</button></div></div>
+    <div class="ex-foot">
+      <button class="btn" data-check="B">Comprobar</button>
+      <span class="feedback" data-fb="B"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MÓDULO 4 ============ -->
+<section class="module">
+  <div class="mod-head"><span class="level a2">A2</span><span class="modnum">MÓDULO 04</span></div>
+  <h2>Verbos irregulares: el coste de memoria que no se puede evitar</h2>
+  <p>Unos 200 verbos no siguen la regla <em>-ed</em>; y son justamente los más frecuentes (<span class="en">go, have, do, say, get, make, see…</span>). No hay sistema lógico fiable: hay que memorizarlos, pero con <strong>agrupación fonológica</strong> tu cerebro lo hace mucho mejor que con listas alfabéticas.</p>
+
+  <table class="tbl">
+    <tr><th>Patrón</th><th>Infinitivo → Pasado</th></tr>
+    <tr><td>No cambia</td><td class="ex">cut→cut · put→put · let→let · hit→hit · cost→cost</td></tr>
+    <tr><td>Cambio de vocal <strong>i → a</strong></td><td class="ex">drink→drank · sing→sang · swim→swam · begin→began</td></tr>
+    <tr><td>Cambio a <strong>-ought / -aught</strong></td><td class="ex">buy→bought · think→thought · bring→brought · teach→taught · catch→caught</td></tr>
+    <tr><td>Vocal larga <strong>-ew / -ow</strong></td><td class="ex">grow→grew · know→knew · throw→threw · fly→flew</td></tr>
+    <tr><td>Totalmente irregulares (alta frecuencia)</td><td class="ex">go→went · be→was/were · have→had · do→did · make→made · see→saw · take→took · give→gave · come→came</td></tr>
+  </table>
+
+  <!-- EX C: matching arrows -->
+  <div class="ex" data-ex="C">
+    <div class="ex-head"><span class="ex-kicker">Ejercicio 18–25</span><span class="ex-type">unir con flechas</span></div>
+    <h3>Une cada infinitivo con su pasado</h3>
+    <p class="hint">Toca un verbo de la izquierda y luego su pareja a la derecha. Vuelve a tocar para rehacer.</p>
+    <div class="match" id="matchC">
+      <svg class="match-lines"></svg>
+      <div class="match-cols">
+        <div class="match-col" data-side="L">
+          <div class="match-item" data-key="go"    data-match="went">go</div>
+          <div class="match-item" data-key="buy"   data-match="bought">buy</div>
+          <div class="match-item" data-key="think" data-match="thought">think</div>
+          <div class="match-item" data-key="take"  data-match="took">take</div>
+          <div class="match-item" data-key="see"   data-match="saw">see</div>
+          <div class="match-item" data-key="write" data-match="wrote">write</div>
+          <div class="match-item" data-key="drink" data-match="drank">drink</div>
+          <div class="match-item" data-key="teach" data-match="taught">teach</div>
+        </div>
+        <div class="match-col" data-side="R">
+          <div class="match-item" data-key="saw">saw</div>
+          <div class="match-item" data-key="took">took</div>
+          <div class="match-item" data-key="went">went</div>
+          <div class="match-item" data-key="taught">taught</div>
+          <div class="match-item" data-key="wrote">wrote</div>
+          <div class="match-item" data-key="bought">bought</div>
+          <div class="match-item" data-key="drank">drank</div>
+          <div class="match-item" data-key="thought">thought</div>
+        </div>
+      </div>
+    </div>
+    <div class="ex-foot">
+      <button class="btn" data-check="C">Comprobar</button>
+      <button class="btn ghost" data-clear="C">Borrar líneas</button>
+      <span class="feedback" data-fb="C"></span>
+    </div>
+  </div>
+
+  <!-- CROSSWORD -->
+  <div class="ex" data-ex="CW">
+    <div class="ex-head"><span class="ex-kicker">Reto · crucigrama</span><span class="ex-type">crucigrama · irregulares</span></div>
+    <h3>Crucigrama de pasados irregulares</h3>
+    <p class="hint">Escribe el <strong>pasado simple</strong> del verbo de cada pista. Las palabras se cruzan.</p>
+    <div class="cwgrid" id="cwgrid"></div>
+    <div class="clues">
+      <div><h4>Horizontal →</h4><ol><li><strong>become</strong> (pasado)</li></ol></div>
+      <div><h4>Vertical ↓</h4><ol><li><strong>break</strong> (pasado)</li><li value="2"><strong>come</strong> (pasado)</li><li value="3"><strong>make</strong> (pasado)</li></ol></div>
+    </div>
+    <div class="ex-foot">
+      <button class="btn" data-check="CW">Comprobar</button>
+      <span class="feedback" data-fb="CW"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MÓDULO 5 ============ -->
+<section class="module">
+  <div class="mod-head"><span class="level a2">A2</span><span class="modnum">MÓDULO 05</span></div>
+  <h2>Sintaxis · La afirmativa</h2>
+  <p>La estructura básica es rígida y predecible — y eso es una ventaja para automatizarla:</p>
+  <div class="formula">
+<span class="c"># Oración afirmativa</span>
+<span class="k">Sujeto</span> + <span class="v">verbo en pasado (V2)</span> + <span class="o">complementos</span> .
+<span class="c"># ejemplo</span>
+She   +  visited            +  her grandmother  <span class="o">last week</span>.
+They  +  went               +  to Dublin        <span class="o">in 2019</span>.
+  </div>
+  <p>Donde <span class="v">V2</span> es la segunda columna del verbo: <code>worked</code> (regular) o <code>went</code> (irregular). Sin auxiliar, sin <em>-s</em>.</p>
+
+  <!-- EX D: affirmative fill -->
+  <div class="ex" data-ex="D">
+    <div class="ex-head"><span class="ex-kicker">Ejercicio 26–32</span><span class="ex-type">rellenar · afirmativa</span></div>
+    <h3>Completa con el verbo en pasado</h3>
+    <p class="hint">Mezcla de regulares e irregulares. Solo el verbo.</p>
+    <div class="item"><span class="num">26</span>Last summer we <input class="fill" data-answers="travelled|traveled"> <span class="cue">(travel)</span> to Spain. <span class="sol"></span></div>
+    <div class="item"><span class="num">27</span>She <input class="fill" data-answers="bought"> <span class="cue">(buy)</span> a new car. <span class="sol"></span></div>
+    <div class="item"><span class="num">28</span>I <input class="fill" data-answers="saw"> <span class="cue">(see)</span> a fox in the garden. <span class="sol"></span></div>
+    <div class="item"><span class="num">29</span>They <input class="fill" data-answers="had"> <span class="cue">(have)</span> dinner at eight. <span class="sol"></span></div>
+    <div class="item"><span class="num">30</span>He <input class="fill" data-answers="studied"> <span class="cue">(study)</span> medicine in Murcia. <span class="sol"></span></div>
+    <div class="item"><span class="num">31</span>The train <input class="fill" data-answers="left"> <span class="cue">(leave)</span> at noon. <span class="sol"></span></div>
+    <div class="item"><span class="num">32</span>We <input class="fill" data-answers="made"> <span class="cue">(make)</span> a big mistake. <span class="sol"></span></div>
+    <div class="ex-foot">
+      <button class="btn" data-check="D">Comprobar</button>
+      <button class="btn ghost" data-reveal="D">Ver soluciones</button>
+      <span class="feedback" data-fb="D"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MÓDULO 6 ============ -->
+<section class="module">
+  <div class="mod-head"><span class="level a2">A2</span><span class="modnum">MÓDULO 06</span></div>
+  <h2>El caso especial: <em>to be</em> en pasado (was / were)</h2>
+  <p>El verbo <span class="en">be</span> es el único que <strong>no usa el auxiliar <em>did</em></strong> y que sí cambia con la persona. Tiene dos formas:</p>
+  <table class="tbl">
+    <tr><th>Persona</th><th>Afirmativa</th><th>Negativa</th><th>Interrogativa</th></tr>
+    <tr><td>I / he / she / it</td><td>was</td><td>was not (wasn't)</td><td>Was I…?</td></tr>
+    <tr><td>you / we / they</td><td>were</td><td>were not (weren't)</td><td>Were you…?</td></tr>
+  </table>
+  <div class="neuro warn">
+    <div class="tag">ERROR FRECUENTE</div>
+    <p>Con <span class="en">be</span> <strong>nunca</strong> uses <em>did</em>: ✗ <span class="en">Did you were…?</span> / ✗ <span class="en">She didn't was…</span>. La negación e interrogación van sobre el propio <em>was/were</em>: ✓ <span class="en">Were you tired? · She wasn't here.</span></p>
+  </div>
+
+  <!-- EX E: was/were MCQ -->
+  <div class="ex" data-ex="E">
+    <div class="ex-head"><span class="ex-kicker">Ejercicio 33–38</span><span class="ex-type">opción múltiple · was/were</span></div>
+    <h3>Elige la forma correcta de <em>be</em></h3>
+    <div class="q"><div class="stem"><span class="num">33</span>The patients ___ in the waiting room.</div><div class="opts" data-ans="were"><button class="opt">was</button><button class="opt">were</button><button class="opt">did</button></div></div>
+    <div class="q"><div class="stem"><span class="num">34</span>I ___ very tired after the night shift.</div><div class="opts" data-ans="was"><button class="opt">was</button><button class="opt">were</button><button class="opt">had</button></div></div>
+    <div class="q"><div class="stem"><span class="num">35</span>___ you at the conference yesterday?</div><div class="opts" data-ans="Were"><button class="opt">Did</button><button class="opt">Was</button><button class="opt">Were</button></div></div>
+    <div class="q"><div class="stem"><span class="num">36</span>She ___ happy with the result.</div><div class="opts" data-ans="wasn't"><button class="opt">weren't</button><button class="opt">wasn't</button><button class="opt">didn't</button></div></div>
+    <div class="q"><div class="stem"><span class="num">37</span>It ___ a cold morning in Tralee.</div><div class="opts" data-ans="was"><button class="opt">were</button><button class="opt">was</button><button class="opt">did</button></div></div>
+    <div class="q"><div class="stem"><span class="num">38</span>We ___ not ready for the exam.</div><div class="opts" data-ans="were"><button class="opt">was</button><button class="opt">were</button><button class="opt">did</button></div></div>
+    <div class="ex-foot">
+      <button class="btn" data-check="E">Comprobar</button>
+      <span class="feedback" data-fb="E"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MÓDULO 7 ============ -->
+<section class="module">
+  <div class="mod-head"><span class="level a2">A2·B1</span><span class="modnum">MÓDULO 07</span></div>
+  <h2>Sintaxis · La negativa con <em>didn't</em></h2>
+  <p>Aquí aparece el auxiliar <span class="en">did</span>. Y con él, la regla de oro que más cuesta a los hispanohablantes:</p>
+  <div class="formula">
+<span class="c"># Oración negativa</span>
+<span class="k">Sujeto</span> + <span class="v">did not / didn't</span> + <span class="o">verbo en INFINITIVO</span> .
+<span class="c"># ejemplo</span>
+I     +  didn't  +  <span class="o">work</span>   .   <span class="c">// NO: didn't worked</span>
+She   +  didn't  +  <span class="o">go</span>     .   <span class="c">// NO: didn't went</span>
+  </div>
+
+  <div class="neuro warn">
+    <div class="tag">EL ERROR Nº1 DEL HISPANOHABLANTE</div>
+    <p>El pasado ya está marcado por <strong>did</strong>. Por eso el verbo principal <strong>vuelve al infinitivo</strong>: una sola marca de pasado por oración. En español decimos "no <em>trabajé</em>" (el verbo lleva la marca), y arrastramos esa lógica: ✗ <span class="en">I didn't worked</span>. Reescríbelo mentalmente como "did + not + [verbo neutro]".</p>
+  </div>
+
+  <!-- EX F: negative transformation -->
+  <div class="ex" data-ex="F">
+    <div class="ex-head"><span class="ex-kicker">Ejercicio 39–44</span><span class="ex-type">transformar · negativa</span></div>
+    <h3>Pasa a negativa con <em>didn't</em></h3>
+    <p class="hint">Escribe <strong>didn't + verbo</strong> (dos palabras). Ej.: <span class="mono">didn't go</span></p>
+    <div class="item"><span class="num">39</span>He called me. → He <input class="fill" style="width:170px" data-answers="didn't call|did not call|didnt call"> me. <span class="sol"></span></div>
+    <div class="item"><span class="num">40</span>They went home. → They <input class="fill" style="width:170px" data-answers="didn't go|did not go|didnt go"> home. <span class="sol"></span></div>
+    <div class="item"><span class="num">41</span>She bought it. → She <input class="fill" style="width:170px" data-answers="didn't buy|did not buy|didnt buy"> it. <span class="sol"></span></div>
+    <div class="item"><span class="num">42</span>I understood. → I <input class="fill" style="width:200px" data-answers="didn't understand|did not understand|didnt understand">. <span class="sol"></span></div>
+    <div class="item"><span class="num">43</span>We saw them. → We <input class="fill" style="width:170px" data-answers="didn't see|did not see|didnt see"> them. <span class="sol"></span></div>
+    <div class="item"><span class="num">44</span>The doctor agreed. → The doctor <input class="fill" style="width:200px" data-answers="didn't agree|did not agree|didnt agree">. <span class="sol"></span></div>
+    <div class="ex-foot">
+      <button class="btn" data-check="F">Comprobar</button>
+      <button class="btn ghost" data-reveal="F">Ver soluciones</button>
+      <span class="feedback" data-fb="F"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MÓDULO 8 ============ -->
+<section class="module">
+  <div class="mod-head"><span class="level b1">B1</span><span class="modnum">MÓDULO 08</span></div>
+  <h2>Sintaxis · La interrogativa</h2>
+  <p>La pregunta invierte el orden y vuelve a poner el verbo en infinitivo. Dos tipos:</p>
+  <div class="formula">
+<span class="c"># Pregunta cerrada (Yes/No)</span>
+<span class="v">Did</span> + <span class="k">sujeto</span> + <span class="o">verbo infinitivo</span> + complementos ?
+<span class="c"># ejemplo</span>  Did you study yesterday?
+
+<span class="c"># Pregunta abierta (Wh-)</span>
+<span class="v">Wh-word</span> + <span class="v">did</span> + <span class="k">sujeto</span> + <span class="o">verbo infinitivo</span> ?
+<span class="c"># ejemplo</span>  Where did she go?   What did they say?
+  </div>
+  <div class="neuro contrast">
+    <div class="tag">CONTRASTE · ES → EN</div>
+    <p>El español pregunta solo con entonación: "¿Estudiaste?". El inglés <strong>obliga al auxiliar y a la inversión</strong>. No existe ✗ <span class="en">Studied you?</span>. Y, de nuevo, el verbo va en infinitivo: ✗ <span class="en">Did you studied?</span></p>
+  </div>
+
+  <!-- EX G: word order -->
+  <div class="ex" data-ex="G">
+    <div class="ex-head"><span class="ex-kicker">Ejercicio 45–49</span><span class="ex-type">ordenar palabras · preguntas</span></div>
+    <h3>Ordena las palabras para formar la pregunta</h3>
+    <p class="hint">Toca las palabras en el orden correcto. Toca una palabra de la bandeja para devolverla.</p>
+    <div class="wo" data-wo="1" data-target="did you sleep well last night"><div class="stem"><span class="num">45</span></div><div class="bank"></div><div class="tray" data-tray></div><div class="wo-target"></div></div>
+    <div class="wo" data-wo="2" data-target="where did they go yesterday"><div class="stem"><span class="num">46</span></div><div class="bank"></div><div class="tray" data-tray></div><div class="wo-target"></div></div>
+    <div class="wo" data-wo="3" data-target="what time did the film start"><div class="stem"><span class="num">47</span></div><div class="bank"></div><div class="tray" data-tray></div><div class="wo-target"></div></div>
+    <div class="wo" data-wo="4" data-target="did she pass the exam"><div class="stem"><span class="num">48</span></div><div class="bank"></div><div class="tray" data-tray></div><div class="wo-target"></div></div>
+    <div class="wo" data-wo="5" data-target="why did you call the hospital"><div class="stem"><span class="num">49</span></div><div class="bank"></div><div class="tray" data-tray></div><div class="wo-target"></div></div>
+    <div class="ex-foot">
+      <button class="btn" data-check="G">Comprobar</button>
+      <button class="btn ghost" data-reveal="G">Ver soluciones</button>
+      <span class="feedback" data-fb="G"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MÓDULO 9 ============ -->
+<section class="module">
+  <div class="mod-head"><span class="level b1">B1</span><span class="modnum">MÓDULO 09</span></div>
+  <h2>Marcadores temporales y <em>used to</em></h2>
+  <p>El past simple suele venir acompañado de un marcador que ancla la acción en el pasado cerrado. Reconocerlos es una pista rápida del tiempo verbal correcto:</p>
+  <table class="tbl">
+    <tr><th>Marcador</th><th>Uso</th><th>Ejemplo</th></tr>
+    <tr><td><code>yesterday</code></td><td>ayer</td><td class="ex">I saw her yesterday.</td></tr>
+    <tr><td><code>... ago</code></td><td>hace … (va detrás)</td><td class="ex">two years ago, a week ago</td></tr>
+    <tr><td><code>last ...</code></td><td>el … pasado</td><td class="ex">last night, last week, last summer</td></tr>
+    <tr><td><code>in + año</code></td><td>en (un año concreto)</td><td class="ex">in 1998, in March</td></tr>
+    <tr><td><code>when ...</code></td><td>cuando</td><td class="ex">when I was a child</td></tr>
+  </table>
+  <h3><em>used to</em> + infinitivo · hábitos pasados</h3>
+  <p>Para hábitos o estados del pasado que <strong>ya no ocurren</strong>, el inglés usa <span class="en">used to + infinitivo</span> — muy cercano al imperfecto español "solía / antes …":</p>
+  <p class="en">I used to smoke. (antes fumaba, ya no) · We used to live in Yecla. · She didn't use to like coffee.</p>
+  <div class="neuro warn">
+    <div class="tag">OJO</div>
+    <p>En negativa e interrogativa pierde la <em>-d</em>: <span class="en">didn't <strong>use</strong> to</span> / <span class="en">Did you <strong>use</strong> to…?</span> — porque el <em>did</em> ya marca el pasado.</p>
+  </div>
+</section>
+
+<!-- ============ MÓDULO 10 ============ -->
+<section class="module">
+  <div class="mod-head"><span class="level b2">B1·B2</span><span class="modnum">MÓDULO 10</span></div>
+  <h2>El gran contraste: Past Simple vs. Present Perfect (y Past Continuous)</h2>
+  <p>Aquí está el punto donde el español te traiciona más. La clave no es "qué pasó", sino <strong>la relación con el presente</strong>.</p>
+  <div class="formula">
+<span class="c"># PAST SIMPLE → tiempo pasado terminado, sin conexión con ahora</span>
+I <span class="v">saw</span> that film <span class="o">last week</span>.        <span class="c">// momento concreto y cerrado</span>
+
+<span class="c"># PRESENT PERFECT → pasado con relevancia/conexión presente, sin "cuándo"</span>
+I <span class="v">have seen</span> that film.            <span class="c">// experiencia, resultado, "alguna vez"</span>
+
+<span class="c"># PAST CONTINUOUS → acción en curso interrumpida por otra (past simple)</span>
+I <span class="v">was driving</span> when she <span class="v">called</span>.
+  </div>
+  <div class="neuro contrast">
+    <div class="tag">CONTRASTE · ES → EN</div>
+    <p>El español peninsular usa el pretérito perfecto ("<em>he visto</em>") para hechos recientes con marcadores como "hoy" o "esta mañana"; el inglés, en cambio, prefiere <strong>past simple en cuanto hay un tiempo cerrado</strong>. Pista práctica: si hay un <strong>cuándo concreto y acabado</strong> (yesterday, in 2010, last night) → <strong>past simple</strong>. Si hay <em>just, already, yet, ever, never, so far</em> o ningún "cuándo" → mira hacia present perfect.</p>
+  </div>
+
+  <!-- EX H: MCQ tense contrast -->
+  <div class="ex" data-ex="H">
+    <div class="ex-head"><span class="ex-kicker">Ejercicio 50–56</span><span class="ex-type">opción múltiple · contraste</span></div>
+    <h3>Elige el tiempo verbal correcto</h3>
+    <div class="q"><div class="stem"><span class="num">50</span>I ___ to Ireland in 2024.</div><div class="opts" data-ans="moved"><button class="opt">moved</button><button class="opt">have moved</button></div></div>
+    <div class="q"><div class="stem"><span class="num">51</span>___ you ever ___ sushi? (in general, in your life)</div><div class="opts" data-ans="Have / eaten"><button class="opt">Did / eat</button><button class="opt">Have / eaten</button></div></div>
+    <div class="q"><div class="stem"><span class="num">52</span>She ___ her keys, so she can't get in now.</div><div class="opts" data-ans="has lost"><button class="opt">lost</button><button class="opt">has lost</button></div></div>
+    <div class="q"><div class="stem"><span class="num">53</span>We ___ a great time at the party last night.</div><div class="opts" data-ans="had"><button class="opt">had</button><button class="opt">have had</button></div></div>
+    <div class="q"><div class="stem"><span class="num">54</span>While I ___, the phone rang.</div><div class="opts" data-ans="was cooking"><button class="opt">cooked</button><button class="opt">was cooking</button></div></div>
+    <div class="q"><div class="stem"><span class="num">55</span>He ___ his report yet. (still not done)</div><div class="opts" data-ans="hasn't finished"><button class="opt">didn't finish</button><button class="opt">hasn't finished</button></div></div>
+    <div class="q"><div class="stem"><span class="num">56</span>When ___ the accident happen?</div><div class="opts" data-ans="did"><button class="opt">did</button><button class="opt">has</button></div></div>
+    <div class="ex-foot">
+      <button class="btn" data-check="H">Comprobar</button>
+      <span class="feedback" data-fb="H"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MÓDULO 11 ============ -->
+<section class="module">
+  <div class="mod-head"><span class="level c1">B2·C1</span><span class="modnum">MÓDULO 11</span></div>
+  <h2>Nivel avanzado: narración, énfasis y discurso indirecto</h2>
+
+  <h3>1 · Tiempos narrativos</h3>
+  <p>En un relato, el <strong>past simple lleva la línea principal de la acción</strong> (los hechos que avanzan), el <strong>past continuous</strong> pinta el fondo en curso y el <strong>past perfect</strong> retrocede a lo anterior:</p>
+  <p class="en">The sun <strong>was setting</strong> (fondo) when she <strong>arrived</strong> (acción). She <strong>had left</strong> (antes) the keys at home, so she <strong>knocked</strong> (acción).</p>
+
+  <h3>2 · <em>did</em> enfático</h3>
+  <p>En afirmativa normalmente no hay auxiliar, pero podemos insertar <span class="en">did</span> acentuado para <strong>contradecir o enfatizar</strong>. El verbo vuelve al infinitivo:</p>
+  <p class="en">— You didn't call. — I <strong>did</strong> call! · She <strong>did</strong> pass the exam (contra lo que pensabas).</p>
+
+  <h3>3 · Cleft sentences</h3>
+  <p>Para destacar un elemento: <span class="en">It <strong>was</strong> John who broke the window. · What I <strong>did</strong> was call the police.</span></p>
+
+  <h3>4 · Backshift en estilo indirecto</h3>
+  <p>Al reportar, el presente "retrocede" al pasado simple, y el pasado simple al past perfect:</p>
+  <div class="formula">
+"I <span class="v">work</span> here."        → He said he <span class="v">worked</span> there.
+"I <span class="v">saw</span> the doctor."  → She said she <span class="v">had seen</span> the doctor.
+  </div>
+  <div class="neuro">
+    <div class="tag">MATIZ C1</div>
+    <p>El backshift no es obligatorio si lo reportado sigue siendo verdad ahora ("She said she <em>lives</em> in Cork"), pero el registro formal y escrito tiende a aplicarlo. Dominar <em>cuándo no</em> aplicarlo es lo que distingue B2 de C1.</p>
+  </div>
+</section>
+
+<!-- ============ MÓDULO 12 ============ -->
+<section class="module">
+  <div class="mod-head"><span class="level b2">REPASO</span><span class="modnum">MÓDULO 12</span></div>
+  <h2>Tus errores como hispanohablante (corrígelos)</h2>
+  <p>Este bloque ataca directamente las interferencias del español. Reescribe cada frase <strong>corregida</strong>. Son los fallos que tu cerebro hará por defecto: detectarlos los desactiva.</p>
+
+  <!-- EX I: error correction -->
+  <div class="ex" data-ex="I">
+    <div class="ex-head"><span class="ex-kicker">Ejercicio 57–62</span><span class="ex-type">corrección · interferencia L1</span></div>
+    <h3>Corrige el error y reescribe la frase completa</h3>
+    <p class="hint">Escribe la oración entera correcta. Se ignoran mayúsculas y el punto final.</p>
+    <div class="item" style="line-height:1.7"><span class="num">57</span><span class="cue">✗ I didn't went to the gym.</span><br><input class="fill" style="width:100%;text-align:left" data-answers="i didn't go to the gym|i did not go to the gym"> <span class="sol"></span></div>
+    <div class="item" style="line-height:1.7"><span class="num">58</span><span class="cue">✗ Did you saw the email?</span><br><input class="fill" style="width:100%;text-align:left" data-answers="did you see the email"> <span class="sol"></span></div>
+    <div class="item" style="line-height:1.7"><span class="num">59</span><span class="cue">✗ She no worked yesterday.</span><br><input class="fill" style="width:100%;text-align:left" data-answers="she didn't work yesterday|she did not work yesterday"> <span class="sol"></span></div>
+    <div class="item" style="line-height:1.7"><span class="num">60</span><span class="cue">✗ When did he arrived?</span><br><input class="fill" style="width:100%;text-align:left" data-answers="when did he arrive"> <span class="sol"></span></div>
+    <div class="item" style="line-height:1.7"><span class="num">61</span><span class="cue">✗ I have seen her last week.</span><br><input class="fill" style="width:100%;text-align:left" data-answers="i saw her last week"> <span class="sol"></span></div>
+    <div class="item" style="line-height:1.7"><span class="num">62</span><span class="cue">✗ Were you study at university?</span><br><input class="fill" style="width:100%;text-align:left" data-answers="did you study at university"> <span class="sol"></span></div>
+    <div class="ex-foot">
+      <button class="btn" data-check="I">Comprobar</button>
+      <button class="btn ghost" data-reveal="I">Ver soluciones</button>
+      <span class="feedback" data-fb="I"></span>
+    </div>
+  </div>
+
+  <div class="neuro">
+    <div class="tag">CIERRE · CONSOLIDACIÓN</div>
+    <p>Vuelve a este cuaderno <strong>mañana, en 3 días y en una semana</strong> (repaso espaciado). Repite solo los ejercicios que fallaste: el esfuerzo de recuperación en el punto justo de olvido es lo que convierte estas reglas en producción automática. No releas la teoría hasta haber fallado primero.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="brand">NEURO·<b>EN</b></div>
+    <p style="margin:.6em 0 0">Past Simple · Cuaderno neurodidáctico A1–C1 · 62 ejercicios interactivos<br>
+    Atajo: pulsa <span class="kbd">Comprobar</span> en cada bloque para registrar tu progreso arriba.</p>
+  </div>
+</footer>
+
+<script>
+/* ===================== núcleo de progreso ===================== */
+const solved = new Set();
+let totalItems = 0;
+function registerItems(n){ totalItems += n; }
+function markSolved(id){ solved.add(id); }
+function unmarkSolved(id){ solved.delete(id); }
+function refresh(){
+  document.getElementById('done').textContent = solved.size;
+  document.getElementById('total').textContent = totalItems;
+  const pct = totalItems ? (solved.size/totalItems*100) : 0;
+  document.getElementById('bar').style.width = pct + '%';
+}
+const norm = s => (s||'').toLowerCase().trim().replace(/[.!?]+$/,'').replace(/\s+/g,' ').replace(/[’]/g,"'");
+
+/* ===================== FILL-IN (A,D,F,I) ===================== */
+document.querySelectorAll('.ex .fill').forEach((inp,i)=>{
+  inp.dataset.id = 'fill-'+i;
+  registerItems(1);
+});
+function checkFill(exId){
+  const ex = document.querySelector('[data-ex="'+exId+'"]');
+  let ok=0, tot=0;
+  ex.querySelectorAll('.fill').forEach(inp=>{
+    tot++;
+    const answers = inp.dataset.answers.split('|').map(norm);
+    const val = norm(inp.value);
+    const sol = inp.parentElement.querySelector('.sol');
+    if(val && answers.includes(val)){
+      inp.classList.add('ok'); inp.classList.remove('no'); ok++; markSolved(inp.dataset.id);
+    }else{
+      inp.classList.add('no'); inp.classList.remove('ok'); unmarkSolved(inp.dataset.id);
+    }
+  });
+  feedback(exId, ok, tot);
+  refresh();
+}
+function revealFill(exId){
+  const ex = document.querySelector('[data-ex="'+exId+'"]');
+  ex.querySelectorAll('.fill').forEach(inp=>{
+    const sol = inp.parentElement.querySelector('.sol');
+    if(sol){ sol.textContent = '✓ ' + inp.dataset.answers.split('|')[0]; sol.classList.add('show'); }
+  });
+}
+
+/* ===================== MCQ chips/opts (B,E,H) ===================== */
+function setupChoice(exId, btnSelector, groupSelector){
+  const ex = document.querySelector('[data-ex="'+exId+'"]');
+  ex.querySelectorAll(groupSelector).forEach((grp,gi)=>{
+    grp.dataset.id = exId+'-grp-'+gi;
+    registerItems(1);
+    grp.querySelectorAll(btnSelector).forEach(b=>{
+      b.addEventListener('click',()=>{
+        grp.querySelectorAll(btnSelector).forEach(x=>x.classList.remove('sel'));
+        b.classList.add('sel');
+        grp.dataset.picked = b.textContent.trim();
+      });
+    });
+  });
+}
+function checkChoice(exId, btnSelector, groupSelector){
+  const ex = document.querySelector('[data-ex="'+exId+'"]');
+  let ok=0, tot=0;
+  ex.querySelectorAll(groupSelector).forEach(grp=>{
+    tot++;
+    const want = norm(grp.dataset.ans);
+    const got  = norm(grp.dataset.picked||'');
+    grp.querySelectorAll(btnSelector).forEach(b=>{
+      b.classList.remove('ok','no');
+      if(norm(b.textContent)===want) b.classList.add('ok');
+      else if(b.classList.contains('sel')) b.classList.add('no');
+    });
+    if(got && got===want){ ok++; markSolved(grp.dataset.id); }
+    else unmarkSolved(grp.dataset.id);
+  });
+  feedback(exId, ok, tot);
+  refresh();
+}
+
+/* ===================== MATCHING with arrows (C) ===================== */
+(function(){
+  const box = document.getElementById('matchC');
+  const svg = box.querySelector('.match-lines');
+  const lefts = [...box.querySelectorAll('[data-side="L"] .match-item')];
+  const rights = [...box.querySelectorAll('[data-side="R"] .match-item')];
+  lefts.forEach(l=>{ l.dataset.id='match-'+l.dataset.key; registerItems(1); });
+  let activeLeft = null;
+  const links = {}; // leftKey -> rightKey
+
+  function clearActive(){ lefts.forEach(l=>l.classList.remove('active')); activeLeft=null; }
+
+  lefts.forEach(l=> l.addEventListener('click',()=>{
+    clearActive(); l.classList.add('active'); activeLeft = l;
+  }));
+  rights.forEach(r=> r.addEventListener('click',()=>{
+    if(!activeLeft) return;
+    // remove existing link from this left and any link pointing to this right
+    Object.keys(links).forEach(k=>{ if(links[k]===r.dataset.key) delete links[k]; });
+    links[activeLeft.dataset.key] = r.dataset.key;
+    clearActive();
+    draw();
+  }));
+
+  function center(el, side){
+    const b = el.getBoundingClientRect();
+    const c = box.getBoundingClientRect();
+    return { x: (side==='L'? b.right : b.left) - c.left, y: b.top - c.top + b.height/2 };
+  }
+  function draw(checkColors){
+    const c = box.getBoundingClientRect();
+    svg.setAttribute('viewBox', '0 0 '+c.width+' '+c.height);
+    svg.innerHTML='';
+    box.querySelectorAll('.match-item').forEach(i=>i.classList.remove('linked'));
+    Object.entries(links).forEach(([lk,rk])=>{
+      const L = lefts.find(x=>x.dataset.key===lk);
+      const R = rights.find(x=>x.dataset.key===rk);
+      if(!L||!R) return;
+      L.classList.add('linked'); R.classList.add('linked');
+      const p1=center(L,'L'), p2=center(R,'R');
+      const line=document.createElementNS('http://www.w3.org/2000/svg','path');
+      const mx=(p1.x+p2.x)/2;
+      line.setAttribute('d',`M${p1.x} ${p1.y} C ${mx} ${p1.y} ${mx} ${p2.y} ${p2.x} ${p2.y}`);
+      line.setAttribute('fill','none');
+      let col = '#7a1f2b';
+      if(checkColors){ col = (L.dataset.match===rk) ? '#4d6b54' : '#b5552f'; }
+      line.setAttribute('stroke',col);
+      line.setAttribute('stroke-width','2.5');
+      svg.appendChild(line);
+    });
+  }
+  window.addEventListener('resize',()=>draw());
+
+  window._matchCheck = function(){
+    let ok=0;
+    lefts.forEach(L=>{
+      L.classList.remove('ok','no');
+      const rk = links[L.dataset.key];
+      if(rk && L.dataset.match===rk){ L.classList.add('ok'); ok++; markSolved('match-'+L.dataset.key); }
+      else { if(rk) L.classList.add('no'); unmarkSolved('match-'+L.dataset.key); }
+    });
+    rights.forEach(R=>{
+      R.classList.remove('ok','no');
+      const matched = Object.entries(links).find(([lk,rk])=>rk===R.dataset.key);
+      if(matched){
+        const L = lefts.find(x=>x.dataset.key===matched[0]);
+        R.classList.add(L.dataset.match===R.dataset.key?'ok':'no');
+      }
+    });
+    draw(true);
+    feedback('C', ok, lefts.length);
+    refresh();
+  };
+  window._matchClear = function(){
+    Object.keys(links).forEach(k=>delete links[k]);
+    lefts.forEach(l=>l.classList.remove('ok','no','linked'));
+    rights.forEach(r=>r.classList.remove('ok','no','linked'));
+    clearActive(); draw();
+    document.querySelector('[data-fb="C"]').textContent='';
+  };
+})();
+
+/* ===================== CROSSWORD (CW) ===================== */
+(function(){
+  // solution grid: '.' = blank
+  const grid = [
+    ['B','E','C','A','M','E'],
+    ['R','.','A','.','A','.'],
+    ['O','.','M','.','D','.'],
+    ['K','.','E','.','E','.'],
+    ['E','.','.','.','.','.']
+  ];
+  const numbers = { '0-0':1, '0-2':2, '0-4':3 };
+  const cols = grid[0].length;
+  const host = document.getElementById('cwgrid');
+  host.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+  let cellCount=0;
+  grid.forEach((row,r)=> row.forEach((ch,c)=>{
+    const cell=document.createElement('div');
+    cell.className='cwcell'+(ch==='.'?' blank':'');
+    if(ch!=='.'){
+      const key=r+'-'+c;
+      if(numbers[key]){ const n=document.createElement('span'); n.className='cwnum'; n.textContent=numbers[key]; cell.appendChild(n); }
+      const inp=document.createElement('input');
+      inp.maxLength=1; inp.dataset.sol=ch; inp.dataset.id='cw-'+key;
+      inp.setAttribute('aria-label','letra');
+      inp.addEventListener('input',()=>{ inp.value=inp.value.toUpperCase().slice(0,1); });
+      cell.appendChild(inp); cellCount++;
+    }
+    host.appendChild(cell);
+  }));
+  registerItems(cellCount);
+  window._cwCheck = function(){
+    let ok=0,tot=0;
+    host.querySelectorAll('input').forEach(inp=>{
+      tot++;
+      inp.classList.remove('ok','no');
+      if((inp.value||'').toUpperCase()===inp.dataset.sol){ inp.classList.add('ok'); ok++; markSolved(inp.dataset.id); }
+      else { if(inp.value) inp.classList.add('no'); unmarkSolved(inp.dataset.id); }
+    });
+    feedback('CW', ok, tot);
+    refresh();
+  };
+})();
+
+/* ===================== WORD ORDER (G) ===================== */
+(function(){
+  const shuffle=a=>{ for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; };
+  document.querySelectorAll('[data-ex="G"] .wo').forEach(wo=>{
+    wo.dataset.id='wo-'+wo.dataset.wo;
+    registerItems(1);
+    const target = wo.dataset.target.split(' ');
+    const bank = wo.querySelector('.bank');
+    const tray = wo.querySelector('.tray');
+    shuffle([...target]).forEach((w,idx)=>{
+      const b=document.createElement('span'); b.className='word'; b.textContent=w; b.dataset.w=w;
+      b.addEventListener('click',()=>{
+        if(b.classList.contains('used')) return;
+        const t=document.createElement('span'); t.className='word'; t.textContent=w;
+        t.addEventListener('click',()=>{ t.remove(); b.classList.remove('used'); });
+        tray.appendChild(t); b.classList.add('used');
+      });
+      bank.appendChild(b);
+    });
+  });
+  window._woCheck=function(){
+    let ok=0,tot=0;
+    document.querySelectorAll('[data-ex="G"] .wo').forEach(wo=>{
+      tot++;
+      const tray=wo.querySelector('.tray');
+      const got=[...tray.querySelectorAll('.word')].map(x=>x.textContent).join(' ');
+      tray.classList.remove('ok','no');
+      if(norm(got)===norm(wo.dataset.target)){ tray.classList.add('ok'); ok++; markSolved(wo.dataset.id); }
+      else { if(got) tray.classList.add('no'); unmarkSolved(wo.dataset.id); }
+    });
+    feedback('G', ok, tot);
+    refresh();
+  };
+  window._woReveal=function(){
+    document.querySelectorAll('[data-ex="G"] .wo').forEach(wo=>{
+      const t=wo.querySelector('.wo-target');
+      t.textContent='✓ '+wo.dataset.target.charAt(0).toUpperCase()+wo.dataset.target.slice(1)+'?';
+      t.classList.add('show');
+    });
+  };
+})();
+
+/* ===================== feedback helper ===================== */
+function feedback(exId, ok, tot){
+  const fb = document.querySelector('[data-fb="'+exId+'"]');
+  if(!fb) return;
+  fb.classList.remove('ok','partial');
+  if(ok===tot){ fb.textContent='✓ ¡Perfecto! '+ok+'/'+tot; fb.classList.add('ok'); }
+  else { fb.textContent=ok+'/'+tot+' correctas — revisa las marcadas'; fb.classList.add('partial'); }
+}
+
+/* ===================== wiring ===================== */
+setupChoice('B','.chip','.chips');
+setupChoice('E','.opt','.opts');
+setupChoice('H','.opt','.opts');
+
+document.addEventListener('click', e=>{
+  const t = e.target.closest('[data-check],[data-reveal],[data-clear]');
+  if(!t) return;
+  if(t.dataset.check){
+    const id=t.dataset.check;
+    if(id==='A'||id==='D'||id==='F'||id==='I') checkFill(id);
+    else if(id==='B') checkChoice('B','.chip','.chips');
+    else if(id==='E') checkChoice('E','.opt','.opts');
+    else if(id==='H') checkChoice('H','.opt','.opts');
+    else if(id==='C') window._matchCheck();
+    else if(id==='CW') window._cwCheck();
+    else if(id==='G') window._woCheck();
+  }
+  if(t.dataset.reveal){
+    const id=t.dataset.reveal;
+    if(id==='G') window._woReveal();
+    else revealFill(id);
+  }
+  if(t.dataset.clear==='C') window._matchClear();
+});
+
+refresh();
+</script>
+</body>
+</html>
