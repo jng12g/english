@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios de Tiempos Verbales en Inglés</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f7f6;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        .section {
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        input[type="text"] {
+            padding: 5px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        select {
+            padding: 5px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .correct {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+        .incorrect {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+        .btn-check {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            display: block;
+            width: 100%;
+        }
+        .btn-check:hover {
+            background-color: #0056b3;
+        }
+        .image-container img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        .word-search {
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-family: monospace;
+            font-size: 18px;
+            user-select: none;
+        }
+        .word-search td {
+            border: 1px solid #ddd;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .word-search td.highlight {
+            background-color: #ffeeba;
+            font-weight: bold;
+        }
+        .crossword {
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .crossword td {
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            border: 1px solid transparent;
+        }
+        .crossword td.cell {
+            border: 1px solid #333;
+            background-color: #fff;
+        }
+        .crossword input {
+            width: 20px;
+            height: 20px;
+            border: none;
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-family: monospace;
+        }
+        .crossword .num {
+            font-size: 10px;
+            vertical-align: top;
+            text-align: left;
+            position: absolute;
+        }
+        .radio-group {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Ejercicios de Tiempos Verbales en Inglés</h1>
+    <p>Completa las siguientes secciones para practicar Presente Simple, Presente Continuo, Presente Perfecto, Pasado Simple y Pasado Continuo.</p>
+
+    <!-- SECCIÓN 1: Rellenar huecos -->
+    <div class="section" id="sec1">
+        <h2>1. Rellenar huecos (Verbos regulares, irregulares y adverbios)</h2>
+        <p>Escribe la forma correcta del verbo entre paréntesis en el tiempo verbal adecuado.</p>
+        <ol>
+            <li>The doctor usually <input type="text" data-answer="arrives"> (arrive) at the hospital at 8:00 AM.</li>
+            <li>Right now, the neurologist <input type="text" data-answer="is examining"> (examine) a patient carefully.</li>
+            <li>I <input type="text" data-answer="have already finished"> (already / finish) that new video game.</li>
+            <li>Yesterday, we <input type="text" data-answer="played"> (play) online for three hours.</li>
+            <li>While she <input type="text" data-answer="was studying"> (study), the phone suddenly rang.</li>
+            <li>He <input type="text" data-answer="went"> (go) to the store yesterday because he needed milk.</li>
+            <li>They <input type="text" data-answer="have never seen"> (never / see) such a beautiful landscape before.</li>
+            <li>Look! It <input type="text" data-answer="is raining"> (rain) heavily outside.</li>
+            <li>I <input type="text" data-answer="was walking"> (walk) quickly down the street when I saw the accident.</li>
+            <li>She <input type="text" data-answer="always wakes up"> (always / wake up) early on weekends.</li>
+        </ol>
+    </div>
+
+    <!-- SECCIÓN 2: Estructurar frases -->
+    <div class="section" id="sec2">
+        <h2>2. Estructurar frases</h2>
+        <p>Ordena las palabras para formar oraciones correctas en el tiempo indicado.</p>
+        <ol>
+            <li><strong>(Past Simple)</strong> yesterday / they / football / played / happily <br>
+                <input type="text" style="width: 80%;" data-answer="they played football happily yesterday">
+            </li>
+            <li><strong>(Present Perfect)</strong> yet / not / have / eaten / we / our dinner <br>
+                <input type="text" style="width: 80%;" data-answer="we have not eaten our dinner yet">
+            </li>
+            <li><strong>(Present Continuous)</strong> the / listening / is / carefully / doctor <br>
+                <input type="text" style="width: 80%;" data-answer="the doctor is listening carefully">
+            </li>
+            <li><strong>(Simple Present)</strong> usually / morning / reads / he / the newspaper / in the <br>
+                <input type="text" style="width: 80%;" data-answer="he usually reads the newspaper in the morning">
+            </li>
+            <li><strong>(Past Continuous)</strong> TV / watching / were / when / arrived / you / I <br>
+                <input type="text" style="width: 80%;" data-answer="you were watching tv when i arrived">
+            </li>
+        </ol>
+    </div>
+
+    <!-- SECCIÓN 3: Traducción Múltiple -->
+    <div class="section" id="sec3">
+        <h2>3. Traducción y opciones</h2>
+        <p>Selecciona la opción correcta.</p>
+        
+        <div class="radio-group">
+            <p><strong>1. "Ella estaba trabajando cuando llegué."</strong></p>
+            <input type="radio" name="trad1" value="wrong"> She works when I arrive.<br>
+            <input type="radio" name="trad1" value="correct"> She was working when I arrived.<br>
+            <input type="radio" name="trad1" value="wrong"> She has worked when I was arriving.
+        </div>
+
+        <div class="radio-group">
+            <p><strong>2. "Él nunca ha jugado ese juego."</strong></p>
+            <input type="radio" name="trad2" value="wrong"> He never played that game.<br>
+            <input type="radio" name="trad2" value="wrong"> He doesn't ever play that game.<br>
+            <input type="radio" name="trad2" value="correct"> He has never played that game.
+        </div>
+
+        <div class="radio-group">
+            <p><strong>3. "They constantly complain about the weather."</strong></p>
+            <input type="radio" name="trad3" value="wrong"> Ellos se quejaron constantemente del clima.<br>
+            <input type="radio" name="trad3" value="correct"> Ellos se quejan constantemente del clima.<br>
+            <input type="radio" name="trad3" value="wrong"> Ellos se estaban quejando del clima.
+        </div>
+
+        <div class="radio-group">
+            <p><strong>4. "I had a coffee yesterday morning."</strong></p>
+            <input type="radio" name="trad4" value="correct"> Tomé un café ayer por la mañana.<br>
+            <input type="radio" name="trad4" value="wrong"> He tomado un café ayer por la mañana.<br>
+            <input type="radio" name="trad4" value="wrong"> Estaba tomando un café mañana.
+        </div>
+    </div>
+
+    <!-- SECCIÓN 4: Ejercicios con imágenes (Simuladas) -->
+    <div class="section" id="sec4">
+        <h2>4. Describe la imagen</h2>
+        <p>Observa la descripción de la imagen y responde usando <strong>Presente Continuo</strong>.</p>
+        
+        <div class="image-container">
+            <div style="width:100%; height:150px; background-color:#ccc; display:flex; align-items:center; justify-content:center; border-radius:8px;">
+                <em>[Imagen: Un hombre corriendo rápidamente bajo la lluvia]</em>
+            </div>
+            <p>What is the man doing? (run / quickly / in the rain)</p>
+            <input type="text" style="width: 80%;" data-answer="the man is running quickly in the rain">
+        </div>
+
+        <div class="image-container" style="margin-top:20px;">
+            <div style="width:100%; height:150px; background-color:#ccc; display:flex; align-items:center; justify-content:center; border-radius:8px;">
+                <em>[Imagen: Dos personas jugando a videojuegos con mandos]</em>
+            </div>
+            <p>What are they doing right now? (play / video games)</p>
+            <input type="text" style="width: 80%;" data-answer="they are playing video games">
+        </div>
+    </div>
+
+    <!-- SECCIÓN 5: Unir con flechas (Menús desplegables) -->
+    <div class="section" id="sec5">
+        <h2>5. Unir marcador temporal con su tiempo verbal</h2>
+        <p>Selecciona el tiempo verbal correcto que suele acompañar a cada adverbio o expresión de tiempo.</p>
+        
+        <p>1. Yesterday <br>
+            <select data-answer="past simple">
+                <option value="">--Selecciona--</option>
+                <option value="present simple">Presente Simple</option>
+                <option value="present continuous">Presente Continuo</option>
+                <option value="past simple">Pasado Simple</option>
+                <option value="past continuous">Pasado Continuo</option>
+                <option value="present perfect">Presente Perfecto</option>
+            </select>
+        </p>
+        <p>2. Right now <br>
+            <select data-answer="present continuous">
+                <option value="">--Selecciona--</option>
+                <option value="present simple">Presente Simple</option>
+                <option value="present continuous">Presente Continuo</option>
+                <option value="past simple">Pasado Simple</option>
+                <option value="past continuous">Pasado Continuo</option>
+                <option value="present perfect">Presente Perfecto</option>
+            </select>
+        </p>
+        <p>3. Already / Yet <br>
+            <select data-answer="present perfect">
+                <option value="">--Selecciona--</option>
+                <option value="present simple">Presente Simple</option>
+                <option value="present continuous">Presente Continuo</option>
+                <option value="past simple">Pasado Simple</option>
+                <option value="past continuous">Pasado Continuo</option>
+                <option value="present perfect">Presente Perfecto</option>
+            </select>
+        </p>
+        <p>4. Usually / Always <br>
+            <select data-answer="present simple">
+                <option value="">--Selecciona--</option>
+                <option value="present simple">Presente Simple</option>
+                <option value="present continuous">Presente Continuo</option>
+                <option value="past simple">Pasado Simple</option>
+                <option value="past continuous">Pasado Continuo</option>
+                <option value="present perfect">Presente Perfecto</option>
+            </select>
+        </p>
+        <p>5. While <br>
+            <select data-answer="past continuous">
+                <option value="">--Selecciona--</option>
+                <option value="present simple">Presente Simple</option>
+                <option value="present continuous">Presente Continuo</option>
+                <option value="past simple">Pasado Simple</option>
+                <option value="past continuous">Pasado Continuo</option>
+                <option value="present perfect">Presente Perfecto</option>
+            </select>
+        </p>
+    </div>
+
+    <!-- SECCIÓN 6: Sopa de letras -->
+    <div class="section" id="sec6">
+        <h2>6. Sopa de letras interactiva</h2>
+        <p>Haz clic en las letras para resaltarlas. Encuentra los siguientes verbos y adverbios en inglés (Horizontales o Verticales):<br>
+        <strong>PLAYED, WENT, GONE, ALWAYS, YESTERDAY, CAREFULLY</strong></p>
+        
+        <table class="word-search" id="wordSearchTable">
+            <!-- Tabla generada estáticamente -->
+            <tr><td>C</td><td>A</td><td>R</td><td>E</td><td>F</td><td>U</td><td>L</td><td>L</td><td>Y</td><td>A</td></tr>
+            <tr><td>X</td><td>L</td><td>P</td><td>L</td><td>A</td><td>Y</td><td>E</td><td>D</td><td>Z</td><td>L</td></tr>
+            <tr><td>Y</td><td>E</td><td>S</td><td>T</td><td>E</td><td>R</td><td>D</td><td>A</td><td>Y</td><td>W</td></tr>
+            <tr><td>O</td><td>G</td><td>O</td><td>N</td><td>E</td><td>R</td><td>U</td><td>N</td><td>S</td><td>A</td></tr>
+            <tr><td>W</td><td>E</td><td>N</td><td>T</td><td>B</td><td>C</td><td>M</td><td>T</td><td>K</td><td>Y</td></tr>
+            <tr><td>A</td><td>S</td><td>P</td><td>E</td><td>A</td><td>K</td><td>I</td><td>N</td><td>G</td><td>S</td></tr>
+        </table>
+    </div>
+
+    <!-- SECCIÓN 7: Crucigrama -->
+    <div class="section" id="sec7">
+        <h2>7. Mini Crucigrama (Irregulares)</h2>
+        <p><strong>Horizontal:</strong><br>
+        1. Pasado simple de GO.<br>
+        3. Participio de EAT.</p>
+        <p><strong>Vertical:</strong><br>
+        1. Pasado simple de WRITE.<br>
+        2. Presente de THOUGHT.</p>
+
+        <table class="crossword">
+            <tr>
+                <td></td>
+                <td class="cell"><span class="num">1</span><input type="text" maxlength="1" data-cw="W"></td>
+                <td class="cell"><input type="text" maxlength="1" data-cw="E"></td>
+                <td class="cell"><input type="text" maxlength="1" data-cw="N"></td>
+                <td class="cell"><span class="num">2</span><input type="text" maxlength="1" data-cw="T"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="cell"><input type="text" maxlength="1" data-cw="R"></td>
+                <td></td>
+                <td></td>
+                <td class="cell"><input type="text" maxlength="1" data-cw="H"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="cell"><input type="text" maxlength="1" data-cw="O"></td>
+                <td></td>
+                <td></td>
+                <td class="cell"><input type="text" maxlength="1" data-cw="I"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="cell"><span class="num">3</span><input type="text" maxlength="1" data-cw="E"></td>
+                <td class="cell"><input type="text" maxlength="1" data-cw="A"></td>
+                <td class="cell"><input type="text" maxlength="1" data-cw="T"></td>
+                <td class="cell"><input type="text" maxlength="1" data-cw="E"></td>
+                <td class="cell"><input type="text" maxlength="1" data-cw="N"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="cell"><input type="text" maxlength="1" data-cw="T"></td>
+                <td></td>
+                <td></td>
+                <td class="cell"><input type="text" maxlength="1" data-cw="K"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="cell"><input type="text" maxlength="1" data-cw="E"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+
+    <button class="btn-check" onclick="checkAllAnswers()">Comprobar Respuestas</button>
+
+    <script>
+        // Funcionalidad para resaltar celdas de la sopa de letras
+        const wsCells = document.querySelectorAll('.word-search td');
+        wsCells.forEach(cell => {
+            cell.addEventListener('click', () => {
+                cell.classList.toggle('highlight');
+            });
+        });
+
+        // Función para validar las respuestas
+        function checkAllAnswers() {
+            // 1. Text Inputs (Huecos y Estructuras y Descripciones)
+            const textInputs = document.querySelectorAll('input[type="text"][data-answer]');
+            textInputs.forEach(input => {
+                const userAnswer = input.value.trim().toLowerCase().replace(/[^a-z ]/g, ''); // Limpiar puntuación
+                const correctAnswer = input.getAttribute('data-answer').toLowerCase();
+                
+                input.classList.remove('correct', 'incorrect');
+                if (userAnswer === correctAnswer) {
+                    input.classList.add('correct');
+                } else {
+                    input.classList.add('incorrect');
+                }
+            });
+
+            // 2. Selects (Unir con flechas)
+            const selects = document.querySelectorAll('select[data-answer]');
+            selects.forEach(select => {
+                const userAnswer = select.value;
+                const correctAnswer = select.getAttribute('data-answer');
+                
+                select.classList.remove('correct', 'incorrect');
+                if (userAnswer === correctAnswer) {
+                    select.classList.add('correct');
+                } else if (userAnswer !== "") {
+                    select.classList.add('incorrect');
+                }
+            });
+
+            // 3. Radio Buttons (Traducción)
+            const radioGroups = ['trad1', 'trad2', 'trad3', 'trad4'];
+            radioGroups.forEach(groupName => {
+                const radios = document.querySelectorAll(`input[name="${groupName}"]`);
+                radios.forEach(radio => {
+                    const parent = radio.parentElement;
+                    if (radio.checked) {
+                        if (radio.value === 'correct') {
+                            parent.style.backgroundColor = '#d4edda';
+                        } else {
+                            parent.style.backgroundColor = '#f8d7da';
+                        }
+                    }
+                });
+            });
+
+            // 4. Crucigrama
+            const cwInputs = document.querySelectorAll('.crossword input');
+            cwInputs.forEach(input => {
+                const userAnswer = input.value.trim().toUpperCase();
+                const correctAnswer = input.getAttribute('data-cw').toUpperCase();
+                
+                input.classList.remove('correct', 'incorrect');
+                if(userAnswer === "") {
+                    // no hacer nada
+                } else if (userAnswer === correctAnswer) {
+                    input.classList.add('correct');
+                } else {
+                    input.classList.add('incorrect');
+                }
+            });
+
+            alert("Respuestas comprobadas. Revisa las celdas marcadas en verde (correcto) y rojo (incorrecto).");
+        }
+    </script>
+</body>
+</html>
