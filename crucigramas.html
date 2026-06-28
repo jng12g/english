@@ -391,57 +391,67 @@
             renderClues(placedWords);
         }
 
-        function setupInputEvents(input, r, c, isH, isV) {
-            input.addEventListener('click', function() {
-                if (isH && isV) {
-                    if (window.currentActiveInput === this) {
-                        currentDir = currentDir === 'H' ? 'V' : 'H';
-                    } else if ((currentDir === 'H' && !isH) || (currentDir === 'V' && !isV)) {
+function setupInputEvents(input, r, c, isH, isV) {
+                input.addEventListener('click', function() {
+                    if (isH && isV) {
+                        if (window.currentActiveInput === this) {
+                            currentDir = currentDir === 'H' ? 'V' : 'H';
+                        } else if ((currentDir === 'H' && !isH) || (currentDir === 'V' && !isV)) {
+                            currentDir = isH ? 'H' : 'V';
+                        }
+                    } else {
                         currentDir = isH ? 'H' : 'V';
                     }
-                } else {
-                    currentDir = isH ? 'H' : 'V';
-                }
-                window.currentActiveInput = this;
-                highlightCurrentWord(r, c);
-            });
+                    window.currentActiveInput = this;
+                    highlightCurrentWord(r, c);
+                });
 
-            input.addEventListener('focus', function() {
-                window.currentActiveInput = this;
-                if (!isH && isV) currentDir = 'V';
-                if (isH && !isV) currentDir = 'H';
-                highlightCurrentWord(r, c);
-            });
-
-            input.addEventListener('input', function(e) {
-                this.value = this.value.toUpperCase();
-                this.classList.remove('correct', 'error');
-
-                if (this.value !== '') {
-                    let nextR = currentDir === 'V' ? r + 1 : r;
-                    let nextC = currentDir === 'H' ? c + 1 : c;
-                    let nextInput = document.querySelector(`.cell-input[data-r="${nextR}"][data-c="${nextC}"]`);
+                input.addEventListener('focus', function() {
+                    window.currentActiveInput = this;
+                    if (!isH && isV) currentDir = 'V';
+                    if (isH && !isV) currentDir = 'H';
+                    highlightCurrentWord(r, c);
                     
-                    if (nextInput && nextInput.dataset['is' + currentDir] === 'true') {
-                        nextInput.focus();
-                    }
-                }
-            });
+                    // Selecciona el texto al entrar para que al teclear se sobrescriba
+                    this.select(); 
+                });
 
-            input.addEventListener('keydown', function(e) {
-                if (e.key === 'Backspace' && this.value === '') {
-                    let prevR = currentDir === 'V' ? r - 1 : r;
-                    let prevC = currentDir === 'H' ? c - 1 : c;
-                    let prevInput = document.querySelector(`.cell-input[data-r="${prevR}"][data-c="${prevC}"]`);
-                    
-                    if (prevInput && prevInput.dataset['is' + currentDir] === 'true') {
-                        prevInput.focus();
-                        prevInput.value = '';
-                        prevInput.classList.remove('correct', 'error');
+                input.addEventListener('keydown', function(e) {
+                    // Control de la tecla borrar (Backspace)
+                    if (e.key === 'Backspace') {
+                        if (this.value === '') {
+                            let prevR = currentDir === 'V' ? r - 1 : r;
+                            let prevC = currentDir === 'H' ? c - 1 : c;
+                            let prevInput = document.querySelector(`.cell-input[data-r="${prevR}"][data-c="${prevC}"]`);
+                            
+                            if (prevInput && prevInput.dataset['is' + currentDir] === 'true') {
+                                e.preventDefault();
+                                prevInput.focus();
+                                prevInput.value = '';
+                                prevInput.classList.remove('correct', 'error');
+                            }
+                        } else {
+                            this.value = '';
+                            this.classList.remove('correct', 'error');
+                        }
                     }
-                }
-            });
-        }
+                    // Control de teclas de letras (A-Z)
+                    else if (e.key.length === 1 && e.key.match(/[a-zA-Z]/)) {
+                        e.preventDefault(); // Evitamos la escritura por defecto
+                        this.value = e.key.toUpperCase();
+                        this.classList.remove('correct', 'error');
+
+                        // Forzamos el salto a la siguiente casilla siempre
+                        let nextR = currentDir === 'V' ? r + 1 : r;
+                        let nextC = currentDir === 'H' ? c + 1 : c;
+                        let nextInput = document.querySelector(`.cell-input[data-r="${nextR}"][data-c="${nextC}"]`);
+                        
+                        if (nextInput && nextInput.dataset['is' + currentDir] === 'true') {
+                            nextInput.focus();
+                        }
+                    }
+                });
+            }
 
         function highlightCurrentWord(r, c) {
             document.querySelectorAll('.cell-input').forEach(inp => {
