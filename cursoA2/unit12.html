@@ -1,1 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>English A2 · Unit 12 · Experiences</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..700,50,1&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
 
+:root{
+  --paper:#f4efe6;--paper-2:#ece3d4;--paper-3:#e3d8c4;
+  --ink:#2b2420;--ink-soft:#5a4f46;
+  --burgundy:#7a1f2b;--burgundy-2:#9c3340;--gold:#b4862f;
+  --sage:#4d6b54;--sage-bg:#e4ecdf;--clay:#b5552f;--clay-bg:#f3e2d6;
+  --line:#d8cbb4;--shadow:0 1px 2px rgba(43,36,32,.06),0 8px 24px -12px rgba(43,36,32,.18);
+  --r:14px;--cell:34px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Instrument Sans",system-ui,sans-serif;font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(circle at 12% 6%,rgba(180,134,47,.05),transparent 40%),radial-gradient(circle at 88% 2%,rgba(122,31,43,.05),transparent 38%);}
+.wrap{max-width:880px;margin:0 auto;padding:0 22px}
+
+.topbar{position:sticky;top:0;z-index:60;background:rgba(244,239,230,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:14px;padding-top:10px;padding-bottom:10px}
+.brand{font-family:"Fraunces",serif;font-weight:600;font-size:17px;letter-spacing:-.01em;white-space:nowrap}
+.brand b{color:var(--burgundy)}
+.progress{flex:1;height:9px;border-radius:99px;background:var(--paper-3);overflow:hidden;border:1px solid var(--line)}
+.progress>span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--burgundy),var(--gold));transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.score{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--ink-soft);white-space:nowrap}
+
+.hero{padding:54px 0 30px;border-bottom:2px solid var(--ink)}
+.eyebrow{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--burgundy);font-weight:500}
+.hero h1{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(38px,7vw,64px);line-height:1.02;letter-spacing:-.02em;margin:.18em 0 .12em}
+.hero .sub{font-size:18px;color:var(--ink-soft);max-width:60ch}
+.unit-num{font-family:"Fraunces",serif;font-style:italic;font-size:clamp(60px,16vw,150px);line-height:.8;color:var(--paper-3);display:block;margin-bottom:-.18em;letter-spacing:-.03em;-webkit-text-stroke:1px var(--line)}
+.cando{margin-top:26px;background:#fffdf8;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:var(--r);padding:18px 22px;box-shadow:var(--shadow)}
+.cando h3{margin:0 0 8px;font-family:"Fraunces",serif;font-size:18px;font-weight:600}
+.cando ul{margin:0;padding-left:0;list-style:none}
+.cando li{padding:4px 0 4px 30px;position:relative;font-size:15.5px}
+.cando li::before{content:"✓";position:absolute;left:0;top:4px;color:var(--sage);font-weight:700}
+.cando .es{color:var(--ink-soft);font-style:italic}
+
+section{padding:46px 0;border-bottom:1px solid var(--line)}
+.sec-tag{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--burgundy);font-weight:500;display:flex;align-items:center;gap:10px}
+.sec-tag::before{content:"";width:26px;height:2px;background:var(--burgundy)}
+h2{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(27px,4.6vw,38px);line-height:1.08;letter-spacing:-.015em;margin:.28em 0 .5em}
+h3.lesson{font-family:"Fraunces",serif;font-weight:600;font-size:21px;margin:34px 0 12px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+h3.lesson .n{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--gold);font-weight:700}
+p.lead{font-size:18px;color:var(--ink-soft);max-width:64ch}
+p{max-width:68ch}
+.es-note{color:var(--ink-soft);font-style:italic}
+
+.box{background:#fffdf8;border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;margin:18px 0;box-shadow:var(--shadow)}
+.box.rule{border-left:4px solid var(--burgundy)}
+.box.tip{border-left:4px solid var(--sage);background:var(--sage-bg)}
+.box.warn{border-left:4px solid var(--clay);background:var(--clay-bg)}
+.box h4{margin:0 0 8px;font-family:"Fraunces",serif;font-size:17px;font-weight:600}
+.box .label{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;margin-bottom:6px}
+.box.rule .label{color:var(--burgundy)}.box.tip .label{color:var(--sage)}.box.warn .label{color:var(--clay)}
+.eng{font-weight:600}.xt{color:var(--clay);text-decoration:line-through}.ok{color:var(--sage);font-weight:600}
+
+.tbl{width:100%;border-collapse:collapse;margin:16px 0;font-size:15.5px;background:#fffdf8;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+.tbl th,.tbl td{padding:9px 13px;text-align:left;border-bottom:1px solid var(--line)}
+.tbl th{background:var(--ink);color:var(--paper);font-family:"JetBrains Mono",monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:500}
+.tbl tr:last-child td{border-bottom:none}
+.tbl td:first-child{font-weight:600}
+.tbl .hl{color:var(--burgundy);font-weight:700}
+.tbl-scroll{overflow-x:auto}
+
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin:16px 0}
+.vcard{background:#fffdf8;border:1px solid var(--line);border-radius:11px;padding:11px 13px;box-shadow:var(--shadow)}
+.vcard .w{font-weight:600;font-size:16px}
+.vcard .es{font-size:13.5px;color:var(--ink-soft)}
+
+/* street map visual */
+.map{background:#fffdf8;border:1px solid var(--line);border-radius:var(--r);padding:18px;margin:18px 0;box-shadow:var(--shadow)}
+.map .side{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.bld{border:1px solid var(--line);border-radius:10px;padding:12px 8px;text-align:center;background:var(--paper-2);font-weight:600;font-size:14.5px}
+.bld .ic{font-size:22px;display:block;margin-bottom:2px}
+.road{height:34px;margin:10px 0;border-radius:8px;background:repeating-linear-gradient(90deg,#cdbfa6 0 22px,#fff8 22px 40px),var(--ink);display:flex;align-items:center;justify-content:center;color:var(--paper);font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+
+.ex{background:#fffdf8;border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;margin:20px 0;box-shadow:var(--shadow)}
+.ex-head{display:flex;align-items:center;gap:10px;margin-bottom:4px;flex-wrap:wrap}
+.ex-num{font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:700;color:var(--paper);background:var(--burgundy);padding:3px 9px;border-radius:7px;letter-spacing:.05em}
+.ex-title{font-family:"Fraunces",serif;font-weight:600;font-size:18px}
+.ex-instr{font-size:14.5px;color:var(--ink-soft);margin:2px 0 14px}
+.qrow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:9px 0;border-bottom:1px dotted var(--line);font-size:16px}
+.qrow:last-of-type{border-bottom:none}
+.qn{font-family:"JetBrains Mono",monospace;font-size:12.5px;color:var(--gold);font-weight:700;min-width:26px}
+input.gap{font-family:"Instrument Sans",sans-serif;font-size:15.5px;padding:5px 9px;border:1px solid var(--line);border-radius:8px;background:var(--paper);min-width:90px;width:130px;color:var(--ink);transition:.2s}
+input.gap.wide{width:185px}
+input.gap:focus{outline:none;border-color:var(--burgundy);box-shadow:0 0 0 3px rgba(122,31,43,.12)}
+input.gap.right{border-color:var(--sage);background:var(--sage-bg)}
+input.gap.wrong{border-color:var(--clay);background:var(--clay-bg)}
+.hintword{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--burgundy);background:var(--paper-2);padding:2px 7px;border-radius:6px;border:1px solid var(--line)}
+.wordbank{display:flex;flex-wrap:wrap;gap:7px;margin:2px 0 14px}
+.wordbank .chip{font-family:"JetBrains Mono",monospace;font-size:12.5px;color:var(--burgundy);background:var(--paper-2);padding:4px 10px;border-radius:7px;border:1px solid var(--line)}
+.sol{display:none;font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--sage);margin-left:4px}
+.sol.show{display:inline}
+.mcq{padding:11px 0;border-bottom:1px dotted var(--line)}
+.mcq:last-child{border-bottom:none}
+.mcq .stem{font-size:16px;margin-bottom:7px}
+.mcq .stem .qn{margin-right:6px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border:1px solid var(--line);border-radius:9px;cursor:pointer;background:var(--paper);font-size:15px;transition:.15s;user-select:none}
+.opt:hover{border-color:var(--burgundy);background:#fff}
+.opt input{accent-color:var(--burgundy);margin:0}
+.opt.right{border-color:var(--sage);background:var(--sage-bg)}
+.opt.wrong{border-color:var(--clay);background:var(--clay-bg)}
+.opt.miss{border-color:var(--sage);border-style:dashed}
+.match{display:grid;grid-template-columns:1fr 1fr;gap:10px 26px;margin:6px 0}
+.match .ml{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px dotted var(--line);font-size:15.5px;flex-wrap:wrap}
+.match select{font-family:"Instrument Sans",sans-serif;font-size:14.5px;padding:5px 7px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink)}
+.match select.right{border-color:var(--sage);background:var(--sage-bg)}
+.match select.wrong{border-color:var(--clay);background:var(--clay-bg)}
+.ex-foot{display:flex;align-items:center;gap:12px;margin-top:16px;flex-wrap:wrap}
+.btn{font-family:"Instrument Sans",sans-serif;font-weight:600;font-size:14.5px;padding:9px 18px;border-radius:9px;border:1px solid var(--burgundy);background:var(--burgundy);color:var(--paper);cursor:pointer;transition:.18s}
+.btn:hover{background:var(--burgundy-2);border-color:var(--burgundy-2)}
+.btn.ghost{background:transparent;color:var(--burgundy)}
+.btn.ghost:hover{background:var(--paper-2);color:var(--burgundy)}
+.fb{font-family:"JetBrains Mono",monospace;font-size:13px;font-weight:700;padding:5px 10px;border-radius:8px;display:none}
+.fb.show{display:inline-block}
+.fb.good{background:var(--sage-bg);color:var(--sage)}
+.fb.partial{background:var(--clay-bg);color:var(--clay)}
+
+.reading{background:#fffdf8;border:1px solid var(--line);border-radius:var(--r);padding:24px 26px;margin:18px 0;box-shadow:var(--shadow);font-size:16.5px;line-height:1.7}
+.reading h4{font-family:"Fraunces",serif;font-size:20px;margin:0 0 4px}
+.reading .by{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--gold);margin-bottom:14px}
+.reading p{max-width:none}
+.reading .hl{background:rgba(180,134,47,.18);padding:0 2px;border-radius:3px}
+
+.cw-wrap{display:flex;gap:26px;flex-wrap:wrap;margin:18px 0}
+.cw-grid{display:grid;gap:0;background:var(--ink);padding:3px;border-radius:8px;box-shadow:var(--shadow);width:max-content}
+.cell{position:relative;background:var(--paper-3);width:var(--cell);height:var(--cell)}
+.cell.block{background:transparent}
+.cell input{width:100%;height:100%;border:1px solid var(--line);background:#fffdf8;text-align:center;font-family:"Fraunces",serif;font-size:18px;font-weight:600;text-transform:uppercase;color:var(--ink);padding:0;border-radius:0}
+.cell input:focus{outline:none;background:#fff;box-shadow:inset 0 0 0 2px var(--burgundy)}
+.cell input.right{background:var(--sage-bg);color:var(--sage)}
+.cell input.wrong{background:var(--clay-bg);color:var(--clay)}
+.cell .num{position:absolute;top:0;left:1px;font-family:"JetBrains Mono",monospace;font-size:9px;font-weight:700;color:var(--burgundy);line-height:1;z-index:2;pointer-events:none}
+.clues{flex:1;min-width:240px}
+.clues h4{font-family:"Fraunces",serif;font-size:16px;margin:0 0 6px;color:var(--burgundy)}
+.clues ol{margin:0 0 14px;padding-left:0;list-style:none}
+.clues li{font-size:14.5px;padding:3px 0;display:flex;gap:8px}
+.clues li b{font-family:"JetBrains Mono",monospace;color:var(--gold);min-width:18px}
+
+.selfcheck{background:#fffdf8;border:1px solid var(--line);border-radius:var(--r);padding:22px 24px;box-shadow:var(--shadow)}
+.selfcheck label{display:flex;align-items:flex-start;gap:11px;padding:8px 0;font-size:15.5px;cursor:pointer;border-bottom:1px dotted var(--line)}
+.selfcheck label:last-child{border-bottom:none}
+.selfcheck input{margin-top:5px;accent-color:var(--sage);width:17px;height:17px}
+
+footer{padding:40px 0 60px;text-align:center;color:var(--ink-soft)}
+footer .sig{font-family:"Fraunces",serif;font-style:italic;font-size:17px;color:var(--ink)}
+footer .meta{font-family:"JetBrains Mono",monospace;font-size:12px;margin-top:6px}
+
+@media(max-width:560px){
+  body{font-size:16px}
+  :root{--cell:30px}
+  .cell input{font-size:15px}
+  .match{grid-template-columns:1fr}
+}
+  
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="wrap">
+      <div class="brand">English A2 · <b>Unit 12</b></div>
+      <div class="progress" aria-label="progress"><span id="progBar"></span></div>
+      <div class="score" id="scoreTxt">0 / 0</div>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <header class="hero">
+      <span class="unit-num">12</span>
+      <div class="eyebrow">Level A2 · Coursebook</div>
+      <h1>Experiences</h1>
+      <p class="sub">En esta unidad das el salto hacia B1: aprenderás a hablar de <strong>experiences</strong> usando el <strong>present perfect</strong>, y a diferenciarlo del <strong>past simple</strong> cuando dices cuándo ocurrió algo.</p>
+      <div class="cando">
+        <h3>By the end of this unit, I can…</h3>
+        <ul>
+          <li>talk about life experiences with the present perfect <span class="es">· hablar de experiencias vitales</span></li>
+          <li>use ever, never, just, already and yet <span class="es">· usar marcadores frecuentes del present perfect</span></li>
+          <li>contrast present perfect and past simple <span class="es">· distinguir experiencia general y momento concreto</span></li>
+          <li>ask and answer about trips, events and achievements <span class="es">· preguntar y responder sobre viajes, eventos y logros</span></li>
+        </ul>
+      </div>
+    </header>
+
+    <section>
+      <div class="sec-tag">Section A · Vocabulary</div>
+      <h2>Experiences, travel and events</h2>
+      <p class="lead">El <strong>present perfect</strong> se usa mucho para hablar de cosas que has hecho en tu vida, sin decir exactamente cuándo. Primero, el vocabulario.</p>
+
+      <h3 class="lesson"><span class="n">A1</span> Travel experiences</h3>
+      <div class="vgrid">
+        <div class="vcard"><div class="w">a trip</div><div class="es">un viaje corto</div></div>
+        <div class="vcard"><div class="w">a journey</div><div class="es">un trayecto / viaje largo</div></div>
+        <div class="vcard"><div class="w">a flight</div><div class="es">un vuelo</div></div>
+        <div class="vcard"><div class="w">a ticket</div><div class="es">un billete / entrada</div></div>
+        <div class="vcard"><div class="w">a passport</div><div class="es">un pasaporte</div></div>
+        <div class="vcard"><div class="w">a photo</div><div class="es">una foto</div></div>
+      </div>
+
+      <h3 class="lesson"><span class="n">A2</span> Places and events</h3>
+      <div class="vgrid">
+        <div class="vcard"><div class="w">museum</div><div class="es">museo</div></div>
+        <div class="vcard"><div class="w">concert</div><div class="es">concierto</div></div>
+        <div class="vcard"><div class="w">castle</div><div class="es">castillo</div></div>
+        <div class="vcard"><div class="w">mountain</div><div class="es">montaña</div></div>
+        <div class="vcard"><div class="w">beach</div><div class="es">playa</div></div>
+        <div class="vcard"><div class="w">abroad</div><div class="es">en el extranjero</div></div>
+      </div>
+
+      <h3 class="lesson"><span class="n">A3</span> Experience verbs</h3>
+      <div class="vgrid">
+        <div class="vcard"><div class="w">visit</div><div class="es">visitar</div></div>
+        <div class="vcard"><div class="w">travel</div><div class="es">viajar</div></div>
+        <div class="vcard"><div class="w">try</div><div class="es">probar / intentar</div></div>
+        <div class="vcard"><div class="w">taste</div><div class="es">probar comida/bebida</div></div>
+        <div class="vcard"><div class="w">meet</div><div class="es">conocer / quedar con</div></div>
+        <div class="vcard"><div class="w">lose</div><div class="es">perder</div></div>
+        <div class="vcard"><div class="w">find</div><div class="es">encontrar</div></div>
+        <div class="vcard"><div class="w">climb</div><div class="es">escalar / subir</div></div>
+      </div>
+
+      <div class="box tip">
+        <div class="label">Good to know</div>
+        <h4>Trip vs journey</h4>
+        <p><span class="eng">Trip</span> suele ser el viaje completo: <span class="eng">a weekend trip to Cork</span>. <span class="eng">Journey</span> se centra más en el trayecto: <span class="eng">The journey was long</span>.</p>
+      </div>
+
+      <div class="ex" data-ex>
+        <div class="ex-head"><span class="ex-num">EX 1</span><span class="ex-title">Match the words</span></div>
+        <p class="ex-instr">Relaciona cada palabra inglesa con su significado en español.</p>
+        <div class="match" data-grader="match">
+          <div class="ml"><span class="qn">1</span> passport <select data-answer="pasaporte"><option></option><option>concierto</option><option>pasaporte</option><option>montaña</option><option>billete / entrada</option></select></div>
+          <div class="ml"><span class="qn">2</span> concert <select data-answer="concierto"><option></option><option>vuelo</option><option>concierto</option><option>museo</option><option>foto</option></select></div>
+          <div class="ml"><span class="qn">3</span> flight <select data-answer="vuelo"><option></option><option>trayecto</option><option>vuelo</option><option>castillo</option><option>pasaporte</option></select></div>
+          <div class="ml"><span class="qn">4</span> ticket <select data-answer="billete / entrada"><option></option><option>billete / entrada</option><option>playa</option><option>concierto</option><option>viaje corto</option></select></div>
+          <div class="ml"><span class="qn">5</span> museum <select data-answer="museo"><option></option><option>museo</option><option>foto</option><option>montaña</option><option>vuelo</option></select></div>
+          <div class="ml"><span class="qn">6</span> abroad <select data-answer="en el extranjero"><option></option><option>ayer</option><option>en el extranjero</option><option>en casa</option><option>al momento</option></select></div>
+          <div class="ml"><span class="qn">7</span> taste <select data-answer="probar comida/bebida"><option></option><option>perder</option><option>encontrar</option><option>probar comida/bebida</option><option>subir</option></select></div>
+          <div class="ml"><span class="qn">8</span> lose <select data-answer="perder"><option></option><option>perder</option><option>conocer</option><option>viajar</option><option>visitar</option></select></div>
+        </div>
+        <div class="ex-foot"><button class="btn" data-check>Check</button><button class="btn ghost" data-reveal>Show answers</button><span class="fb" data-fb></span></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-tag">Section B · Grammar 1</div>
+      <h2>Present perfect: have / has + past participle</h2>
+      <p class="lead">Usa el <strong>present perfect</strong> para hablar de experiencias de vida cuando el momento exacto no es lo importante.</p>
+
+      <div class="box rule">
+        <div class="label">Rule</div>
+        <h4>Form</h4>
+        <p><span class="eng">Subject + have / has + past participle</span></p>
+        <p><span class="eng">I have visited London.</span> · He visitado Londres. No dices cuándo: lo importante es la experiencia.</p>
+      </div>
+
+      <div class="tbl-scroll">
+        <table class="tbl">
+          <thead><tr><th>Type</th><th>Structure</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td>Affirmative</td><td>I / you / we / they <span class="hl">have</span> + participle</td><td>I <span class="hl">have visited</span> Edinburgh.</td></tr>
+            <tr><td>Affirmative</td><td>he / she / it <span class="hl">has</span> + participle</td><td>She <span class="hl">has tried</span> sushi.</td></tr>
+            <tr><td>Negative</td><td>haven't / hasn't + participle</td><td>We <span class="hl">haven't seen</span> that film.</td></tr>
+            <tr><td>Question</td><td>Have / Has + subject + participle?</td><td><span class="hl">Have you been</span> to Ireland?</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tbl-scroll">
+        <table class="tbl">
+          <thead><tr><th>Verb</th><th>Past simple</th><th>Past participle</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td>visit</td><td>visited</td><td><span class="hl">visited</span></td><td>I have visited a museum.</td></tr>
+            <tr><td>go</td><td>went</td><td><span class="hl">gone / been</span></td><td>Have you been to Paris?</td></tr>
+            <tr><td>see</td><td>saw</td><td><span class="hl">seen</span></td><td>She has seen that film.</td></tr>
+            <tr><td>eat</td><td>ate</td><td><span class="hl">eaten</span></td><td>They have eaten Indian food.</td></tr>
+            <tr><td>meet</td><td>met</td><td><span class="hl">met</span></td><td>He has met my sister.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="box warn">
+        <div class="label">Typical Spanish error</div>
+        <h4>No olvides el auxiliar</h4>
+        <p><span class="xt">I been to London.</span> → <span class="ok">I have been to London.</span></p>
+        <p>En español puedes decir “he estado”, pero en inglés necesitas siempre <span class="eng">have / has</span> en este tiempo.</p>
+      </div>
+
+      <div class="ex" data-ex>
+        <div class="ex-head"><span class="ex-num">EX 2</span><span class="ex-title">Past participles</span></div>
+        <p class="ex-instr">Escribe el participio pasado correcto.</p>
+        <div data-grader="gap">
+          <div class="qrow"><span class="qn">1</span> visit → <input class="gap" data-answer="visited"> <span class="sol" data-sol>visited</span></div>
+          <div class="qrow"><span class="qn">2</span> try → <input class="gap" data-answer="tried"> <span class="sol" data-sol>tried</span></div>
+          <div class="qrow"><span class="qn">3</span> see → <input class="gap" data-answer="seen"> <span class="sol" data-sol>seen</span></div>
+          <div class="qrow"><span class="qn">4</span> go → <input class="gap" data-answer="been|gone"> <span class="sol" data-sol>been / gone</span></div>
+          <div class="qrow"><span class="qn">5</span> eat → <input class="gap" data-answer="eaten"> <span class="sol" data-sol>eaten</span></div>
+          <div class="qrow"><span class="qn">6</span> meet → <input class="gap" data-answer="met"> <span class="sol" data-sol>met</span></div>
+          <div class="qrow"><span class="qn">7</span> buy → <input class="gap" data-answer="bought"> <span class="sol" data-sol>bought</span></div>
+          <div class="qrow"><span class="qn">8</span> take → <input class="gap" data-answer="taken"> <span class="sol" data-sol>taken</span></div>
+        </div>
+        <div class="ex-foot"><button class="btn" data-check>Check</button><button class="btn ghost" data-reveal>Show answers</button><span class="fb" data-fb></span></div>
+      </div>
+
+      <div class="ex" data-ex>
+        <div class="ex-head"><span class="ex-num">EX 3</span><span class="ex-title">Build present-perfect sentences</span></div>
+        <p class="ex-instr">Completa con <strong>have / has + participle</strong>. Usa contracciones solo si aparecen en las respuestas aceptadas.</p>
+        <div data-grader="gap">
+          <div class="qrow"><span class="qn">1</span> I <input class="gap wide" data-answer="have visited|'ve visited"> three museums. <span class="sol" data-sol>have visited</span></div>
+          <div class="qrow"><span class="qn">2</span> She <input class="gap wide" data-answer="has tried|'s tried"> Japanese food. <span class="sol" data-sol>has tried</span></div>
+          <div class="qrow"><span class="qn">3</span> We <input class="gap wide" data-answer="have never lost|'ve never lost"> our passports. <span class="sol" data-sol>have never lost</span></div>
+          <div class="qrow"><span class="qn">4</span> Tom <input class="gap wide" data-answer="has met|'s met"> a famous singer. <span class="sol" data-sol>has met</span></div>
+          <div class="qrow"><span class="qn">5</span> They <input class="gap wide" data-answer="have taken|'ve taken"> a lot of photos. <span class="sol" data-sol>have taken</span></div>
+          <div class="qrow"><span class="qn">6</span> My sister <input class="gap wide" data-answer="has been|'s been"> to Portugal. <span class="sol" data-sol>has been</span></div>
+          <div class="qrow"><span class="qn">7</span> I <input class="gap wide" data-answer="have not seen|haven't seen"> that film. <span class="sol" data-sol>haven't seen</span></div>
+          <div class="qrow"><span class="qn">8</span> <input class="gap wide" data-answer="have you ever been"> to Scotland? <span class="sol" data-sol>Have you ever been</span></div>
+        </div>
+        <div class="ex-foot"><button class="btn" data-check>Check</button><button class="btn ghost" data-reveal>Show answers</button><span class="fb" data-fb></span></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-tag">Section C · Grammar 2</div>
+      <h2>Ever, never, just, already, yet</h2>
+      <p class="lead">Estas palabras son señales muy frecuentes del <strong>present perfect</strong>. Cambian el matiz de la frase.</p>
+
+      <div class="tbl-scroll">
+        <table class="tbl">
+          <thead><tr><th>Word</th><th>Use</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td>ever</td><td>preguntas sobre experiencia</td><td><span class="hl">Have you ever</span> eaten Thai food?</td></tr>
+            <tr><td>never</td><td>experiencia negativa</td><td>I have <span class="hl">never</span> flown alone.</td></tr>
+            <tr><td>just</td><td>algo acaba de pasar</td><td>She has <span class="hl">just</span> arrived.</td></tr>
+            <tr><td>already</td><td>algo ya está hecho</td><td>We have <span class="hl">already</span> bought the tickets.</td></tr>
+            <tr><td>yet</td><td>preguntas y negativas: “ya / todavía no”</td><td>Have you finished <span class="hl">yet</span>? / I haven't finished <span class="hl">yet</span>.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="box rule">
+        <div class="label">Rule</div>
+        <h4>Position</h4>
+        <p><span class="eng">Ever, never, just, already</span> suelen ir entre <span class="eng">have/has</span> y el participio: <span class="eng">I have never tried it</span>. <span class="eng">Yet</span> suele ir al final: <span class="eng">I haven't tried it yet</span>.</p>
+      </div>
+
+      <div class="box warn">
+        <div class="label">Typical Spanish error</div>
+        <h4>Yet no es already</h4>
+        <p><span class="xt">I haven't finished already.</span> → <span class="ok">I haven't finished yet.</span></p>
+        <p>En negativas, para “todavía no”, usa <span class="eng">yet</span>, normalmente al final.</p>
+      </div>
+
+      <div class="ex" data-ex>
+        <div class="ex-head"><span class="ex-num">EX 4</span><span class="ex-title">Choose the right word</span></div>
+        <p class="ex-instr">Elige la palabra que completa mejor cada frase.</p>
+        <div data-grader="mcq">
+          <div class="mcq"><div class="stem"><span class="qn">1</span> Have you ___ been to London?</div><div class="opts" data-correct="b"><label class="opt"><input type="radio" name="ex4q1"> yet</label><label class="opt"><input type="radio" name="ex4q1"> ever</label><label class="opt"><input type="radio" name="ex4q1"> just</label></div></div>
+          <div class="mcq"><div class="stem"><span class="qn">2</span> I have ___ eaten sushi. This is my first time.</div><div class="opts" data-correct="a"><label class="opt"><input type="radio" name="ex4q2"> never</label><label class="opt"><input type="radio" name="ex4q2"> already</label><label class="opt"><input type="radio" name="ex4q2"> yet</label></div></div>
+          <div class="mcq"><div class="stem"><span class="qn">3</span> She has ___ arrived. She is taking off her coat now.</div><div class="opts" data-correct="c"><label class="opt"><input type="radio" name="ex4q3"> ever</label><label class="opt"><input type="radio" name="ex4q3"> yet</label><label class="opt"><input type="radio" name="ex4q3"> just</label></div></div>
+          <div class="mcq"><div class="stem"><span class="qn">4</span> We have ___ seen this film, so let's choose another one.</div><div class="opts" data-correct="b"><label class="opt"><input type="radio" name="ex4q4"> never</label><label class="opt"><input type="radio" name="ex4q4"> already</label><label class="opt"><input type="radio" name="ex4q4"> ever</label></div></div>
+          <div class="mcq"><div class="stem"><span class="qn">5</span> I haven't packed my suitcase ___.</div><div class="opts" data-correct="c"><label class="opt"><input type="radio" name="ex4q5"> already</label><label class="opt"><input type="radio" name="ex4q5"> never</label><label class="opt"><input type="radio" name="ex4q5"> yet</label></div></div>
+          <div class="mcq"><div class="stem"><span class="qn">6</span> Has your brother finished his homework ___?</div><div class="opts" data-correct="a"><label class="opt"><input type="radio" name="ex4q6"> yet</label><label class="opt"><input type="radio" name="ex4q6"> never</label><label class="opt"><input type="radio" name="ex4q6"> just</label></div></div>
+          <div class="mcq"><div class="stem"><span class="qn">7</span> They have ___ bought the tickets. Everything is ready.</div><div class="opts" data-correct="b"><label class="opt"><input type="radio" name="ex4q7"> ever</label><label class="opt"><input type="radio" name="ex4q7"> already</label><label class="opt"><input type="radio" name="ex4q7"> yet</label></div></div>
+          <div class="mcq"><div class="stem"><span class="qn">8</span> I have ___ met a famous actor.</div><div class="opts" data-correct="a"><label class="opt"><input type="radio" name="ex4q8"> never</label><label class="opt"><input type="radio" name="ex4q8"> yet</label><label class="opt"><input type="radio" name="ex4q8"> ever</label></div></div>
+        </div>
+        <div class="ex-foot"><button class="btn" data-check>Check</button><button class="btn ghost" data-reveal>Show answers</button><span class="fb" data-fb></span></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-tag">Section D · Grammar 3</div>
+      <h2>Present perfect or past simple?</h2>
+      <p class="lead">La gran diferencia: <strong>present perfect</strong> para la experiencia, <strong>past simple</strong> para el momento terminado.</p>
+
+      <div class="tbl-scroll">
+        <table class="tbl">
+          <thead><tr><th>Use</th><th>Time words</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td>Present perfect</td><td>ever, never, just, already, yet, in my life</td><td>I <span class="hl">have visited</span> Rome.</td></tr>
+            <tr><td>Past simple</td><td>yesterday, last week, last year, in 2020, when I was ten</td><td>I <span class="hl">visited</span> Rome last year.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="box rule">
+        <div class="label">Rule</div>
+        <h4>Ask first: “Do I say when?”</h4>
+        <p>Si dices <span class="eng">when</span>, normalmente usa <span class="eng">past simple</span>: <span class="eng">I went to Dublin in 2024</span>. Si no dices cuándo y hablas de experiencia, usa <span class="eng">present perfect</span>: <span class="eng">I have been to Dublin</span>.</p>
+      </div>
+
+      <div class="box warn">
+        <div class="label">Typical Spanish error</div>
+        <h4>No mezcles present perfect con un tiempo terminado</h4>
+        <p><span class="xt">I have visited London last year.</span> → <span class="ok">I visited London last year.</span></p>
+        <p><span class="ok">I have visited London.</span> también es correcto, pero sin <span class="eng">last year</span>.</p>
+      </div>
+
+      <div class="box tip">
+        <div class="label">Mini tip</div>
+        <h4>Been vs gone</h4>
+        <p><span class="eng">She has been to Paris</span> = fue y volvió. <span class="eng">She has gone to Paris</span> = está allí ahora o se ha ido allí.</p>
+      </div>
+
+      <div class="ex" data-ex>
+        <div class="ex-head"><span class="ex-num">EX 5</span><span class="ex-title">Choose the correct tense</span></div>
+        <p class="ex-instr">Elige según la pista temporal. Si aparece un momento terminado, normalmente es past simple.</p>
+        <div data-grader="mcq">
+          <div class="mcq"><div class="stem"><span class="qn">1</span> I ___ to Madrid last weekend.</div><div class="opts" data-correct="b"><label class="opt"><input type="radio" name="ex5q1"> have gone</label><label class="opt"><input type="radio" name="ex5q1"> went</label><label class="opt"><input type="radio" name="ex5q1"> have went</label></div></div>
+          <div class="mcq"><div class="stem"><span class="qn">2</span> Have you ever ___ a horse?</div><div class="opts" data-correct="a"><label class="opt"><input type="radio" name="ex5q2"> ridden</label><label class="opt"><input type="radio" name="ex5q2"> rode</label><label class="opt"><input type="radio" name="ex5q2"> ride</label></div></div>
+          <div class="mcq"><div class="stem"><span class="qn">3</span> She ___ that book in 2022.</div><div class="opts" data-correct="c"><label class="opt"><input type="radio" name="ex5q3"> has read</label><label class="opt"><input type="radio" name="ex5q3"> have read</label><label class="opt"><input type="radio" name="ex5q3"> read</label></div></div>
+          <div class="mcq"><div class="stem"><span class="qn">4</span> We ___ never flown in a helicopter.</div><div class="opts" data-correct="b"><label class="opt"><input type="radio" name="ex5q4"> did</label><label class="opt"><input type="radio" name="ex5q4"> have</label><label class="opt"><input type="radio" name="ex5q4"> were</label></div></div>
+          <div class="mcq"><div class="stem"><span class="qn">5</span> They ___ the museum yesterday.</div><div class="opts" data-correct="a"><label class="opt"><input type="radio" name="ex5q5"> visited</label><label class="opt"><input type="radio" name="ex5q5"> have visited</label><label class="opt"><input type="radio" name="ex5q5"> has visited</label></div></div>
+          <div class="mcq"><div class="stem"><span class="qn">6</span> I ___ already packed my bag.</div><div class="opts" data-correct="c"><label class="opt"><input type="radio" name="ex5q6"> did</label><label class="opt"><input type="radio" name="ex5q6"> was</label><label class="opt"><input type="radio" name="ex5q6"> have</label></div></div>
+          <div class="mcq"><div class="stem"><span class="qn">7</span> Did you ___ the concert last night?</div><div class="opts" data-correct="b"><label class="opt"><input type="radio" name="ex5q7"> seen</label><label class="opt"><input type="radio" name="ex5q7"> see</label><label class="opt"><input type="radio" name="ex5q7"> saw</label></div></div>
+          <div class="mcq"><div class="stem"><span class="qn">8</span> My parents ___ never been abroad.</div><div class="opts" data-correct="a"><label class="opt"><input type="radio" name="ex5q8"> have</label><label class="opt"><input type="radio" name="ex5q8"> did</label><label class="opt"><input type="radio" name="ex5q8"> has</label></div></div>
+        </div>
+        <div class="ex-foot"><button class="btn" data-check>Check</button><button class="btn ghost" data-reveal>Show answers</button><span class="fb" data-fb></span></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-tag">Section E · Reading</div>
+      <h2>A travel challenge</h2>
+      <div class="reading">
+        <h4>Three experiences before Friday</h4>
+        <div class="by">A short blog post · A2/B1 bridge</div>
+        <p>This week our English class has a small challenge: try three new things before Friday. I <span class="hl">have already taken</span> a photo of a famous bridge, and I <span class="hl">have just uploaded</span> it to the class page.</p>
+        <p>Marta <span class="hl">has never eaten</span> Indian food, so yesterday she went to a small restaurant near the station. She says the curry was hot, but very good.</p>
+        <p>Leo loves music. He <span class="hl">has been</span> to many concerts, but he <span class="hl">has never played</span> on a stage. On Thursday he is going to play one song with his cousin's band.</p>
+        <p>I asked our teacher, “<span class="hl">Have you ever lost</span> your passport?” She laughed and said, “Yes, I lost it in Lisbon ten years ago. I was very nervous, but I found it under my bed in the hotel.”</p>
+      </div>
+
+      <div class="ex" data-ex>
+        <div class="ex-head"><span class="ex-num">EX 6</span><span class="ex-title">True or false?</span></div>
+        <p class="ex-instr">Lee el texto y marca True o False.</p>
+        <div data-grader="mcq">
+          <div class="mcq"><div class="stem"><span class="qn">1</span> The class challenge is to try three new things before Friday.</div><div class="opts" data-correct="a"><label class="opt"><input type="radio" name="ex6q1"> True</label><label class="opt"><input type="radio" name="ex6q1"> False</label></div></div>
+          <div class="mcq"><div class="stem"><span class="qn">2</span> The narrator has not taken a photo yet.</div><div class="opts" data-correct="b"><label class="opt"><input type="radio" name="ex6q2"> True</label><label class="opt"><input type="radio" name="ex6q2"> False</label></div></div>
+          <div class="mcq"><div class="stem"><span class="qn">3</span> Marta ate Indian food yesterday.</div><div class="opts" data-correct="a"><label class="opt"><input type="radio" name="ex6q3"> True</label><label class="opt"><input type="radio" name="ex6q3"> False</label></div></div>
+          <div class="mcq"><div class="stem"><span class="qn">4</span> Leo has played on a stage many times.</div><div class="opts" data-correct="b"><label class="opt"><input type="radio" name="ex6q4"> True</label><label class="opt"><input type="radio" name="ex6q4"> False</label></div></div>
+          <div class="mcq"><div class="stem"><span class="qn">5</span> The teacher lost her passport in Lisbon ten years ago.</div><div class="opts" data-correct="a"><label class="opt"><input type="radio" name="ex6q5"> True</label><label class="opt"><input type="radio" name="ex6q5"> False</label></div></div>
+          <div class="mcq"><div class="stem"><span class="qn">6</span> The teacher found the passport under her bed in the hotel.</div><div class="opts" data-correct="a"><label class="opt"><input type="radio" name="ex6q6"> True</label><label class="opt"><input type="radio" name="ex6q6"> False</label></div></div>
+        </div>
+        <div class="ex-foot"><button class="btn" data-check>Check</button><button class="btn ghost" data-reveal>Show answers</button><span class="fb" data-fb></span></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-tag">Section F · Crossword</div>
+      <h2>Experiences crossword</h2>
+      <p class="lead">Completa el crucigrama con palabras de la unidad. Escribe solo letras, sin espacios.</p>
+      <div class="cw-wrap">
+        <div id="cwGrid" class="cw-grid" aria-label="crossword grid"></div>
+        <div class="clues">
+          <h4>Across</h4>
+          <ol>
+            <li><b>3</b> A journey by plane.</li>
+            <li><b>5</b> A live music event.</li>
+            <li><b>7</b> To go from one place to another, often to another country.</li>
+            <li><b>8</b> To go and see a place or person.</li>
+            <li><b>10</b> A picture you take with a camera or phone.</li>
+            <li><b>11</b> To test or do something for the first time.</li>
+            <li><b>12</b> To see someone for the first time or by arrangement.</li>
+          </ol>
+          <h4>Down</h4>
+          <ol>
+            <li><b>1</b> You need this document to travel to many countries.</li>
+            <li><b>2</b> A place with art, history or science objects.</li>
+            <li><b>4</b> Not find something because you do not know where it is.</li>
+            <li><b>6</b> You usually need this to enter a concert or take a train.</li>
+            <li><b>9</b> To try food or drink.</li>
+          </ol>
+          <div class="ex-foot"><button class="btn" id="cwCheck">Check crossword</button><button class="btn ghost" id="cwReveal">Show answers</button><span class="fb" id="cwFb"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-tag">Section G · Review</div>
+      <h2>Self-check</h2>
+      <p class="lead">Marca lo que ya puedes hacer. No es un examen: es una brújula.</p>
+      <div class="selfcheck">
+        <label><input type="checkbox"> I can form the present perfect with <strong>have / has + past participle</strong>.</label>
+        <label><input type="checkbox"> I can ask experience questions with <strong>Have you ever…?</strong></label>
+        <label><input type="checkbox"> I can use <strong>never, just, already</strong> and <strong>yet</strong> in simple sentences.</label>
+        <label><input type="checkbox"> I can choose <strong>present perfect</strong> for life experiences.</label>
+        <label><input type="checkbox"> I can choose <strong>past simple</strong> with finished time words like <strong>yesterday</strong> or <strong>last year</strong>.</label>
+        <label><input type="checkbox"> I can write a short paragraph about things I have done and when I did them.</label>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="sig">Level A2 · Creado por Juan Carlos Navarro</div>
+    <div class="meta">English A2 · Unit 12 · Experiences</div>
+  </footer>
+
+  <script>
+
+"use strict";
+const exResults=new Map();
+function refreshScore(){
+  let c=0,t=0; exResults.forEach(r=>{c+=r.correct;t+=r.total;});
+  document.getElementById('scoreTxt').textContent=c+' / '+t;
+  document.getElementById('progBar').style.width=(t?(c/t*100):0)+'%';
+}
+function commit(id,correct,total){ exResults.set(id,{correct,total}); refreshScore(); }
+function norm(s){ return (s||"").toLowerCase().replace(/[’‘`´]/g,"'").replace(/\s+/g," ").replace(/[.,;:!?]+$/,"").trim(); }
+
+function gradeGap(ex){
+  const inputs=[...ex.querySelectorAll('[data-grader="gap"] input.gap')];
+  let correct=0;
+  inputs.forEach(inp=>{
+    const accepted=(inp.dataset.answer||"").split("|").map(norm);
+    const val=norm(inp.value);
+    const ok=val!=="" && accepted.includes(val);
+    inp.classList.remove('right','wrong'); inp.classList.add(ok?'right':'wrong');
+    if(ok) correct++;
+  });
+  return {correct,total:inputs.length};
+}
+function gradeMcq(ex){
+  const groups=[...ex.querySelectorAll('[data-grader="mcq"] .opts')];
+  let correct=0;
+  groups.forEach(g=>{
+    const labels=[...g.querySelectorAll('.opt')];
+    const ci={a:0,b:1,c:2,d:3}[g.dataset.correct];
+    labels.forEach(l=>l.classList.remove('right','wrong','miss'));
+    let chosen=-1; labels.forEach((l,i)=>{ if(l.querySelector('input').checked) chosen=i; });
+    if(chosen===ci){ labels[ci].classList.add('right'); correct++; }
+    else{ if(chosen>-1) labels[chosen].classList.add('wrong'); labels[ci].classList.add('miss'); }
+  });
+  return {correct,total:groups.length};
+}
+function gradeMatch(ex){
+  const sels=[...ex.querySelectorAll('[data-grader="match"] select')];
+  let correct=0;
+  sels.forEach(s=>{
+    const ok=norm(s.value)!=="" && norm(s.value)===norm(s.dataset.answer);
+    s.classList.remove('right','wrong'); s.classList.add(ok?'right':'wrong');
+    if(ok) correct++;
+  });
+  return {correct,total:sels.length};
+}
+
+document.querySelectorAll('[data-ex]').forEach((ex,idx)=>{
+  const id='ex'+idx;
+  const fb=ex.querySelector('[data-fb]');
+  let total=0;
+  if(ex.querySelector('[data-grader="gap"]')) total+=ex.querySelectorAll('[data-grader="gap"] input.gap').length;
+  if(ex.querySelector('[data-grader="mcq"]')) total+=ex.querySelectorAll('[data-grader="mcq"] .opts').length;
+  if(ex.querySelector('[data-grader="match"]')) total+=ex.querySelectorAll('[data-grader="match"] select').length;
+  commit(id,0,total);
+  ex.querySelector('[data-check]').addEventListener('click',()=>{
+    let correct=0,tot=0;
+    if(ex.querySelector('[data-grader="gap"]')){ const r=gradeGap(ex); correct+=r.correct; tot+=r.total; }
+    if(ex.querySelector('[data-grader="mcq"]')){ const r=gradeMcq(ex); correct+=r.correct; tot+=r.total; }
+    if(ex.querySelector('[data-grader="match"]')){ const r=gradeMatch(ex); correct+=r.correct; tot+=r.total; }
+    commit(id,correct,tot);
+    fb.className='fb show '+(correct===tot?'good':'partial');
+    fb.textContent=correct+' / '+tot+(correct===tot?'  ✓ Perfect!':'  · keep trying');
+  });
+  ex.querySelector('[data-reveal]').addEventListener('click',()=>{
+    ex.querySelectorAll('[data-sol]').forEach(s=>s.classList.add('show'));
+    ex.querySelectorAll('[data-grader="mcq"] .opts').forEach(g=>{
+      const ci={a:0,b:1,c:2,d:3}[g.dataset.correct];
+      const labels=[...g.querySelectorAll('.opt')]; labels.forEach(l=>l.classList.remove('miss'));
+      if(labels[ci]) labels[ci].classList.add('miss');
+    });
+    ex.querySelectorAll('[data-grader="match"] select').forEach(s=>{
+      [...s.options].forEach(o=>{ if(norm(o.value)===norm(s.dataset.answer)) s.value=o.value; });
+    });
+  });
+});
+
+/* ===== crossword (verified 12x11, no ghost runs) ===== */
+const SOL=[
+  "..T......M..",
+  "FLIGHT...U..",
+  "..C...L..S..",
+  "..K..CONCERT",
+  "..E.P.S..U..",
+  "..TRAVEL.M..",
+  "....S.......",
+  "..VISIT.....",
+  "....P.A.....",
+  "PHOTO.S.....",
+  "....R.TRY...",
+  ".MEET.E....."
+];
+const NUMS={"0,2":1,"0,9":2,"1,0":3,"2,6":4,"3,5":5,"4,4":6,"5,2":7,"7,2":8,"7,6":9,"9,0":10,"10,6":11,"11,1":12};
+
+(function buildCrossword(){
+  const grid=document.getElementById('cwGrid');
+  const rows=SOL.length, cols=SOL[0].length;
+  grid.style.gridTemplateColumns='repeat('+cols+',var(--cell))';
+  grid.style.gridTemplateRows='repeat('+rows+',var(--cell))';
+  for(let r=0;r<rows;r++){
+    for(let c=0;c<cols;c++){
+      const ch=SOL[r][c];
+      const cell=document.createElement('div');
+      cell.className='cell'+(ch==='.'?' block':'');
+      if(ch!=='.'){
+        const key=r+','+c;
+        if(NUMS[key]!==undefined){
+          const n=document.createElement('span'); n.className='num'; n.textContent=NUMS[key]; cell.appendChild(n);
+        }
+        const inp=document.createElement('input');
+        inp.maxLength=1; inp.dataset.sol=ch;
+        inp.setAttribute('aria-label','row '+(r+1)+' col '+(c+1));
+        inp.addEventListener('input',function(){
+          this.classList.remove('right','wrong');
+          this.value=this.value.toUpperCase().replace(/[^A-Z]/g,'');
+          if(this.value){
+            const all=[...grid.querySelectorAll('input')];
+            const i=all.indexOf(this);
+            if(i>-1 && i+1<all.length) all[i+1].focus();
+          }
+        });
+        cell.appendChild(inp);
+      }
+      grid.appendChild(cell);
+    }
+  }
+})();
+
+(function wireCrossword(){
+  const grid=document.getElementById('cwGrid');
+  const inputs=[...grid.querySelectorAll('input')];
+  const fb=document.getElementById('cwFb');
+  commit('crossword',0,inputs.length);
+  document.getElementById('cwCheck').addEventListener('click',()=>{
+    let correct=0;
+    inputs.forEach(inp=>{
+      inp.classList.remove('right','wrong');
+      const ok=(inp.value||'').toUpperCase()===inp.dataset.sol;
+      inp.classList.add(ok?'right':'wrong'); if(ok) correct++;
+    });
+    commit('crossword',correct,inputs.length);
+    fb.className='fb show '+(correct===inputs.length?'good':'partial');
+    fb.textContent=correct+' / '+inputs.length+(correct===inputs.length?'  ✓ Solved!':'  · keep going');
+  });
+  document.getElementById('cwReveal').addEventListener('click',()=>{
+    inputs.forEach(inp=>{ inp.value=inp.dataset.sol; inp.classList.remove('wrong'); inp.classList.add('right'); });
+    commit('crossword',inputs.length,inputs.length);
+    fb.className='fb show good'; fb.textContent='Answers shown';
+  });
+})();
+
+refreshScore();
+  
+  </script>
+</body>
+</html>
