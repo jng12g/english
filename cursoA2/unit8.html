@@ -1,1 +1,676 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 8 · Telling Stories · English A2</title>
+<meta name="description" content="Unit 8 — Telling Stories. Inglés A2 interactivo: past continuous vs past simple (when/while), weather, accidents and feelings, narrative linkers. Creado por Juan Carlos Navarro.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Instrument+Sans:ital,wght@0,400..700;1,400..600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f4efe6;--paper-2:#ece3d4;--paper-3:#e3d8c4;
+  --ink:#2b2420;--ink-soft:#5a4f46;
+  --burgundy:#7a1f2b;--burgundy-2:#9c3340;--gold:#b4862f;
+  --sage:#4d6b54;--sage-bg:#e4ecdf;--clay:#b5552f;--clay-bg:#f3e2d6;
+  --line:#d8cbb4;--shadow:0 1px 2px rgba(43,36,32,.06),0 8px 24px -12px rgba(43,36,32,.18);
+  --r:14px;--cell:34px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Instrument Sans",system-ui,sans-serif;font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(circle at 12% 6%,rgba(180,134,47,.05),transparent 40%),radial-gradient(circle at 88% 2%,rgba(122,31,43,.05),transparent 38%);}
+.wrap{max-width:880px;margin:0 auto;padding:0 22px}
 
+.topbar{position:sticky;top:0;z-index:60;background:rgba(244,239,230,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:14px;padding-top:10px;padding-bottom:10px}
+.brand{font-family:"Fraunces",serif;font-weight:600;font-size:17px;letter-spacing:-.01em;white-space:nowrap}
+.brand b{color:var(--burgundy)}
+.progress{flex:1;height:9px;border-radius:99px;background:var(--paper-3);overflow:hidden;border:1px solid var(--line)}
+.progress>span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--burgundy),var(--gold));transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.score{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--ink-soft);white-space:nowrap}
+
+.hero{padding:54px 0 30px;border-bottom:2px solid var(--ink)}
+.eyebrow{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--burgundy);font-weight:500}
+.hero h1{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(38px,7vw,64px);line-height:1.02;letter-spacing:-.02em;margin:.18em 0 .12em}
+.hero .sub{font-size:18px;color:var(--ink-soft);max-width:60ch}
+.unit-num{font-family:"Fraunces",serif;font-style:italic;font-size:clamp(60px,16vw,150px);line-height:.8;color:var(--paper-3);display:block;margin-bottom:-.18em;letter-spacing:-.03em;-webkit-text-stroke:1px var(--line)}
+.cando{margin-top:26px;background:#fffdf8;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:var(--r);padding:18px 22px;box-shadow:var(--shadow)}
+.cando h3{margin:0 0 8px;font-family:"Fraunces",serif;font-size:18px;font-weight:600}
+.cando ul{margin:0;padding-left:0;list-style:none}
+.cando li{padding:4px 0 4px 30px;position:relative;font-size:15.5px}
+.cando li::before{content:"✓";position:absolute;left:0;top:4px;color:var(--sage);font-weight:700}
+.cando .es{color:var(--ink-soft);font-style:italic}
+
+section{padding:46px 0;border-bottom:1px solid var(--line)}
+.sec-tag{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--burgundy);font-weight:500;display:flex;align-items:center;gap:10px}
+.sec-tag::before{content:"";width:26px;height:2px;background:var(--burgundy)}
+h2{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(27px,4.6vw,38px);line-height:1.08;letter-spacing:-.015em;margin:.28em 0 .5em}
+h3.lesson{font-family:"Fraunces",serif;font-weight:600;font-size:21px;margin:34px 0 12px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+h3.lesson .n{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--gold);font-weight:700}
+p.lead{font-size:18px;color:var(--ink-soft);max-width:64ch}
+p{max-width:68ch}
+.es-note{color:var(--ink-soft);font-style:italic}
+
+.box{background:#fffdf8;border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;margin:18px 0;box-shadow:var(--shadow)}
+.box.rule{border-left:4px solid var(--burgundy)}
+.box.tip{border-left:4px solid var(--sage);background:var(--sage-bg)}
+.box.warn{border-left:4px solid var(--clay);background:var(--clay-bg)}
+.box h4{margin:0 0 8px;font-family:"Fraunces",serif;font-size:17px;font-weight:600}
+.box .label{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;margin-bottom:6px}
+.box.rule .label{color:var(--burgundy)}.box.tip .label{color:var(--sage)}.box.warn .label{color:var(--clay)}
+.eng{font-weight:600}.xt{color:var(--clay);text-decoration:line-through}.ok{color:var(--sage);font-weight:600}
+
+.tbl{width:100%;border-collapse:collapse;margin:16px 0;font-size:15.5px;background:#fffdf8;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+.tbl th,.tbl td{padding:9px 13px;text-align:left;border-bottom:1px solid var(--line)}
+.tbl th{background:var(--ink);color:var(--paper);font-family:"JetBrains Mono",monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:500}
+.tbl tr:last-child td{border-bottom:none}
+.tbl td:first-child{font-weight:600}
+.tbl .hl{color:var(--burgundy);font-weight:700}
+.tbl-scroll{overflow-x:auto}
+
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin:16px 0}
+.vcard{background:#fffdf8;border:1px solid var(--line);border-radius:11px;padding:11px 13px;box-shadow:var(--shadow)}
+.vcard .w{font-weight:600;font-size:16px}
+.vcard .es{font-size:13.5px;color:var(--ink-soft)}
+
+.ex{background:#fffdf8;border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;margin:20px 0;box-shadow:var(--shadow)}
+.ex-head{display:flex;align-items:center;gap:10px;margin-bottom:4px;flex-wrap:wrap}
+.ex-num{font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:700;color:var(--paper);background:var(--burgundy);padding:3px 9px;border-radius:7px;letter-spacing:.05em}
+.ex-title{font-family:"Fraunces",serif;font-weight:600;font-size:18px}
+.ex-instr{font-size:14.5px;color:var(--ink-soft);margin:2px 0 14px}
+.qrow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:9px 0;border-bottom:1px dotted var(--line);font-size:16px}
+.qrow:last-of-type{border-bottom:none}
+.qn{font-family:"JetBrains Mono",monospace;font-size:12.5px;color:var(--gold);font-weight:700;min-width:26px}
+input.gap{font-family:"Instrument Sans",sans-serif;font-size:15.5px;padding:5px 9px;border:1px solid var(--line);border-radius:8px;background:var(--paper);min-width:90px;width:140px;color:var(--ink);transition:.2s}
+input.gap.wide{width:200px}
+input.gap:focus{outline:none;border-color:var(--burgundy);box-shadow:0 0 0 3px rgba(122,31,43,.12)}
+input.gap.right{border-color:var(--sage);background:var(--sage-bg)}
+input.gap.wrong{border-color:var(--clay);background:var(--clay-bg)}
+.hintword{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--burgundy);background:var(--paper-2);padding:2px 7px;border-radius:6px;border:1px solid var(--line)}
+.wordbank{display:flex;flex-wrap:wrap;gap:7px;margin:2px 0 14px}
+.wordbank .chip{font-family:"JetBrains Mono",monospace;font-size:12.5px;color:var(--burgundy);background:var(--paper-2);padding:4px 10px;border-radius:7px;border:1px solid var(--line)}
+.sol{display:none;font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--sage);margin-left:4px}
+.sol.show{display:inline}
+.mcq{padding:11px 0;border-bottom:1px dotted var(--line)}
+.mcq:last-child{border-bottom:none}
+.mcq .stem{font-size:16px;margin-bottom:7px}
+.mcq .stem .qn{margin-right:6px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border:1px solid var(--line);border-radius:9px;cursor:pointer;background:var(--paper);font-size:15px;transition:.15s;user-select:none}
+.opt:hover{border-color:var(--burgundy);background:#fff}
+.opt input{accent-color:var(--burgundy);margin:0}
+.opt.right{border-color:var(--sage);background:var(--sage-bg)}
+.opt.wrong{border-color:var(--clay);background:var(--clay-bg)}
+.opt.miss{border-color:var(--sage);border-style:dashed}
+.match{display:grid;grid-template-columns:1fr 1fr;gap:10px 26px;margin:6px 0}
+.match .ml{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px dotted var(--line);font-size:15.5px;flex-wrap:wrap}
+.match select{font-family:"Instrument Sans",sans-serif;font-size:14.5px;padding:5px 7px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink)}
+.match select.right{border-color:var(--sage);background:var(--sage-bg)}
+.match select.wrong{border-color:var(--clay);background:var(--clay-bg)}
+.ex-foot{display:flex;align-items:center;gap:12px;margin-top:16px;flex-wrap:wrap}
+.btn{font-family:"Instrument Sans",sans-serif;font-weight:600;font-size:14.5px;padding:9px 18px;border-radius:9px;border:1px solid var(--burgundy);background:var(--burgundy);color:var(--paper);cursor:pointer;transition:.18s}
+.btn:hover{background:var(--burgundy-2);border-color:var(--burgundy-2)}
+.btn.ghost{background:transparent;color:var(--burgundy)}
+.btn.ghost:hover{background:var(--paper-2);color:var(--burgundy)}
+.fb{font-family:"JetBrains Mono",monospace;font-size:13px;font-weight:700;padding:5px 10px;border-radius:8px;display:none}
+.fb.show{display:inline-block}
+.fb.good{background:var(--sage-bg);color:var(--sage)}
+.fb.partial{background:var(--clay-bg);color:var(--clay)}
+
+.reading{background:#fffdf8;border:1px solid var(--line);border-radius:var(--r);padding:24px 26px;margin:18px 0;box-shadow:var(--shadow);font-size:16.5px;line-height:1.7}
+.reading h4{font-family:"Fraunces",serif;font-size:20px;margin:0 0 4px}
+.reading .by{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--gold);margin-bottom:14px}
+.reading p{max-width:none}
+.reading .hl{background:rgba(180,134,47,.18);padding:0 2px;border-radius:3px}
+
+.cw-wrap{display:flex;gap:26px;flex-wrap:wrap;margin:18px 0}
+.cw-grid{display:grid;gap:0;background:var(--ink);padding:3px;border-radius:8px;box-shadow:var(--shadow);width:max-content}
+.cell{position:relative;background:var(--paper-3);width:var(--cell);height:var(--cell)}
+.cell.block{background:transparent}
+.cell input{width:100%;height:100%;border:1px solid var(--line);background:#fffdf8;text-align:center;font-family:"Fraunces",serif;font-size:18px;font-weight:600;text-transform:uppercase;color:var(--ink);padding:0;border-radius:0}
+.cell input:focus{outline:none;background:#fff;box-shadow:inset 0 0 0 2px var(--burgundy)}
+.cell input.right{background:var(--sage-bg);color:var(--sage)}
+.cell input.wrong{background:var(--clay-bg);color:var(--clay)}
+.cell .num{position:absolute;top:0;left:1px;font-family:"JetBrains Mono",monospace;font-size:9px;font-weight:700;color:var(--burgundy);line-height:1;z-index:2;pointer-events:none}
+.clues{flex:1;min-width:240px}
+.clues h4{font-family:"Fraunces",serif;font-size:16px;margin:0 0 6px;color:var(--burgundy)}
+.clues ol{margin:0 0 14px;padding-left:0;list-style:none}
+.clues li{font-size:14.5px;padding:3px 0;display:flex;gap:8px}
+.clues li b{font-family:"JetBrains Mono",monospace;color:var(--gold);min-width:18px}
+
+.selfcheck{background:#fffdf8;border:1px solid var(--line);border-radius:var(--r);padding:22px 24px;box-shadow:var(--shadow)}
+.selfcheck label{display:flex;align-items:flex-start;gap:11px;padding:8px 0;font-size:15.5px;cursor:pointer;border-bottom:1px dotted var(--line)}
+.selfcheck label:last-child{border-bottom:none}
+.selfcheck input{margin-top:5px;accent-color:var(--sage);width:17px;height:17px}
+
+footer{padding:40px 0 60px;text-align:center;color:var(--ink-soft)}
+footer .sig{font-family:"Fraunces",serif;font-style:italic;font-size:17px;color:var(--ink)}
+footer .meta{font-family:"JetBrains Mono",monospace;font-size:12px;margin-top:6px}
+
+@media(max-width:560px){
+  body{font-size:16px}
+  :root{--cell:30px}
+  .cell input{font-size:15px}
+  .match{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <span class="brand">English <b>A2</b> · Unit 8</span>
+    <div class="progress"><span id="progBar"></span></div>
+    <span class="score" id="scoreTxt">0 / 0</span>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="unit-num">08</span>
+    <span class="eyebrow">Level A2 · Coursebook</span>
+    <h1>Telling Stories</h1>
+    <p class="sub">El arte de contar lo que pasó. Aprende el <b>past continuous</b> para pintar el escenario de una historia y a combinarlo con el <b>past simple</b> con <i>when</i> y <i>while</i>.</p>
+    <div class="cando">
+      <h3>By the end of this unit, I can…</h3>
+      <ul>
+        <li>describe past actions in progress (past continuous). <span class="es">— acciones en curso en el pasado</span></li>
+        <li>contrast past simple and past continuous (when / while). <span class="es">— el contraste clave</span></li>
+        <li>talk about weather, accidents and feelings. <span class="es">— tiempo, accidentes y emociones</span></li>
+        <li>set the scene and tell a short story. <span class="es">— narrar y dar contexto</span></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- ===== A: VOCABULARY ===== -->
+<section id="vocab">
+  <span class="sec-tag">Section A · Vocabulary</span>
+  <h2>Weather, accidents &amp; feelings</h2>
+  <p class="lead">Las palabras para dar contexto a una historia: el tiempo que hacía, lo que ocurrió y cómo se sentía la gente.</p>
+
+  <h3 class="lesson"><span class="n">A1</span> Weather <span class="es-note" style="font-weight:400;font-size:15px">— el tiempo</span></h3>
+  <div class="vgrid">
+    <div class="vcard"><div class="w">sunny</div><div class="es">soleado</div></div>
+    <div class="vcard"><div class="w">cloudy</div><div class="es">nublado</div></div>
+    <div class="vcard"><div class="w">windy</div><div class="es">ventoso</div></div>
+    <div class="vcard"><div class="w">raining</div><div class="es">lloviendo</div></div>
+    <div class="vcard"><div class="w">snowing</div><div class="es">nevando</div></div>
+    <div class="vcard"><div class="w">foggy</div><div class="es">con niebla</div></div>
+    <div class="vcard"><div class="w">a storm</div><div class="es">una tormenta</div></div>
+    <div class="vcard"><div class="w">thunder</div><div class="es">truenos</div></div>
+    <div class="vcard"><div class="w">a rainbow</div><div class="es">un arcoíris</div></div>
+    <div class="vcard"><div class="w">freezing</div><div class="es">helador</div></div>
+  </div>
+  <div class="box tip">
+    <div class="label">Talking about past weather</div>
+    <p style="margin:0">Adjetivos con <b>was</b>: <span class="eng">It was sunny / cold / windy.</span> Verbos con <b>was -ing</b>: <span class="eng">It was raining / snowing.</span></p>
+  </div>
+
+  <h3 class="lesson"><span class="n">A2</span> Accidents <span class="es-note" style="font-weight:400;font-size:15px">— accidentes</span></h3>
+  <div class="vgrid">
+    <div class="vcard"><div class="w">to fall (fell)</div><div class="es">caerse</div></div>
+    <div class="vcard"><div class="w">to slip</div><div class="es">resbalar</div></div>
+    <div class="vcard"><div class="w">to crash</div><div class="es">chocar</div></div>
+    <div class="vcard"><div class="w">to break (broke)</div><div class="es">romper(se)</div></div>
+    <div class="vcard"><div class="w">to hurt</div><div class="es">hacerse daño</div></div>
+    <div class="vcard"><div class="w">injured</div><div class="es">herido</div></div>
+    <div class="vcard"><div class="w">an ambulance</div><div class="es">una ambulancia</div></div>
+  </div>
+
+  <h3 class="lesson"><span class="n">A3</span> Feelings <span class="es-note" style="font-weight:400;font-size:15px">— emociones</span></h3>
+  <div class="vgrid">
+    <div class="vcard"><div class="w">scared / afraid</div><div class="es">asustado</div></div>
+    <div class="vcard"><div class="w">excited</div><div class="es">emocionado</div></div>
+    <div class="vcard"><div class="w">nervous</div><div class="es">nervioso</div></div>
+    <div class="vcard"><div class="w">worried</div><div class="es">preocupado</div></div>
+    <div class="vcard"><div class="w">surprised</div><div class="es">sorprendido</div></div>
+    <div class="vcard"><div class="w">angry</div><div class="es">enfadado</div></div>
+  </div>
+
+  <!-- EX1 -->
+  <div class="ex" data-ex>
+    <div class="ex-head"><span class="ex-num">EX 1</span><span class="ex-title">How did they feel?</span></div>
+    <p class="ex-instr">Elige la emoción o palabra correcta. <span class="es-note">Choose the best word.</span></p>
+    <div class="match" data-grader="match">
+      <div class="ml">1. before an important exam →
+        <select data-answer="nervous"><option value="">—</option><option>excited</option><option>nervous</option><option>angry</option></select></div>
+      <div class="ml">2. in a horror film →
+        <select data-answer="scared"><option value="">—</option><option>scared</option><option>surprised</option><option>tired</option></select></div>
+      <div class="ml">3. when you win a prize →
+        <select data-answer="excited"><option value="">—</option><option>worried</option><option>excited</option><option>scared</option></select></div>
+      <div class="ml">4. when two cars hit each other →
+        <select data-answer="crash"><option value="">—</option><option>slip</option><option>crash</option><option>thunder</option></select></div>
+      <div class="ml">5. very cold weather →
+        <select data-answer="freezing"><option value="">—</option><option>sunny</option><option>freezing</option><option>foggy</option></select></div>
+      <div class="ml">6. you hear it in a storm →
+        <select data-answer="thunder"><option value="">—</option><option>rainbow</option><option>thunder</option><option>fog</option></select></div>
+    </div>
+    <div class="ex-foot">
+      <button class="btn" data-check>Check</button>
+      <button class="btn ghost" data-reveal>Show answers</button>
+      <span class="fb" data-fb></span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== B: PAST CONTINUOUS ===== -->
+<section id="past-continuous">
+  <span class="sec-tag">Section B · Grammar 1</span>
+  <h2>Past continuous</h2>
+  <p class="lead">Describe una acción <b>en curso</b> en un momento del pasado: lo que estaba pasando. <span class="eng">At 8 o'clock I was watching TV.</span> Se forma con <span class="eng">was / were + verbo -ing</span>.</p>
+
+  <div class="tbl-scroll"><table class="tbl">
+    <tr><th>Person</th><th>was / were</th><th>Example</th></tr>
+    <tr><td>I / He / She / It</td><td class="hl">was</td><td>She <span class="hl">was cooking</span>.</td></tr>
+    <tr><td>You / We / They</td><td class="hl">were</td><td>They <span class="hl">were sleeping</span>.</td></tr>
+  </table></div>
+  <div class="tbl-scroll"><table class="tbl">
+    <tr><th>Form</th><th>Example</th></tr>
+    <tr><td>Negative</td><td>I <span class="hl">wasn't</span> listening. · They <span class="hl">weren't</span> working.</td></tr>
+    <tr><td>Question</td><td><span class="hl">Was</span> she driving? · <span class="hl">Were</span> you sleeping?</td></tr>
+    <tr><td>Short answers</td><td>Yes, I was. / No, I wasn't.</td></tr>
+  </table></div>
+  <div class="box warn">
+    <div class="label">Typical Spanish error</div>
+    <p style="margin:0">No olvides el auxiliar <b>was / were</b>. <br><span class="ok">It was raining.</span> &nbsp; <span class="xt">It raining.</span> &nbsp;·&nbsp; <span class="ok">They were running.</span> &nbsp; <span class="xt">They running.</span></p>
+  </div>
+  <div class="box tip">
+    <div class="label">-ing spelling reminder</div>
+    <p style="margin:0">Most verbs <b>+ ing</b> (watch → watching). Verb ending in <b>-e</b> → drop it (make → making). One vowel + one consonant → <b>double</b> it (run → running, sit → sitting).</p>
+  </div>
+
+  <!-- EX2 -->
+  <div class="ex" data-ex>
+    <div class="ex-head"><span class="ex-num">EX 2</span><span class="ex-title">was / were + -ing</span></div>
+    <p class="ex-instr">Completa con el pasado continuo del verbo. <span class="es-note">Put the verb into the past continuous.</span></p>
+    <div data-grader="gap">
+      <div class="qrow"><span class="qn">1</span> At nine o'clock I <input class="gap wide" data-answer="was watching"> TV. <span class="hintword">watch</span> <span class="sol" data-sol>was watching</span></div>
+      <div class="qrow"><span class="qn">2</span> They <input class="gap wide" data-answer="were running"> in the park. <span class="hintword">run</span> <span class="sol" data-sol>were running</span></div>
+      <div class="qrow"><span class="qn">3</span> It <input class="gap wide" data-answer="was snowing"> all morning. <span class="hintword">snow</span> <span class="sol" data-sol>was snowing</span></div>
+      <div class="qrow"><span class="qn">4</span> She <input class="gap wide" data-answer="was making"> dinner. <span class="hintword">make</span> <span class="sol" data-sol>was making</span></div>
+      <div class="qrow"><span class="qn">5</span> We <input class="gap wide" data-answer="weren't sleeping|were not sleeping"> at midnight. <span class="hintword">not / sleep</span> <span class="sol" data-sol>weren't sleeping</span></div>
+      <div class="qrow"><span class="qn">6</span> <input class="gap" data-answer="were"> you <input class="gap" data-answer="driving"> fast? <span class="hintword">drive</span> <span class="sol" data-sol>Were … driving</span></div>
+    </div>
+    <div class="ex-foot">
+      <button class="btn" data-check>Check</button>
+      <button class="btn ghost" data-reveal>Show answers</button>
+      <span class="fb" data-fb></span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== C: PAST SIMPLE vs PAST CONTINUOUS ===== -->
+<section id="contrast">
+  <span class="sec-tag">Section C · Grammar 2</span>
+  <h2>Past simple vs past continuous</h2>
+  <p class="lead">La combinación que da vida a las historias: una acción <b>larga</b> de fondo (past continuous) que se ve <b>interrumpida</b> por una acción <b>corta</b> (past simple).</p>
+
+  <div class="box rule">
+    <div class="label">The rule</div>
+    <p style="margin:0 0 6px"><b>Past continuous</b> = la escena, la acción larga de fondo. <b>Past simple</b> = el suceso corto que la interrumpe.</p>
+    <p style="margin:0">• <span class="hl">While</span> I <b>was walking</b> home, it <b>started</b> to rain.<br>
+    • <span class="hl">When</span> the phone <b>rang</b>, I <b>was sleeping</b>.</p>
+  </div>
+  <div class="tbl-scroll"><table class="tbl">
+    <tr><th>Linker</th><th>+ which tense?</th><th>Example</th></tr>
+    <tr><td class="hl">while</td><td>past continuous (acción larga)</td><td><span class="hl">while</span> I was reading…</td></tr>
+    <tr><td class="hl">when</td><td>past simple (acción corta)</td><td>…<span class="hl">when</span> the lights went out.</td></tr>
+  </table></div>
+  <div class="box warn">
+    <div class="label">Watch out</div>
+    <p style="margin:0">Las dos acciones a la vez van en continuo: <span class="ok">While she was cooking, I was cleaning.</span> Una secuencia de hechos terminados va en simple: <span class="ok">I got up, had breakfast and left.</span></p>
+  </div>
+
+  <!-- EX3 -->
+  <div class="ex" data-ex>
+    <div class="ex-head"><span class="ex-num">EX 3</span><span class="ex-title">Choose the right tense</span></div>
+    <p class="ex-instr">Pon el verbo en pasado simple o pasado continuo. <span class="es-note">Past simple or past continuous?</span></p>
+    <div data-grader="gap">
+      <div class="qrow"><span class="qn">1</span> While we <input class="gap wide" data-answer="were walking"> in the park, it started to rain. <span class="hintword">walk</span> <span class="sol" data-sol>were walking</span></div>
+      <div class="qrow"><span class="qn">2</span> When the accident <input class="gap" data-answer="happened"> , I was at the bus stop. <span class="hintword">happen</span> <span class="sol" data-sol>happened</span></div>
+      <div class="qrow"><span class="qn">3</span> I <input class="gap wide" data-answer="was cooking"> dinner when the phone rang. <span class="hintword">cook</span> <span class="sol" data-sol>was cooking</span></div>
+      <div class="qrow"><span class="qn">4</span> They <input class="gap wide" data-answer="were watching"> a film when the lights <input class="gap" data-answer="went"> out. <span class="hintword">watch / go</span> <span class="sol" data-sol>were watching … went</span></div>
+      <div class="qrow"><span class="qn">5</span> She <input class="gap" data-answer="fell"> while she <input class="gap wide" data-answer="was running"> . <span class="hintword">fall / run</span> <span class="sol" data-sol>fell … was running</span></div>
+    </div>
+    <div class="ex-foot">
+      <button class="btn" data-check>Check</button>
+      <button class="btn ghost" data-reveal>Show answers</button>
+      <span class="fb" data-fb></span>
+    </div>
+  </div>
+
+  <!-- EX4 -->
+  <div class="ex" data-ex>
+    <div class="ex-head"><span class="ex-num">EX 4</span><span class="ex-title">when or while?</span></div>
+    <p class="ex-instr">Elige <i>when</i> o <i>while</i>. <span class="es-note">Choose when or while.</span></p>
+    <div data-grader="mcq">
+      <div class="mcq"><div class="stem"><span class="qn">1</span> ___ I was cooking, the doorbell rang.</div>
+        <div class="opts" data-correct="b">
+          <label class="opt"><input type="radio" name="c1"> When</label>
+          <label class="opt"><input type="radio" name="c1"> While</label></div></div>
+      <div class="mcq"><div class="stem"><span class="qn">2</span> I was reading ___ the storm started.</div>
+        <div class="opts" data-correct="a">
+          <label class="opt"><input type="radio" name="c2"> when</label>
+          <label class="opt"><input type="radio" name="c2"> while</label></div></div>
+      <div class="mcq"><div class="stem"><span class="qn">3</span> ___ they were driving, they saw a rainbow.</div>
+        <div class="opts" data-correct="b">
+          <label class="opt"><input type="radio" name="c3"> When</label>
+          <label class="opt"><input type="radio" name="c3"> While</label></div></div>
+      <div class="mcq"><div class="stem"><span class="qn">4</span> She broke her arm ___ she fell.</div>
+        <div class="opts" data-correct="a">
+          <label class="opt"><input type="radio" name="c4"> when</label>
+          <label class="opt"><input type="radio" name="c4"> while</label></div></div>
+    </div>
+    <div class="ex-foot">
+      <button class="btn" data-check>Check</button>
+      <button class="btn ghost" data-reveal>Show answers</button>
+      <span class="fb" data-fb></span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== D: TELLING A STORY ===== -->
+<section id="linkers">
+  <span class="sec-tag">Section D · Grammar 3</span>
+  <h2>Telling a story</h2>
+  <p class="lead">Los conectores que ordenan una narración y la hacen fluida. Empieza poniendo la escena en pasado continuo y avanza con estos enlaces.</p>
+
+  <div class="tbl-scroll"><table class="tbl">
+    <tr><th>Linker</th><th>Use</th><th>Español</th></tr>
+    <tr><td class="hl">First,</td><td>el comienzo</td><td>Primero</td></tr>
+    <tr><td class="hl">Then / After that,</td><td>lo siguiente</td><td>Luego / Después</td></tr>
+    <tr><td class="hl">Suddenly,</td><td>un giro inesperado</td><td>De repente</td></tr>
+    <tr><td class="hl">While</td><td>dos acciones a la vez</td><td>Mientras</td></tr>
+    <tr><td class="hl">In the end / Finally,</td><td>el desenlace</td><td>Al final</td></tr>
+  </table></div>
+  <div class="box tip">
+    <div class="label">Setting the scene</div>
+    <p style="margin:0">Las historias suelen empezar con el pasado continuo para describir el contexto: <span class="eng">It was a cold night. The wind was blowing and it was raining.</span> Luego llega el suceso en pasado simple: <span class="eng">Suddenly, someone knocked on the door.</span></p>
+  </div>
+
+  <!-- EX5 -->
+  <div class="ex" data-ex>
+    <div class="ex-head"><span class="ex-num">EX 5</span><span class="ex-title">Complete the story</span></div>
+    <p class="ex-instr">Completa con el conector adecuado. <span class="es-note">Use the linkers in the box.</span></p>
+    <div class="wordbank"><span class="chip">First</span><span class="chip">While</span><span class="chip">Suddenly</span><span class="chip">In the end</span></div>
+    <div data-grader="gap">
+      <div class="qrow"><span class="qn">1</span> <input class="gap" data-answer="first"> , we arrived at the beach and put down our things. <span class="sol" data-sol>First</span></div>
+      <div class="qrow"><span class="qn">2</span> <input class="gap" data-answer="while"> we were swimming, the sky went dark. <span class="sol" data-sol>While</span></div>
+      <div class="qrow"><span class="qn">3</span> <input class="gap" data-answer="suddenly"> , it started to rain very hard. <span class="sol" data-sol>Suddenly</span></div>
+      <div class="qrow"><span class="qn">4</span> <input class="gap wide" data-answer="in the end"> , we ran to the car, wet but happy. <span class="sol" data-sol>In the end</span></div>
+    </div>
+    <div class="ex-foot">
+      <button class="btn" data-check>Check</button>
+      <button class="btn ghost" data-reveal>Show answers</button>
+      <span class="fb" data-fb></span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== E: READING ===== -->
+<section id="reading">
+  <span class="sec-tag">Section E · Reading</span>
+  <h2>A strange morning</h2>
+  <p class="lead">Lee la historia. Fíjate en cómo el <i>past continuous</i> pinta la escena y el <i>past simple</i> cuenta los sucesos.</p>
+
+  <div class="reading">
+    <h4>The walk to work</h4>
+    <div class="by">a true story… more or less</div>
+    <p>Last Monday, the weather was terrible. It <span class="hl">was raining</span> hard and a cold wind <span class="hl">was blowing</span>. I <span class="hl">was walking</span> to work, feeling tired and a little nervous about a big meeting.</p>
+    <p><span class="hl">While</span> I <span class="hl">was crossing</span> the bridge, I <span class="hl">heard</span> a strange noise. <span class="hl">Suddenly</span>, a man on a bike <span class="hl">slipped</span> on the wet road and <span class="hl">fell</span>. He <span class="hl">wasn't</span> badly injured, but he <span class="hl">looked</span> very surprised!</p>
+    <p>I <span class="hl">helped</span> him up <span class="hl">while</span> other people <span class="hl">were calling</span> for help. <span class="hl">In the end</span>, he was fine, and we both <span class="hl">laughed</span>. I <span class="hl">arrived</span> late to work — but I had a great story to tell.</p>
+  </div>
+
+  <!-- EX6 -->
+  <div class="ex" data-ex>
+    <div class="ex-head"><span class="ex-num">EX 6</span><span class="ex-title">True or False?</span></div>
+    <p class="ex-instr">Lee otra vez y decide. <span class="es-note">Read again and decide.</span></p>
+    <div data-grader="mcq">
+      <div class="mcq"><div class="stem"><span class="qn">1</span> The weather was sunny that morning.</div>
+        <div class="opts" data-correct="b">
+          <label class="opt"><input type="radio" name="r1"> True</label>
+          <label class="opt"><input type="radio" name="r1"> False</label></div></div>
+      <div class="mcq"><div class="stem"><span class="qn">2</span> The narrator was walking to work.</div>
+        <div class="opts" data-correct="a">
+          <label class="opt"><input type="radio" name="r2"> True</label>
+          <label class="opt"><input type="radio" name="r2"> False</label></div></div>
+      <div class="mcq"><div class="stem"><span class="qn">3</span> A man on a bike fell on the road.</div>
+        <div class="opts" data-correct="a">
+          <label class="opt"><input type="radio" name="r3"> True</label>
+          <label class="opt"><input type="radio" name="r3"> False</label></div></div>
+      <div class="mcq"><div class="stem"><span class="qn">4</span> The man was badly injured.</div>
+        <div class="opts" data-correct="b">
+          <label class="opt"><input type="radio" name="r4"> True</label>
+          <label class="opt"><input type="radio" name="r4"> False</label></div></div>
+      <div class="mcq"><div class="stem"><span class="qn">5</span> The narrator arrived late to work.</div>
+        <div class="opts" data-correct="a">
+          <label class="opt"><input type="radio" name="r5"> True</label>
+          <label class="opt"><input type="radio" name="r5"> False</label></div></div>
+    </div>
+    <div class="ex-foot">
+      <button class="btn" data-check>Check</button>
+      <button class="btn ghost" data-reveal>Show answers</button>
+      <span class="fb" data-fb></span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== F: CROSSWORD ===== -->
+<section id="crossword">
+  <span class="sec-tag">Section F · Vocabulary game</span>
+  <h2>Crossword: weather &amp; feelings</h2>
+  <p class="lead">Completa con vocabulario de la unidad. Una letra por casilla. <span class="es-note">One letter per square.</span></p>
+
+  <div class="cw-wrap">
+    <div class="cw-grid" id="cwGrid" aria-label="crossword"></div>
+    <div class="clues">
+      <h4>Across →</h4>
+      <ol>
+        <li><b>1</b> Very bad weather with strong wind and rain.</li>
+        <li><b>3</b> Feeling anxious because something might go wrong.</li>
+        <li><b>4</b> The loud noise you hear in a storm.</li>
+        <li><b>7</b> Frightened; "I'm ___ of spiders."</li>
+        <li><b>8</b> Hurt in an accident.</li>
+        <li><b>9</b> White flakes that fall when it's very cold.</li>
+        <li><b>10</b> When two cars hit each other.</li>
+        <li><b>11</b> Adjective for a day with a lot of wind.</li>
+      </ol>
+      <h4>Down ↓</h4>
+      <ol>
+        <li><b>1</b> Frightened (you feel this in a horror film).</li>
+        <li><b>2</b> Very happy and full of energy about something.</li>
+        <li><b>5</b> Worried and tense before an event, e.g. an exam.</li>
+        <li><b>6</b> A coloured arc in the sky after the rain.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="ex-foot">
+    <button class="btn" id="cwCheck">Check crossword</button>
+    <button class="btn ghost" id="cwReveal">Show answers</button>
+    <span class="fb" id="cwFb"></span>
+  </div>
+</section>
+
+<!-- ===== G: SELF CHECK ===== -->
+<section id="review" style="border-bottom:none">
+  <span class="sec-tag">Section G · Review</span>
+  <h2>Can-do check</h2>
+  <p class="lead">Marca lo que ya puedes hacer con seguridad. Si dudas, vuelve a esa sección.</p>
+  <div class="selfcheck">
+    <label><input type="checkbox"> I know vocabulary for weather, accidents and feelings.</label>
+    <label><input type="checkbox"> I can form the <b>past continuous</b> (was/were + -ing).</label>
+    <label><input type="checkbox"> I can contrast <b>past simple</b> and <b>past continuous</b>.</label>
+    <label><input type="checkbox"> I can use <b>when</b> and <b>while</b> correctly.</label>
+    <label><input type="checkbox"> I can use linkers (first, then, suddenly, in the end) to tell a story.</label>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="sig">English Coursebook · Unit 8 — Telling Stories</div>
+    <div class="meta">Level A2 · Creado por Juan Carlos Navarro</div>
+  </div>
+</footer>
+
+<script>
+"use strict";
+const exResults=new Map();
+function refreshScore(){
+  let c=0,t=0; exResults.forEach(r=>{c+=r.correct;t+=r.total;});
+  document.getElementById('scoreTxt').textContent=c+' / '+t;
+  document.getElementById('progBar').style.width=(t?(c/t*100):0)+'%';
+}
+function commit(id,correct,total){ exResults.set(id,{correct,total}); refreshScore(); }
+function norm(s){ return (s||"").toLowerCase().replace(/[’‘`´]/g,"'").replace(/\s+/g," ").replace(/[.,;:!?]+$/,"").trim(); }
+
+function gradeGap(ex){
+  const inputs=[...ex.querySelectorAll('[data-grader="gap"] input.gap')];
+  let correct=0;
+  inputs.forEach(inp=>{
+    const accepted=(inp.dataset.answer||"").split("|").map(norm);
+    const val=norm(inp.value);
+    const ok=val!=="" && accepted.includes(val);
+    inp.classList.remove('right','wrong'); inp.classList.add(ok?'right':'wrong');
+    if(ok) correct++;
+  });
+  return {correct,total:inputs.length};
+}
+function gradeMcq(ex){
+  const groups=[...ex.querySelectorAll('[data-grader="mcq"] .opts')];
+  let correct=0;
+  groups.forEach(g=>{
+    const labels=[...g.querySelectorAll('.opt')];
+    const ci={a:0,b:1,c:2,d:3}[g.dataset.correct];
+    labels.forEach(l=>l.classList.remove('right','wrong','miss'));
+    let chosen=-1; labels.forEach((l,i)=>{ if(l.querySelector('input').checked) chosen=i; });
+    if(chosen===ci){ labels[ci].classList.add('right'); correct++; }
+    else{ if(chosen>-1) labels[chosen].classList.add('wrong'); labels[ci].classList.add('miss'); }
+  });
+  return {correct,total:groups.length};
+}
+function gradeMatch(ex){
+  const sels=[...ex.querySelectorAll('[data-grader="match"] select')];
+  let correct=0;
+  sels.forEach(s=>{
+    const ok=norm(s.value)!=="" && norm(s.value)===norm(s.dataset.answer);
+    s.classList.remove('right','wrong'); s.classList.add(ok?'right':'wrong');
+    if(ok) correct++;
+  });
+  return {correct,total:sels.length};
+}
+
+document.querySelectorAll('[data-ex]').forEach((ex,idx)=>{
+  const id='ex'+idx;
+  const fb=ex.querySelector('[data-fb]');
+  let total=0;
+  if(ex.querySelector('[data-grader="gap"]')) total+=ex.querySelectorAll('[data-grader="gap"] input.gap').length;
+  if(ex.querySelector('[data-grader="mcq"]')) total+=ex.querySelectorAll('[data-grader="mcq"] .opts').length;
+  if(ex.querySelector('[data-grader="match"]')) total+=ex.querySelectorAll('[data-grader="match"] select').length;
+  commit(id,0,total);
+  ex.querySelector('[data-check]').addEventListener('click',()=>{
+    let correct=0,tot=0;
+    if(ex.querySelector('[data-grader="gap"]')){ const r=gradeGap(ex); correct+=r.correct; tot+=r.total; }
+    if(ex.querySelector('[data-grader="mcq"]')){ const r=gradeMcq(ex); correct+=r.correct; tot+=r.total; }
+    if(ex.querySelector('[data-grader="match"]')){ const r=gradeMatch(ex); correct+=r.correct; tot+=r.total; }
+    commit(id,correct,tot);
+    fb.className='fb show '+(correct===tot?'good':'partial');
+    fb.textContent=correct+' / '+tot+(correct===tot?'  ✓ Perfect!':'  · keep trying');
+  });
+  ex.querySelector('[data-reveal]').addEventListener('click',()=>{
+    ex.querySelectorAll('[data-sol]').forEach(s=>s.classList.add('show'));
+    ex.querySelectorAll('[data-grader="mcq"] .opts').forEach(g=>{
+      const ci={a:0,b:1,c:2,d:3}[g.dataset.correct];
+      const labels=[...g.querySelectorAll('.opt')]; labels.forEach(l=>l.classList.remove('miss'));
+      if(labels[ci]) labels[ci].classList.add('miss');
+    });
+    ex.querySelectorAll('[data-grader="match"] select').forEach(s=>{
+      [...s.options].forEach(o=>{ if(norm(o.value)===norm(s.dataset.answer)) s.value=o.value; });
+    });
+  });
+});
+
+/* ===== crossword (verified 12x12, no ghost runs) ===== */
+const SOL=[
+  "....STORM...",
+  "E...C.......",
+  "X...A.......",
+  "C.WORRIED...",
+  "I...E.......",
+  "THUNDER.....",
+  "E..E..AFRAID",
+  "D..R..I.....",
+  "...V.INJURED",
+  ".SNOW.B.....",
+  "...U..O.....",
+  "CRASH.WINDY.",
+];
+const NUMS={"0,4":1,"1,0":2,"3,2":3,"5,0":4,"5,3":5,"5,6":6,"6,6":7,"8,5":8,"9,1":9,"11,0":10,"11,6":11};
+
+(function buildCrossword(){
+  const grid=document.getElementById('cwGrid');
+  const rows=SOL.length, cols=SOL[0].length;
+  grid.style.gridTemplateColumns='repeat('+cols+',var(--cell))';
+  grid.style.gridTemplateRows='repeat('+rows+',var(--cell))';
+  for(let r=0;r<rows;r++){
+    for(let c=0;c<cols;c++){
+      const ch=SOL[r][c];
+      const cell=document.createElement('div');
+      cell.className='cell'+(ch==='.'?' block':'');
+      if(ch!=='.'){
+        const key=r+','+c;
+        if(NUMS[key]!==undefined){
+          const n=document.createElement('span'); n.className='num'; n.textContent=NUMS[key]; cell.appendChild(n);
+        }
+        const inp=document.createElement('input');
+        inp.maxLength=1; inp.dataset.sol=ch;
+        inp.setAttribute('aria-label','row '+(r+1)+' col '+(c+1));
+        inp.addEventListener('input',function(){
+          this.classList.remove('right','wrong');
+          this.value=this.value.toUpperCase().replace(/[^A-Z]/g,'');
+          if(this.value){
+            const all=[...grid.querySelectorAll('input')];
+            const i=all.indexOf(this);
+            if(i>-1 && i+1<all.length) all[i+1].focus();
+          }
+        });
+        cell.appendChild(inp);
+      }
+      grid.appendChild(cell);
+    }
+  }
+})();
+
+(function wireCrossword(){
+  const grid=document.getElementById('cwGrid');
+  const inputs=[...grid.querySelectorAll('input')];
+  const fb=document.getElementById('cwFb');
+  commit('crossword',0,inputs.length);
+  document.getElementById('cwCheck').addEventListener('click',()=>{
+    let correct=0;
+    inputs.forEach(inp=>{
+      inp.classList.remove('right','wrong');
+      const ok=(inp.value||'').toUpperCase()===inp.dataset.sol;
+      inp.classList.add(ok?'right':'wrong'); if(ok) correct++;
+    });
+    commit('crossword',correct,inputs.length);
+    fb.className='fb show '+(correct===inputs.length?'good':'partial');
+    fb.textContent=correct+' / '+inputs.length+(correct===inputs.length?'  ✓ Solved!':'  · keep going');
+  });
+  document.getElementById('cwReveal').addEventListener('click',()=>{
+    inputs.forEach(inp=>{ inp.value=inp.dataset.sol; inp.classList.remove('wrong'); inp.classList.add('right'); });
+    commit('crossword',inputs.length,inputs.length);
+    fb.className='fb show good'; fb.textContent='Answers shown';
+  });
+})();
+
+refreshScore();
+</script>
+</body>
+</html>
