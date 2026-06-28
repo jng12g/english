@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English A2 · Coursebook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..700,0..100,0..1&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --paper:#f4efe6;--paper-2:#ece3d4;--paper-3:#e3d8c4;
+      --ink:#2b2420;--ink-soft:#5a4f46;
+      --burgundy:#7a1f2b;--burgundy-2:#9c3340;--gold:#b4862f;
+      --sage:#4d6b54;--sage-bg:#e4ecdf;--clay:#b5552f;--clay-bg:#f3e2d6;
+      --line:#d8cbb4;--shadow:0 1px 2px rgba(43,36,32,.06),0 8px 24px -12px rgba(43,36,32,.18);
+      --r:14px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:"Instrument Sans",system-ui,sans-serif;font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;
+      background-image:radial-gradient(circle at 12% 6%,rgba(180,134,47,.055),transparent 40%),radial-gradient(circle at 88% 2%,rgba(122,31,43,.06),transparent 38%),linear-gradient(180deg,rgba(255,253,248,.18),transparent 320px);}
+    a{color:inherit}
+    .wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+
+    .topbar{position:sticky;top:0;z-index:60;background:rgba(244,239,230,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+    .topbar .wrap{display:flex;align-items:center;gap:14px;padding-top:10px;padding-bottom:10px}
+    .brand{font-family:"Fraunces",serif;font-weight:600;font-size:17px;letter-spacing:-.01em;white-space:nowrap;text-decoration:none}
+    .brand b{color:var(--burgundy)}
+    .progress{flex:1;height:9px;border-radius:99px;background:var(--paper-3);overflow:hidden;border:1px solid var(--line)}
+    .progress>span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--burgundy),var(--gold));transition:width .5s cubic-bezier(.2,.8,.2,1)}
+    .score{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--ink-soft);white-space:nowrap}
+
+    .hero{padding:58px 0 34px;border-bottom:2px solid var(--ink)}
+    .eyebrow{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--burgundy);font-weight:500}
+    .hero h1{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(42px,7vw,72px);line-height:1.02;letter-spacing:-.025em;margin:.18em 0 .12em}
+    .hero .sub{font-size:18px;color:var(--ink-soft);max-width:70ch}
+    .unit-num{font-family:"Fraunces",serif;font-style:italic;font-size:clamp(62px,15vw,150px);line-height:.8;color:var(--paper-3);display:block;margin-bottom:-.18em;letter-spacing:-.03em;-webkit-text-stroke:1px var(--line)}
+    .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+    .btn{font-family:"Instrument Sans",sans-serif;font-weight:650;font-size:14.5px;padding:10px 18px;border-radius:9px;border:1px solid var(--burgundy);background:var(--burgundy);color:var(--paper);cursor:pointer;transition:.18s;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+    .btn:hover{background:var(--burgundy-2);border-color:var(--burgundy-2);transform:translateY(-1px)}
+    .btn.ghost{background:transparent;color:var(--burgundy)}
+    .btn.ghost:hover{background:var(--paper-2);color:var(--burgundy);transform:translateY(-1px)}
+
+    .panel{margin-top:28px;background:#fffdf8;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:var(--r);padding:18px 22px;box-shadow:var(--shadow)}
+    .panel h3{margin:0 0 8px;font-family:"Fraunces",serif;font-size:19px;font-weight:600}
+    .panel p{margin:0;color:var(--ink-soft);max-width:72ch;font-size:15.5px}
+    .panel b{color:var(--ink)}
+
+    main{padding:42px 0 18px}
+    .sec-tag{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--burgundy);font-weight:500;display:flex;align-items:center;gap:10px}
+    .sec-tag::before{content:"";width:26px;height:2px;background:var(--burgundy)}
+    h2{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(28px,4.6vw,40px);line-height:1.08;letter-spacing:-.015em;margin:.28em 0 .5em}
+    p.lead{font-size:18px;color:var(--ink-soft);max-width:68ch;margin-top:0}
+
+    .controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:20px 0 18px}
+    .search{flex:1;min-width:230px;position:relative}
+    .search input{width:100%;font-family:"Instrument Sans",sans-serif;font-size:15.5px;padding:11px 13px 11px 39px;border:1px solid var(--line);border-radius:10px;background:#fffdf8;color:var(--ink);box-shadow:var(--shadow)}
+    .search input:focus{outline:none;border-color:var(--burgundy);box-shadow:0 0 0 3px rgba(122,31,43,.12),var(--shadow)}
+    .search::before{content:"⌕";position:absolute;left:14px;top:50%;transform:translateY(-52%);font-family:"Fraunces",serif;color:var(--burgundy);font-size:20px;z-index:1}
+    .mini{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--ink-soft)}
+
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+    .card{background:#fffdf8;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:18px 18px 16px;display:flex;flex-direction:column;min-height:268px;position:relative;overflow:hidden;transition:transform .18s,border-color .18s,box-shadow .18s}
+    .card::before{content:"";position:absolute;inset:0 0 auto 0;height:5px;background:linear-gradient(90deg,var(--burgundy),var(--gold));opacity:.92}
+    .card:hover{transform:translateY(-2px);border-color:#c7b797;box-shadow:0 2px 3px rgba(43,36,32,.08),0 14px 34px -16px rgba(43,36,32,.24)}
+    .card.done{background:linear-gradient(180deg,var(--sage-bg),#fffdf8 58%);border-color:#c8d5c1}
+    .card.hidden{display:none}
+    .card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-top:4px}
+    .num{font-family:"Fraunces",serif;font-style:italic;font-size:44px;line-height:.9;color:var(--paper-3);letter-spacing:-.04em;-webkit-text-stroke:1px var(--line)}
+    .done-box{display:flex;align-items:center;gap:6px;font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--ink-soft);white-space:nowrap;user-select:none;cursor:pointer}
+    .done-box input{accent-color:var(--sage);width:16px;height:16px;margin:0}
+    .card h3{font-family:"Fraunces",serif;font-size:22px;line-height:1.08;margin:14px 0 8px;letter-spacing:-.012em}
+    .desc{color:var(--ink-soft);font-size:14.8px;margin:0 0 12px;max-width:none}
+    .chips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 15px}
+    .chip{font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--burgundy);background:var(--paper-2);padding:3px 8px;border-radius:7px;border:1px solid var(--line)}
+    .chip.gold{color:#76581f;background:#f0e4c9}
+    .card .spacer{flex:1}
+    .open-row{display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px dotted var(--line);padding-top:12px;margin-top:4px}
+    .open{font-family:"Instrument Sans",sans-serif;font-weight:700;font-size:14.5px;color:var(--burgundy);text-decoration:none}
+    .open:hover{text-decoration:underline;text-underline-offset:3px}
+    .file{font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--ink-soft);background:var(--paper);border:1px solid var(--line);border-radius:7px;padding:3px 7px;white-space:nowrap}
+
+    .course-note{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:30px}
+    .box{background:#fffdf8;border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;box-shadow:var(--shadow)}
+    .box.rule{border-left:4px solid var(--burgundy)}
+    .box.tip{border-left:4px solid var(--sage);background:var(--sage-bg)}
+    .box .label{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;margin-bottom:6px;color:var(--burgundy)}
+    .box.tip .label{color:var(--sage)}
+    .box h4{margin:0 0 7px;font-family:"Fraunces",serif;font-size:17px;font-weight:600}
+    .box p{margin:0;color:var(--ink-soft);font-size:15px;max-width:none}
+
+    footer{padding:38px 0 60px;text-align:center;color:var(--ink-soft)}
+    footer .sig{font-family:"Fraunces",serif;font-style:italic;font-size:17px;color:var(--ink)}
+    footer .meta{font-family:"JetBrains Mono",monospace;font-size:12px;margin-top:6px}
+
+    @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.course-note{grid-template-columns:1fr}}
+    @media(max-width:560px){body{font-size:16px}.topbar .wrap{gap:10px}.brand{font-size:15px}.score{font-size:12px}.grid{grid-template-columns:1fr}.card{min-height:auto}.hero{padding-top:44px}.unit-num{font-size:76px}.open-row{align-items:flex-start;flex-direction:column}.file{white-space:normal}.controls{align-items:stretch}.btn{width:100%;justify-content:center}}
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="wrap">
+      <a class="brand" href="#top">English A2 · <b>Coursebook</b></a>
+      <div class="progress" aria-label="Course completion"><span id="progBar"></span></div>
+      <div class="score" id="scoreTxt">0 / 12</div>
+    </div>
+  </div>
+
+  <header class="hero" id="top">
+    <div class="wrap">
+      <span class="unit-num">A2</span>
+      <div class="eyebrow">Interactive coursebook</div>
+      <h1>English A2 Course</h1>
+      <p class="sub">Un índice para alojar las <b>12 unidades</b> del curso. Coloca este archivo en la misma carpeta que <b>unit1.html</b>, <b>unit2.html</b>… <b>unit12.html</b> y úsalo como portada del libro.</p>
+      <div class="hero-actions">
+        <a class="btn" href="unit1.html">Start Unit 1</a>
+        <a class="btn ghost" href="#units">View all units</a>
+      </div>
+      <div class="panel">
+        <h3>How to use this index</h3>
+        <p>Los botones abren cada unidad con enlaces relativos. Las casillas <b>Done</b> guardan tu progreso en este navegador mediante <b>localStorage</b>.</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap" id="units">
+    <div class="sec-tag">Course map</div>
+    <h2>Choose a unit</h2>
+    <p class="lead">De rutinas básicas a experiencias personales: un recorrido A2 completo, con una última unidad puente hacia B1.</p>
+
+    <div class="controls">
+      <div class="search"><input id="searchBox" type="search" placeholder="Search: past, future, food, rules…" aria-label="Search units"></div>
+      <button class="btn ghost" id="resetDone" type="button">Reset progress</button>
+      <span class="mini" id="filterInfo">12 units shown</span>
+    </div>
+
+    <section class="grid" aria-label="Course units">
+      <article class="card" data-unit="1" data-search="people routines present simple adverbs frequency possessives genitive">
+        <div class="card-top"><span class="num">01</span><label class="done-box"><input type="checkbox" data-done="1"> Done</label></div>
+        <h3>People &amp; Routines</h3>
+        <p class="desc">Describe personas, hábitos diarios y posesión básica.</p>
+        <div class="chips"><span class="chip">present simple</span><span class="chip">frequency</span><span class="chip gold">possessives</span></div>
+        <div class="spacer"></div><div class="open-row"><a class="open" href="unit1.html">Open unit →</a><span class="file">unit1.html</span></div>
+      </article>
+
+      <article class="card" data-unit="2" data-search="free time hobbies like love hate ing can can't play do go">
+        <div class="card-top"><span class="num">02</span><label class="done-box"><input type="checkbox" data-done="2"> Done</label></div>
+        <h3>Free Time</h3>
+        <p class="desc">Habla de hobbies, gustos y habilidades cotidianas.</p>
+        <div class="chips"><span class="chip">like + -ing</span><span class="chip">can / can't</span><span class="chip gold">play · do · go</span></div>
+        <div class="spacer"></div><div class="open-row"><a class="open" href="unit2.html">Open unit →</a><span class="file">unit2.html</span></div>
+      </article>
+
+      <article class="card" data-unit="3" data-search="city there is there are some any prepositions place how much many directions">
+        <div class="card-top"><span class="num">03</span><label class="done-box"><input type="checkbox" data-done="3"> Done</label></div>
+        <h3>In the City</h3>
+        <p class="desc">Pide direcciones y describe lugares de una ciudad.</p>
+        <div class="chips"><span class="chip">there is / are</span><span class="chip">some / any</span><span class="chip gold">directions</span></div>
+        <div class="spacer"></div><div class="open-row"><a class="open" href="unit3.html">Open unit →</a><span class="file">unit3.html</span></div>
+      </article>
+
+      <article class="card" data-unit="4" data-search="daily life now present continuous simple rooms house chores clothes wearing">
+        <div class="card-top"><span class="num">04</span><label class="done-box"><input type="checkbox" data-done="4"> Done</label></div>
+        <h3>Daily Life Now</h3>
+        <p class="desc">Describe lo que está pasando ahora en casa y la ropa.</p>
+        <div class="chips"><span class="chip">present continuous</span><span class="chip">chores</span><span class="chip gold">wearing</span></div>
+        <div class="spacer"></div><div class="open-row"><a class="open" href="unit4.html">Open unit →</a><span class="file">unit4.html</span></div>
+      </article>
+
+      <article class="card" data-unit="5" data-search="food shopping countable uncountable much many a lot of little few would like">
+        <div class="card-top"><span class="num">05</span><label class="done-box"><input type="checkbox" data-done="5"> Done</label></div>
+        <h3>Food &amp; Shopping</h3>
+        <p class="desc">Compra comida y maneja cantidades contables e incontables.</p>
+        <div class="chips"><span class="chip">countable</span><span class="chip">much / many</span><span class="chip gold">would like</span></div>
+        <div class="spacer"></div><div class="open-row"><a class="open" href="unit5.html">Open unit →</a><span class="file">unit5.html</span></div>
+      </article>
+
+      <article class="card" data-unit="6" data-search="past lives was were past simple regular ed yesterday childhood">
+        <div class="card-top"><span class="num">06</span><label class="done-box"><input type="checkbox" data-done="6"> Done</label></div>
+        <h3>Past Lives (1)</h3>
+        <p class="desc">Empieza a hablar del pasado con was/were y verbos regulares.</p>
+        <div class="chips"><span class="chip">was / were</span><span class="chip">regular past</span><span class="chip gold">-ed</span></div>
+        <div class="spacer"></div><div class="open-row"><a class="open" href="unit6.html">Open unit →</a><span class="file">unit6.html</span></div>
+      </article>
+
+      <article class="card" data-unit="7" data-search="past lives irregular verbs dates ordinals biography narrating went saw had came">
+        <div class="card-top"><span class="num">07</span><label class="done-box"><input type="checkbox" data-done="7"> Done</label></div>
+        <h3>Past Lives (2)</h3>
+        <p class="desc">Cuenta biografías breves con verbos irregulares y fechas.</p>
+        <div class="chips"><span class="chip">irregular past</span><span class="chip">dates</span><span class="chip gold">ordinals</span></div>
+        <div class="spacer"></div><div class="open-row"><a class="open" href="unit7.html">Open unit →</a><span class="file">unit7.html</span></div>
+      </article>
+
+      <article class="card" data-unit="8" data-search="telling stories past continuous past simple when while story accident interrupted actions">
+        <div class="card-top"><span class="num">08</span><label class="done-box"><input type="checkbox" data-done="8"> Done</label></div>
+        <h3>Telling Stories</h3>
+        <p class="desc">Narra escenas combinando acción en progreso y acción puntual.</p>
+        <div class="chips"><span class="chip">past continuous</span><span class="chip">past simple</span><span class="chip gold">when / while</span></div>
+        <div class="spacer"></div><div class="open-row"><a class="open" href="unit8.html">Open unit →</a><span class="file">unit8.html</span></div>
+      </article>
+
+      <article class="card" data-unit="9" data-search="comparisons comparatives superlatives as as too enough better worse biggest cheapest">
+        <div class="card-top"><span class="num">09</span><label class="done-box"><input type="checkbox" data-done="9"> Done</label></div>
+        <h3>Comparisons</h3>
+        <p class="desc">Compara personas, lugares y objetos con más precisión.</p>
+        <div class="chips"><span class="chip">comparatives</span><span class="chip">superlatives</span><span class="chip gold">too / enough</span></div>
+        <div class="spacer"></div><div class="open-row"><a class="open" href="unit9.html">Open unit →</a><span class="file">unit9.html</span></div>
+      </article>
+
+      <article class="card" data-unit="10" data-search="future plans going to will predictions decisions travel arrangements tomorrow next week">
+        <div class="card-top"><span class="num">10</span><label class="done-box"><input type="checkbox" data-done="10"> Done</label></div>
+        <h3>Future Plans</h3>
+        <p class="desc">Habla de planes, decisiones rápidas y predicciones sencillas.</p>
+        <div class="chips"><span class="chip">going to</span><span class="chip">will</span><span class="chip gold">future time</span></div>
+        <div class="spacer"></div><div class="open-row"><a class="open" href="unit10.html">Open unit →</a><span class="file">unit10.html</span></div>
+      </article>
+
+      <article class="card" data-unit="11" data-search="rules advice should must have to don't have to first conditional if will">
+        <div class="card-top"><span class="num">11</span><label class="done-box"><input type="checkbox" data-done="11"> Done</label></div>
+        <h3>Rules &amp; Advice</h3>
+        <p class="desc">Da consejos, entiende normas y usa condiciones sencillas.</p>
+        <div class="chips"><span class="chip">should</span><span class="chip">must / have to</span><span class="chip gold">if + will</span></div>
+        <div class="spacer"></div><div class="open-row"><a class="open" href="unit11.html">Open unit →</a><span class="file">unit11.html</span></div>
+      </article>
+
+      <article class="card" data-unit="12" data-search="experiences present perfect ever never just already yet past simple travel life experience">
+        <div class="card-top"><span class="num">12</span><label class="done-box"><input type="checkbox" data-done="12"> Done</label></div>
+        <h3>Experiences</h3>
+        <p class="desc">Puente hacia B1: experiencias de vida y pasado terminado.</p>
+        <div class="chips"><span class="chip">present perfect</span><span class="chip">ever / never</span><span class="chip gold">past simple</span></div>
+        <div class="spacer"></div><div class="open-row"><a class="open" href="unit12.html">Open unit →</a><span class="file">unit12.html</span></div>
+      </article>
+    </section>
+
+    <div class="course-note">
+      <div class="box rule">
+        <div class="label">Folder structure</div>
+        <h4>Recommended files</h4>
+        <p>¡Mucho ánimo!</p>
+      </div>
+      <div class="box tip">
+        <div class="label">Study tip</div>
+        <h4>Warm review</h4>
+        <p>Antes de abrir una unidad nueva, marca como hecha la anterior solo si puedes explicar sus 2–3 estructuras principales sin mirar.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="sig">Level A2 · Creado por Juan Carlos Navarro</div>
+    <div class="meta">English A2 Coursebook · index.html</div>
+  </footer>
+
+  <script>
+    "use strict";
+    const KEY="english-a2-coursebook-index-progress";
+    const checks=[...document.querySelectorAll('[data-done]')];
+    const cards=[...document.querySelectorAll('.card')];
+    const scoreTxt=document.getElementById('scoreTxt');
+    const progBar=document.getElementById('progBar');
+    const searchBox=document.getElementById('searchBox');
+    const filterInfo=document.getElementById('filterInfo');
+
+    function readState(){
+      try{return JSON.parse(localStorage.getItem(KEY)||"{}");}
+      catch(e){return {};}
+    }
+    function writeState(state){localStorage.setItem(KEY,JSON.stringify(state));}
+    function refreshProgress(){
+      const done=checks.filter(c=>c.checked).length;
+      scoreTxt.textContent=done+" / "+checks.length;
+      progBar.style.width=(checks.length?(done/checks.length*100):0)+"%";
+      cards.forEach(card=>{
+        const cb=card.querySelector('[data-done]');
+        card.classList.toggle('done',!!cb.checked);
+      });
+    }
+    function applyState(){
+      const state=readState();
+      checks.forEach(cb=>{cb.checked=!!state[cb.dataset.done];});
+      refreshProgress();
+    }
+    checks.forEach(cb=>{
+      cb.addEventListener('change',()=>{
+        const state=readState();
+        state[cb.dataset.done]=cb.checked;
+        writeState(state);
+        refreshProgress();
+      });
+    });
+    document.getElementById('resetDone').addEventListener('click',()=>{
+      localStorage.removeItem(KEY);
+      checks.forEach(cb=>cb.checked=false);
+      refreshProgress();
+    });
+    searchBox.addEventListener('input',()=>{
+      const q=searchBox.value.toLowerCase().trim();
+      let shown=0;
+      cards.forEach(card=>{
+        const text=(card.textContent+" "+card.dataset.search).toLowerCase();
+        const ok=!q || text.includes(q);
+        card.classList.toggle('hidden',!ok);
+        if(ok) shown++;
+      });
+      filterInfo.textContent=shown+" unit"+(shown===1?"":"s")+" shown";
+    });
+    applyState();
+  </script>
+</body>
+</html>
