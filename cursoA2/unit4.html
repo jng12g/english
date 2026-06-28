@@ -1,1 +1,686 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>English A2 · Unit 4 · Daily life now</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..700,0..100,0..1&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+:root{
+  --paper:#f4efe6;--paper-2:#ece3d4;--paper-3:#e3d8c4;
+  --ink:#2b2420;--ink-soft:#5a4f46;
+  --burgundy:#7a1f2b;--burgundy-2:#9c3340;--gold:#b4862f;
+  --sage:#4d6b54;--sage-bg:#e4ecdf;--clay:#b5552f;--clay-bg:#f3e2d6;
+  --line:#d8cbb4;--shadow:0 1px 2px rgba(43,36,32,.06),0 8px 24px -12px rgba(43,36,32,.18);
+  --r:14px;--cell:34px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Instrument Sans",system-ui,sans-serif;font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(circle at 12% 6%,rgba(180,134,47,.05),transparent 40%),radial-gradient(circle at 88% 2%,rgba(122,31,43,.05),transparent 38%);}
+.wrap{max-width:880px;margin:0 auto;padding:0 22px}
 
+.topbar{position:sticky;top:0;z-index:60;background:rgba(244,239,230,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:14px;padding-top:10px;padding-bottom:10px}
+.brand{font-family:"Fraunces",serif;font-weight:600;font-size:17px;letter-spacing:-.01em;white-space:nowrap}
+.brand b{color:var(--burgundy)}
+.progress{flex:1;height:9px;border-radius:99px;background:var(--paper-3);overflow:hidden;border:1px solid var(--line)}
+.progress>span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--burgundy),var(--gold));transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.score{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--ink-soft);white-space:nowrap}
+
+.hero{padding:54px 0 30px;border-bottom:2px solid var(--ink)}
+.eyebrow{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--burgundy);font-weight:500}
+.hero h1{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(38px,7vw,64px);line-height:1.02;letter-spacing:-.02em;margin:.18em 0 .12em}
+.hero .sub{font-size:18px;color:var(--ink-soft);max-width:60ch}
+.unit-num{font-family:"Fraunces",serif;font-style:italic;font-size:clamp(60px,16vw,150px);line-height:.8;color:var(--paper-3);display:block;margin-bottom:-.18em;letter-spacing:-.03em;-webkit-text-stroke:1px var(--line)}
+.cando{margin-top:26px;background:#fffdf8;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:var(--r);padding:18px 22px;box-shadow:var(--shadow)}
+.cando h3{margin:0 0 8px;font-family:"Fraunces",serif;font-size:18px;font-weight:600}
+.cando ul{margin:0;padding-left:0;list-style:none}
+.cando li{padding:4px 0 4px 30px;position:relative;font-size:15.5px}
+.cando li::before{content:"✓";position:absolute;left:0;top:4px;color:var(--sage);font-weight:700}
+.cando .es{color:var(--ink-soft);font-style:italic}
+
+section{padding:46px 0;border-bottom:1px solid var(--line)}
+.sec-tag{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--burgundy);font-weight:500;display:flex;align-items:center;gap:10px}
+.sec-tag::before{content:"";width:26px;height:2px;background:var(--burgundy)}
+h2{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(27px,4.6vw,38px);line-height:1.08;letter-spacing:-.015em;margin:.28em 0 .5em}
+h3.lesson{font-family:"Fraunces",serif;font-weight:600;font-size:21px;margin:34px 0 12px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+h3.lesson .n{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--gold);font-weight:700}
+p.lead{font-size:18px;color:var(--ink-soft);max-width:64ch}
+p{max-width:68ch}
+.es-note{color:var(--ink-soft);font-style:italic}
+
+.box{background:#fffdf8;border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;margin:18px 0;box-shadow:var(--shadow)}
+.box.rule{border-left:4px solid var(--burgundy)}
+.box.tip{border-left:4px solid var(--sage);background:var(--sage-bg)}
+.box.warn{border-left:4px solid var(--clay);background:var(--clay-bg)}
+.box h4{margin:0 0 8px;font-family:"Fraunces",serif;font-size:17px;font-weight:600}
+.box .label{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;margin-bottom:6px}
+.box.rule .label{color:var(--burgundy)}.box.tip .label{color:var(--sage)}.box.warn .label{color:var(--clay)}
+.eng{font-weight:600}.xt{color:var(--clay);text-decoration:line-through}.ok{color:var(--sage);font-weight:600}
+
+.tbl{width:100%;border-collapse:collapse;margin:16px 0;font-size:15.5px;background:#fffdf8;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+.tbl th,.tbl td{padding:9px 13px;text-align:left;border-bottom:1px solid var(--line)}
+.tbl th{background:var(--ink);color:var(--paper);font-family:"JetBrains Mono",monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:500}
+.tbl tr:last-child td{border-bottom:none}
+.tbl td:first-child{font-weight:600}
+.tbl .hl{color:var(--burgundy);font-weight:700}
+.tbl-scroll{overflow-x:auto}
+
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin:16px 0}
+.vcard{background:#fffdf8;border:1px solid var(--line);border-radius:11px;padding:11px 13px;box-shadow:var(--shadow)}
+.vcard .w{font-weight:600;font-size:16px}
+.vcard .es{font-size:13.5px;color:var(--ink-soft)}
+
+/* street map visual */
+.map{background:#fffdf8;border:1px solid var(--line);border-radius:var(--r);padding:18px;margin:18px 0;box-shadow:var(--shadow)}
+.map .side{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.bld{border:1px solid var(--line);border-radius:10px;padding:12px 8px;text-align:center;background:var(--paper-2);font-weight:600;font-size:14.5px}
+.bld .ic{font-size:22px;display:block;margin-bottom:2px}
+.road{height:34px;margin:10px 0;border-radius:8px;background:repeating-linear-gradient(90deg,#cdbfa6 0 22px,#fff8 22px 40px),var(--ink);display:flex;align-items:center;justify-content:center;color:var(--paper);font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+
+.ex{background:#fffdf8;border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;margin:20px 0;box-shadow:var(--shadow)}
+.ex-head{display:flex;align-items:center;gap:10px;margin-bottom:4px;flex-wrap:wrap}
+.ex-num{font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:700;color:var(--paper);background:var(--burgundy);padding:3px 9px;border-radius:7px;letter-spacing:.05em}
+.ex-title{font-family:"Fraunces",serif;font-weight:600;font-size:18px}
+.ex-instr{font-size:14.5px;color:var(--ink-soft);margin:2px 0 14px}
+.qrow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:9px 0;border-bottom:1px dotted var(--line);font-size:16px}
+.qrow:last-of-type{border-bottom:none}
+.qn{font-family:"JetBrains Mono",monospace;font-size:12.5px;color:var(--gold);font-weight:700;min-width:26px}
+input.gap{font-family:"Instrument Sans",sans-serif;font-size:15.5px;padding:5px 9px;border:1px solid var(--line);border-radius:8px;background:var(--paper);min-width:90px;width:130px;color:var(--ink);transition:.2s}
+input.gap.wide{width:185px}
+input.gap:focus{outline:none;border-color:var(--burgundy);box-shadow:0 0 0 3px rgba(122,31,43,.12)}
+input.gap.right{border-color:var(--sage);background:var(--sage-bg)}
+input.gap.wrong{border-color:var(--clay);background:var(--clay-bg)}
+.hintword{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--burgundy);background:var(--paper-2);padding:2px 7px;border-radius:6px;border:1px solid var(--line)}
+.wordbank{display:flex;flex-wrap:wrap;gap:7px;margin:2px 0 14px}
+.wordbank .chip{font-family:"JetBrains Mono",monospace;font-size:12.5px;color:var(--burgundy);background:var(--paper-2);padding:4px 10px;border-radius:7px;border:1px solid var(--line)}
+.sol{display:none;font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--sage);margin-left:4px}
+.sol.show{display:inline}
+.mcq{padding:11px 0;border-bottom:1px dotted var(--line)}
+.mcq:last-child{border-bottom:none}
+.mcq .stem{font-size:16px;margin-bottom:7px}
+.mcq .stem .qn{margin-right:6px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border:1px solid var(--line);border-radius:9px;cursor:pointer;background:var(--paper);font-size:15px;transition:.15s;user-select:none}
+.opt:hover{border-color:var(--burgundy);background:#fff}
+.opt input{accent-color:var(--burgundy);margin:0}
+.opt.right{border-color:var(--sage);background:var(--sage-bg)}
+.opt.wrong{border-color:var(--clay);background:var(--clay-bg)}
+.opt.miss{border-color:var(--sage);border-style:dashed}
+.match{display:grid;grid-template-columns:1fr 1fr;gap:10px 26px;margin:6px 0}
+.match .ml{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px dotted var(--line);font-size:15.5px;flex-wrap:wrap}
+.match select{font-family:"Instrument Sans",sans-serif;font-size:14.5px;padding:5px 7px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink)}
+.match select.right{border-color:var(--sage);background:var(--sage-bg)}
+.match select.wrong{border-color:var(--clay);background:var(--clay-bg)}
+.ex-foot{display:flex;align-items:center;gap:12px;margin-top:16px;flex-wrap:wrap}
+.btn{font-family:"Instrument Sans",sans-serif;font-weight:600;font-size:14.5px;padding:9px 18px;border-radius:9px;border:1px solid var(--burgundy);background:var(--burgundy);color:var(--paper);cursor:pointer;transition:.18s}
+.btn:hover{background:var(--burgundy-2);border-color:var(--burgundy-2)}
+.btn.ghost{background:transparent;color:var(--burgundy)}
+.btn.ghost:hover{background:var(--paper-2);color:var(--burgundy)}
+.fb{font-family:"JetBrains Mono",monospace;font-size:13px;font-weight:700;padding:5px 10px;border-radius:8px;display:none}
+.fb.show{display:inline-block}
+.fb.good{background:var(--sage-bg);color:var(--sage)}
+.fb.partial{background:var(--clay-bg);color:var(--clay)}
+
+.reading{background:#fffdf8;border:1px solid var(--line);border-radius:var(--r);padding:24px 26px;margin:18px 0;box-shadow:var(--shadow);font-size:16.5px;line-height:1.7}
+.reading h4{font-family:"Fraunces",serif;font-size:20px;margin:0 0 4px}
+.reading .by{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--gold);margin-bottom:14px}
+.reading p{max-width:none}
+.reading .hl{background:rgba(180,134,47,.18);padding:0 2px;border-radius:3px}
+
+.cw-wrap{display:flex;gap:26px;flex-wrap:wrap;margin:18px 0}
+.cw-grid{display:grid;gap:0;background:var(--ink);padding:3px;border-radius:8px;box-shadow:var(--shadow);width:max-content}
+.cell{position:relative;background:var(--paper-3);width:var(--cell);height:var(--cell)}
+.cell.block{background:transparent}
+.cell input{width:100%;height:100%;border:1px solid var(--line);background:#fffdf8;text-align:center;font-family:"Fraunces",serif;font-size:18px;font-weight:600;text-transform:uppercase;color:var(--ink);padding:0;border-radius:0}
+.cell input:focus{outline:none;background:#fff;box-shadow:inset 0 0 0 2px var(--burgundy)}
+.cell input.right{background:var(--sage-bg);color:var(--sage)}
+.cell input.wrong{background:var(--clay-bg);color:var(--clay)}
+.cell .num{position:absolute;top:0;left:1px;font-family:"JetBrains Mono",monospace;font-size:9px;font-weight:700;color:var(--burgundy);line-height:1;z-index:2;pointer-events:none}
+.clues{flex:1;min-width:240px}
+.clues h4{font-family:"Fraunces",serif;font-size:16px;margin:0 0 6px;color:var(--burgundy)}
+.clues ol{margin:0 0 14px;padding-left:0;list-style:none}
+.clues li{font-size:14.5px;padding:3px 0;display:flex;gap:8px}
+.clues li b{font-family:"JetBrains Mono",monospace;color:var(--gold);min-width:18px}
+
+.selfcheck{background:#fffdf8;border:1px solid var(--line);border-radius:var(--r);padding:22px 24px;box-shadow:var(--shadow)}
+.selfcheck label{display:flex;align-items:flex-start;gap:11px;padding:8px 0;font-size:15.5px;cursor:pointer;border-bottom:1px dotted var(--line)}
+.selfcheck label:last-child{border-bottom:none}
+.selfcheck input{margin-top:5px;accent-color:var(--sage);width:17px;height:17px}
+
+footer{padding:40px 0 60px;text-align:center;color:var(--ink-soft)}
+footer .sig{font-family:"Fraunces",serif;font-style:italic;font-size:17px;color:var(--ink)}
+footer .meta{font-family:"JetBrains Mono",monospace;font-size:12px;margin-top:6px}
+
+@media(max-width:560px){
+  body{font-size:16px}
+  :root{--cell:30px}
+  .cell input{font-size:15px}
+  .match{grid-template-columns:1fr}
+}
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="wrap">
+      <div class="brand">English A2 · <b>Unit 4</b></div>
+      <div class="progress" aria-label="progress"><span id="progBar"></span></div>
+      <div class="score" id="scoreTxt">0 / 0</div>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <header class="hero">
+      <span class="unit-num">04</span>
+      <div class="eyebrow">Level A2 · Coursebook</div>
+      <h1>Daily life now</h1>
+      <p class="sub">En esta unidad añadimos el tiempo del <strong>now</strong>: el <strong>present continuous</strong>. Aprenderás a decir qué está pasando ahora, a compararlo con rutinas en <strong>present simple</strong>, y a describir habitaciones, tareas de casa y ropa.</p>
+      <div class="cando">
+        <h3>By the end of this unit, I can…</h3>
+        <ul>
+          <li>describe what is happening now <span class="es">— describir qué está pasando ahora</span></li>
+          <li>contrast routines vs actions in progress <span class="es">— contrastar rutinas con acciones en progreso</span></li>
+          <li>name rooms, chores and clothes <span class="es">— nombrar habitaciones, tareas de casa y ropa</span></li>
+          <li>say what people are wearing <span class="es">— decir qué ropa lleva alguien puesta</span></li>
+        </ul>
+      </div>
+    </header>
+
+    <section id="vocabulary">
+      <div class="sec-tag">Section A · Vocabulary</div>
+      <h2>At home: rooms, chores and clothes</h2>
+      <p class="lead">Primero construimos el vocabulario concreto. Estas palabras te permiten describir una escena: dónde está una persona, qué está haciendo y qué lleva puesto.</p>
+
+      <h3 class="lesson"><span class="n">A1</span> House & rooms</h3>
+      <div class="vgrid">
+        <div class="vcard"><div class="w">kitchen</div><div class="es">cocina</div></div>
+        <div class="vcard"><div class="w">bedroom</div><div class="es">dormitorio</div></div>
+        <div class="vcard"><div class="w">bathroom</div><div class="es">baño</div></div>
+        <div class="vcard"><div class="w">living room</div><div class="es">salón</div></div>
+        <div class="vcard"><div class="w">garden</div><div class="es">jardín</div></div>
+        <div class="vcard"><div class="w">hall</div><div class="es">recibidor / pasillo</div></div>
+      </div>
+
+      <div class="map" aria-label="simple house visual">
+        <div class="side">
+          <div class="bld"><span class="ic">🍳</span>kitchen</div>
+          <div class="bld"><span class="ic">🛏️</span>bedroom</div>
+          <div class="bld"><span class="ic">🛁</span>bathroom</div>
+        </div>
+        <div class="road">at home</div>
+        <div class="side">
+          <div class="bld"><span class="ic">🛋️</span>living room</div>
+          <div class="bld"><span class="ic">🌿</span>garden</div>
+          <div class="bld"><span class="ic">🚪</span>hall</div>
+        </div>
+      </div>
+
+      <h3 class="lesson"><span class="n">A2</span> Household chores</h3>
+      <div class="vgrid">
+        <div class="vcard"><div class="w">do the washing-up</div><div class="es">fregar los platos</div></div>
+        <div class="vcard"><div class="w">make the bed</div><div class="es">hacer la cama</div></div>
+        <div class="vcard"><div class="w">clean</div><div class="es">limpiar</div></div>
+        <div class="vcard"><div class="w">sweep</div><div class="es">barrer</div></div>
+        <div class="vcard"><div class="w">iron</div><div class="es">planchar</div></div>
+        <div class="vcard"><div class="w">do the laundry</div><div class="es">hacer la colada</div></div>
+        <div class="vcard"><div class="w">cook</div><div class="es">cocinar</div></div>
+        <div class="vcard"><div class="w">tidy up</div><div class="es">ordenar / recoger</div></div>
+      </div>
+
+      <h3 class="lesson"><span class="n">A3</span> Clothes</h3>
+      <div class="vgrid">
+        <div class="vcard"><div class="w">shirt</div><div class="es">camisa</div></div>
+        <div class="vcard"><div class="w">trousers</div><div class="es">pantalones</div></div>
+        <div class="vcard"><div class="w">dress</div><div class="es">vestido</div></div>
+        <div class="vcard"><div class="w">jacket</div><div class="es">chaqueta</div></div>
+        <div class="vcard"><div class="w">jumper</div><div class="es">jersey</div></div>
+        <div class="vcard"><div class="w">shoes</div><div class="es">zapatos</div></div>
+        <div class="vcard"><div class="w">socks</div><div class="es">calcetines</div></div>
+        <div class="vcard"><div class="w">hat</div><div class="es">sombrero / gorro</div></div>
+      </div>
+
+      <div class="ex" data-ex>
+        <div class="ex-head"><span class="ex-num">EX 1</span><span class="ex-title">Match the words</span></div>
+        <p class="ex-instr">Relaciona cada palabra o expresión con su significado en español.</p>
+        <div class="match" data-grader="match">
+          <div class="ml"><span class="qn">1</span> kitchen
+            <select data-answer="cocina"><option value="">— choose —</option><option>fregar los platos</option><option>camisa</option><option>cocina</option><option>jardín</option></select>
+          </div>
+          <div class="ml"><span class="qn">2</span> bedroom
+            <select data-answer="dormitorio"><option value="">— choose —</option><option>dormitorio</option><option>zapatos</option><option>barrer</option><option>cocinar</option></select>
+          </div>
+          <div class="ml"><span class="qn">3</span> do the washing-up
+            <select data-answer="fregar los platos"><option value="">— choose —</option><option>hacer la cama</option><option>fregar los platos</option><option>limpiar</option><option>sombrero</option></select>
+          </div>
+          <div class="ml"><span class="qn">4</span> tidy up
+            <select data-answer="ordenar"><option value="">— choose —</option><option>ordenar</option><option>chaqueta</option><option>baño</option><option>calcetines</option></select>
+          </div>
+          <div class="ml"><span class="qn">5</span> iron
+            <select data-answer="planchar"><option value="">— choose —</option><option>planchar</option><option>cocina</option><option>jardín</option><option>vestido</option></select>
+          </div>
+          <div class="ml"><span class="qn">6</span> trousers
+            <select data-answer="pantalones"><option value="">— choose —</option><option>pantalones</option><option>camisa</option><option>jersey</option><option>pasillo</option></select>
+          </div>
+          <div class="ml"><span class="qn">7</span> jacket
+            <select data-answer="chaqueta"><option value="">— choose —</option><option>limpiar</option><option>baño</option><option>chaqueta</option><option>hacer la colada</option></select>
+          </div>
+          <div class="ml"><span class="qn">8</span> socks
+            <select data-answer="calcetines"><option value="">— choose —</option><option>zapatos</option><option>calcetines</option><option>barrer</option><option>salón</option></select>
+          </div>
+        </div>
+        <div class="ex-foot"><button class="btn" data-check>Check</button><button class="btn ghost" data-reveal>Show answers</button><span class="fb" data-fb></span></div>
+      </div>
+    </section>
+
+    <section id="present-continuous">
+      <div class="sec-tag">Section B · Grammar 1</div>
+      <h2>Present continuous: actions happening now</h2>
+      <p class="lead">Usamos el <strong>present continuous</strong> para hablar de acciones que están ocurriendo ahora o alrededor de este momento.</p>
+
+      <div class="box rule">
+        <div class="label">Rule</div>
+        <h4>Form: <span class="eng">am / is / are + verb-ing</span></h4>
+        <p><span class="eng">I am cooking.</span> = Estoy cocinando. La parte importante es doble: auxiliar <span class="eng">am/is/are</span> + verbo con <span class="eng">-ing</span>.</p>
+      </div>
+
+      <div class="tbl-scroll">
+        <table class="tbl">
+          <thead><tr><th>Type</th><th>Example</th><th>Spanish idea</th></tr></thead>
+          <tbody>
+            <tr><td>Affirmative</td><td>I <span class="hl">am cleaning</span> the kitchen.</td><td>Estoy limpiando la cocina.</td></tr>
+            <tr><td>Negative</td><td>She <span class="hl">is not wearing</span> a jacket.</td><td>Ella no lleva chaqueta ahora.</td></tr>
+            <tr><td>Question</td><td><span class="hl">Are</span> they <span class="hl">doing</span> the laundry?</td><td>¿Están haciendo la colada?</td></tr>
+            <tr><td>Short answer</td><td>Yes, they are. / No, they aren't.</td><td>Sí. / No.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="box tip">
+        <div class="label">Spelling</div>
+        <h4>How to add <span class="eng">-ing</span></h4>
+        <p>La mayoría solo añade <span class="eng">-ing</span>: <span class="eng">cook → cooking</span>. Si acaba en <span class="eng">-e</span>, normalmente cae la <span class="eng">e</span>: <span class="eng">dance → dancing</span>. En verbos cortos como <span class="eng">run</span> o <span class="eng">swim</span>, doblamos consonante: <span class="eng">running, swimming</span>.</p>
+      </div>
+
+      <div class="box warn">
+        <div class="label">Typical Spanish error</div>
+        <h4>No olvides el auxiliar</h4>
+        <p><span class="xt">She cooking dinner.</span> → <span class="ok">She is cooking dinner.</span> En inglés no basta con el verbo en <span class="eng">-ing</span>; necesitas <span class="eng">am/is/are</span>.</p>
+      </div>
+
+      <div class="ex" data-ex>
+        <div class="ex-head"><span class="ex-num">EX 2</span><span class="ex-title">Write the -ing form</span></div>
+        <p class="ex-instr">Escribe la forma con <strong>-ing</strong>.</p>
+        <div data-grader="gap">
+          <div class="qrow"><span class="qn">1</span> cook → <input class="gap" data-answer="cooking"> <span class="sol" data-sol>cooking</span></div>
+          <div class="qrow"><span class="qn">2</span> clean → <input class="gap" data-answer="cleaning"> <span class="sol" data-sol>cleaning</span></div>
+          <div class="qrow"><span class="qn">3</span> dance → <input class="gap" data-answer="dancing"> <span class="sol" data-sol>dancing</span></div>
+          <div class="qrow"><span class="qn">4</span> make → <input class="gap" data-answer="making"> <span class="sol" data-sol>making</span></div>
+          <div class="qrow"><span class="qn">5</span> run → <input class="gap" data-answer="running"> <span class="sol" data-sol>running</span></div>
+          <div class="qrow"><span class="qn">6</span> swim → <input class="gap" data-answer="swimming"> <span class="sol" data-sol>swimming</span></div>
+          <div class="qrow"><span class="qn">7</span> wear → <input class="gap" data-answer="wearing"> <span class="sol" data-sol>wearing</span></div>
+          <div class="qrow"><span class="qn">8</span> tidy → <input class="gap" data-answer="tidying"> <span class="sol" data-sol>tidying</span></div>
+        </div>
+        <div class="ex-foot"><button class="btn" data-check>Check</button><button class="btn ghost" data-reveal>Show answers</button><span class="fb" data-fb></span></div>
+      </div>
+
+      <div class="ex" data-ex>
+        <div class="ex-head"><span class="ex-num">EX 3</span><span class="ex-title">Build present-continuous sentences</span></div>
+        <p class="ex-instr">Completa con <strong>am/is/are + verb-ing</strong>. Usa las pistas entre paréntesis.</p>
+        <div data-grader="gap">
+          <div class="qrow"><span class="qn">1</span> I <input class="gap wide" data-answer="am cooking|'m cooking"> dinner now. <span class="hintword">cook</span> <span class="sol" data-sol>am cooking</span></div>
+          <div class="qrow"><span class="qn">2</span> She <input class="gap wide" data-answer="is making|'s making"> the bed. <span class="hintword">make</span> <span class="sol" data-sol>is making</span></div>
+          <div class="qrow"><span class="qn">3</span> They <input class="gap wide" data-answer="are doing|'re doing"> the laundry. <span class="hintword">do</span> <span class="sol" data-sol>are doing</span></div>
+          <div class="qrow"><span class="qn">4</span> We <input class="gap wide" data-answer="are not cleaning|aren't cleaning"> the bathroom. <span class="hintword">not clean</span> <span class="sol" data-sol>are not cleaning</span></div>
+          <div class="qrow"><span class="qn">5</span> He <input class="gap wide" data-answer="is ironing|'s ironing"> his shirt. <span class="hintword">iron</span> <span class="sol" data-sol>is ironing</span></div>
+          <div class="qrow"><span class="qn">6</span> <input class="gap wide" data-answer="are you wearing"> a hat today? <span class="hintword">you / wear</span> <span class="sol" data-sol>Are you wearing</span></div>
+        </div>
+        <div class="ex-foot"><button class="btn" data-check>Check</button><button class="btn ghost" data-reveal>Show answers</button><span class="fb" data-fb></span></div>
+      </div>
+    </section>
+
+    <section id="simple-vs-continuous">
+      <div class="sec-tag">Section C · Grammar 2</div>
+      <h2>Present simple vs present continuous</h2>
+      <p class="lead">La Unidad 1 ya presentó el <strong>present simple</strong>. Ahora lo comparamos con el <strong>present continuous</strong>: rutina frente a acción en progreso.</p>
+
+      <div class="tbl-scroll">
+        <table class="tbl">
+          <thead><tr><th>Tense</th><th>Use</th><th>Time words</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td>Present simple</td><td>rutinas, hábitos, hechos estables</td><td>usually, every day, on Mondays</td><td>I <span class="hl">clean</span> the kitchen every day.</td></tr>
+            <tr><td>Present continuous</td><td>ahora, temporal, en progreso</td><td>now, right now, at the moment, today, Look!, Listen!</td><td>I <span class="hl">am cleaning</span> the kitchen now.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="box rule">
+        <div class="label">Rule</div>
+        <h4>Let the time word guide you</h4>
+        <p><span class="eng">Every day</span> suele pedir <span class="eng">present simple</span>. <span class="eng">Now</span> o <span class="eng">at the moment</span> suelen pedir <span class="eng">present continuous</span>.</p>
+      </div>
+
+      <div class="box warn">
+        <div class="label">Typical Spanish error</div>
+        <h4>No uses simple para acciones de “ahora”</h4>
+        <p><span class="xt">Look! She cooks dinner.</span> → <span class="ok">Look! She is cooking dinner.</span> Con <span class="eng">Look!</span> estás señalando una acción en progreso.</p>
+      </div>
+
+      <div class="ex" data-ex>
+        <div class="ex-head"><span class="ex-num">EX 4</span><span class="ex-title">Choose the correct tense</span></div>
+        <p class="ex-instr">Elige la opción correcta. Fíjate especialmente en la palabra de tiempo.</p>
+        <div data-grader="mcq">
+          <div class="mcq">
+            <div class="stem"><span class="qn">1</span> Every morning, Ana ___ the bed.</div>
+            <div class="opts" data-correct="a"><label class="opt"><input type="radio" name="ex4q1"> makes</label><label class="opt"><input type="radio" name="ex4q1"> is making</label></div>
+          </div>
+          <div class="mcq">
+            <div class="stem"><span class="qn">2</span> Look! Tom ___ the garden.</div>
+            <div class="opts" data-correct="b"><label class="opt"><input type="radio" name="ex4q2"> sweeps</label><label class="opt"><input type="radio" name="ex4q2"> is sweeping</label></div>
+          </div>
+          <div class="mcq">
+            <div class="stem"><span class="qn">3</span> They usually ___ jeans at work.</div>
+            <div class="opts" data-correct="a"><label class="opt"><input type="radio" name="ex4q3"> wear</label><label class="opt"><input type="radio" name="ex4q3"> are wearing</label></div>
+          </div>
+          <div class="mcq">
+            <div class="stem"><span class="qn">4</span> Today, she ___ a blue dress.</div>
+            <div class="opts" data-correct="b"><label class="opt"><input type="radio" name="ex4q4"> wears</label><label class="opt"><input type="radio" name="ex4q4"> is wearing</label></div>
+          </div>
+          <div class="mcq">
+            <div class="stem"><span class="qn">5</span> On Sundays, we ___ in the kitchen.</div>
+            <div class="opts" data-correct="a"><label class="opt"><input type="radio" name="ex4q5"> cook</label><label class="opt"><input type="radio" name="ex4q5"> are cooking</label></div>
+          </div>
+          <div class="mcq">
+            <div class="stem"><span class="qn">6</span> Right now, I ___ the washing-up.</div>
+            <div class="opts" data-correct="b"><label class="opt"><input type="radio" name="ex4q6"> do</label><label class="opt"><input type="radio" name="ex4q6"> am doing</label></div>
+          </div>
+          <div class="mcq">
+            <div class="stem"><span class="qn">7</span> My brother ___ his room every Friday.</div>
+            <div class="opts" data-correct="a"><label class="opt"><input type="radio" name="ex4q7"> tidies up</label><label class="opt"><input type="radio" name="ex4q7"> is tidying up</label></div>
+          </div>
+          <div class="mcq">
+            <div class="stem"><span class="qn">8</span> Listen! The children ___ in the living room.</div>
+            <div class="opts" data-correct="b"><label class="opt"><input type="radio" name="ex4q8"> play</label><label class="opt"><input type="radio" name="ex4q8"> are playing</label></div>
+          </div>
+        </div>
+        <div class="ex-foot"><button class="btn" data-check>Check</button><button class="btn ghost" data-reveal>Show answers</button><span class="fb" data-fb></span></div>
+      </div>
+    </section>
+
+    <section id="wearing">
+      <div class="sec-tag">Section D · Grammar 3</div>
+      <h2>Clothes: wear vs be wearing</h2>
+      <p class="lead"><strong>Wear</strong> puede hablar de hábitos. <strong>Be wearing</strong> describe la ropa que alguien lleva puesta ahora.</p>
+
+      <div class="tbl-scroll">
+        <table class="tbl">
+          <thead><tr><th>Meaning</th><th>Example</th><th>Spanish idea</th></tr></thead>
+          <tbody>
+            <tr><td>Habit</td><td>I usually <span class="hl">wear</span> jeans.</td><td>Normalmente llevo vaqueros.</td></tr>
+            <tr><td>Now / today</td><td>Today I <span class="hl">am wearing</span> a suit.</td><td>Hoy llevo puesto un traje.</td></tr>
+            <tr><td>Question</td><td>What <span class="hl">are</span> you <span class="hl">wearing</span>?</td><td>¿Qué llevas puesto?</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="box warn">
+        <div class="label">Typical Spanish error</div>
+        <h4>“Llevar puesto” no se traduce palabra por palabra</h4>
+        <p><span class="xt">I have put a jacket.</span> → <span class="ok">I am wearing a jacket.</span> Para ropa puesta ahora, usa <span class="eng">be wearing</span>.</p>
+      </div>
+
+      <div class="box tip">
+        <div class="label">Good to know</div>
+        <h4>Some verbs are usually not continuous</h4>
+        <p>Verbos como <span class="eng">like, want, know</span> y a menudo <span class="eng">have</span> expresan estado, no acción en progreso. Por eso decimos <span class="ok">I like this jacket</span>, no <span class="xt">I am liking this jacket</span>.</p>
+      </div>
+
+      <div class="ex" data-ex>
+        <div class="ex-head"><span class="ex-num">EX 5</span><span class="ex-title">Describe what people are wearing</span></div>
+        <p class="ex-instr">Completa con <strong>wear</strong> o <strong>be wearing</strong>. Piensa: ¿rutina o ahora?</p>
+        <div data-grader="gap">
+          <div class="qrow"><span class="qn">1</span> I usually <input class="gap" data-answer="wear"> black shoes. <span class="sol" data-sol>wear</span></div>
+          <div class="qrow"><span class="qn">2</span> Today, I <input class="gap wide" data-answer="am wearing|'m wearing"> brown shoes. <span class="sol" data-sol>am wearing</span></div>
+          <div class="qrow"><span class="qn">3</span> Marta <input class="gap wide" data-answer="is wearing|'s wearing"> a red dress at the moment. <span class="sol" data-sol>is wearing</span></div>
+          <div class="qrow"><span class="qn">4</span> My father usually <input class="gap" data-answer="wears"> a shirt to work. <span class="sol" data-sol>wears</span></div>
+          <div class="qrow"><span class="qn">5</span> The children <input class="gap wide" data-answer="are wearing|'re wearing"> hats in the garden now. <span class="sol" data-sol>are wearing</span></div>
+          <div class="qrow"><span class="qn">6</span> What <input class="gap wide" data-answer="are you wearing"> today? <span class="sol" data-sol>are you wearing</span></div>
+        </div>
+        <div class="ex-foot"><button class="btn" data-check>Check</button><button class="btn ghost" data-reveal>Show answers</button><span class="fb" data-fb></span></div>
+      </div>
+    </section>
+
+    <section id="reading">
+      <div class="sec-tag">Section E · Reading</div>
+      <h2>A family video call</h2>
+      <p class="lead">Lee el texto y observa cómo se mezclan rutinas con acciones que están ocurriendo ahora.</p>
+
+      <article class="reading">
+        <h4>Saturday at home</h4>
+        <div class="by">A short A2 reading · present simple + present continuous</div>
+        <p>It is Saturday morning and our family is on a video call. I can see everyone at home. My sister usually works in an office, but today she <span class="hl">is sitting</span> in the living room. She <span class="hl">is wearing</span> a green jumper and black trousers.</p>
+        <p>My brother is in the kitchen. He normally <span class="hl">cooks</span> only at weekends, and right now he <span class="hl">is making</span> breakfast. He <span class="hl">is not wearing</span> shoes because he is at home.</p>
+        <p>My parents are in the garden. They usually <span class="hl">clean</span> the house on Saturdays, but at the moment they <span class="hl">are drinking</span> coffee. My mother <span class="hl">is wearing</span> a blue dress, and my father <span class="hl">is wearing</span> an old jacket.</p>
+        <p>I am in my bedroom. I usually <span class="hl">tidy up</span> in the evening, but now I <span class="hl">am making</span> the bed. After the call, I am doing the laundry.</p>
+      </article>
+
+      <div class="ex" data-ex>
+        <div class="ex-head"><span class="ex-num">EX 6</span><span class="ex-title">True or false?</span></div>
+        <p class="ex-instr">Elige <strong>True</strong> o <strong>False</strong> según el texto.</p>
+        <div data-grader="mcq">
+          <div class="mcq"><div class="stem"><span class="qn">1</span> The sister is sitting in the kitchen today.</div><div class="opts" data-correct="b"><label class="opt"><input type="radio" name="ex6q1"> True</label><label class="opt"><input type="radio" name="ex6q1"> False</label></div></div>
+          <div class="mcq"><div class="stem"><span class="qn">2</span> The sister is wearing a green jumper.</div><div class="opts" data-correct="a"><label class="opt"><input type="radio" name="ex6q2"> True</label><label class="opt"><input type="radio" name="ex6q2"> False</label></div></div>
+          <div class="mcq"><div class="stem"><span class="qn">3</span> The brother normally cooks every day.</div><div class="opts" data-correct="b"><label class="opt"><input type="radio" name="ex6q3"> True</label><label class="opt"><input type="radio" name="ex6q3"> False</label></div></div>
+          <div class="mcq"><div class="stem"><span class="qn">4</span> The parents are drinking coffee at the moment.</div><div class="opts" data-correct="a"><label class="opt"><input type="radio" name="ex6q4"> True</label><label class="opt"><input type="radio" name="ex6q4"> False</label></div></div>
+          <div class="mcq"><div class="stem"><span class="qn">5</span> The father is wearing a new jacket.</div><div class="opts" data-correct="b"><label class="opt"><input type="radio" name="ex6q5"> True</label><label class="opt"><input type="radio" name="ex6q5"> False</label></div></div>
+          <div class="mcq"><div class="stem"><span class="qn">6</span> The narrator is making the bed now.</div><div class="opts" data-correct="a"><label class="opt"><input type="radio" name="ex6q6"> True</label><label class="opt"><input type="radio" name="ex6q6"> False</label></div></div>
+        </div>
+        <div class="ex-foot"><button class="btn" data-check>Check</button><button class="btn ghost" data-reveal>Show answers</button><span class="fb" data-fb></span></div>
+      </div>
+    </section>
+
+    <section id="crossword">
+      <div class="sec-tag">Section F · Crossword</div>
+      <h2>Crossword: home, chores and clothes</h2>
+      <p class="lead">Completa el crucigrama con vocabulario de la unidad. Escribe una letra por casilla.</p>
+      <div class="cw-wrap">
+        <div class="cw-grid" id="cwGrid" aria-label="crossword grid"></div>
+        <div class="clues">
+          <h4>Across</h4>
+          <ol>
+            <li><b>1</b> You wear them on your feet, under shoes.</li>
+            <li><b>4</b> Clean the floor with a broom.</li>
+            <li><b>5</b> You wear it over a shirt when it is cold.</li>
+            <li><b>7</b> Clothes for your legs; British English.</li>
+            <li><b>9</b> A smart top with buttons.</li>
+            <li><b>10</b> Make something not dirty.</li>
+          </ol>
+          <h4>Down</h4>
+          <ol>
+            <li><b>2</b> The room where you cook.</li>
+            <li><b>3</b> The room where you sleep.</li>
+            <li><b>4</b> You wear them on your feet.</li>
+            <li><b>6</b> One-piece clothing, often for women.</li>
+            <li><b>8</b> Make clothes smooth with heat.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="ex-foot"><button class="btn" id="cwCheck">Check crossword</button><button class="btn ghost" id="cwReveal">Show answers</button><span class="fb" id="cwFb"></span></div>
+    </section>
+
+    <section id="review">
+      <div class="sec-tag">Section G · Review</div>
+      <h2>Self-check</h2>
+      <p class="lead">Marca lo que ya puedes hacer. No cuenta para la nota: es una brújula para repasar.</p>
+      <div class="selfcheck">
+        <label><input type="checkbox"> I can form the present continuous with <strong>am/is/are + -ing</strong>.</label>
+        <label><input type="checkbox"> I can describe what is happening now at home.</label>
+        <label><input type="checkbox"> I can choose between present simple and present continuous using time words.</label>
+        <label><input type="checkbox"> I can name common rooms and household chores.</label>
+        <label><input type="checkbox"> I can name basic clothes in English.</label>
+        <label><input type="checkbox"> I can say what someone is wearing today.</label>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="sig">Level A2 · Creado por Juan Carlos Navarro</div>
+    <div class="meta">English A2 · Unit 4 · Daily life now</div>
+  </footer>
+
+  <script>
+"use strict";
+const exResults=new Map();
+function refreshScore(){
+  let c=0,t=0; exResults.forEach(r=>{c+=r.correct;t+=r.total;});
+  document.getElementById('scoreTxt').textContent=c+' / '+t;
+  document.getElementById('progBar').style.width=(t?(c/t*100):0)+'%';
+}
+function commit(id,correct,total){ exResults.set(id,{correct,total}); refreshScore(); }
+function norm(s){ return (s||"").toLowerCase().replace(/[’‘`´]/g,"'").replace(/\s+/g," ").replace(/[.,;:!?]+$/,"").trim(); }
+
+function gradeGap(ex){
+  const inputs=[...ex.querySelectorAll('[data-grader="gap"] input.gap')];
+  let correct=0;
+  inputs.forEach(inp=>{
+    const accepted=(inp.dataset.answer||"").split("|").map(norm);
+    const val=norm(inp.value);
+    const ok=val!=="" && accepted.includes(val);
+    inp.classList.remove('right','wrong'); inp.classList.add(ok?'right':'wrong');
+    if(ok) correct++;
+  });
+  return {correct,total:inputs.length};
+}
+function gradeMcq(ex){
+  const groups=[...ex.querySelectorAll('[data-grader="mcq"] .opts')];
+  let correct=0;
+  groups.forEach(g=>{
+    const labels=[...g.querySelectorAll('.opt')];
+    const ci={a:0,b:1,c:2,d:3}[g.dataset.correct];
+    labels.forEach(l=>l.classList.remove('right','wrong','miss'));
+    let chosen=-1; labels.forEach((l,i)=>{ if(l.querySelector('input').checked) chosen=i; });
+    if(chosen===ci){ labels[ci].classList.add('right'); correct++; }
+    else{ if(chosen>-1) labels[chosen].classList.add('wrong'); labels[ci].classList.add('miss'); }
+  });
+  return {correct,total:groups.length};
+}
+function gradeMatch(ex){
+  const sels=[...ex.querySelectorAll('[data-grader="match"] select')];
+  let correct=0;
+  sels.forEach(s=>{
+    const ok=norm(s.value)!=="" && norm(s.value)===norm(s.dataset.answer);
+    s.classList.remove('right','wrong'); s.classList.add(ok?'right':'wrong');
+    if(ok) correct++;
+  });
+  return {correct,total:sels.length};
+}
+
+document.querySelectorAll('[data-ex]').forEach((ex,idx)=>{
+  const id='ex'+idx;
+  const fb=ex.querySelector('[data-fb]');
+  let total=0;
+  if(ex.querySelector('[data-grader="gap"]')) total+=ex.querySelectorAll('[data-grader="gap"] input.gap').length;
+  if(ex.querySelector('[data-grader="mcq"]')) total+=ex.querySelectorAll('[data-grader="mcq"] .opts').length;
+  if(ex.querySelector('[data-grader="match"]')) total+=ex.querySelectorAll('[data-grader="match"] select').length;
+  commit(id,0,total);
+  ex.querySelector('[data-check]').addEventListener('click',()=>{
+    let correct=0,tot=0;
+    if(ex.querySelector('[data-grader="gap"]')){ const r=gradeGap(ex); correct+=r.correct; tot+=r.total; }
+    if(ex.querySelector('[data-grader="mcq"]')){ const r=gradeMcq(ex); correct+=r.correct; tot+=r.total; }
+    if(ex.querySelector('[data-grader="match"]')){ const r=gradeMatch(ex); correct+=r.correct; tot+=r.total; }
+    commit(id,correct,tot);
+    fb.className='fb show '+(correct===tot?'good':'partial');
+    fb.textContent=correct+' / '+tot+(correct===tot?'  ✓ Perfect!':'  · keep trying');
+  });
+  ex.querySelector('[data-reveal]').addEventListener('click',()=>{
+    ex.querySelectorAll('[data-sol]').forEach(s=>s.classList.add('show'));
+    ex.querySelectorAll('[data-grader="mcq"] .opts').forEach(g=>{
+      const ci={a:0,b:1,c:2,d:3}[g.dataset.correct];
+      const labels=[...g.querySelectorAll('.opt')]; labels.forEach(l=>l.classList.remove('miss'));
+      if(labels[ci]) labels[ci].classList.add('miss');
+    });
+    ex.querySelectorAll('[data-grader="match"] select').forEach(s=>{
+      [...s.options].forEach(o=>{ if(norm(o.value)===norm(s.dataset.answer)) s.value=o.value; });
+    });
+  });
+});
+
+/* ===== crossword (verified 11x12, no ghost runs) ===== */
+const SOL=[
+  "..SOCKS..B..",
+  ".....I.SWEEP",
+  "JACKET.H.D..",
+  ".....C.O.R..",
+  ".D...H.E.O..",
+  "TROUSERS.O..",
+  ".E...N...M..",
+  ".S..I.......",
+  ".SHIRT......",
+  "....O.......",
+  "CLEAN......."
+];
+const NUMS={"0,2":1,"0,5":2,"0,9":3,"1,7":4,"2,0":5,"4,1":6,"5,0":7,"7,4":8,"8,1":9,"10,0":10};
+
+(function buildCrossword(){
+  const grid=document.getElementById('cwGrid');
+  const rows=SOL.length, cols=SOL[0].length;
+  grid.style.gridTemplateColumns='repeat('+cols+',var(--cell))';
+  grid.style.gridTemplateRows='repeat('+rows+',var(--cell))';
+  for(let r=0;r<rows;r++){
+    for(let c=0;c<cols;c++){
+      const ch=SOL[r][c];
+      const cell=document.createElement('div');
+      cell.className='cell'+(ch==='.'?' block':'');
+      if(ch!=='.'){
+        const key=r+','+c;
+        if(NUMS[key]!==undefined){
+          const n=document.createElement('span'); n.className='num'; n.textContent=NUMS[key]; cell.appendChild(n);
+        }
+        const inp=document.createElement('input');
+        inp.maxLength=1; inp.dataset.sol=ch;
+        inp.setAttribute('aria-label','row '+(r+1)+' col '+(c+1));
+        inp.addEventListener('input',function(){
+          this.classList.remove('right','wrong');
+          this.value=this.value.toUpperCase().replace(/[^A-Z]/g,'');
+          if(this.value){
+            const all=[...grid.querySelectorAll('input')];
+            const i=all.indexOf(this);
+            if(i>-1 && i+1<all.length) all[i+1].focus();
+          }
+        });
+        cell.appendChild(inp);
+      }
+      grid.appendChild(cell);
+    }
+  }
+})();
+
+(function wireCrossword(){
+  const grid=document.getElementById('cwGrid');
+  const inputs=[...grid.querySelectorAll('input')];
+  const fb=document.getElementById('cwFb');
+  commit('crossword',0,inputs.length);
+  document.getElementById('cwCheck').addEventListener('click',()=>{
+    let correct=0;
+    inputs.forEach(inp=>{
+      inp.classList.remove('right','wrong');
+      const ok=(inp.value||'').toUpperCase()===inp.dataset.sol;
+      inp.classList.add(ok?'right':'wrong'); if(ok) correct++;
+    });
+    commit('crossword',correct,inputs.length);
+    fb.className='fb show '+(correct===inputs.length?'good':'partial');
+    fb.textContent=correct+' / '+inputs.length+(correct===inputs.length?'  ✓ Solved!':'  · keep going');
+  });
+  document.getElementById('cwReveal').addEventListener('click',()=>{
+    inputs.forEach(inp=>{ inp.value=inp.dataset.sol; inp.classList.remove('wrong'); inp.classList.add('right'); });
+    commit('crossword',inputs.length,inputs.length);
+    fb.className='fb show good'; fb.textContent='Answers shown';
+  });
+})();
+
+refreshScore();
+  </script>
+</body>
+</html>
