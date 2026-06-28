@@ -1,1 +1,697 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 5 · Food &amp; Shopping · English A2</title>
+<meta name="description" content="Unit 5 — Food and Shopping. Inglés A2 interactivo: contables e incontables, much/many/a lot of/a little/a few, would like, y cómo pedir y comprar. Creado por Juan Carlos Navarro.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Instrument+Sans:ital,wght@0,400..700;1,400..600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f4efe6;--paper-2:#ece3d4;--paper-3:#e3d8c4;
+  --ink:#2b2420;--ink-soft:#5a4f46;
+  --burgundy:#7a1f2b;--burgundy-2:#9c3340;--gold:#b4862f;
+  --sage:#4d6b54;--sage-bg:#e4ecdf;--clay:#b5552f;--clay-bg:#f3e2d6;
+  --line:#d8cbb4;--shadow:0 1px 2px rgba(43,36,32,.06),0 8px 24px -12px rgba(43,36,32,.18);
+  --r:14px;--cell:34px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Instrument Sans",system-ui,sans-serif;font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(circle at 12% 6%,rgba(180,134,47,.05),transparent 40%),radial-gradient(circle at 88% 2%,rgba(122,31,43,.05),transparent 38%);}
+.wrap{max-width:880px;margin:0 auto;padding:0 22px}
 
+.topbar{position:sticky;top:0;z-index:60;background:rgba(244,239,230,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:14px;padding-top:10px;padding-bottom:10px}
+.brand{font-family:"Fraunces",serif;font-weight:600;font-size:17px;letter-spacing:-.01em;white-space:nowrap}
+.brand b{color:var(--burgundy)}
+.progress{flex:1;height:9px;border-radius:99px;background:var(--paper-3);overflow:hidden;border:1px solid var(--line)}
+.progress>span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--burgundy),var(--gold));transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.score{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--ink-soft);white-space:nowrap}
+
+.hero{padding:54px 0 30px;border-bottom:2px solid var(--ink)}
+.eyebrow{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--burgundy);font-weight:500}
+.hero h1{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(38px,7vw,64px);line-height:1.02;letter-spacing:-.02em;margin:.18em 0 .12em}
+.hero .sub{font-size:18px;color:var(--ink-soft);max-width:60ch}
+.unit-num{font-family:"Fraunces",serif;font-style:italic;font-size:clamp(60px,16vw,150px);line-height:.8;color:var(--paper-3);display:block;margin-bottom:-.18em;letter-spacing:-.03em;-webkit-text-stroke:1px var(--line)}
+.cando{margin-top:26px;background:#fffdf8;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:var(--r);padding:18px 22px;box-shadow:var(--shadow)}
+.cando h3{margin:0 0 8px;font-family:"Fraunces",serif;font-size:18px;font-weight:600}
+.cando ul{margin:0;padding-left:0;list-style:none}
+.cando li{padding:4px 0 4px 30px;position:relative;font-size:15.5px}
+.cando li::before{content:"✓";position:absolute;left:0;top:4px;color:var(--sage);font-weight:700}
+.cando .es{color:var(--ink-soft);font-style:italic}
+
+section{padding:46px 0;border-bottom:1px solid var(--line)}
+.sec-tag{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--burgundy);font-weight:500;display:flex;align-items:center;gap:10px}
+.sec-tag::before{content:"";width:26px;height:2px;background:var(--burgundy)}
+h2{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(27px,4.6vw,38px);line-height:1.08;letter-spacing:-.015em;margin:.28em 0 .5em}
+h3.lesson{font-family:"Fraunces",serif;font-weight:600;font-size:21px;margin:34px 0 12px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+h3.lesson .n{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--gold);font-weight:700}
+p.lead{font-size:18px;color:var(--ink-soft);max-width:64ch}
+p{max-width:68ch}
+.es-note{color:var(--ink-soft);font-style:italic}
+
+.box{background:#fffdf8;border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;margin:18px 0;box-shadow:var(--shadow)}
+.box.rule{border-left:4px solid var(--burgundy)}
+.box.tip{border-left:4px solid var(--sage);background:var(--sage-bg)}
+.box.warn{border-left:4px solid var(--clay);background:var(--clay-bg)}
+.box h4{margin:0 0 8px;font-family:"Fraunces",serif;font-size:17px;font-weight:600}
+.box .label{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;margin-bottom:6px}
+.box.rule .label{color:var(--burgundy)}.box.tip .label{color:var(--sage)}.box.warn .label{color:var(--clay)}
+.eng{font-weight:600}.xt{color:var(--clay);text-decoration:line-through}.ok{color:var(--sage);font-weight:600}
+
+.tbl{width:100%;border-collapse:collapse;margin:16px 0;font-size:15.5px;background:#fffdf8;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+.tbl th,.tbl td{padding:9px 13px;text-align:left;border-bottom:1px solid var(--line)}
+.tbl th{background:var(--ink);color:var(--paper);font-family:"JetBrains Mono",monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:500}
+.tbl tr:last-child td{border-bottom:none}
+.tbl td:first-child{font-weight:600}
+.tbl .hl{color:var(--burgundy);font-weight:700}
+.tbl-scroll{overflow-x:auto}
+
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin:16px 0}
+.vcard{background:#fffdf8;border:1px solid var(--line);border-radius:11px;padding:11px 13px;box-shadow:var(--shadow)}
+.vcard .w{font-weight:600;font-size:16px}
+.vcard .es{font-size:13.5px;color:var(--ink-soft)}
+
+.ex{background:#fffdf8;border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;margin:20px 0;box-shadow:var(--shadow)}
+.ex-head{display:flex;align-items:center;gap:10px;margin-bottom:4px;flex-wrap:wrap}
+.ex-num{font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:700;color:var(--paper);background:var(--burgundy);padding:3px 9px;border-radius:7px;letter-spacing:.05em}
+.ex-title{font-family:"Fraunces",serif;font-weight:600;font-size:18px}
+.ex-instr{font-size:14.5px;color:var(--ink-soft);margin:2px 0 14px}
+.qrow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:9px 0;border-bottom:1px dotted var(--line);font-size:16px}
+.qrow:last-of-type{border-bottom:none}
+.qn{font-family:"JetBrains Mono",monospace;font-size:12.5px;color:var(--gold);font-weight:700;min-width:26px}
+input.gap{font-family:"Instrument Sans",sans-serif;font-size:15.5px;padding:5px 9px;border:1px solid var(--line);border-radius:8px;background:var(--paper);min-width:90px;width:130px;color:var(--ink);transition:.2s}
+input.gap.wide{width:185px}
+input.gap:focus{outline:none;border-color:var(--burgundy);box-shadow:0 0 0 3px rgba(122,31,43,.12)}
+input.gap.right{border-color:var(--sage);background:var(--sage-bg)}
+input.gap.wrong{border-color:var(--clay);background:var(--clay-bg)}
+.hintword{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--burgundy);background:var(--paper-2);padding:2px 7px;border-radius:6px;border:1px solid var(--line)}
+.wordbank{display:flex;flex-wrap:wrap;gap:7px;margin:2px 0 14px}
+.wordbank .chip{font-family:"JetBrains Mono",monospace;font-size:12.5px;color:var(--burgundy);background:var(--paper-2);padding:4px 10px;border-radius:7px;border:1px solid var(--line)}
+.sol{display:none;font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--sage);margin-left:4px}
+.sol.show{display:inline}
+.mcq{padding:11px 0;border-bottom:1px dotted var(--line)}
+.mcq:last-child{border-bottom:none}
+.mcq .stem{font-size:16px;margin-bottom:7px}
+.mcq .stem .qn{margin-right:6px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border:1px solid var(--line);border-radius:9px;cursor:pointer;background:var(--paper);font-size:15px;transition:.15s;user-select:none}
+.opt:hover{border-color:var(--burgundy);background:#fff}
+.opt input{accent-color:var(--burgundy);margin:0}
+.opt.right{border-color:var(--sage);background:var(--sage-bg)}
+.opt.wrong{border-color:var(--clay);background:var(--clay-bg)}
+.opt.miss{border-color:var(--sage);border-style:dashed}
+.match{display:grid;grid-template-columns:1fr 1fr;gap:10px 26px;margin:6px 0}
+.match .ml{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px dotted var(--line);font-size:15.5px;flex-wrap:wrap}
+.match select{font-family:"Instrument Sans",sans-serif;font-size:14.5px;padding:5px 7px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink)}
+.match select.right{border-color:var(--sage);background:var(--sage-bg)}
+.match select.wrong{border-color:var(--clay);background:var(--clay-bg)}
+.ex-foot{display:flex;align-items:center;gap:12px;margin-top:16px;flex-wrap:wrap}
+.btn{font-family:"Instrument Sans",sans-serif;font-weight:600;font-size:14.5px;padding:9px 18px;border-radius:9px;border:1px solid var(--burgundy);background:var(--burgundy);color:var(--paper);cursor:pointer;transition:.18s}
+.btn:hover{background:var(--burgundy-2);border-color:var(--burgundy-2)}
+.btn.ghost{background:transparent;color:var(--burgundy)}
+.btn.ghost:hover{background:var(--paper-2);color:var(--burgundy)}
+.fb{font-family:"JetBrains Mono",monospace;font-size:13px;font-weight:700;padding:5px 10px;border-radius:8px;display:none}
+.fb.show{display:inline-block}
+.fb.good{background:var(--sage-bg);color:var(--sage)}
+.fb.partial{background:var(--clay-bg);color:var(--clay)}
+
+.reading{background:#fffdf8;border:1px solid var(--line);border-radius:var(--r);padding:24px 26px;margin:18px 0;box-shadow:var(--shadow);font-size:16.5px;line-height:1.7}
+.reading h4{font-family:"Fraunces",serif;font-size:20px;margin:0 0 4px}
+.reading .by{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--gold);margin-bottom:14px}
+.reading p{max-width:none}
+.reading .hl{background:rgba(180,134,47,.18);padding:0 2px;border-radius:3px}
+
+.cw-wrap{display:flex;gap:26px;flex-wrap:wrap;margin:18px 0}
+.cw-grid{display:grid;gap:0;background:var(--ink);padding:3px;border-radius:8px;box-shadow:var(--shadow);width:max-content}
+.cell{position:relative;background:var(--paper-3);width:var(--cell);height:var(--cell)}
+.cell.block{background:transparent}
+.cell input{width:100%;height:100%;border:1px solid var(--line);background:#fffdf8;text-align:center;font-family:"Fraunces",serif;font-size:18px;font-weight:600;text-transform:uppercase;color:var(--ink);padding:0;border-radius:0}
+.cell input:focus{outline:none;background:#fff;box-shadow:inset 0 0 0 2px var(--burgundy)}
+.cell input.right{background:var(--sage-bg);color:var(--sage)}
+.cell input.wrong{background:var(--clay-bg);color:var(--clay)}
+.cell .num{position:absolute;top:0;left:1px;font-family:"JetBrains Mono",monospace;font-size:9px;font-weight:700;color:var(--burgundy);line-height:1;z-index:2;pointer-events:none}
+.clues{flex:1;min-width:240px}
+.clues h4{font-family:"Fraunces",serif;font-size:16px;margin:0 0 6px;color:var(--burgundy)}
+.clues ol{margin:0 0 14px;padding-left:0;list-style:none}
+.clues li{font-size:14.5px;padding:3px 0;display:flex;gap:8px}
+.clues li b{font-family:"JetBrains Mono",monospace;color:var(--gold);min-width:18px}
+
+.selfcheck{background:#fffdf8;border:1px solid var(--line);border-radius:var(--r);padding:22px 24px;box-shadow:var(--shadow)}
+.selfcheck label{display:flex;align-items:flex-start;gap:11px;padding:8px 0;font-size:15.5px;cursor:pointer;border-bottom:1px dotted var(--line)}
+.selfcheck label:last-child{border-bottom:none}
+.selfcheck input{margin-top:5px;accent-color:var(--sage);width:17px;height:17px}
+
+footer{padding:40px 0 60px;text-align:center;color:var(--ink-soft)}
+footer .sig{font-family:"Fraunces",serif;font-style:italic;font-size:17px;color:var(--ink)}
+footer .meta{font-family:"JetBrains Mono",monospace;font-size:12px;margin-top:6px}
+
+@media(max-width:560px){
+  body{font-size:16px}
+  :root{--cell:30px}
+  .cell input{font-size:15px}
+  .match{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <span class="brand">English <b>A2</b> · Unit 5</span>
+    <div class="progress"><span id="progBar"></span></div>
+    <span class="score" id="scoreTxt">0 / 0</span>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="unit-num">05</span>
+    <span class="eyebrow">Level A2 · Coursebook</span>
+    <h1>Food &amp; Shopping</h1>
+    <p class="sub">Comida, bebida, cantidades y compras. Aprende a distinguir lo que se <b>cuenta</b> de lo que no, a hablar de <b>cuánto</b> hay, y a <b>pedir y comprar</b> con educación usando <i>would like</i>.</p>
+    <div class="cando">
+      <h3>By the end of this unit, I can…</h3>
+      <ul>
+        <li>name food, drinks and quantities. <span class="es">— comida y cantidades</span></li>
+        <li>use countable and uncountable nouns correctly. <span class="es">— contables e incontables</span></li>
+        <li>use much / many / a lot of / a little / a few. <span class="es">— cuantificadores</span></li>
+        <li>order food and shop politely with <i>would like</i>. <span class="es">— pedir y comprar</span></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- ===== A: VOCABULARY ===== -->
+<section id="vocab">
+  <span class="sec-tag">Section A · Vocabulary</span>
+  <h2>Food, drink &amp; quantities</h2>
+  <p class="lead">El vocabulario de la comida, las bebidas y, muy importante en inglés, cómo medir las cantidades.</p>
+
+  <h3 class="lesson"><span class="n">A1</span> Food &amp; drink <span class="es-note" style="font-weight:400;font-size:15px">— comida y bebida</span></h3>
+  <div class="vgrid">
+    <div class="vcard"><div class="w">bread</div><div class="es">pan</div></div>
+    <div class="vcard"><div class="w">cheese</div><div class="es">queso</div></div>
+    <div class="vcard"><div class="w">an apple</div><div class="es">una manzana</div></div>
+    <div class="vcard"><div class="w">a banana</div><div class="es">un plátano</div></div>
+    <div class="vcard"><div class="w">a tomato</div><div class="es">un tomate</div></div>
+    <div class="vcard"><div class="w">a potato</div><div class="es">una patata</div></div>
+    <div class="vcard"><div class="w">an onion</div><div class="es">una cebolla</div></div>
+    <div class="vcard"><div class="w">a carrot</div><div class="es">una zanahoria</div></div>
+    <div class="vcard"><div class="w">chicken</div><div class="es">pollo</div></div>
+    <div class="vcard"><div class="w">rice</div><div class="es">arroz</div></div>
+    <div class="vcard"><div class="w">water</div><div class="es">agua</div></div>
+    <div class="vcard"><div class="w">coffee</div><div class="es">café</div></div>
+  </div>
+
+  <h3 class="lesson"><span class="n">A2</span> Containers &amp; quantities <span class="es-note" style="font-weight:400;font-size:15px">— envases y cantidades</span></h3>
+  <div class="tbl-scroll"><table class="tbl">
+    <tr><th>Quantity</th><th>Goes with…</th><th>Español</th></tr>
+    <tr><td>a bottle of</td><td>water, milk, wine</td><td>una botella de</td></tr>
+    <tr><td>a carton of</td><td>milk, juice</td><td>un cartón/brik de</td></tr>
+    <tr><td>a cup of</td><td>coffee, tea</td><td>una taza de</td></tr>
+    <tr><td>a packet of</td><td>biscuits, crisps</td><td>un paquete de</td></tr>
+    <tr><td>a bar of</td><td>chocolate</td><td>una tableta de</td></tr>
+    <tr><td>a loaf of</td><td>bread</td><td>una barra/hogaza de</td></tr>
+    <tr><td>a kilo of</td><td>apples, potatoes</td><td>un kilo de</td></tr>
+    <tr><td>a slice of</td><td>bread, cheese, cake</td><td>una loncha/rebanada de</td></tr>
+  </table></div>
+
+  <!-- EX1 match -->
+  <div class="ex" data-ex>
+    <div class="ex-head"><span class="ex-num">EX 1</span><span class="ex-title">A … of what?</span></div>
+    <p class="ex-instr">Elige la cantidad correcta para cada producto. <span class="es-note">Match the container/quantity to the food.</span></p>
+    <div class="match" data-grader="match">
+      <div class="ml">1. ___ milk →
+        <select data-answer="a carton of"><option value="">—</option><option>a bar of</option><option>a carton of</option><option>a loaf of</option></select></div>
+      <div class="ml">2. ___ bread →
+        <select data-answer="a loaf of"><option value="">—</option><option>a loaf of</option><option>a cup of</option><option>a kilo of</option></select></div>
+      <div class="ml">3. ___ chocolate →
+        <select data-answer="a bar of"><option value="">—</option><option>a slice of</option><option>a bar of</option><option>a bottle of</option></select></div>
+      <div class="ml">4. ___ coffee →
+        <select data-answer="a cup of"><option value="">—</option><option>a cup of</option><option>a loaf of</option><option>a kilo of</option></select></div>
+      <div class="ml">5. ___ apples →
+        <select data-answer="a kilo of"><option value="">—</option><option>a bar of</option><option>a carton of</option><option>a kilo of</option></select></div>
+      <div class="ml">6. ___ water →
+        <select data-answer="a bottle of"><option value="">—</option><option>a slice of</option><option>a bottle of</option><option>a packet of</option></select></div>
+    </div>
+    <div class="ex-foot">
+      <button class="btn" data-check>Check</button>
+      <button class="btn ghost" data-reveal>Show answers</button>
+      <span class="fb" data-fb></span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== B: COUNTABLE / UNCOUNTABLE ===== -->
+<section id="countable">
+  <span class="sec-tag">Section B · Grammar 1</span>
+  <h2>Countable &amp; uncountable nouns</h2>
+  <p class="lead">La gran división de los sustantivos en inglés. Saber a qué grupo pertenece una palabra decide qué artículos y cuantificadores puedes usar con ella.</p>
+
+  <div class="tbl-scroll"><table class="tbl">
+    <tr><th></th><th>Countable</th><th>Uncountable</th></tr>
+    <tr><td>Meaning</td><td>se pueden contar: 1, 2, 3…</td><td>no se cuentan con número</td></tr>
+    <tr><td>Examples</td><td>an apple, two eggs, three bananas</td><td>bread, rice, water, milk, sugar, cheese</td></tr>
+    <tr><td>Plural?</td><td>Yes → apple<span class="hl">s</span></td><td>No → <span class="xt">breads</span></td></tr>
+    <tr><td>a / an?</td><td>Yes → <span class="hl">an</span> egg</td><td>No → <span class="hl">some</span> bread</td></tr>
+  </table></div>
+  <div class="box warn">
+    <div class="label">Typical Spanish error</div>
+    <p style="margin:0">Muchas palabras incontables en inglés se traducen como contables en español. <br><span class="ok">some bread / a loaf of bread</span> &nbsp; <span class="xt">a bread</span> &nbsp;·&nbsp; <span class="ok">information / advice</span> &nbsp; <span class="xt">informations / advices</span></p>
+  </div>
+  <div class="box tip">
+    <div class="label">a / an / some</div>
+    <p style="margin:0"><b>a/an</b> + contable singular: <span class="eng">an apple</span>. <b>some</b> + incontable o contable plural: <span class="eng">some rice, some apples</span>. <b>any</b> en negativas y preguntas: <span class="eng">There isn't any milk.</span></p>
+  </div>
+
+  <!-- EX2 classify -->
+  <div class="ex" data-ex>
+    <div class="ex-head"><span class="ex-num">EX 2</span><span class="ex-title">Countable or uncountable?</span></div>
+    <p class="ex-instr">Clasifica cada palabra. <span class="es-note">Choose countable or uncountable.</span></p>
+    <div class="match" data-grader="match">
+      <div class="ml">1. apple →
+        <select data-answer="countable"><option value="">—</option><option>countable</option><option>uncountable</option></select></div>
+      <div class="ml">2. water →
+        <select data-answer="uncountable"><option value="">—</option><option>countable</option><option>uncountable</option></select></div>
+      <div class="ml">3. egg →
+        <select data-answer="countable"><option value="">—</option><option>countable</option><option>uncountable</option></select></div>
+      <div class="ml">4. rice →
+        <select data-answer="uncountable"><option value="">—</option><option>countable</option><option>uncountable</option></select></div>
+      <div class="ml">5. banana →
+        <select data-answer="countable"><option value="">—</option><option>countable</option><option>uncountable</option></select></div>
+      <div class="ml">6. sugar →
+        <select data-answer="uncountable"><option value="">—</option><option>countable</option><option>uncountable</option></select></div>
+    </div>
+    <div class="ex-foot">
+      <button class="btn" data-check>Check</button>
+      <button class="btn ghost" data-reveal>Show answers</button>
+      <span class="fb" data-fb></span>
+    </div>
+  </div>
+
+  <!-- EX3 a/an/some -->
+  <div class="ex" data-ex>
+    <div class="ex-head"><span class="ex-num">EX 3</span><span class="ex-title">a, an or some?</span></div>
+    <p class="ex-instr">Completa con <i>a</i>, <i>an</i> o <i>some</i>. <span class="es-note">Complete with a, an or some.</span></p>
+    <div data-grader="gap">
+      <div class="qrow"><span class="qn">1</span> I'd like <input class="gap" data-answer="an"> apple, please. <span class="sol" data-sol>an</span></div>
+      <div class="qrow"><span class="qn">2</span> There's <input class="gap" data-answer="some"> milk in the fridge. <span class="sol" data-sol>some</span></div>
+      <div class="qrow"><span class="qn">3</span> Can I have <input class="gap" data-answer="an"> orange? <span class="sol" data-sol>an</span></div>
+      <div class="qrow"><span class="qn">4</span> We need <input class="gap" data-answer="some"> bread for breakfast. <span class="sol" data-sol>some</span></div>
+      <div class="qrow"><span class="qn">5</span> She's eating <input class="gap" data-answer="a"> banana. <span class="sol" data-sol>a</span></div>
+      <div class="qrow"><span class="qn">6</span> Would you like <input class="gap" data-answer="some"> rice? <span class="sol" data-sol>some</span></div>
+    </div>
+    <div class="ex-foot">
+      <button class="btn" data-check>Check</button>
+      <button class="btn ghost" data-reveal>Show answers</button>
+      <span class="fb" data-fb></span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== C: QUANTIFIERS ===== -->
+<section id="quantifiers">
+  <span class="sec-tag">Section C · Grammar 2</span>
+  <h2>much · many · a lot of · a little · a few</h2>
+  <p class="lead">Cuánto y cuántos. La elección depende otra vez de si el nombre es contable o incontable.</p>
+
+  <div class="tbl-scroll"><table class="tbl">
+    <tr><th>Quantifier</th><th>Use with</th><th>Typical use</th><th>Example</th></tr>
+    <tr><td class="hl">many</td><td>countable</td><td>?  /  −</td><td>How <span class="hl">many</span> eggs? · not <span class="hl">many</span> eggs</td></tr>
+    <tr><td class="hl">much</td><td>uncountable</td><td>?  /  −</td><td>How <span class="hl">much</span> milk? · not <span class="hl">much</span> milk</td></tr>
+    <tr><td class="hl">a lot of</td><td>both</td><td>+</td><td><span class="hl">a lot of</span> apples · <span class="hl">a lot of</span> water</td></tr>
+    <tr><td class="hl">a few</td><td>countable</td><td>+</td><td><span class="hl">a few</span> apples <span class="es-note">(unas pocas)</span></td></tr>
+    <tr><td class="hl">a little</td><td>uncountable</td><td>+</td><td><span class="hl">a little</span> milk <span class="es-note">(un poco de)</span></td></tr>
+  </table></div>
+  <div class="box warn">
+    <div class="label">Typical Spanish error</div>
+    <p style="margin:0"><span class="ok">How many apples?</span> &nbsp; <span class="xt">How much apples?</span> &nbsp;·&nbsp; <span class="ok">a few friends</span> (contable) &nbsp;/&nbsp; <span class="ok">a little time</span> (incontable). No los mezcles.</p>
+  </div>
+
+  <!-- EX4 -->
+  <div class="ex" data-ex>
+    <div class="ex-head"><span class="ex-num">EX 4</span><span class="ex-title">Choose the quantifier</span></div>
+    <p class="ex-instr">Elige la opción correcta. <span class="es-note">Choose the correct quantifier.</span></p>
+    <div data-grader="mcq">
+      <div class="mcq"><div class="stem"><span class="qn">1</span> How ___ eggs do we need?</div>
+        <div class="opts" data-correct="b">
+          <label class="opt"><input type="radio" name="q1"> much</label>
+          <label class="opt"><input type="radio" name="q1"> many</label></div></div>
+      <div class="mcq"><div class="stem"><span class="qn">2</span> How ___ sugar is there?</div>
+        <div class="opts" data-correct="a">
+          <label class="opt"><input type="radio" name="q2"> much</label>
+          <label class="opt"><input type="radio" name="q2"> many</label></div></div>
+      <div class="mcq"><div class="stem"><span class="qn">3</span> There aren't ___ tomatoes left.</div>
+        <div class="opts" data-correct="b">
+          <label class="opt"><input type="radio" name="q3"> much</label>
+          <label class="opt"><input type="radio" name="q3"> many</label></div></div>
+      <div class="mcq"><div class="stem"><span class="qn">4</span> I only want ___ milk in my coffee.</div>
+        <div class="opts" data-correct="a">
+          <label class="opt"><input type="radio" name="q4"> a little</label>
+          <label class="opt"><input type="radio" name="q4"> a few</label></div></div>
+      <div class="mcq"><div class="stem"><span class="qn">5</span> Let's invite ___ friends to dinner.</div>
+        <div class="opts" data-correct="b">
+          <label class="opt"><input type="radio" name="q5"> a little</label>
+          <label class="opt"><input type="radio" name="q5"> a few</label></div></div>
+      <div class="mcq"><div class="stem"><span class="qn">6</span> She drinks ___ coffee every day.</div>
+        <div class="opts" data-correct="c">
+          <label class="opt"><input type="radio" name="q6"> many</label>
+          <label class="opt"><input type="radio" name="q6"> a few</label>
+          <label class="opt"><input type="radio" name="q6"> a lot of</label></div></div>
+    </div>
+    <div class="ex-foot">
+      <button class="btn" data-check>Check</button>
+      <button class="btn ghost" data-reveal>Show answers</button>
+      <span class="fb" data-fb></span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== D: WOULD LIKE ===== -->
+<section id="wouldlike">
+  <span class="sec-tag">Section D · Grammar 3</span>
+  <h2>would like</h2>
+  <p class="lead">La forma educada de decir <i>quiero</i>. Imprescindible para pedir en una tienda, un bar o un restaurante.</p>
+
+  <div class="tbl-scroll"><table class="tbl">
+    <tr><th>Form</th><th>Example</th><th>Español</th></tr>
+    <tr><td>I'd like + noun</td><td>I'<span class="hl">d like</span> a coffee.</td><td>Quiero / Querría un café.</td></tr>
+    <tr><td>I'd like + to + verb</td><td>I'd like <span class="hl">to order</span>, please.</td><td>Querría pedir.</td></tr>
+    <tr><td>Would you like…? (offer)</td><td><span class="hl">Would you like</span> some cake?</td><td>¿Quieres / Le apetece…?</td></tr>
+    <tr><td>Short answers</td><td>Yes, please. / No, thanks.</td><td>Sí, por favor / No, gracias.</td></tr>
+  </table></div>
+  <div class="box warn">
+    <div class="label">like vs would like</div>
+    <p style="margin:0 0 5px"><span class="eng">Do you like coffee?</span> = ¿te gusta el café <i>en general</i>?</p>
+    <p style="margin:0"><span class="eng">Would you like a coffee?</span> = ¿quieres un café <i>ahora</i>? (ofrecimiento). No confundas: <span class="xt">I like a coffee, please.</span> → <span class="ok">I'd like a coffee, please.</span></p>
+  </div>
+
+  <!-- EX5 -->
+  <div class="ex" data-ex>
+    <div class="ex-head"><span class="ex-num">EX 5</span><span class="ex-title">Ordering politely</span></div>
+    <p class="ex-instr">Elige la opción correcta. <span class="es-note">Choose the correct option.</span></p>
+    <div data-grader="mcq">
+      <div class="mcq"><div class="stem"><span class="qn">1</span> "___ you like a dessert?" — "Yes, please."</div>
+        <div class="opts" data-correct="b">
+          <label class="opt"><input type="radio" name="w1"> Do</label>
+          <label class="opt"><input type="radio" name="w1"> Would</label>
+          <label class="opt"><input type="radio" name="w1"> Are</label></div></div>
+      <div class="mcq"><div class="stem"><span class="qn">2</span> I ___ like a glass of water, please.</div>
+        <div class="opts" data-correct="a">
+          <label class="opt"><input type="radio" name="w2"> 'd</label>
+          <label class="opt"><input type="radio" name="w2"> am</label>
+          <label class="opt"><input type="radio" name="w2"> do</label></div></div>
+      <div class="mcq"><div class="stem"><span class="qn">3</span> "___ you like Italian food?" (in general)</div>
+        <div class="opts" data-correct="a">
+          <label class="opt"><input type="radio" name="w3"> Do</label>
+          <label class="opt"><input type="radio" name="w3"> Would</label></div></div>
+      <div class="mcq"><div class="stem"><span class="qn">4</span> "Would you like some more tea?" — "No, ___."</div>
+        <div class="opts" data-correct="c">
+          <label class="opt"><input type="radio" name="w4"> please</label>
+          <label class="opt"><input type="radio" name="w4"> I don't</label>
+          <label class="opt"><input type="radio" name="w4"> thanks</label></div></div>
+    </div>
+    <div style="margin-top:14px;border-top:1px dashed var(--line);padding-top:12px">
+      <p class="ex-instr" style="margin-bottom:10px">Completa el pedido. <span class="es-note">Complete with 'd like / Would.</span></p>
+      <div data-grader="gap">
+        <div class="qrow"><span class="qn">5</span> I <input class="gap" data-answer="'d like|would like|d like"> a cup of coffee, please. <span class="sol" data-sol>'d like</span></div>
+        <div class="qrow"><span class="qn">6</span> <input class="gap" data-answer="would"> you like anything to drink? <span class="sol" data-sol>Would</span></div>
+      </div>
+    </div>
+    <div class="ex-foot">
+      <button class="btn" data-check>Check</button>
+      <button class="btn ghost" data-reveal>Show answers</button>
+      <span class="fb" data-fb></span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== E: READING ===== -->
+<section id="reading">
+  <span class="sec-tag">Section E · Reading</span>
+  <h2>At the café</h2>
+  <p class="lead">Lee la conversación. Fíjate en <i>would like</i>, los cuantificadores y los contables/incontables.</p>
+
+  <div class="reading">
+    <h4>Are you ready to order?</h4>
+    <div class="by">a waiter and two customers</div>
+    <p><b>Waiter:</b> Good afternoon. Are you ready to order?</p>
+    <p><b>Anna:</b> Yes. I'<span class="hl">d like</span> a sandwich and <span class="hl">a cup of</span> tea, please.</p>
+    <p><b>Waiter:</b> Of course. And for you, sir?</p>
+    <p><b>Ben:</b> <span class="hl">Would</span> you like to share some chips, Anna? … OK, I'll have a salad and <span class="hl">a bottle of</span> water.</p>
+    <p><b>Waiter:</b> Anything else? We have <span class="hl">a lot of</span> cakes today.</p>
+    <p><b>Anna:</b> Oh, yes! I'd <span class="hl">like</span> <span class="hl">a slice of</span> chocolate cake.</p>
+    <p><b>Ben:</b> Not for me, thanks. I don't eat <span class="hl">much</span> sugar.</p>
+    <p><b>Waiter:</b> Perfect. So that's one sandwich, one salad, and one piece of cake. I'll be right back.</p>
+  </div>
+
+  <!-- EX6 -->
+  <div class="ex" data-ex>
+    <div class="ex-head"><span class="ex-num">EX 6</span><span class="ex-title">True or False?</span></div>
+    <p class="ex-instr">Lee otra vez y decide. <span class="es-note">Read again and decide.</span></p>
+    <div data-grader="mcq">
+      <div class="mcq"><div class="stem"><span class="qn">1</span> Anna would like a cup of tea.</div>
+        <div class="opts" data-correct="a">
+          <label class="opt"><input type="radio" name="r1"> True</label>
+          <label class="opt"><input type="radio" name="r1"> False</label></div></div>
+      <div class="mcq"><div class="stem"><span class="qn">2</span> Ben orders a bottle of water.</div>
+        <div class="opts" data-correct="a">
+          <label class="opt"><input type="radio" name="r2"> True</label>
+          <label class="opt"><input type="radio" name="r2"> False</label></div></div>
+      <div class="mcq"><div class="stem"><span class="qn">3</span> The café has no cakes today.</div>
+        <div class="opts" data-correct="b">
+          <label class="opt"><input type="radio" name="r3"> True</label>
+          <label class="opt"><input type="radio" name="r3"> False</label></div></div>
+      <div class="mcq"><div class="stem"><span class="qn">4</span> Ben eats a lot of sugar.</div>
+        <div class="opts" data-correct="b">
+          <label class="opt"><input type="radio" name="r4"> True</label>
+          <label class="opt"><input type="radio" name="r4"> False</label></div></div>
+    </div>
+    <div class="ex-foot">
+      <button class="btn" data-check>Check</button>
+      <button class="btn ghost" data-reveal>Show answers</button>
+      <span class="fb" data-fb></span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== F: CROSSWORD ===== -->
+<section id="crossword">
+  <span class="sec-tag">Section F · Vocabulary game</span>
+  <h2>Crossword: food</h2>
+  <p class="lead">Completa con vocabulario de comida. Una letra por casilla. <span class="es-note">One letter per square.</span></p>
+
+  <div class="cw-wrap">
+    <div class="cw-grid" id="cwGrid" aria-label="crossword"></div>
+    <div class="clues">
+      <h4>Across →</h4>
+      <ol>
+        <li><b>1</b> A hot brown drink with caffeine.</li>
+        <li><b>4</b> Yellow fat you spread on bread.</li>
+        <li><b>5</b> Small white grains, used in paella.</li>
+        <li><b>6</b> A vegetable you can fry to make chips.</li>
+        <li><b>10</b> A long yellow fruit.</li>
+        <li><b>11</b> A round red or green fruit a day keeps the doctor away.</li>
+        <li><b>12</b> A vegetable that makes you cry.</li>
+      </ol>
+      <h4>Down ↓</h4>
+      <ol>
+        <li><b>1</b> A long orange vegetable; rabbits love it.</li>
+        <li><b>2</b> Hens lay these; you can fry or boil them.</li>
+        <li><b>3</b> Sweet white stuff you put in coffee.</li>
+        <li><b>7</b> A round citrus fruit; also a colour.</li>
+        <li><b>8</b> A red fruit used in salads and sauce.</li>
+        <li><b>9</b> A sour yellow citrus fruit.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="ex-foot">
+    <button class="btn" id="cwCheck">Check crossword</button>
+    <button class="btn ghost" id="cwReveal">Show answers</button>
+    <span class="fb" id="cwFb"></span>
+  </div>
+</section>
+
+<!-- ===== G: SELF CHECK ===== -->
+<section id="review" style="border-bottom:none">
+  <span class="sec-tag">Section G · Review</span>
+  <h2>Can-do check</h2>
+  <p class="lead">Marca lo que ya puedes hacer con seguridad. Si dudas, vuelve a esa sección.</p>
+  <div class="selfcheck">
+    <label><input type="checkbox"> I know vocabulary for food, drink and quantities.</label>
+    <label><input type="checkbox"> I can tell <b>countable</b> and <b>uncountable</b> nouns apart.</label>
+    <label><input type="checkbox"> I can use <b>a / an / some / any</b> correctly.</label>
+    <label><input type="checkbox"> I can use <b>much / many / a lot of / a little / a few</b>.</label>
+    <label><input type="checkbox"> I can order food and shop politely with <b>would like</b>.</label>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="sig">English Coursebook · Unit 5 — Food &amp; Shopping</div>
+    <div class="meta">Level A2 · Creado por Juan Carlos Navarro</div>
+  </div>
+</footer>
+
+<script>
+"use strict";
+const exResults=new Map();
+function refreshScore(){
+  let c=0,t=0; exResults.forEach(r=>{c+=r.correct;t+=r.total;});
+  document.getElementById('scoreTxt').textContent=c+' / '+t;
+  document.getElementById('progBar').style.width=(t?(c/t*100):0)+'%';
+}
+function commit(id,correct,total){ exResults.set(id,{correct,total}); refreshScore(); }
+function norm(s){ return (s||"").toLowerCase().replace(/[’‘`´]/g,"'").replace(/\s+/g," ").replace(/[.,;:!?]+$/,"").trim(); }
+
+function gradeGap(ex){
+  const inputs=[...ex.querySelectorAll('[data-grader="gap"] input.gap')];
+  let correct=0;
+  inputs.forEach(inp=>{
+    const accepted=(inp.dataset.answer||"").split("|").map(norm);
+    const val=norm(inp.value);
+    const ok=val!=="" && accepted.includes(val);
+    inp.classList.remove('right','wrong'); inp.classList.add(ok?'right':'wrong');
+    if(ok) correct++;
+  });
+  return {correct,total:inputs.length};
+}
+function gradeMcq(ex){
+  const groups=[...ex.querySelectorAll('[data-grader="mcq"] .opts')];
+  let correct=0;
+  groups.forEach(g=>{
+    const labels=[...g.querySelectorAll('.opt')];
+    const ci={a:0,b:1,c:2,d:3}[g.dataset.correct];
+    labels.forEach(l=>l.classList.remove('right','wrong','miss'));
+    let chosen=-1; labels.forEach((l,i)=>{ if(l.querySelector('input').checked) chosen=i; });
+    if(chosen===ci){ labels[ci].classList.add('right'); correct++; }
+    else{ if(chosen>-1) labels[chosen].classList.add('wrong'); labels[ci].classList.add('miss'); }
+  });
+  return {correct,total:groups.length};
+}
+function gradeMatch(ex){
+  const sels=[...ex.querySelectorAll('[data-grader="match"] select')];
+  let correct=0;
+  sels.forEach(s=>{
+    const ok=norm(s.value)!=="" && norm(s.value)===norm(s.dataset.answer);
+    s.classList.remove('right','wrong'); s.classList.add(ok?'right':'wrong');
+    if(ok) correct++;
+  });
+  return {correct,total:sels.length};
+}
+
+document.querySelectorAll('[data-ex]').forEach((ex,idx)=>{
+  const id='ex'+idx;
+  const fb=ex.querySelector('[data-fb]');
+  let total=0;
+  if(ex.querySelector('[data-grader="gap"]')) total+=ex.querySelectorAll('[data-grader="gap"] input.gap').length;
+  if(ex.querySelector('[data-grader="mcq"]')) total+=ex.querySelectorAll('[data-grader="mcq"] .opts').length;
+  if(ex.querySelector('[data-grader="match"]')) total+=ex.querySelectorAll('[data-grader="match"] select').length;
+  commit(id,0,total);
+  ex.querySelector('[data-check]').addEventListener('click',()=>{
+    let correct=0,tot=0;
+    if(ex.querySelector('[data-grader="gap"]')){ const r=gradeGap(ex); correct+=r.correct; tot+=r.total; }
+    if(ex.querySelector('[data-grader="mcq"]')){ const r=gradeMcq(ex); correct+=r.correct; tot+=r.total; }
+    if(ex.querySelector('[data-grader="match"]')){ const r=gradeMatch(ex); correct+=r.correct; tot+=r.total; }
+    commit(id,correct,tot);
+    fb.className='fb show '+(correct===tot?'good':'partial');
+    fb.textContent=correct+' / '+tot+(correct===tot?'  ✓ Perfect!':'  · keep trying');
+  });
+  ex.querySelector('[data-reveal]').addEventListener('click',()=>{
+    ex.querySelectorAll('[data-sol]').forEach(s=>s.classList.add('show'));
+    ex.querySelectorAll('[data-grader="mcq"] .opts').forEach(g=>{
+      const ci={a:0,b:1,c:2,d:3}[g.dataset.correct];
+      const labels=[...g.querySelectorAll('.opt')]; labels.forEach(l=>l.classList.remove('miss'));
+      if(labels[ci]) labels[ci].classList.add('miss');
+    });
+    ex.querySelectorAll('[data-grader="match"] select').forEach(s=>{
+      [...s.options].forEach(o=>{ if(norm(o.value)===norm(s.dataset.answer)) s.value=o.value; });
+    });
+  });
+});
+
+/* ===== crossword (verified 11x12, no ghost runs) ===== */
+const SOL=[
+  ".....COFFEE.",
+  ".S...A....G.",
+  "BUTTER....G.",
+  ".G...RICE.S.",
+  ".A...O......",
+  ".R.POTATO...",
+  "....R..O...L",
+  "....A..M...E",
+  "..BANANA...M",
+  "....G..T...O",
+  "APPLE..ONION",
+];
+const NUMS={"0,5":1,"0,10":2,"1,1":3,"2,0":4,"3,5":5,"5,3":6,"5,4":7,"5,7":8,"6,11":9,"8,2":10,"10,0":11,"10,7":12};
+
+(function buildCrossword(){
+  const grid=document.getElementById('cwGrid');
+  const rows=SOL.length, cols=SOL[0].length;
+  grid.style.gridTemplateColumns='repeat('+cols+',var(--cell))';
+  grid.style.gridTemplateRows='repeat('+rows+',var(--cell))';
+  for(let r=0;r<rows;r++){
+    for(let c=0;c<cols;c++){
+      const ch=SOL[r][c];
+      const cell=document.createElement('div');
+      cell.className='cell'+(ch==='.'?' block':'');
+      if(ch!=='.'){
+        const key=r+','+c;
+        if(NUMS[key]!==undefined){
+          const n=document.createElement('span'); n.className='num'; n.textContent=NUMS[key]; cell.appendChild(n);
+        }
+        const inp=document.createElement('input');
+        inp.maxLength=1; inp.dataset.sol=ch;
+        inp.setAttribute('aria-label','row '+(r+1)+' col '+(c+1));
+        inp.addEventListener('input',function(){
+          this.classList.remove('right','wrong');
+          this.value=this.value.toUpperCase().replace(/[^A-Z]/g,'');
+          if(this.value){
+            const all=[...grid.querySelectorAll('input')];
+            const i=all.indexOf(this);
+            if(i>-1 && i+1<all.length) all[i+1].focus();
+          }
+        });
+        cell.appendChild(inp);
+      }
+      grid.appendChild(cell);
+    }
+  }
+})();
+
+(function wireCrossword(){
+  const grid=document.getElementById('cwGrid');
+  const inputs=[...grid.querySelectorAll('input')];
+  const fb=document.getElementById('cwFb');
+  commit('crossword',0,inputs.length);
+  document.getElementById('cwCheck').addEventListener('click',()=>{
+    let correct=0;
+    inputs.forEach(inp=>{
+      inp.classList.remove('right','wrong');
+      const ok=(inp.value||'').toUpperCase()===inp.dataset.sol;
+      inp.classList.add(ok?'right':'wrong'); if(ok) correct++;
+    });
+    commit('crossword',correct,inputs.length);
+    fb.className='fb show '+(correct===inputs.length?'good':'partial');
+    fb.textContent=correct+' / '+inputs.length+(correct===inputs.length?'  ✓ Solved!':'  · keep going');
+  });
+  document.getElementById('cwReveal').addEventListener('click',()=>{
+    inputs.forEach(inp=>{ inp.value=inp.dataset.sol; inp.classList.remove('wrong'); inp.classList.add('right'); });
+    commit('crossword',inputs.length,inputs.length);
+    fb.className='fb show good'; fb.textContent='Answers shown';
+  });
+})();
+
+refreshScore();
+</script>
+</body>
+</html>
