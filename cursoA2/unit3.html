@@ -1,1 +1,711 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 3 · In the City · English A2</title>
+<meta name="description" content="Unit 3 — In the City. Inglés A2 interactivo: there is/there are, some/any, preposiciones de lugar, How much/How many y cómo pedir y dar direcciones. Creado por Juan Carlos Navarro.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Instrument+Sans:ital,wght@0,400..700;1,400..600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f4efe6;--paper-2:#ece3d4;--paper-3:#e3d8c4;
+  --ink:#2b2420;--ink-soft:#5a4f46;
+  --burgundy:#7a1f2b;--burgundy-2:#9c3340;--gold:#b4862f;
+  --sage:#4d6b54;--sage-bg:#e4ecdf;--clay:#b5552f;--clay-bg:#f3e2d6;
+  --line:#d8cbb4;--shadow:0 1px 2px rgba(43,36,32,.06),0 8px 24px -12px rgba(43,36,32,.18);
+  --r:14px;--cell:34px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Instrument Sans",system-ui,sans-serif;font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(circle at 12% 6%,rgba(180,134,47,.05),transparent 40%),radial-gradient(circle at 88% 2%,rgba(122,31,43,.05),transparent 38%);}
+.wrap{max-width:880px;margin:0 auto;padding:0 22px}
 
+.topbar{position:sticky;top:0;z-index:60;background:rgba(244,239,230,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:14px;padding-top:10px;padding-bottom:10px}
+.brand{font-family:"Fraunces",serif;font-weight:600;font-size:17px;letter-spacing:-.01em;white-space:nowrap}
+.brand b{color:var(--burgundy)}
+.progress{flex:1;height:9px;border-radius:99px;background:var(--paper-3);overflow:hidden;border:1px solid var(--line)}
+.progress>span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--burgundy),var(--gold));transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.score{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--ink-soft);white-space:nowrap}
+
+.hero{padding:54px 0 30px;border-bottom:2px solid var(--ink)}
+.eyebrow{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--burgundy);font-weight:500}
+.hero h1{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(38px,7vw,64px);line-height:1.02;letter-spacing:-.02em;margin:.18em 0 .12em}
+.hero .sub{font-size:18px;color:var(--ink-soft);max-width:60ch}
+.unit-num{font-family:"Fraunces",serif;font-style:italic;font-size:clamp(60px,16vw,150px);line-height:.8;color:var(--paper-3);display:block;margin-bottom:-.18em;letter-spacing:-.03em;-webkit-text-stroke:1px var(--line)}
+.cando{margin-top:26px;background:#fffdf8;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:var(--r);padding:18px 22px;box-shadow:var(--shadow)}
+.cando h3{margin:0 0 8px;font-family:"Fraunces",serif;font-size:18px;font-weight:600}
+.cando ul{margin:0;padding-left:0;list-style:none}
+.cando li{padding:4px 0 4px 30px;position:relative;font-size:15.5px}
+.cando li::before{content:"✓";position:absolute;left:0;top:4px;color:var(--sage);font-weight:700}
+.cando .es{color:var(--ink-soft);font-style:italic}
+
+section{padding:46px 0;border-bottom:1px solid var(--line)}
+.sec-tag{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--burgundy);font-weight:500;display:flex;align-items:center;gap:10px}
+.sec-tag::before{content:"";width:26px;height:2px;background:var(--burgundy)}
+h2{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(27px,4.6vw,38px);line-height:1.08;letter-spacing:-.015em;margin:.28em 0 .5em}
+h3.lesson{font-family:"Fraunces",serif;font-weight:600;font-size:21px;margin:34px 0 12px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+h3.lesson .n{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--gold);font-weight:700}
+p.lead{font-size:18px;color:var(--ink-soft);max-width:64ch}
+p{max-width:68ch}
+.es-note{color:var(--ink-soft);font-style:italic}
+
+.box{background:#fffdf8;border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;margin:18px 0;box-shadow:var(--shadow)}
+.box.rule{border-left:4px solid var(--burgundy)}
+.box.tip{border-left:4px solid var(--sage);background:var(--sage-bg)}
+.box.warn{border-left:4px solid var(--clay);background:var(--clay-bg)}
+.box h4{margin:0 0 8px;font-family:"Fraunces",serif;font-size:17px;font-weight:600}
+.box .label{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;margin-bottom:6px}
+.box.rule .label{color:var(--burgundy)}.box.tip .label{color:var(--sage)}.box.warn .label{color:var(--clay)}
+.eng{font-weight:600}.xt{color:var(--clay);text-decoration:line-through}.ok{color:var(--sage);font-weight:600}
+
+.tbl{width:100%;border-collapse:collapse;margin:16px 0;font-size:15.5px;background:#fffdf8;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+.tbl th,.tbl td{padding:9px 13px;text-align:left;border-bottom:1px solid var(--line)}
+.tbl th{background:var(--ink);color:var(--paper);font-family:"JetBrains Mono",monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:500}
+.tbl tr:last-child td{border-bottom:none}
+.tbl td:first-child{font-weight:600}
+.tbl .hl{color:var(--burgundy);font-weight:700}
+.tbl-scroll{overflow-x:auto}
+
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin:16px 0}
+.vcard{background:#fffdf8;border:1px solid var(--line);border-radius:11px;padding:11px 13px;box-shadow:var(--shadow)}
+.vcard .w{font-weight:600;font-size:16px}
+.vcard .es{font-size:13.5px;color:var(--ink-soft)}
+
+/* street map visual */
+.map{background:#fffdf8;border:1px solid var(--line);border-radius:var(--r);padding:18px;margin:18px 0;box-shadow:var(--shadow)}
+.map .side{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.bld{border:1px solid var(--line);border-radius:10px;padding:12px 8px;text-align:center;background:var(--paper-2);font-weight:600;font-size:14.5px}
+.bld .ic{font-size:22px;display:block;margin-bottom:2px}
+.road{height:34px;margin:10px 0;border-radius:8px;background:repeating-linear-gradient(90deg,#cdbfa6 0 22px,#fff8 22px 40px),var(--ink);display:flex;align-items:center;justify-content:center;color:var(--paper);font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+
+.ex{background:#fffdf8;border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;margin:20px 0;box-shadow:var(--shadow)}
+.ex-head{display:flex;align-items:center;gap:10px;margin-bottom:4px;flex-wrap:wrap}
+.ex-num{font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:700;color:var(--paper);background:var(--burgundy);padding:3px 9px;border-radius:7px;letter-spacing:.05em}
+.ex-title{font-family:"Fraunces",serif;font-weight:600;font-size:18px}
+.ex-instr{font-size:14.5px;color:var(--ink-soft);margin:2px 0 14px}
+.qrow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:9px 0;border-bottom:1px dotted var(--line);font-size:16px}
+.qrow:last-of-type{border-bottom:none}
+.qn{font-family:"JetBrains Mono",monospace;font-size:12.5px;color:var(--gold);font-weight:700;min-width:26px}
+input.gap{font-family:"Instrument Sans",sans-serif;font-size:15.5px;padding:5px 9px;border:1px solid var(--line);border-radius:8px;background:var(--paper);min-width:90px;width:130px;color:var(--ink);transition:.2s}
+input.gap.wide{width:185px}
+input.gap:focus{outline:none;border-color:var(--burgundy);box-shadow:0 0 0 3px rgba(122,31,43,.12)}
+input.gap.right{border-color:var(--sage);background:var(--sage-bg)}
+input.gap.wrong{border-color:var(--clay);background:var(--clay-bg)}
+.hintword{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--burgundy);background:var(--paper-2);padding:2px 7px;border-radius:6px;border:1px solid var(--line)}
+.wordbank{display:flex;flex-wrap:wrap;gap:7px;margin:2px 0 14px}
+.wordbank .chip{font-family:"JetBrains Mono",monospace;font-size:12.5px;color:var(--burgundy);background:var(--paper-2);padding:4px 10px;border-radius:7px;border:1px solid var(--line)}
+.sol{display:none;font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--sage);margin-left:4px}
+.sol.show{display:inline}
+.mcq{padding:11px 0;border-bottom:1px dotted var(--line)}
+.mcq:last-child{border-bottom:none}
+.mcq .stem{font-size:16px;margin-bottom:7px}
+.mcq .stem .qn{margin-right:6px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border:1px solid var(--line);border-radius:9px;cursor:pointer;background:var(--paper);font-size:15px;transition:.15s;user-select:none}
+.opt:hover{border-color:var(--burgundy);background:#fff}
+.opt input{accent-color:var(--burgundy);margin:0}
+.opt.right{border-color:var(--sage);background:var(--sage-bg)}
+.opt.wrong{border-color:var(--clay);background:var(--clay-bg)}
+.opt.miss{border-color:var(--sage);border-style:dashed}
+.match{display:grid;grid-template-columns:1fr 1fr;gap:10px 26px;margin:6px 0}
+.match .ml{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px dotted var(--line);font-size:15.5px;flex-wrap:wrap}
+.match select{font-family:"Instrument Sans",sans-serif;font-size:14.5px;padding:5px 7px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink)}
+.match select.right{border-color:var(--sage);background:var(--sage-bg)}
+.match select.wrong{border-color:var(--clay);background:var(--clay-bg)}
+.ex-foot{display:flex;align-items:center;gap:12px;margin-top:16px;flex-wrap:wrap}
+.btn{font-family:"Instrument Sans",sans-serif;font-weight:600;font-size:14.5px;padding:9px 18px;border-radius:9px;border:1px solid var(--burgundy);background:var(--burgundy);color:var(--paper);cursor:pointer;transition:.18s}
+.btn:hover{background:var(--burgundy-2);border-color:var(--burgundy-2)}
+.btn.ghost{background:transparent;color:var(--burgundy)}
+.btn.ghost:hover{background:var(--paper-2);color:var(--burgundy)}
+.fb{font-family:"JetBrains Mono",monospace;font-size:13px;font-weight:700;padding:5px 10px;border-radius:8px;display:none}
+.fb.show{display:inline-block}
+.fb.good{background:var(--sage-bg);color:var(--sage)}
+.fb.partial{background:var(--clay-bg);color:var(--clay)}
+
+.reading{background:#fffdf8;border:1px solid var(--line);border-radius:var(--r);padding:24px 26px;margin:18px 0;box-shadow:var(--shadow);font-size:16.5px;line-height:1.7}
+.reading h4{font-family:"Fraunces",serif;font-size:20px;margin:0 0 4px}
+.reading .by{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--gold);margin-bottom:14px}
+.reading p{max-width:none}
+.reading .hl{background:rgba(180,134,47,.18);padding:0 2px;border-radius:3px}
+
+.cw-wrap{display:flex;gap:26px;flex-wrap:wrap;margin:18px 0}
+.cw-grid{display:grid;gap:0;background:var(--ink);padding:3px;border-radius:8px;box-shadow:var(--shadow);width:max-content}
+.cell{position:relative;background:var(--paper-3);width:var(--cell);height:var(--cell)}
+.cell.block{background:transparent}
+.cell input{width:100%;height:100%;border:1px solid var(--line);background:#fffdf8;text-align:center;font-family:"Fraunces",serif;font-size:18px;font-weight:600;text-transform:uppercase;color:var(--ink);padding:0;border-radius:0}
+.cell input:focus{outline:none;background:#fff;box-shadow:inset 0 0 0 2px var(--burgundy)}
+.cell input.right{background:var(--sage-bg);color:var(--sage)}
+.cell input.wrong{background:var(--clay-bg);color:var(--clay)}
+.cell .num{position:absolute;top:0;left:1px;font-family:"JetBrains Mono",monospace;font-size:9px;font-weight:700;color:var(--burgundy);line-height:1;z-index:2;pointer-events:none}
+.clues{flex:1;min-width:240px}
+.clues h4{font-family:"Fraunces",serif;font-size:16px;margin:0 0 6px;color:var(--burgundy)}
+.clues ol{margin:0 0 14px;padding-left:0;list-style:none}
+.clues li{font-size:14.5px;padding:3px 0;display:flex;gap:8px}
+.clues li b{font-family:"JetBrains Mono",monospace;color:var(--gold);min-width:18px}
+
+.selfcheck{background:#fffdf8;border:1px solid var(--line);border-radius:var(--r);padding:22px 24px;box-shadow:var(--shadow)}
+.selfcheck label{display:flex;align-items:flex-start;gap:11px;padding:8px 0;font-size:15.5px;cursor:pointer;border-bottom:1px dotted var(--line)}
+.selfcheck label:last-child{border-bottom:none}
+.selfcheck input{margin-top:5px;accent-color:var(--sage);width:17px;height:17px}
+
+footer{padding:40px 0 60px;text-align:center;color:var(--ink-soft)}
+footer .sig{font-family:"Fraunces",serif;font-style:italic;font-size:17px;color:var(--ink)}
+footer .meta{font-family:"JetBrains Mono",monospace;font-size:12px;margin-top:6px}
+
+@media(max-width:560px){
+  body{font-size:16px}
+  :root{--cell:30px}
+  .cell input{font-size:15px}
+  .match{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <span class="brand">English <b>A2</b> · Unit 3</span>
+    <div class="progress"><span id="progBar"></span></div>
+    <span class="score" id="scoreTxt">0 / 0</span>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="unit-num">03</span>
+    <span class="eyebrow">Level A2 · Coursebook</span>
+    <h1>In the City</h1>
+    <p class="sub">Lugares, transporte y direcciones. Aprende a decir qué <b>hay</b> en un sitio, <b>dónde</b> está cada cosa y cómo <b>pedir y dar direcciones</b> por la calle.</p>
+    <div class="cando">
+      <h3>By the end of this unit, I can…</h3>
+      <ul>
+        <li>name places in a town and types of transport. <span class="es">— lugares y transportes</span></li>
+        <li>say what there is in a place with <i>there is / there are</i>. <span class="es">— qué hay</span></li>
+        <li>say where things are with prepositions of place. <span class="es">— dónde están</span></li>
+        <li>ask for and give simple directions. <span class="es">— pedir y dar direcciones</span></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- ===== A: VOCABULARY ===== -->
+<section id="vocab">
+  <span class="sec-tag">Section A · Vocabulary</span>
+  <h2>Around town</h2>
+  <p class="lead">Los lugares de una ciudad, cómo moverte por ella y las frases para orientarte.</p>
+
+  <h3 class="lesson"><span class="n">A1</span> Places in town <span class="es-note" style="font-weight:400;font-size:15px">— lugares</span></h3>
+  <div class="vgrid">
+    <div class="vcard"><div class="w">a station</div><div class="es">una estación</div></div>
+    <div class="vcard"><div class="w">a museum</div><div class="es">un museo</div></div>
+    <div class="vcard"><div class="w">a library</div><div class="es">una biblioteca</div></div>
+    <div class="vcard"><div class="w">a market</div><div class="es">un mercado</div></div>
+    <div class="vcard"><div class="w">a square</div><div class="es">una plaza</div></div>
+    <div class="vcard"><div class="w">a bridge</div><div class="es">un puente</div></div>
+    <div class="vcard"><div class="w">a hospital</div><div class="es">un hospital</div></div>
+    <div class="vcard"><div class="w">a bank</div><div class="es">un banco</div></div>
+    <div class="vcard"><div class="w">a hotel</div><div class="es">un hotel</div></div>
+    <div class="vcard"><div class="w">a church</div><div class="es">una iglesia</div></div>
+    <div class="vcard"><div class="w">a cinema</div><div class="es">un cine</div></div>
+    <div class="vcard"><div class="w">a park</div><div class="es">un parque</div></div>
+  </div>
+  <div class="box tip">
+    <div class="label">False friend</div>
+    <p style="margin:0"><span class="eng">library</span> = <b>biblioteca</b>, no "librería". Una librería (donde compras libros) es a <span class="eng">bookshop</span> / <span class="eng">bookstore</span>.</p>
+  </div>
+
+  <h3 class="lesson"><span class="n">A2</span> Transport <span class="es-note" style="font-weight:400;font-size:15px">— transporte</span></h3>
+  <div class="vgrid">
+    <div class="vcard"><div class="w">a train</div><div class="es">un tren</div></div>
+    <div class="vcard"><div class="w">a bus</div><div class="es">un autobús</div></div>
+    <div class="vcard"><div class="w">a taxi</div><div class="es">un taxi</div></div>
+    <div class="vcard"><div class="w">the underground</div><div class="es">el metro</div></div>
+    <div class="vcard"><div class="w">a bike</div><div class="es">una bici</div></div>
+    <div class="vcard"><div class="w">on foot</div><div class="es">a pie</div></div>
+  </div>
+  <div class="box rule">
+    <div class="label">by + transport</div>
+    <p style="margin:0">Para decir cómo viajas: <span class="eng">by train, by bus, by taxi, by car, by bike</span>. <b>Excepción</b>: a pie es <span class="eng">on foot</span>. <span class="es-note">No</span> <span class="xt">by foot</span>.</p>
+  </div>
+
+  <h3 class="lesson"><span class="n">A3</span> Directions <span class="es-note" style="font-weight:400;font-size:15px">— direcciones</span></h3>
+  <div class="tbl-scroll"><table class="tbl">
+    <tr><th>English</th><th>Español</th></tr>
+    <tr><td>Go straight on / ahead</td><td>Sigue recto</td></tr>
+    <tr><td>Turn left / Turn right</td><td>Gira a la izquierda / derecha</td></tr>
+    <tr><td>Take the first / second left</td><td>Coge la primera / segunda a la izquierda</td></tr>
+    <tr><td>Go past the (bank)</td><td>Pasa el (banco)</td></tr>
+    <tr><td>It's on your left / right</td><td>Está a tu izquierda / derecha</td></tr>
+    <tr><td>at the end of the street</td><td>al final de la calle</td></tr>
+  </table></div>
+
+  <!-- EX1 -->
+  <div class="ex" data-ex>
+    <div class="ex-head"><span class="ex-num">EX 1</span><span class="ex-title">Where do you go…?</span></div>
+    <p class="ex-instr">Elige el lugar correcto. <span class="es-note">Choose the right place.</span></p>
+    <div class="match" data-grader="match">
+      <div class="ml">1. to catch a train →
+        <select data-answer="station"><option value="">—</option><option>museum</option><option>station</option><option>bank</option></select></div>
+      <div class="ml">2. to borrow a book →
+        <select data-answer="library"><option value="">—</option><option>library</option><option>market</option><option>cinema</option></select></div>
+      <div class="ml">3. to see a doctor →
+        <select data-answer="hospital"><option value="">—</option><option>hotel</option><option>park</option><option>hospital</option></select></div>
+      <div class="ml">4. to watch a film →
+        <select data-answer="cinema"><option value="">—</option><option>cinema</option><option>church</option><option>bridge</option></select></div>
+      <div class="ml">5. to buy fruit and veg →
+        <select data-answer="market"><option value="">—</option><option>bank</option><option>market</option><option>museum</option></select></div>
+      <div class="ml">6. to get money →
+        <select data-answer="bank"><option value="">—</option><option>bank</option><option>library</option><option>station</option></select></div>
+    </div>
+    <div class="ex-foot">
+      <button class="btn" data-check>Check</button>
+      <button class="btn ghost" data-reveal>Show answers</button>
+      <span class="fb" data-fb></span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== B: THERE IS / THERE ARE ===== -->
+<section id="there">
+  <span class="sec-tag">Section B · Grammar 1</span>
+  <h2>there is / there are</h2>
+  <p class="lead">El equivalente de <i>hay</i>. Usa <span class="eng">there is</span> para singular y <span class="eng">there are</span> para plural. <span class="eng">There is a park. There are two museums.</span></p>
+
+  <div class="tbl-scroll"><table class="tbl">
+    <tr><th></th><th>Singular</th><th>Plural</th></tr>
+    <tr><td>Affirmative</td><td>There <span class="hl">is</span> a bank.</td><td>There <span class="hl">are</span> two banks.</td></tr>
+    <tr><td>Negative</td><td>There <span class="hl">isn't</span> a bank.</td><td>There <span class="hl">aren't</span> any banks.</td></tr>
+    <tr><td>Question</td><td><span class="hl">Is there</span> a bank?</td><td><span class="hl">Are there</span> any banks?</td></tr>
+    <tr><td>Short answer</td><td>Yes, there is. / No, there isn't.</td><td>Yes, there are. / No, there aren't.</td></tr>
+  </table></div>
+  <div class="box warn">
+    <div class="label">Typical Spanish error</div>
+    <p style="margin:0">"Hay" es siempre igual en español, pero en inglés cambia con el número. <br><span class="ok">There are three shops.</span> &nbsp; <span class="xt">There is three shops.</span></p>
+  </div>
+
+  <h3 class="lesson"><span class="n">B2</span> some / any</h3>
+  <div class="box rule">
+    <div class="label">The rule</div>
+    <p style="margin:0 0 5px"><b>some</b> → en frases afirmativas (plural o incontable): <span class="ok">There are <b>some</b> shops.</span></p>
+    <p style="margin:0"><b>any</b> → en negativas y preguntas: <span class="ok">There aren't <b>any</b> shops.</span> · <span class="ok"><b>Are</b> there <b>any</b> shops?</span></p>
+  </div>
+
+  <!-- EX2 -->
+  <div class="ex" data-ex>
+    <div class="ex-head"><span class="ex-num">EX 2</span><span class="ex-title">is, are, isn't or aren't?</span></div>
+    <p class="ex-instr">Completa con la forma correcta de <i>there be</i>. <span class="es-note">Complete with there is/are (or the negative).</span></p>
+    <div data-grader="gap">
+      <div class="qrow"><span class="qn">1</span> There <input class="gap" data-answer="is"> a hospital near my house. <span class="sol" data-sol>is</span></div>
+      <div class="qrow"><span class="qn">2</span> There <input class="gap" data-answer="are"> two cinemas in the town centre. <span class="sol" data-sol>are</span></div>
+      <div class="qrow"><span class="qn">3</span> There <input class="gap wide" data-answer="isn't|is not"> a bank in this street. <span class="hintword">negative</span> <span class="sol" data-sol>isn't</span></div>
+      <div class="qrow"><span class="qn">4</span> <input class="gap" data-answer="is"> there a market on Sundays? <span class="sol" data-sol>Is</span></div>
+      <div class="qrow"><span class="qn">5</span> There <input class="gap wide" data-answer="aren't|are not"> any hotels here. <span class="hintword">negative</span> <span class="sol" data-sol>aren't</span></div>
+      <div class="qrow"><span class="qn">6</span> <input class="gap" data-answer="are"> there any parks near the station? <span class="sol" data-sol>Are</span></div>
+    </div>
+    <div class="ex-foot">
+      <button class="btn" data-check>Check</button>
+      <button class="btn ghost" data-reveal>Show answers</button>
+      <span class="fb" data-fb></span>
+    </div>
+  </div>
+
+  <!-- EX3 some/any -->
+  <div class="ex" data-ex>
+    <div class="ex-head"><span class="ex-num">EX 3</span><span class="ex-title">some or any?</span></div>
+    <p class="ex-instr">Elige <i>some</i> o <i>any</i>. <span class="es-note">Choose some or any.</span></p>
+    <div data-grader="mcq">
+      <div class="mcq"><div class="stem"><span class="qn">1</span> There are ___ nice cafés in my street.</div>
+        <div class="opts" data-correct="a">
+          <label class="opt"><input type="radio" name="s1"> some</label>
+          <label class="opt"><input type="radio" name="s1"> any</label></div></div>
+      <div class="mcq"><div class="stem"><span class="qn">2</span> There aren't ___ museums in my village.</div>
+        <div class="opts" data-correct="b">
+          <label class="opt"><input type="radio" name="s2"> some</label>
+          <label class="opt"><input type="radio" name="s2"> any</label></div></div>
+      <div class="mcq"><div class="stem"><span class="qn">3</span> Are there ___ shops near here?</div>
+        <div class="opts" data-correct="b">
+          <label class="opt"><input type="radio" name="s3"> some</label>
+          <label class="opt"><input type="radio" name="s3"> any</label></div></div>
+      <div class="mcq"><div class="stem"><span class="qn">4</span> There is ___ traffic in the city centre.</div>
+        <div class="opts" data-correct="a">
+          <label class="opt"><input type="radio" name="s4"> some</label>
+          <label class="opt"><input type="radio" name="s4"> any</label></div></div>
+    </div>
+    <div class="ex-foot">
+      <button class="btn" data-check>Check</button>
+      <button class="btn ghost" data-reveal>Show answers</button>
+      <span class="fb" data-fb></span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== C: PREPOSITIONS OF PLACE ===== -->
+<section id="prepositions">
+  <span class="sec-tag">Section C · Grammar 2</span>
+  <h2>Prepositions of place</h2>
+  <p class="lead">Para decir <i>dónde</i> está algo: <span class="eng">next to, opposite, between, behind, in front of, near, on the corner</span>.</p>
+
+  <div class="tbl-scroll"><table class="tbl">
+    <tr><th>Preposition</th><th>Español</th><th>Example</th></tr>
+    <tr><td>next to</td><td>al lado de</td><td>The bank is <span class="hl">next to</span> the hotel.</td></tr>
+    <tr><td>opposite</td><td>enfrente de</td><td>The park is <span class="hl">opposite</span> the museum.</td></tr>
+    <tr><td>between</td><td>entre</td><td>The café is <span class="hl">between</span> the bank and the hotel.</td></tr>
+    <tr><td>behind</td><td>detrás de</td><td>The car park is <span class="hl">behind</span> the cinema.</td></tr>
+    <tr><td>in front of</td><td>delante de</td><td>There's a bus stop <span class="hl">in front of</span> the school.</td></tr>
+    <tr><td>near</td><td>cerca de</td><td>The station is <span class="hl">near</span> the centre.</td></tr>
+    <tr><td>on the corner (of)</td><td>en la esquina (de)</td><td>The shop is <span class="hl">on the corner</span>.</td></tr>
+  </table></div>
+
+  <h4 style="font-family:'Fraunces',serif;margin:22px 0 8px">Look at the map</h4>
+  <div class="map">
+    <div class="side">
+      <div class="bld"><span class="ic">🏦</span>Bank</div>
+      <div class="bld"><span class="ic">☕</span>Café</div>
+      <div class="bld"><span class="ic">🏨</span>Hotel</div>
+    </div>
+    <div class="road">— Main Street —</div>
+    <div class="side">
+      <div class="bld"><span class="ic">🌳</span>Park</div>
+      <div class="bld"><span class="ic">🏛️</span>Museum</div>
+      <div class="bld"><span class="ic">🏫</span>School</div>
+    </div>
+  </div>
+
+  <!-- EX4 prepositions -->
+  <div class="ex" data-ex>
+    <div class="ex-head"><span class="ex-num">EX 4</span><span class="ex-title">Look at the map and complete</span></div>
+    <p class="ex-instr">Mira el mapa de arriba y completa con la preposición correcta. <span class="es-note">Use the words in the box.</span></p>
+    <div class="wordbank"><span class="chip">between</span><span class="chip">opposite</span><span class="chip">next to</span></div>
+    <div data-grader="gap">
+      <div class="qrow"><span class="qn">1</span> The café is <input class="gap wide" data-answer="between"> the bank and the hotel. <span class="sol" data-sol>between</span></div>
+      <div class="qrow"><span class="qn">2</span> The museum is <input class="gap wide" data-answer="opposite"> the café. <span class="sol" data-sol>opposite</span></div>
+      <div class="qrow"><span class="qn">3</span> The school is <input class="gap wide" data-answer="next to"> the museum. <span class="sol" data-sol>next to</span></div>
+      <div class="qrow"><span class="qn">4</span> The park is <input class="gap wide" data-answer="opposite"> the bank. <span class="sol" data-sol>opposite</span></div>
+      <div class="qrow"><span class="qn">5</span> The bank is <input class="gap wide" data-answer="next to"> the café. <span class="sol" data-sol>next to</span></div>
+    </div>
+    <div class="ex-foot">
+      <button class="btn" data-check>Check</button>
+      <button class="btn ghost" data-reveal>Show answers</button>
+      <span class="fb" data-fb></span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== D: HOW MUCH / HOW MANY ===== -->
+<section id="howmany">
+  <span class="sec-tag">Section D · Grammar 3</span>
+  <h2>How much / How many</h2>
+  <p class="lead">Para preguntar cantidades. La elección depende de si el nombre es <b>contable</b> o <b>incontable</b>.</p>
+
+  <div class="tbl-scroll"><table class="tbl">
+    <tr><th>Question word</th><th>Use with…</th><th>Example</th></tr>
+    <tr><td class="hl">How many</td><td>nombres contables (plural)</td><td><span class="hl">How many</span> museums are there?</td></tr>
+    <tr><td class="hl">How much</td><td>nombres incontables</td><td><span class="hl">How much</span> traffic is there?</td></tr>
+  </table></div>
+  <div class="box tip">
+    <div class="label">Countable vs uncountable</div>
+    <p style="margin:0 0 5px"><b>Countable</b> (puedes contar: 1, 2, 3…): a museum → two museums, a shop → shops, a person → people.</p>
+    <p style="margin:0"><b>Uncountable</b> (no se cuentan con número): water, money, traffic, time, information.</p>
+  </div>
+  <div class="box rule">
+    <div class="label">Prices</div>
+    <p style="margin:0">Para precios usa siempre <span class="eng">How much…?</span>: <span class="eng">How much is a bus ticket?</span> — <span class="eng">It's two euros.</span></p>
+  </div>
+
+  <!-- EX5 -->
+  <div class="ex" data-ex>
+    <div class="ex-head"><span class="ex-num">EX 5</span><span class="ex-title">much or many?</span></div>
+    <p class="ex-instr">Elige <i>How much</i> o <i>How many</i>. <span class="es-note">Choose How much or How many.</span></p>
+    <div data-grader="mcq">
+      <div class="mcq"><div class="stem"><span class="qn">1</span> ___ shops are there in the square?</div>
+        <div class="opts" data-correct="b">
+          <label class="opt"><input type="radio" name="h1"> How much</label>
+          <label class="opt"><input type="radio" name="h1"> How many</label></div></div>
+      <div class="mcq"><div class="stem"><span class="qn">2</span> ___ is a ticket to the museum?</div>
+        <div class="opts" data-correct="a">
+          <label class="opt"><input type="radio" name="h2"> How much</label>
+          <label class="opt"><input type="radio" name="h2"> How many</label></div></div>
+      <div class="mcq"><div class="stem"><span class="qn">3</span> ___ people live in your town?</div>
+        <div class="opts" data-correct="b">
+          <label class="opt"><input type="radio" name="h3"> How much</label>
+          <label class="opt"><input type="radio" name="h3"> How many</label></div></div>
+      <div class="mcq"><div class="stem"><span class="qn">4</span> ___ traffic is there in the morning?</div>
+        <div class="opts" data-correct="a">
+          <label class="opt"><input type="radio" name="h4"> How much</label>
+          <label class="opt"><input type="radio" name="h4"> How many</label></div></div>
+    </div>
+    <div class="ex-foot">
+      <button class="btn" data-check>Check</button>
+      <button class="btn ghost" data-reveal>Show answers</button>
+      <span class="fb" data-fb></span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== E: READING ===== -->
+<section id="reading">
+  <span class="sec-tag">Section E · Reading</span>
+  <h2>Finding the museum</h2>
+  <p class="lead">Lee la conversación. Fíjate en <i>there is/are</i>, las preposiciones y las direcciones.</p>
+
+  <div class="reading">
+    <h4>Excuse me…</h4>
+    <div class="by">a tourist and a local in a small Irish town</div>
+    <p><b>Tourist:</b> Excuse me, is <span class="hl">there a museum</span> near here?</p>
+    <p><b>Local:</b> Yes, there is. It's not far. Go <span class="hl">straight on</span> and <span class="hl">take the second left</span>. The museum is <span class="hl">opposite</span> the park.</p>
+    <p><b>Tourist:</b> Great. And are <span class="hl">there any cafés</span> near the museum?</p>
+    <p><b>Local:</b> There's a nice café <span class="hl">next to</span> the museum, and another one <span class="hl">on the corner</span>, in front of the library.</p>
+    <p><b>Tourist:</b> Perfect. How <span class="hl">much</span> is the bus to the centre?</p>
+    <p><b>Local:</b> Oh, you don't need a bus — it's only five minutes <span class="hl">on foot</span>!</p>
+    <p><b>Tourist:</b> Thank you very much!</p>
+  </div>
+
+  <!-- EX6 -->
+  <div class="ex" data-ex>
+    <div class="ex-head"><span class="ex-num">EX 6</span><span class="ex-title">True or False?</span></div>
+    <p class="ex-instr">Lee otra vez y decide. <span class="es-note">Read again and decide.</span></p>
+    <div data-grader="mcq">
+      <div class="mcq"><div class="stem"><span class="qn">1</span> There is a museum near here.</div>
+        <div class="opts" data-correct="a">
+          <label class="opt"><input type="radio" name="r1"> True</label>
+          <label class="opt"><input type="radio" name="r1"> False</label></div></div>
+      <div class="mcq"><div class="stem"><span class="qn">2</span> The museum is next to the park.</div>
+        <div class="opts" data-correct="b">
+          <label class="opt"><input type="radio" name="r2"> True</label>
+          <label class="opt"><input type="radio" name="r2"> False</label></div></div>
+      <div class="mcq"><div class="stem"><span class="qn">3</span> There is a café next to the museum.</div>
+        <div class="opts" data-correct="a">
+          <label class="opt"><input type="radio" name="r3"> True</label>
+          <label class="opt"><input type="radio" name="r3"> False</label></div></div>
+      <div class="mcq"><div class="stem"><span class="qn">4</span> The tourist must take a bus to the centre.</div>
+        <div class="opts" data-correct="b">
+          <label class="opt"><input type="radio" name="r4"> True</label>
+          <label class="opt"><input type="radio" name="r4"> False</label></div></div>
+    </div>
+    <div class="ex-foot">
+      <button class="btn" data-check>Check</button>
+      <button class="btn ghost" data-reveal>Show answers</button>
+      <span class="fb" data-fb></span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== F: CROSSWORD ===== -->
+<section id="crossword">
+  <span class="sec-tag">Section F · Vocabulary game</span>
+  <h2>Crossword: places &amp; transport</h2>
+  <p class="lead">Completa con vocabulario de la ciudad. Una letra por casilla. <span class="es-note">One letter per square.</span></p>
+
+  <div class="cw-wrap">
+    <div class="cw-grid" id="cwGrid" aria-label="crossword"></div>
+    <div class="clues">
+      <h4>Across →</h4>
+      <ol>
+        <li><b>1</b> Where you watch films on a big screen.</li>
+        <li><b>4</b> A structure that goes over a river.</li>
+        <li><b>7</b> Where you catch a train.</li>
+        <li><b>9</b> A place full of books you can borrow.</li>
+        <li><b>10</b> Where doctors and nurses help sick people.</li>
+      </ol>
+      <h4>Down ↓</h4>
+      <ol>
+        <li><b>2</b> An open-air place to buy fruit and vegetables.</li>
+        <li><b>3</b> Where children go to learn.</li>
+        <li><b>5</b> An open public space in the middle of a town.</li>
+        <li><b>6</b> Where tourists sleep when they travel.</li>
+        <li><b>7</b> Cars and people move along this; houses on both sides.</li>
+        <li><b>8</b> Public transport that runs on rails.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="ex-foot">
+    <button class="btn" id="cwCheck">Check crossword</button>
+    <button class="btn ghost" id="cwReveal">Show answers</button>
+    <span class="fb" id="cwFb"></span>
+  </div>
+</section>
+
+<!-- ===== G: SELF CHECK ===== -->
+<section id="review" style="border-bottom:none">
+  <span class="sec-tag">Section G · Review</span>
+  <h2>Can-do check</h2>
+  <p class="lead">Marca lo que ya puedes hacer con seguridad. Si dudas, vuelve a esa sección.</p>
+  <div class="selfcheck">
+    <label><input type="checkbox"> I know vocabulary for places in town and transport.</label>
+    <label><input type="checkbox"> I can use <b>there is / there are</b> (and the negatives and questions).</label>
+    <label><input type="checkbox"> I can choose <b>some</b> and <b>any</b> correctly.</label>
+    <label><input type="checkbox"> I can say where things are with prepositions of place.</label>
+    <label><input type="checkbox"> I can choose <b>How much</b> or <b>How many</b>.</label>
+    <label><input type="checkbox"> I can ask for and give simple directions.</label>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="sig">English Coursebook · Unit 3 — In the City</div>
+    <div class="meta">Level A2 · Creado por Juan Carlos Navarro</div>
+  </div>
+</footer>
+
+<script>
+"use strict";
+const exResults=new Map();
+function refreshScore(){
+  let c=0,t=0; exResults.forEach(r=>{c+=r.correct;t+=r.total;});
+  document.getElementById('scoreTxt').textContent=c+' / '+t;
+  document.getElementById('progBar').style.width=(t?(c/t*100):0)+'%';
+}
+function commit(id,correct,total){ exResults.set(id,{correct,total}); refreshScore(); }
+function norm(s){ return (s||"").toLowerCase().replace(/[’‘`´]/g,"'").replace(/\s+/g," ").replace(/[.,;:!?]+$/,"").trim(); }
+
+function gradeGap(ex){
+  const inputs=[...ex.querySelectorAll('[data-grader="gap"] input.gap')];
+  let correct=0;
+  inputs.forEach(inp=>{
+    const accepted=(inp.dataset.answer||"").split("|").map(norm);
+    const val=norm(inp.value);
+    const ok=val!=="" && accepted.includes(val);
+    inp.classList.remove('right','wrong'); inp.classList.add(ok?'right':'wrong');
+    if(ok) correct++;
+  });
+  return {correct,total:inputs.length};
+}
+function gradeMcq(ex){
+  const groups=[...ex.querySelectorAll('[data-grader="mcq"] .opts')];
+  let correct=0;
+  groups.forEach(g=>{
+    const labels=[...g.querySelectorAll('.opt')];
+    const ci={a:0,b:1,c:2,d:3}[g.dataset.correct];
+    labels.forEach(l=>l.classList.remove('right','wrong','miss'));
+    let chosen=-1; labels.forEach((l,i)=>{ if(l.querySelector('input').checked) chosen=i; });
+    if(chosen===ci){ labels[ci].classList.add('right'); correct++; }
+    else{ if(chosen>-1) labels[chosen].classList.add('wrong'); labels[ci].classList.add('miss'); }
+  });
+  return {correct,total:groups.length};
+}
+function gradeMatch(ex){
+  const sels=[...ex.querySelectorAll('[data-grader="match"] select')];
+  let correct=0;
+  sels.forEach(s=>{
+    const ok=norm(s.value)!=="" && norm(s.value)===norm(s.dataset.answer);
+    s.classList.remove('right','wrong'); s.classList.add(ok?'right':'wrong');
+    if(ok) correct++;
+  });
+  return {correct,total:sels.length};
+}
+
+document.querySelectorAll('[data-ex]').forEach((ex,idx)=>{
+  const id='ex'+idx;
+  const fb=ex.querySelector('[data-fb]');
+  let total=0;
+  if(ex.querySelector('[data-grader="gap"]')) total+=ex.querySelectorAll('[data-grader="gap"] input.gap').length;
+  if(ex.querySelector('[data-grader="mcq"]')) total+=ex.querySelectorAll('[data-grader="mcq"] .opts').length;
+  if(ex.querySelector('[data-grader="match"]')) total+=ex.querySelectorAll('[data-grader="match"] select').length;
+  commit(id,0,total);
+  ex.querySelector('[data-check]').addEventListener('click',()=>{
+    let correct=0,tot=0;
+    if(ex.querySelector('[data-grader="gap"]')){ const r=gradeGap(ex); correct+=r.correct; tot+=r.total; }
+    if(ex.querySelector('[data-grader="mcq"]')){ const r=gradeMcq(ex); correct+=r.correct; tot+=r.total; }
+    if(ex.querySelector('[data-grader="match"]')){ const r=gradeMatch(ex); correct+=r.correct; tot+=r.total; }
+    commit(id,correct,tot);
+    fb.className='fb show '+(correct===tot?'good':'partial');
+    fb.textContent=correct+' / '+tot+(correct===tot?'  ✓ Perfect!':'  · keep trying');
+  });
+  ex.querySelector('[data-reveal]').addEventListener('click',()=>{
+    ex.querySelectorAll('[data-sol]').forEach(s=>s.classList.add('show'));
+    ex.querySelectorAll('[data-grader="mcq"] .opts').forEach(g=>{
+      const ci={a:0,b:1,c:2,d:3}[g.dataset.correct];
+      const labels=[...g.querySelectorAll('.opt')]; labels.forEach(l=>l.classList.remove('miss'));
+      if(labels[ci]) labels[ci].classList.add('miss');
+    });
+    ex.querySelectorAll('[data-grader="match"] select').forEach(s=>{
+      [...s.options].forEach(o=>{ if(norm(o.value)===norm(s.dataset.answer)) s.value=o.value; });
+    });
+  });
+});
+
+/* ===== crossword (verified 11x12, no ghost runs) ===== */
+const SOL=[
+  "..CINEMA....",
+  "......A.....",
+  "S....BRIDGE.",
+  "C..S..K.....",
+  "H..Q..E...H.",
+  "O..U.STATION",
+  "O..A.T..R.T.",
+  "LIBRARY.A.E.",
+  "...E.E..I.L.",
+  ".....E..N...",
+  "HOSPITAL....",
+];
+const NUMS={"0,2":1,"0,6":2,"2,0":3,"2,5":4,"3,3":5,"4,10":6,"5,5":7,"5,8":8,"7,0":9,"10,0":10};
+
+(function buildCrossword(){
+  const grid=document.getElementById('cwGrid');
+  const rows=SOL.length, cols=SOL[0].length;
+  grid.style.gridTemplateColumns='repeat('+cols+',var(--cell))';
+  grid.style.gridTemplateRows='repeat('+rows+',var(--cell))';
+  for(let r=0;r<rows;r++){
+    for(let c=0;c<cols;c++){
+      const ch=SOL[r][c];
+      const cell=document.createElement('div');
+      cell.className='cell'+(ch==='.'?' block':'');
+      if(ch!=='.'){
+        const key=r+','+c;
+        if(NUMS[key]!==undefined){
+          const n=document.createElement('span'); n.className='num'; n.textContent=NUMS[key]; cell.appendChild(n);
+        }
+        const inp=document.createElement('input');
+        inp.maxLength=1; inp.dataset.sol=ch;
+        inp.setAttribute('aria-label','row '+(r+1)+' col '+(c+1));
+        inp.addEventListener('input',function(){
+          this.classList.remove('right','wrong');
+          this.value=this.value.toUpperCase().replace(/[^A-Z]/g,'');
+          if(this.value){
+            const all=[...grid.querySelectorAll('input')];
+            const i=all.indexOf(this);
+            if(i>-1 && i+1<all.length) all[i+1].focus();
+          }
+        });
+        cell.appendChild(inp);
+      }
+      grid.appendChild(cell);
+    }
+  }
+})();
+
+(function wireCrossword(){
+  const grid=document.getElementById('cwGrid');
+  const inputs=[...grid.querySelectorAll('input')];
+  const fb=document.getElementById('cwFb');
+  commit('crossword',0,inputs.length);
+  document.getElementById('cwCheck').addEventListener('click',()=>{
+    let correct=0;
+    inputs.forEach(inp=>{
+      inp.classList.remove('right','wrong');
+      const ok=(inp.value||'').toUpperCase()===inp.dataset.sol;
+      inp.classList.add(ok?'right':'wrong'); if(ok) correct++;
+    });
+    commit('crossword',correct,inputs.length);
+    fb.className='fb show '+(correct===inputs.length?'good':'partial');
+    fb.textContent=correct+' / '+inputs.length+(correct===inputs.length?'  ✓ Solved!':'  · keep going');
+  });
+  document.getElementById('cwReveal').addEventListener('click',()=>{
+    inputs.forEach(inp=>{ inp.value=inp.dataset.sol; inp.classList.remove('wrong'); inp.classList.add('right'); });
+    commit('crossword',inputs.length,inputs.length);
+    fb.className='fb show good'; fb.textContent='Answers shown';
+  });
+})();
+
+refreshScore();
+</script>
+</body>
+</html>
