@@ -1,1 +1,679 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>English A2 · Unit 7 · Past lives (2)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..700,0..100,0..1&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
 
+:root{
+  --paper:#f4efe6;--paper-2:#ece3d4;--paper-3:#e3d8c4;
+  --ink:#2b2420;--ink-soft:#5a4f46;
+  --burgundy:#7a1f2b;--burgundy-2:#9c3340;--gold:#b4862f;
+  --sage:#4d6b54;--sage-bg:#e4ecdf;--clay:#b5552f;--clay-bg:#f3e2d6;
+  --line:#d8cbb4;--shadow:0 1px 2px rgba(43,36,32,.06),0 8px 24px -12px rgba(43,36,32,.18);
+  --r:14px;--cell:34px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Instrument Sans",system-ui,sans-serif;font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(circle at 12% 6%,rgba(180,134,47,.05),transparent 40%),radial-gradient(circle at 88% 2%,rgba(122,31,43,.05),transparent 38%);}
+.wrap{max-width:880px;margin:0 auto;padding:0 22px}
+
+.topbar{position:sticky;top:0;z-index:60;background:rgba(244,239,230,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:14px;padding-top:10px;padding-bottom:10px}
+.brand{font-family:"Fraunces",serif;font-weight:600;font-size:17px;letter-spacing:-.01em;white-space:nowrap}
+.brand b{color:var(--burgundy)}
+.progress{flex:1;height:9px;border-radius:99px;background:var(--paper-3);overflow:hidden;border:1px solid var(--line)}
+.progress>span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--burgundy),var(--gold));transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.score{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--ink-soft);white-space:nowrap}
+
+.hero{padding:54px 0 30px;border-bottom:2px solid var(--ink)}
+.eyebrow{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--burgundy);font-weight:500}
+.hero h1{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(38px,7vw,64px);line-height:1.02;letter-spacing:-.02em;margin:.18em 0 .12em}
+.hero .sub{font-size:18px;color:var(--ink-soft);max-width:60ch}
+.unit-num{font-family:"Fraunces",serif;font-style:italic;font-size:clamp(60px,16vw,150px);line-height:.8;color:var(--paper-3);display:block;margin-bottom:-.18em;letter-spacing:-.03em;-webkit-text-stroke:1px var(--line)}
+.cando{margin-top:26px;background:#fffdf8;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:var(--r);padding:18px 22px;box-shadow:var(--shadow)}
+.cando h3{margin:0 0 8px;font-family:"Fraunces",serif;font-size:18px;font-weight:600}
+.cando ul{margin:0;padding-left:0;list-style:none}
+.cando li{padding:4px 0 4px 30px;position:relative;font-size:15.5px}
+.cando li::before{content:"✓";position:absolute;left:0;top:4px;color:var(--sage);font-weight:700}
+.cando .es{color:var(--ink-soft);font-style:italic}
+
+section{padding:46px 0;border-bottom:1px solid var(--line)}
+.sec-tag{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--burgundy);font-weight:500;display:flex;align-items:center;gap:10px}
+.sec-tag::before{content:"";width:26px;height:2px;background:var(--burgundy)}
+h2{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(27px,4.6vw,38px);line-height:1.08;letter-spacing:-.015em;margin:.28em 0 .5em}
+h3.lesson{font-family:"Fraunces",serif;font-weight:600;font-size:21px;margin:34px 0 12px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+h3.lesson .n{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--gold);font-weight:700}
+p.lead{font-size:18px;color:var(--ink-soft);max-width:64ch}
+p{max-width:68ch}
+.es-note{color:var(--ink-soft);font-style:italic}
+
+.box{background:#fffdf8;border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;margin:18px 0;box-shadow:var(--shadow)}
+.box.rule{border-left:4px solid var(--burgundy)}
+.box.tip{border-left:4px solid var(--sage);background:var(--sage-bg)}
+.box.warn{border-left:4px solid var(--clay);background:var(--clay-bg)}
+.box h4{margin:0 0 8px;font-family:"Fraunces",serif;font-size:17px;font-weight:600}
+.box .label{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;margin-bottom:6px}
+.box.rule .label{color:var(--burgundy)}.box.tip .label{color:var(--sage)}.box.warn .label{color:var(--clay)}
+.eng{font-weight:600}.xt{color:var(--clay);text-decoration:line-through}.ok{color:var(--sage);font-weight:600}
+
+.tbl{width:100%;border-collapse:collapse;margin:16px 0;font-size:15.5px;background:#fffdf8;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+.tbl th,.tbl td{padding:9px 13px;text-align:left;border-bottom:1px solid var(--line)}
+.tbl th{background:var(--ink);color:var(--paper);font-family:"JetBrains Mono",monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:500}
+.tbl tr:last-child td{border-bottom:none}
+.tbl td:first-child{font-weight:600}
+.tbl .hl{color:var(--burgundy);font-weight:700}
+.tbl-scroll{overflow-x:auto}
+
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin:16px 0}
+.vcard{background:#fffdf8;border:1px solid var(--line);border-radius:11px;padding:11px 13px;box-shadow:var(--shadow)}
+.vcard .w{font-weight:600;font-size:16px}
+.vcard .es{font-size:13.5px;color:var(--ink-soft)}
+
+/* street map visual */
+.map{background:#fffdf8;border:1px solid var(--line);border-radius:var(--r);padding:18px;margin:18px 0;box-shadow:var(--shadow)}
+.map .side{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.bld{border:1px solid var(--line);border-radius:10px;padding:12px 8px;text-align:center;background:var(--paper-2);font-weight:600;font-size:14.5px}
+.bld .ic{font-size:22px;display:block;margin-bottom:2px}
+.road{height:34px;margin:10px 0;border-radius:8px;background:repeating-linear-gradient(90deg,#cdbfa6 0 22px,#fff8 22px 40px),var(--ink);display:flex;align-items:center;justify-content:center;color:var(--paper);font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+
+.ex{background:#fffdf8;border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;margin:20px 0;box-shadow:var(--shadow)}
+.ex-head{display:flex;align-items:center;gap:10px;margin-bottom:4px;flex-wrap:wrap}
+.ex-num{font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:700;color:var(--paper);background:var(--burgundy);padding:3px 9px;border-radius:7px;letter-spacing:.05em}
+.ex-title{font-family:"Fraunces",serif;font-weight:600;font-size:18px}
+.ex-instr{font-size:14.5px;color:var(--ink-soft);margin:2px 0 14px}
+.qrow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:9px 0;border-bottom:1px dotted var(--line);font-size:16px}
+.qrow:last-of-type{border-bottom:none}
+.qn{font-family:"JetBrains Mono",monospace;font-size:12.5px;color:var(--gold);font-weight:700;min-width:26px}
+input.gap{font-family:"Instrument Sans",sans-serif;font-size:15.5px;padding:5px 9px;border:1px solid var(--line);border-radius:8px;background:var(--paper);min-width:90px;width:130px;color:var(--ink);transition:.2s}
+input.gap.wide{width:185px}
+input.gap:focus{outline:none;border-color:var(--burgundy);box-shadow:0 0 0 3px rgba(122,31,43,.12)}
+input.gap.right{border-color:var(--sage);background:var(--sage-bg)}
+input.gap.wrong{border-color:var(--clay);background:var(--clay-bg)}
+.hintword{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--burgundy);background:var(--paper-2);padding:2px 7px;border-radius:6px;border:1px solid var(--line)}
+.wordbank{display:flex;flex-wrap:wrap;gap:7px;margin:2px 0 14px}
+.wordbank .chip{font-family:"JetBrains Mono",monospace;font-size:12.5px;color:var(--burgundy);background:var(--paper-2);padding:4px 10px;border-radius:7px;border:1px solid var(--line)}
+.sol{display:none;font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--sage);margin-left:4px}
+.sol.show{display:inline}
+.mcq{padding:11px 0;border-bottom:1px dotted var(--line)}
+.mcq:last-child{border-bottom:none}
+.mcq .stem{font-size:16px;margin-bottom:7px}
+.mcq .stem .qn{margin-right:6px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border:1px solid var(--line);border-radius:9px;cursor:pointer;background:var(--paper);font-size:15px;transition:.15s;user-select:none}
+.opt:hover{border-color:var(--burgundy);background:#fff}
+.opt input{accent-color:var(--burgundy);margin:0}
+.opt.right{border-color:var(--sage);background:var(--sage-bg)}
+.opt.wrong{border-color:var(--clay);background:var(--clay-bg)}
+.opt.miss{border-color:var(--sage);border-style:dashed}
+.match{display:grid;grid-template-columns:1fr 1fr;gap:10px 26px;margin:6px 0}
+.match .ml{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px dotted var(--line);font-size:15.5px;flex-wrap:wrap}
+.match select{font-family:"Instrument Sans",sans-serif;font-size:14.5px;padding:5px 7px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink)}
+.match select.right{border-color:var(--sage);background:var(--sage-bg)}
+.match select.wrong{border-color:var(--clay);background:var(--clay-bg)}
+.ex-foot{display:flex;align-items:center;gap:12px;margin-top:16px;flex-wrap:wrap}
+.btn{font-family:"Instrument Sans",sans-serif;font-weight:600;font-size:14.5px;padding:9px 18px;border-radius:9px;border:1px solid var(--burgundy);background:var(--burgundy);color:var(--paper);cursor:pointer;transition:.18s}
+.btn:hover{background:var(--burgundy-2);border-color:var(--burgundy-2)}
+.btn.ghost{background:transparent;color:var(--burgundy)}
+.btn.ghost:hover{background:var(--paper-2);color:var(--burgundy)}
+.fb{font-family:"JetBrains Mono",monospace;font-size:13px;font-weight:700;padding:5px 10px;border-radius:8px;display:none}
+.fb.show{display:inline-block}
+.fb.good{background:var(--sage-bg);color:var(--sage)}
+.fb.partial{background:var(--clay-bg);color:var(--clay)}
+
+.reading{background:#fffdf8;border:1px solid var(--line);border-radius:var(--r);padding:24px 26px;margin:18px 0;box-shadow:var(--shadow);font-size:16.5px;line-height:1.7}
+.reading h4{font-family:"Fraunces",serif;font-size:20px;margin:0 0 4px}
+.reading .by{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--gold);margin-bottom:14px}
+.reading p{max-width:none}
+.reading .hl{background:rgba(180,134,47,.18);padding:0 2px;border-radius:3px}
+
+.cw-wrap{display:flex;gap:26px;flex-wrap:wrap;margin:18px 0}
+.cw-grid{display:grid;gap:0;background:var(--ink);padding:3px;border-radius:8px;box-shadow:var(--shadow);width:max-content}
+.cell{position:relative;background:var(--paper-3);width:var(--cell);height:var(--cell)}
+.cell.block{background:transparent}
+.cell input{width:100%;height:100%;border:1px solid var(--line);background:#fffdf8;text-align:center;font-family:"Fraunces",serif;font-size:18px;font-weight:600;text-transform:uppercase;color:var(--ink);padding:0;border-radius:0}
+.cell input:focus{outline:none;background:#fff;box-shadow:inset 0 0 0 2px var(--burgundy)}
+.cell input.right{background:var(--sage-bg);color:var(--sage)}
+.cell input.wrong{background:var(--clay-bg);color:var(--clay)}
+.cell .num{position:absolute;top:0;left:1px;font-family:"JetBrains Mono",monospace;font-size:9px;font-weight:700;color:var(--burgundy);line-height:1;z-index:2;pointer-events:none}
+.clues{flex:1;min-width:240px}
+.clues h4{font-family:"Fraunces",serif;font-size:16px;margin:0 0 6px;color:var(--burgundy)}
+.clues ol{margin:0 0 14px;padding-left:0;list-style:none}
+.clues li{font-size:14.5px;padding:3px 0;display:flex;gap:8px}
+.clues li b{font-family:"JetBrains Mono",monospace;color:var(--gold);min-width:18px}
+
+.selfcheck{background:#fffdf8;border:1px solid var(--line);border-radius:var(--r);padding:22px 24px;box-shadow:var(--shadow)}
+.selfcheck label{display:flex;align-items:flex-start;gap:11px;padding:8px 0;font-size:15.5px;cursor:pointer;border-bottom:1px dotted var(--line)}
+.selfcheck label:last-child{border-bottom:none}
+.selfcheck input{margin-top:5px;accent-color:var(--sage);width:17px;height:17px}
+
+footer{padding:40px 0 60px;text-align:center;color:var(--ink-soft)}
+footer .sig{font-family:"Fraunces",serif;font-style:italic;font-size:17px;color:var(--ink)}
+footer .meta{font-family:"JetBrains Mono",monospace;font-size:12px;margin-top:6px}
+
+@media(max-width:560px){
+  body{font-size:16px}
+  :root{--cell:30px}
+  .cell input{font-size:15px}
+  .match{grid-template-columns:1fr}
+}
+  
+  
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="wrap">
+      <div class="brand">English A2 · <b>Unit 7</b></div>
+      <div class="progress" aria-label="course progress"><span id="progBar"></span></div>
+      <div class="score" id="scoreTxt">0 / 0</div>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <header class="hero">
+      <span class="unit-num">07</span>
+      <div class="eyebrow">Level A2 · Coursebook</div>
+      <h1>Past lives (2)</h1>
+      <p class="sub">En la unidad anterior empezaste el pasado con <b>was/were</b> y verbos regulares. Ahora añadimos los <b>irregular verbs</b>, las <b>dates</b> y los <b>ordinal numbers</b> para contar pequeñas historias de vida con más naturalidad.</p>
+      <div class="cando">
+        <h3>By the end of this unit, I can…</h3>
+        <ul>
+          <li>use common irregular past forms <span class="es">— usar formas irregulares frecuentes del pasado</span></li>
+          <li>ask and answer about past events <span class="es">— preguntar y responder sobre hechos pasados</span></li>
+          <li>say dates and order events <span class="es">— decir fechas y ordenar acontecimientos</span></li>
+          <li>tell a short story about someone’s life <span class="es">— contar una biografía breve o una experiencia pasada</span></li>
+        </ul>
+      </div>
+    </header>
+
+    <section>
+      <div class="sec-tag">Section A · Vocabulary</div>
+      <h2>Life stories, dates and irregular verbs</h2>
+      <p class="lead">Una historia de vida necesita acontecimientos, fechas y verbos muy comunes. Muchos de esos verbos son irregulares en pasado.</p>
+
+      <h3 class="lesson"><span class="n">A1</span> Life events</h3>
+      <div class="vgrid">
+        <div class="vcard"><div class="w">be born</div><div class="es">nacer</div></div>
+        <div class="vcard"><div class="w">grow up</div><div class="es">crecer / criarse</div></div>
+        <div class="vcard"><div class="w">go to school</div><div class="es">ir al colegio</div></div>
+        <div class="vcard"><div class="w">leave school</div><div class="es">dejar / terminar el colegio</div></div>
+        <div class="vcard"><div class="w">get a job</div><div class="es">conseguir un trabajo</div></div>
+        <div class="vcard"><div class="w">meet someone</div><div class="es">conocer a alguien</div></div>
+        <div class="vcard"><div class="w">get married</div><div class="es">casarse</div></div>
+        <div class="vcard"><div class="w">have a child</div><div class="es">tener un hijo / una hija</div></div>
+        <div class="vcard"><div class="w">move house</div><div class="es">mudarse de casa</div></div>
+        <div class="vcard"><div class="w">travel abroad</div><div class="es">viajar al extranjero</div></div>
+      </div>
+
+      <h3 class="lesson"><span class="n">A2</span> Common irregular verbs</h3>
+      <div class="vgrid">
+        <div class="vcard"><div class="w">be → was/were</div><div class="es">ser/estar → fue/estuvo</div></div>
+        <div class="vcard"><div class="w">go → went</div><div class="es">ir → fue</div></div>
+        <div class="vcard"><div class="w">come → came</div><div class="es">venir → vino</div></div>
+        <div class="vcard"><div class="w">have → had</div><div class="es">tener → tuvo</div></div>
+        <div class="vcard"><div class="w">get → got</div><div class="es">conseguir / ponerse → consiguió</div></div>
+        <div class="vcard"><div class="w">make → made</div><div class="es">hacer / fabricar → hizo</div></div>
+        <div class="vcard"><div class="w">buy → bought</div><div class="es">comprar → compró</div></div>
+        <div class="vcard"><div class="w">see → saw</div><div class="es">ver → vio</div></div>
+        <div class="vcard"><div class="w">take → took</div><div class="es">tomar / llevar → tomó</div></div>
+        <div class="vcard"><div class="w">meet → met</div><div class="es">conocer / quedar con → conoció</div></div>
+        <div class="vcard"><div class="w">write → wrote</div><div class="es">escribir → escribió</div></div>
+        <div class="vcard"><div class="w">become → became</div><div class="es">convertirse en → se convirtió</div></div>
+      </div>
+
+      <h3 class="lesson"><span class="n">A3</span> Ordinal numbers & dates</h3>
+      <div class="vgrid">
+        <div class="vcard"><div class="w">first</div><div class="es">primero/a</div></div>
+        <div class="vcard"><div class="w">second</div><div class="es">segundo/a</div></div>
+        <div class="vcard"><div class="w">third</div><div class="es">tercero/a</div></div>
+        <div class="vcard"><div class="w">fourth</div><div class="es">cuarto/a</div></div>
+        <div class="vcard"><div class="w">fifth</div><div class="es">quinto/a</div></div>
+        <div class="vcard"><div class="w">twelfth</div><div class="es">duodécimo/a</div></div>
+        <div class="vcard"><div class="w">twentieth</div><div class="es">vigésimo/a</div></div>
+        <div class="vcard"><div class="w">twenty-first</div><div class="es">vigésimo primero/a</div></div>
+        <div class="vcard"><div class="w">birthday</div><div class="es">cumpleaños</div></div>
+        <div class="vcard"><div class="w">date</div><div class="es">fecha</div></div>
+      </div>
+
+      <div class="ex" data-ex>
+        <div class="ex-head"><span class="ex-num">EX 1</span><span class="ex-title">Match the life events</span></div>
+        <p class="ex-instr">Une cada expresión inglesa con su significado en español.</p>
+        <div class="match" data-grader="match">
+          <div class="ml"><span class="qn">1</span> be born <select data-answer="nacer"><option></option><option>casarse</option><option>nacer</option><option>mudarse de casa</option><option>conseguir un trabajo</option></select></div>
+          <div class="ml"><span class="qn">2</span> grow up <select data-answer="crecer"><option></option><option>viajar al extranjero</option><option>conocer a alguien</option><option>crecer</option><option>tener un hijo</option></select></div>
+          <div class="ml"><span class="qn">3</span> get a job <select data-answer="conseguir un trabajo"><option></option><option>conseguir un trabajo</option><option>ir al colegio</option><option>dejar el colegio</option><option>nacer</option></select></div>
+          <div class="ml"><span class="qn">4</span> meet someone <select data-answer="conocer a alguien"><option></option><option>mudarse de casa</option><option>crecer</option><option>conocer a alguien</option><option>casarse</option></select></div>
+          <div class="ml"><span class="qn">5</span> get married <select data-answer="casarse"><option></option><option>tener un hijo</option><option>casarse</option><option>viajar al extranjero</option><option>nacer</option></select></div>
+          <div class="ml"><span class="qn">6</span> have a child <select data-answer="tener un hijo"><option></option><option>tener un hijo</option><option>dejar el colegio</option><option>conseguir un trabajo</option><option>crecer</option></select></div>
+          <div class="ml"><span class="qn">7</span> move house <select data-answer="mudarse de casa"><option></option><option>ir al colegio</option><option>mudarse de casa</option><option>conocer a alguien</option><option>casarse</option></select></div>
+          <div class="ml"><span class="qn">8</span> travel abroad <select data-answer="viajar al extranjero"><option></option><option>viajar al extranjero</option><option>nacer</option><option>tener un hijo</option><option>dejar el colegio</option></select></div>
+        </div>
+        <div class="ex-foot"><button class="btn" data-check>Check</button><button class="btn ghost" data-reveal>Show answers</button><span class="fb" data-fb></span></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-tag">Section B · Grammar 1</div>
+      <h2>Past simple: irregular verbs</h2>
+      <p class="lead">Los verbos irregulares no terminan en <b>-ed</b>. Hay que aprender su forma de pasado: <b>go → went</b>, <b>buy → bought</b>, <b>see → saw</b>.</p>
+
+      <div class="box rule">
+        <div class="label">Rule</div>
+        <h4>Affirmative past simple</h4>
+        <p>En afirmativa, el verbo cambia a su forma de pasado. La forma es igual para todas las personas: <span class="eng">I went</span>, <span class="eng">she went</span>, <span class="eng">they went</span>.</p>
+      </div>
+
+      <div class="tbl-scroll">
+        <table class="tbl">
+          <thead><tr><th>Base verb</th><th>Past simple</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td>go</td><td><span class="hl">went</span></td><td>She <span class="hl">went</span> to London.</td></tr>
+            <tr><td>have</td><td><span class="hl">had</span></td><td>They <span class="hl">had</span> a small flat.</td></tr>
+            <tr><td>meet</td><td><span class="hl">met</span></td><td>He <span class="hl">met</span> his friend in 2019.</td></tr>
+            <tr><td>buy</td><td><span class="hl">bought</span></td><td>We <span class="hl">bought</span> a car.</td></tr>
+            <tr><td>write</td><td><span class="hl">wrote</span></td><td>My aunt <span class="hl">wrote</span> a book.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="box warn">
+        <div class="label">Typical Spanish error</div>
+        <p>No añadas <b>-ed</b> a un verbo irregular: <span class="xt">She goed to school.</span> → <span class="ok">She went to school.</span></p>
+      </div>
+
+      <div class="ex" data-ex>
+        <div class="ex-head"><span class="ex-num">EX 2</span><span class="ex-title">Irregular past forms</span></div>
+        <p class="ex-instr">Escribe la forma de pasado simple.</p>
+        <div data-grader="gap">
+          <div class="qrow"><span class="qn">1</span> go → <input class="gap" data-answer="went"> <span class="sol" data-sol>went</span></div>
+          <div class="qrow"><span class="qn">2</span> have → <input class="gap" data-answer="had"> <span class="sol" data-sol>had</span></div>
+          <div class="qrow"><span class="qn">3</span> meet → <input class="gap" data-answer="met"> <span class="sol" data-sol>met</span></div>
+          <div class="qrow"><span class="qn">4</span> see → <input class="gap" data-answer="saw"> <span class="sol" data-sol>saw</span></div>
+          <div class="qrow"><span class="qn">5</span> take → <input class="gap" data-answer="took"> <span class="sol" data-sol>took</span></div>
+          <div class="qrow"><span class="qn">6</span> write → <input class="gap" data-answer="wrote"> <span class="sol" data-sol>wrote</span></div>
+          <div class="qrow"><span class="qn">7</span> buy → <input class="gap" data-answer="bought"> <span class="sol" data-sol>bought</span></div>
+          <div class="qrow"><span class="qn">8</span> come → <input class="gap" data-answer="came"> <span class="sol" data-sol>came</span></div>
+        </div>
+        <div class="ex-foot"><button class="btn" data-check>Check</button><button class="btn ghost" data-reveal>Show answers</button><span class="fb" data-fb></span></div>
+      </div>
+
+      <div class="box rule">
+        <div class="label">Rule</div>
+        <h4>Negative and questions</h4>
+        <p>Con <b>didn't</b> y <b>Did...?</b>, el verbo principal vuelve a la forma base: <span class="eng">She didn't go</span>, <span class="eng">Did she go?</span></p>
+      </div>
+
+      <div class="tbl-scroll">
+        <table class="tbl">
+          <thead><tr><th>Type</th><th>Pattern</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td>+</td><td>subject + past form</td><td>They <span class="hl">bought</span> a flat.</td></tr>
+            <tr><td>−</td><td>subject + didn't + base verb</td><td>They <span class="hl">didn't buy</span> a house.</td></tr>
+            <tr><td>?</td><td>Did + subject + base verb?</td><td><span class="hl">Did</span> they <span class="hl">buy</span> a flat?</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="box warn">
+        <div class="label">Typical Spanish error</div>
+        <p>Después de <b>didn't</b> o <b>Did</b>, no uses el pasado: <span class="xt">She didn't went.</span> → <span class="ok">She didn't go.</span></p>
+      </div>
+
+      <div class="ex" data-ex>
+        <div class="ex-head"><span class="ex-num">EX 3</span><span class="ex-title">Complete the past sentences</span></div>
+        <p class="ex-instr">Completa con la forma correcta. Algunas respuestas tienen dos palabras.</p>
+        <div data-grader="gap">
+          <div class="qrow"><span class="qn">1</span> My grandmother <input class="gap wide" data-answer="was born"> in 1965. <span class="hintword">be born</span> <span class="sol" data-sol>was born</span></div>
+          <div class="qrow"><span class="qn">2</span> She <input class="gap" data-answer="grew"> up near the sea. <span class="hintword">grow</span> <span class="sol" data-sol>grew</span></div>
+          <div class="qrow"><span class="qn">3</span> She <input class="gap" data-answer="met"> her husband at work. <span class="hintword">meet</span> <span class="sol" data-sol>met</span></div>
+          <div class="qrow"><span class="qn">4</span> They didn't <input class="gap" data-answer="buy"> a big house. <span class="hintword">buy</span> <span class="sol" data-sol>buy</span></div>
+          <div class="qrow"><span class="qn">5</span> Did they <input class="gap" data-answer="move"> to Madrid? <span class="hintword">move</span> <span class="sol" data-sol>move</span></div>
+          <div class="qrow"><span class="qn">6</span> No, they <input class="gap" data-answer="stayed"> in Murcia. <span class="hintword">stay</span> <span class="sol" data-sol>stayed</span></div>
+        </div>
+        <div class="ex-foot"><button class="btn" data-check>Check</button><button class="btn ghost" data-reveal>Show answers</button><span class="fb" data-fb></span></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-tag">Section C · Grammar 2</div>
+      <h2>Dates and ordinal numbers</h2>
+      <p class="lead">Para hablar de biografías necesitas fechas. En inglés, los días del mes se dicen con números ordinales: <b>first</b>, <b>second</b>, <b>third</b>.</p>
+
+      <div class="tbl-scroll">
+        <table class="tbl">
+          <thead><tr><th>Number</th><th>Ordinal</th><th>Short form</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td><span class="hl">first</span></td><td>1st</td></tr>
+            <tr><td>2</td><td><span class="hl">second</span></td><td>2nd</td></tr>
+            <tr><td>3</td><td><span class="hl">third</span></td><td>3rd</td></tr>
+            <tr><td>4</td><td><span class="hl">fourth</span></td><td>4th</td></tr>
+            <tr><td>5</td><td><span class="hl">fifth</span></td><td>5th</td></tr>
+            <tr><td>12</td><td><span class="hl">twelfth</span></td><td>12th</td></tr>
+            <tr><td>20</td><td><span class="hl">twentieth</span></td><td>20th</td></tr>
+            <tr><td>21</td><td><span class="hl">twenty-first</span></td><td>21st</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="box rule">
+        <div class="label">Rule</div>
+        <h4>Dates: in or on?</h4>
+        <p>Usa <b>in</b> con años y meses: <span class="eng">in 1998</span>, <span class="eng">in June</span>. Usa <b>on</b> con fechas concretas: <span class="eng">on 3 May</span>, <span class="eng">on my birthday</span>.</p>
+      </div>
+
+      <div class="box tip">
+        <div class="label">Good to know</div>
+        <p>Al leer una fecha como <b>3 May</b>, puedes decir <span class="eng">the third of May</span> o <span class="eng">May the third</span>. Para A2, reconoce ambas.</p>
+      </div>
+
+      <div class="box warn">
+        <div class="label">Typical Spanish error</div>
+        <p>Con una fecha exacta no uses <b>in</b>: <span class="xt">I was born in 3 May.</span> → <span class="ok">I was born on 3 May.</span></p>
+      </div>
+
+      <div class="ex" data-ex>
+        <div class="ex-head"><span class="ex-num">EX 4</span><span class="ex-title">Choose the correct date form</span></div>
+        <p class="ex-instr">Elige la opción correcta.</p>
+        <div data-grader="mcq">
+          <div class="mcq"><div class="stem"><span class="qn">1</span>My birthday is ___ 12 July.</div><div class="opts" data-correct="b"><label class="opt"><input type="radio" name="u7ex4q1"> in</label><label class="opt"><input type="radio" name="u7ex4q1"> on</label><label class="opt"><input type="radio" name="u7ex4q1"> at</label></div></div>
+          <div class="mcq"><div class="stem"><span class="qn">2</span>I was born ___ 1998.</div><div class="opts" data-correct="a"><label class="opt"><input type="radio" name="u7ex4q2"> in</label><label class="opt"><input type="radio" name="u7ex4q2"> on</label><label class="opt"><input type="radio" name="u7ex4q2"> at</label></div></div>
+          <div class="mcq"><div class="stem"><span class="qn">3</span>1st = ___.</div><div class="opts" data-correct="a"><label class="opt"><input type="radio" name="u7ex4q3"> first</label><label class="opt"><input type="radio" name="u7ex4q3"> one</label><label class="opt"><input type="radio" name="u7ex4q3"> once</label></div></div>
+          <div class="mcq"><div class="stem"><span class="qn">4</span>21st = ___.</div><div class="opts" data-correct="c"><label class="opt"><input type="radio" name="u7ex4q4"> twenty-one</label><label class="opt"><input type="radio" name="u7ex4q4"> twentieth-one</label><label class="opt"><input type="radio" name="u7ex4q4"> twenty-first</label></div></div>
+          <div class="mcq"><div class="stem"><span class="qn">5</span>3 May = the ___ of May.</div><div class="opts" data-correct="b"><label class="opt"><input type="radio" name="u7ex4q5"> three</label><label class="opt"><input type="radio" name="u7ex4q5"> third</label><label class="opt"><input type="radio" name="u7ex4q5"> thirteen</label></div></div>
+          <div class="mcq"><div class="stem"><span class="qn">6</span>1901–2000 = the ___ century.</div><div class="opts" data-correct="a"><label class="opt"><input type="radio" name="u7ex4q6"> twentieth</label><label class="opt"><input type="radio" name="u7ex4q6"> twentieth-first</label><label class="opt"><input type="radio" name="u7ex4q6"> nineteen</label></div></div>
+        </div>
+        <div class="ex-foot"><button class="btn" data-check>Check</button><button class="btn ghost" data-reveal>Show answers</button><span class="fb" data-fb></span></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-tag">Section D · Grammar 3</div>
+      <h2>Telling a short past story</h2>
+      <p class="lead">Para narrar una vida o una experiencia, combina verbos en pasado con palabras de secuencia. Así el texto suena más claro que una lista de frases sueltas.</p>
+
+      <div class="tbl-scroll">
+        <table class="tbl">
+          <thead><tr><th>Sequence word</th><th>Spanish idea</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td><span class="hl">First</span></td><td>primero</td><td>First, she was born in Cádiz.</td></tr>
+            <tr><td><span class="hl">Then</span></td><td>después / luego</td><td>Then she went to school.</td></tr>
+            <tr><td><span class="hl">After that</span></td><td>después de eso</td><td>After that, she got a job.</td></tr>
+            <tr><td><span class="hl">Later</span></td><td>más tarde</td><td>Later, she met her husband.</td></tr>
+            <tr><td><span class="hl">Finally</span></td><td>finalmente</td><td>Finally, they bought a flat.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="box rule">
+        <div class="label">Rule</div>
+        <h4>Age in past stories</h4>
+        <p>Para la edad se usa <b>be</b>: <span class="eng">She was 10</span>, <span class="eng">They were 20</span>. No se usa <b>have</b> como en español.</p>
+      </div>
+
+      <div class="box warn">
+        <div class="label">Typical Spanish error</div>
+        <p>No traduzcas literalmente “tenía 10 años”: <span class="xt">She had 10 years.</span> → <span class="ok">She was 10 years old.</span> / <span class="ok">She was 10.</span></p>
+      </div>
+
+      <div class="box tip">
+        <div class="label">Writing tip</div>
+        <p>En un texto A2, una buena historia puede tener 5–7 frases: fecha, lugar, dos o tres acciones importantes y una frase final.</p>
+      </div>
+
+      <div class="ex" data-ex>
+        <div class="ex-head"><span class="ex-num">EX 5</span><span class="ex-title">Complete the mini-biography</span></div>
+        <p class="ex-instr">Usa el banco de palabras. Algunas palabras son verbos irregulares en pasado.</p>
+        <div class="wordbank"><span class="chip">First</span><span class="chip">went</span><span class="chip">became</span><span class="chip">met</span><span class="chip">bought</span><span class="chip">moved</span></div>
+        <div data-grader="gap">
+          <div class="qrow"><span class="qn">1</span> <input class="gap" data-answer="first">, Ana was born in Cádiz. <span class="sol" data-sol>First</span></div>
+          <div class="qrow"><span class="qn">2</span> Then she <input class="gap" data-answer="went"> to school near the beach. <span class="sol" data-sol>went</span></div>
+          <div class="qrow"><span class="qn">3</span> Later, she <input class="gap" data-answer="became"> a teacher. <span class="sol" data-sol>became</span></div>
+          <div class="qrow"><span class="qn">4</span> In 2010, she <input class="gap" data-answer="met"> her husband. <span class="sol" data-sol>met</span></div>
+          <div class="qrow"><span class="qn">5</span> After that, they <input class="gap" data-answer="bought"> a small flat. <span class="sol" data-sol>bought</span></div>
+          <div class="qrow"><span class="qn">6</span> Finally, they <input class="gap" data-answer="moved"> to Valencia. <span class="sol" data-sol>moved</span></div>
+        </div>
+        <div class="ex-foot"><button class="btn" data-check>Check</button><button class="btn ghost" data-reveal>Show answers</button><span class="fb" data-fb></span></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-tag">Section E · Reading</div>
+      <h2>A life in three photos</h2>
+      <p class="lead">Lee el texto. Fíjate en las fechas, los verbos irregulares y las palabras que ordenan la historia.</p>
+      <div class="reading">
+        <h4>A life in three photos</h4>
+        <div class="by">by Elena Ruiz</div>
+        <p>Photo 1 is from 1996. My grandmother Rosa was twenty-one. She <span class="hl">was born on 14 April 1975</span> in a village near Granada. She <span class="hl">grew up</span> with three sisters, and she <span class="hl">went</span> to school by bus every day.</p>
+        <p>Photo 2 is from 2001. Rosa <span class="hl">moved</span> to Murcia because she found a job in a hotel. She <span class="hl">met</span> my grandfather there. They <span class="hl">got married on 2 June 2003</span>.</p>
+        <p>Photo 3 is from 2010. They <span class="hl">had</span> their first child, my mother, and later they <span class="hl">bought</span> a small flat. They didn't have much money, but they were happy.</p>
+        <p>Now Rosa lives near us. She tells great stories: first the village, then the hotel, and finally our family. I think every old photo has a small story inside it.</p>
+      </div>
+
+      <div class="ex" data-ex>
+        <div class="ex-head"><span class="ex-num">EX 6</span><span class="ex-title">True or false?</span></div>
+        <p class="ex-instr">Según el texto, elige True o False.</p>
+        <div data-grader="mcq">
+          <div class="mcq"><div class="stem"><span class="qn">1</span>Rosa was born in Granada city.</div><div class="opts" data-correct="b"><label class="opt"><input type="radio" name="u7ex6q1"> True</label><label class="opt"><input type="radio" name="u7ex6q1"> False</label></div></div>
+          <div class="mcq"><div class="stem"><span class="qn">2</span>She went to school by bus.</div><div class="opts" data-correct="a"><label class="opt"><input type="radio" name="u7ex6q2"> True</label><label class="opt"><input type="radio" name="u7ex6q2"> False</label></div></div>
+          <div class="mcq"><div class="stem"><span class="qn">3</span>She moved to Murcia in 2001.</div><div class="opts" data-correct="a"><label class="opt"><input type="radio" name="u7ex6q3"> True</label><label class="opt"><input type="radio" name="u7ex6q3"> False</label></div></div>
+          <div class="mcq"><div class="stem"><span class="qn">4</span>She met Elena's grandfather at university.</div><div class="opts" data-correct="b"><label class="opt"><input type="radio" name="u7ex6q4"> True</label><label class="opt"><input type="radio" name="u7ex6q4"> False</label></div></div>
+          <div class="mcq"><div class="stem"><span class="qn">5</span>Rosa got married on 2 June 2003.</div><div class="opts" data-correct="a"><label class="opt"><input type="radio" name="u7ex6q5"> True</label><label class="opt"><input type="radio" name="u7ex6q5"> False</label></div></div>
+          <div class="mcq"><div class="stem"><span class="qn">6</span>Rosa and her husband bought a big house.</div><div class="opts" data-correct="b"><label class="opt"><input type="radio" name="u7ex6q6"> True</label><label class="opt"><input type="radio" name="u7ex6q6"> False</label></div></div>
+        </div>
+        <div class="ex-foot"><button class="btn" data-check>Check</button><button class="btn ghost" data-reveal>Show answers</button><span class="fb" data-fb></span></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-tag">Section F · Crossword</div>
+      <h2>Past lives crossword</h2>
+      <p class="lead">Completa el crucigrama con verbos irregulares, fechas y palabras de biografía de esta unidad.</p>
+      <div class="cw-wrap">
+        <div id="cwGrid" class="cw-grid" aria-label="crossword grid"></div>
+        <div class="clues">
+          <h4>Across</h4>
+          <ol>
+            <li><b>2</b> A day, month and year.</li>
+            <li><b>4</b> 1st.</li>
+            <li><b>6</b> Past of <b>come</b>.</li>
+            <li><b>8</b> After a wedding, two people got ___.</li>
+            <li><b>10</b> Past of <b>buy</b>.</li>
+            <li><b>11</b> Past of <b>see</b>.</li>
+          </ol>
+          <h4>Down</h4>
+          <ol>
+            <li><b>1</b> 2nd.</li>
+            <li><b>3</b> Past of <b>meet</b>.</li>
+            <li><b>5</b> 3rd.</li>
+            <li><b>7</b> The day you were born; you celebrate it every year.</li>
+            <li><b>9</b> Past of <b>take</b>.</li>
+          </ol>
+          <div class="ex-foot"><button class="btn" id="cwCheck">Check crossword</button><button class="btn ghost" id="cwReveal">Show answers</button><span class="fb" id="cwFb"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-tag">Section G · Review</div>
+      <h2>Self-check</h2>
+      <p class="lead">Marca lo que ya puedes hacer. Si una frase te cuesta, vuelve a la sección correspondiente.</p>
+      <div class="selfcheck">
+        <label><input type="checkbox"> I can recognise common irregular past forms like <b>went</b>, <b>had</b> and <b>bought</b>.</label>
+        <label><input type="checkbox"> I can use <b>didn't</b> and <b>Did...?</b> with the base verb.</label>
+        <label><input type="checkbox"> I can say dates with ordinal numbers.</label>
+        <label><input type="checkbox"> I can use <b>in</b> for years and <b>on</b> for exact dates.</label>
+        <label><input type="checkbox"> I can order a past story with <b>first</b>, <b>then</b>, <b>later</b> and <b>finally</b>.</label>
+        <label><input type="checkbox"> I can read and write a short biography in the past simple.</label>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="sig">Level A2 · Creado por Juan Carlos Navarro</div>
+    <div class="meta">Unit 7 · Past lives (2) · irregular past simple + dates + biography</div>
+  </footer>
+
+  <script>
+
+"use strict";
+const exResults=new Map();
+function refreshScore(){
+  let c=0,t=0; exResults.forEach(r=>{c+=r.correct;t+=r.total;});
+  document.getElementById('scoreTxt').textContent=c+' / '+t;
+  document.getElementById('progBar').style.width=(t?(c/t*100):0)+'%';
+}
+function commit(id,correct,total){ exResults.set(id,{correct,total}); refreshScore(); }
+function norm(s){ return (s||"").toLowerCase().replace(/[’‘`´]/g,"'").replace(/\s+/g," ").replace(/[.,;:!?]+$/,"").trim(); }
+
+function gradeGap(ex){
+  const inputs=[...ex.querySelectorAll('[data-grader="gap"] input.gap')];
+  let correct=0;
+  inputs.forEach(inp=>{
+    const accepted=(inp.dataset.answer||"").split("|").map(norm);
+    const val=norm(inp.value);
+    const ok=val!=="" && accepted.includes(val);
+    inp.classList.remove('right','wrong'); inp.classList.add(ok?'right':'wrong');
+    if(ok) correct++;
+  });
+  return {correct,total:inputs.length};
+}
+function gradeMcq(ex){
+  const groups=[...ex.querySelectorAll('[data-grader="mcq"] .opts')];
+  let correct=0;
+  groups.forEach(g=>{
+    const labels=[...g.querySelectorAll('.opt')];
+    const ci={a:0,b:1,c:2,d:3}[g.dataset.correct];
+    labels.forEach(l=>l.classList.remove('right','wrong','miss'));
+    let chosen=-1; labels.forEach((l,i)=>{ if(l.querySelector('input').checked) chosen=i; });
+    if(chosen===ci){ labels[ci].classList.add('right'); correct++; }
+    else{ if(chosen>-1) labels[chosen].classList.add('wrong'); labels[ci].classList.add('miss'); }
+  });
+  return {correct,total:groups.length};
+}
+function gradeMatch(ex){
+  const sels=[...ex.querySelectorAll('[data-grader="match"] select')];
+  let correct=0;
+  sels.forEach(s=>{
+    const ok=norm(s.value)!=="" && norm(s.value)===norm(s.dataset.answer);
+    s.classList.remove('right','wrong'); s.classList.add(ok?'right':'wrong');
+    if(ok) correct++;
+  });
+  return {correct,total:sels.length};
+}
+
+document.querySelectorAll('[data-ex]').forEach((ex,idx)=>{
+  const id='ex'+idx;
+  const fb=ex.querySelector('[data-fb]');
+  let total=0;
+  if(ex.querySelector('[data-grader="gap"]')) total+=ex.querySelectorAll('[data-grader="gap"] input.gap').length;
+  if(ex.querySelector('[data-grader="mcq"]')) total+=ex.querySelectorAll('[data-grader="mcq"] .opts').length;
+  if(ex.querySelector('[data-grader="match"]')) total+=ex.querySelectorAll('[data-grader="match"] select').length;
+  commit(id,0,total);
+  ex.querySelector('[data-check]').addEventListener('click',()=>{
+    let correct=0,tot=0;
+    if(ex.querySelector('[data-grader="gap"]')){ const r=gradeGap(ex); correct+=r.correct; tot+=r.total; }
+    if(ex.querySelector('[data-grader="mcq"]')){ const r=gradeMcq(ex); correct+=r.correct; tot+=r.total; }
+    if(ex.querySelector('[data-grader="match"]')){ const r=gradeMatch(ex); correct+=r.correct; tot+=r.total; }
+    commit(id,correct,tot);
+    fb.className='fb show '+(correct===tot?'good':'partial');
+    fb.textContent=correct+' / '+tot+(correct===tot?'  ✓ Perfect!':'  · keep trying');
+  });
+  ex.querySelector('[data-reveal]').addEventListener('click',()=>{
+    ex.querySelectorAll('[data-sol]').forEach(s=>s.classList.add('show'));
+    ex.querySelectorAll('[data-grader="mcq"] .opts').forEach(g=>{
+      const ci={a:0,b:1,c:2,d:3}[g.dataset.correct];
+      const labels=[...g.querySelectorAll('.opt')]; labels.forEach(l=>l.classList.remove('miss'));
+      if(labels[ci]) labels[ci].classList.add('miss');
+    });
+    ex.querySelectorAll('[data-grader="match"] select').forEach(s=>{
+      [...s.options].forEach(o=>{ if(norm(o.value)===norm(s.dataset.answer)) s.value=o.value; });
+    });
+  });
+});
+
+/* ===== crossword (verified 12x12, no ghost runs) ===== */
+const SOL=[
+  "........S...",
+  ".....DATE..M",
+  "FIRST...CAME",
+  "....H...O..T",
+  "....I.B.N...",
+  "..MARRIED...",
+  "....D.R.....",
+  "...T..T.....",
+  "..BOUGHT....",
+  "...O..D.....",
+  "...K.SAW....",
+  "......Y.....",
+];
+const NUMS={"0,8":1,"1,5":2,"1,11":3,"2,0":4,"2,4":5,"2,8":6,"4,6":7,"5,2":8,"7,3":9,"8,2":10,"10,5":11};
+
+(function buildCrossword(){
+  const grid=document.getElementById('cwGrid');
+  const rows=SOL.length, cols=SOL[0].length;
+  grid.style.gridTemplateColumns='repeat('+cols+',var(--cell))';
+  grid.style.gridTemplateRows='repeat('+rows+',var(--cell))';
+  for(let r=0;r<rows;r++){
+    for(let c=0;c<cols;c++){
+      const ch=SOL[r][c];
+      const cell=document.createElement('div');
+      cell.className='cell'+(ch==='.'?' block':'');
+      if(ch!=='.'){
+        const key=r+','+c;
+        if(NUMS[key]!==undefined){
+          const n=document.createElement('span'); n.className='num'; n.textContent=NUMS[key]; cell.appendChild(n);
+        }
+        const inp=document.createElement('input');
+        inp.maxLength=1; inp.dataset.sol=ch;
+        inp.setAttribute('aria-label','row '+(r+1)+' col '+(c+1));
+        inp.addEventListener('input',function(){
+          this.classList.remove('right','wrong');
+          this.value=this.value.toUpperCase().replace(/[^A-Z]/g,'');
+          if(this.value){
+            const all=[...grid.querySelectorAll('input')];
+            const i=all.indexOf(this);
+            if(i>-1 && i+1<all.length) all[i+1].focus();
+          }
+        });
+        cell.appendChild(inp);
+      }
+      grid.appendChild(cell);
+    }
+  }
+})();
+
+(function wireCrossword(){
+  const grid=document.getElementById('cwGrid');
+  const inputs=[...grid.querySelectorAll('input')];
+  const fb=document.getElementById('cwFb');
+  commit('crossword',0,inputs.length);
+  document.getElementById('cwCheck').addEventListener('click',()=>{
+    let correct=0;
+    inputs.forEach(inp=>{
+      inp.classList.remove('right','wrong');
+      const ok=(inp.value||'').toUpperCase()===inp.dataset.sol;
+      inp.classList.add(ok?'right':'wrong'); if(ok) correct++;
+    });
+    commit('crossword',correct,inputs.length);
+    fb.className='fb show '+(correct===inputs.length?'good':'partial');
+    fb.textContent=correct+' / '+inputs.length+(correct===inputs.length?'  ✓ Solved!':'  · keep going');
+  });
+  document.getElementById('cwReveal').addEventListener('click',()=>{
+    inputs.forEach(inp=>{ inp.value=inp.dataset.sol; inp.classList.remove('wrong'); inp.classList.add('right'); });
+    commit('crossword',inputs.length,inputs.length);
+    fb.className='fb show good'; fb.textContent='Answers shown';
+  });
+})();
+
+refreshScore();
+  
+  
+  </script>
+</body>
+</html>
