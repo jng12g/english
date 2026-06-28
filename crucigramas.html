@@ -567,4 +567,188 @@
                             
                             const isH = (c > 0 && generator.grid[r][c-1] !== '') || (c < GRID_SIZE - 1 && generator.grid[r][c+1] !== '');
                             const isV = (r > 0 && generator.grid[r-1][c] !== '') || (r < GRID_SIZE - 1 && generator.grid[r+1][c] !== '');
-                            input.dataset.isH = is
+                            input.dataset.isH = isH;
+                            input.dataset.isV = isV;
+
+                            setupInputEvents(input, r, c, isH, isV);
+
+                            cellDiv.appendChild(input);
+                            
+                            const key = `${r}-${c}`;
+                            if (startCells[key]) {
+                                const numSpan = document.createElement('span');
+                                numSpan.className = 'cell-number';
+                                numSpan.textContent = startCells[key];
+                                cellDiv.appendChild(numSpan);
+                            }
+                        }
+                        crosswordElement.appendChild(cellDiv);
+                    }
+                }
+                renderClues(placedWords);
+            }
+
+            function setupInputEvents(input, r, c, isH, isV) {
+                input.addEventListener('click', function() {
+                    if (isH && isV) {
+                        if (window.currentActiveInput === this) {
+                            currentDir = currentDir === 'H' ? 'V' : 'H';
+                        } else if ((currentDir === 'H' && !isH) || (currentDir === 'V' && !isV)) {
+                            currentDir = isH ? 'H' : 'V';
+                        }
+                    } else {
+                        currentDir = isH ? 'H' : 'V';
+                    }
+                    window.currentActiveInput = this;
+                    highlightCurrentWord(r, c);
+                });
+
+                input.addEventListener('focus', function() {
+                    window.currentActiveInput = this;
+                    if (!isH && isV) currentDir = 'V';
+                    if (isH && !isV) currentDir = 'H';
+                    highlightCurrentWord(r, c);
+                    
+                    this.select(); 
+                });
+
+                input.addEventListener('keydown', function(e) {
+                    if (e.key === 'Backspace') {
+                        if (this.value === '') {
+                            let prevR = currentDir === 'V' ? r - 1 : r;
+                            let prevC = currentDir === 'H' ? c - 1 : c;
+                            let prevInput = document.querySelector(`.cell-input[data-r="${prevR}"][data-c="${prevC}"]`);
+                            
+                            if (prevInput && prevInput.dataset['is' + currentDir] === 'true') {
+                                e.preventDefault();
+                                prevInput.focus();
+                                prevInput.value = '';
+                                prevInput.classList.remove('correct', 'error');
+                            }
+                        } else {
+                            this.value = '';
+                            this.classList.remove('correct', 'error');
+                        }
+                    }
+                    else if (e.key.length === 1 && e.key.match(/[a-zA-Z]/)) {
+                        e.preventDefault(); 
+                        this.value = e.key.toUpperCase();
+                        this.classList.remove('correct', 'error');
+
+                        let nextR = currentDir === 'V' ? r + 1 : r;
+                        let nextC = currentDir === 'H' ? c + 1 : c;
+                        let nextInput = document.querySelector(`.cell-input[data-r="${nextR}"][data-c="${nextC}"]`);
+                        
+                        if (nextInput && nextInput.dataset['is' + currentDir] === 'true') {
+                            nextInput.focus();
+                        }
+                    }
+                });
+            }
+
+            function highlightCurrentWord(r, c) {
+                document.querySelectorAll('.cell-input').forEach(inp => {
+                    inp.classList.remove('highlight-word', 'highlight-cell');
+                });
+
+                let activeInp = document.querySelector(`.cell-input[data-r="${r}"][data-c="${c}"]`);
+                if (activeInp) activeInp.classList.add('highlight-cell');
+
+                if (currentDir === 'H') {
+                    let startC = c;
+                    while (startC > 0 && generator.grid[r][startC - 1] !== '') startC--;
+                    let currC = startC;
+                    while (currC < GRID_SIZE && generator.grid[r][currC] !== '') {
+                        if (currC !== c) {
+                            let inp = document.querySelector(`.cell-input[data-r="${r}"][data-c="${currC}"]`);
+                            if (inp) inp.classList.add('highlight-word');
+                        }
+                        currC++;
+                    }
+                } else {
+                    let startR = r;
+                    while (startR > 0 && generator.grid[startR - 1][c] !== '') startR--;
+                    let currR = startR;
+                    while (currR < GRID_SIZE && generator.grid[currR][c] !== '') {
+                        if (currR !== r) {
+                            let inp = document.querySelector(`.cell-input[data-r="${currR}"][data-c="${c}"]`);
+                            if (inp) inp.classList.add('highlight-word');
+                        }
+                        currR++;
+                    }
+                }
+            }
+
+            function renderClues(placedWords) {
+                const acrossUl = document.getElementById('across-clues');
+                const downUl = document.getElementById('down-clues');
+                acrossUl.innerHTML = '';
+                downUl.innerHTML = '';
+
+                placedWords.sort((a, b) => a.displayNum - b.displayNum);
+
+                placedWords.forEach((pw) => {
+                    const li = document.createElement('li');
+                    
+                    const spanClue = document.createElement('span');
+                    spanClue.className = 'clue-text';
+                    spanClue.innerHTML = `<strong>${pw.displayNum}.</strong> ${pw.clue}`;
+                    
+                    const btnReveal = document.createElement('button');
+                    btnReveal.className = 'btn-reveal';
+                    btnReveal.textContent = 'Revelar';
+                    btnReveal.onclick = () => window.revealWord(pw.row, pw.col, pw.orientation, pw.word);
+
+                    li.appendChild(spanClue);
+                    li.appendChild(btnReveal);
+
+                    if (pw.orientation === 'H') {
+                        acrossUl.appendChild(li);
+                    } else {
+                        downUl.appendChild(li);
+                    }
+                });
+            }
+
+            window.revealWord = function(row, col, orientation, word) {
+                for (let i = 0; i < word.length; i++) {
+                    let r = row + (orientation === 'V' ? i : 0);
+                    let c = col + (orientation === 'H' ? i : 0);
+                    let input = document.querySelector(`.cell-input[data-r="${r}"][data-c="${c}"]`);
+                    
+                    if (input) {
+                        input.value = word[i];
+                        input.classList.remove('error');
+                        input.classList.add('correct');
+                    }
+                }
+            };
+
+            window.checkAnswers = function() {
+                const inputs = document.querySelectorAll('.cell-input');
+                inputs.forEach(input => {
+                    const correct = input.dataset.answer;
+                    const val = input.value.toUpperCase();
+                    
+                    input.classList.remove('correct', 'error', 'highlight-word', 'highlight-cell');
+                    
+                    if (val !== '') {
+                        if (val === correct) {
+                            input.classList.add('correct');
+                        } else {
+                            input.classList.add('error');
+                        }
+                    }
+                });
+            };
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', window.generateNewCrossword);
+            } else {
+                window.generateNewCrossword();
+            }
+
+        })();
+    </script>
+</body>
+</html>
