@@ -1,1 +1,702 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 2 · Free Time · English A2</title>
+<meta name="description" content="Unit 2 — Free Time. Libro de texto interactivo de inglés nivel A2: like/love/hate + -ing, can/can't (ability), play/do/go. Creado por Juan Carlos Navarro.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Instrument+Sans:ital,wght@0,400..700;1,400..600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f4efe6;--paper-2:#ece3d4;--paper-3:#e3d8c4;
+  --ink:#2b2420;--ink-soft:#5a4f46;
+  --burgundy:#7a1f2b;--burgundy-2:#9c3340;--gold:#b4862f;
+  --sage:#4d6b54;--sage-bg:#e4ecdf;--clay:#b5552f;--clay-bg:#f3e2d6;
+  --line:#d8cbb4;--shadow:0 1px 2px rgba(43,36,32,.06),0 8px 24px -12px rgba(43,36,32,.18);
+  --r:14px;--cell:34px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Instrument Sans",system-ui,sans-serif;font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(circle at 12% 6%,rgba(180,134,47,.05),transparent 40%),radial-gradient(circle at 88% 2%,rgba(122,31,43,.05),transparent 38%);}
+.wrap{max-width:880px;margin:0 auto;padding:0 22px}
 
+.topbar{position:sticky;top:0;z-index:60;background:rgba(244,239,230,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:14px;padding-top:10px;padding-bottom:10px}
+.brand{font-family:"Fraunces",serif;font-weight:600;font-size:17px;letter-spacing:-.01em;white-space:nowrap}
+.brand b{color:var(--burgundy)}
+.progress{flex:1;height:9px;border-radius:99px;background:var(--paper-3);overflow:hidden;border:1px solid var(--line)}
+.progress>span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--burgundy),var(--gold));transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.score{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--ink-soft);white-space:nowrap}
+
+.hero{padding:54px 0 30px;border-bottom:2px solid var(--ink)}
+.eyebrow{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--burgundy);font-weight:500}
+.hero h1{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(38px,7vw,64px);line-height:1.02;letter-spacing:-.02em;margin:.18em 0 .12em}
+.hero .sub{font-size:18px;color:var(--ink-soft);max-width:60ch}
+.unit-num{font-family:"Fraunces",serif;font-style:italic;font-size:clamp(60px,16vw,150px);line-height:.8;color:var(--paper-3);display:block;margin-bottom:-.18em;letter-spacing:-.03em;-webkit-text-stroke:1px var(--line)}
+.cando{margin-top:26px;background:#fffdf8;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:var(--r);padding:18px 22px;box-shadow:var(--shadow)}
+.cando h3{margin:0 0 8px;font-family:"Fraunces",serif;font-size:18px;font-weight:600}
+.cando ul{margin:0;padding-left:0;list-style:none}
+.cando li{padding:4px 0 4px 30px;position:relative;font-size:15.5px}
+.cando li::before{content:"✓";position:absolute;left:0;top:4px;color:var(--sage);font-weight:700}
+.cando .es{color:var(--ink-soft);font-style:italic}
+
+section{padding:46px 0;border-bottom:1px solid var(--line)}
+.sec-tag{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--burgundy);font-weight:500;display:flex;align-items:center;gap:10px}
+.sec-tag::before{content:"";width:26px;height:2px;background:var(--burgundy)}
+h2{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(27px,4.6vw,38px);line-height:1.08;letter-spacing:-.015em;margin:.28em 0 .5em}
+h3.lesson{font-family:"Fraunces",serif;font-weight:600;font-size:21px;margin:34px 0 12px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+h3.lesson .n{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--gold);font-weight:700}
+p.lead{font-size:18px;color:var(--ink-soft);max-width:64ch}
+p{max-width:68ch}
+.es-note{color:var(--ink-soft);font-style:italic}
+
+.box{background:#fffdf8;border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;margin:18px 0;box-shadow:var(--shadow)}
+.box.rule{border-left:4px solid var(--burgundy)}
+.box.tip{border-left:4px solid var(--sage);background:var(--sage-bg)}
+.box.warn{border-left:4px solid var(--clay);background:var(--clay-bg)}
+.box h4{margin:0 0 8px;font-family:"Fraunces",serif;font-size:17px;font-weight:600}
+.box .label{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;margin-bottom:6px}
+.box.rule .label{color:var(--burgundy)}.box.tip .label{color:var(--sage)}.box.warn .label{color:var(--clay)}
+.eng{font-weight:600}.xt{color:var(--clay);text-decoration:line-through}.ok{color:var(--sage);font-weight:600}
+
+.tbl{width:100%;border-collapse:collapse;margin:16px 0;font-size:15.5px;background:#fffdf8;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+.tbl th,.tbl td{padding:9px 13px;text-align:left;border-bottom:1px solid var(--line)}
+.tbl th{background:var(--ink);color:var(--paper);font-family:"JetBrains Mono",monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:500}
+.tbl tr:last-child td{border-bottom:none}
+.tbl td:first-child{font-weight:600}
+.tbl .hl{color:var(--burgundy);font-weight:700}
+.tbl-scroll{overflow-x:auto}
+
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin:16px 0}
+.vcard{background:#fffdf8;border:1px solid var(--line);border-radius:11px;padding:11px 13px;box-shadow:var(--shadow)}
+.vcard .w{font-weight:600;font-size:16px}
+.vcard .ipa{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--gold)}
+.vcard .es{font-size:13.5px;color:var(--ink-soft)}
+
+.freqline{background:#fffdf8;border:1px solid var(--line);border-radius:var(--r);padding:26px 22px 18px;margin:18px 0;box-shadow:var(--shadow)}
+
+.ex{background:#fffdf8;border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;margin:20px 0;box-shadow:var(--shadow)}
+.ex-head{display:flex;align-items:center;gap:10px;margin-bottom:4px;flex-wrap:wrap}
+.ex-num{font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:700;color:var(--paper);background:var(--burgundy);padding:3px 9px;border-radius:7px;letter-spacing:.05em}
+.ex-title{font-family:"Fraunces",serif;font-weight:600;font-size:18px}
+.ex-instr{font-size:14.5px;color:var(--ink-soft);margin:2px 0 14px}
+.qrow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:9px 0;border-bottom:1px dotted var(--line);font-size:16px}
+.qrow:last-of-type{border-bottom:none}
+.qn{font-family:"JetBrains Mono",monospace;font-size:12.5px;color:var(--gold);font-weight:700;min-width:26px}
+input.gap{font-family:"Instrument Sans",sans-serif;font-size:15.5px;padding:5px 9px;border:1px solid var(--line);border-radius:8px;background:var(--paper);min-width:90px;width:130px;color:var(--ink);transition:.2s}
+input.gap.wide{width:185px}
+input.gap:focus{outline:none;border-color:var(--burgundy);box-shadow:0 0 0 3px rgba(122,31,43,.12)}
+input.gap.right{border-color:var(--sage);background:var(--sage-bg)}
+input.gap.wrong{border-color:var(--clay);background:var(--clay-bg)}
+.hintword{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--burgundy);background:var(--paper-2);padding:2px 7px;border-radius:6px;border:1px solid var(--line)}
+.sol{display:none;font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--sage);margin-left:4px}
+.sol.show{display:inline}
+.mcq{padding:11px 0;border-bottom:1px dotted var(--line)}
+.mcq:last-child{border-bottom:none}
+.mcq .stem{font-size:16px;margin-bottom:7px}
+.mcq .stem .qn{margin-right:6px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border:1px solid var(--line);border-radius:9px;cursor:pointer;background:var(--paper);font-size:15px;transition:.15s;user-select:none}
+.opt:hover{border-color:var(--burgundy);background:#fff}
+.opt input{accent-color:var(--burgundy);margin:0}
+.opt.right{border-color:var(--sage);background:var(--sage-bg)}
+.opt.wrong{border-color:var(--clay);background:var(--clay-bg)}
+.opt.miss{border-color:var(--sage);border-style:dashed}
+.match{display:grid;grid-template-columns:1fr 1fr;gap:10px 26px;margin:6px 0}
+.match .ml{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px dotted var(--line);font-size:15.5px;flex-wrap:wrap}
+.match select{font-family:"Instrument Sans",sans-serif;font-size:14.5px;padding:5px 7px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink)}
+.match select.right{border-color:var(--sage);background:var(--sage-bg)}
+.match select.wrong{border-color:var(--clay);background:var(--clay-bg)}
+.ex-foot{display:flex;align-items:center;gap:12px;margin-top:16px;flex-wrap:wrap}
+.btn{font-family:"Instrument Sans",sans-serif;font-weight:600;font-size:14.5px;padding:9px 18px;border-radius:9px;border:1px solid var(--burgundy);background:var(--burgundy);color:var(--paper);cursor:pointer;transition:.18s}
+.btn:hover{background:var(--burgundy-2);border-color:var(--burgundy-2)}
+.btn.ghost{background:transparent;color:var(--burgundy)}
+.btn.ghost:hover{background:var(--paper-2);color:var(--burgundy)}
+.fb{font-family:"JetBrains Mono",monospace;font-size:13px;font-weight:700;padding:5px 10px;border-radius:8px;display:none}
+.fb.show{display:inline-block}
+.fb.good{background:var(--sage-bg);color:var(--sage)}
+.fb.partial{background:var(--clay-bg);color:var(--clay)}
+
+.reading{background:#fffdf8;border:1px solid var(--line);border-radius:var(--r);padding:24px 26px;margin:18px 0;box-shadow:var(--shadow);font-size:16.5px;line-height:1.7}
+.reading h4{font-family:"Fraunces",serif;font-size:20px;margin:0 0 4px}
+.reading .by{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--gold);margin-bottom:14px}
+.reading p{max-width:none}
+.reading .hl{background:rgba(180,134,47,.18);padding:0 2px;border-radius:3px}
+
+.cw-wrap{display:flex;gap:26px;flex-wrap:wrap;margin:18px 0}
+.cw-grid{display:grid;gap:0;background:var(--ink);padding:3px;border-radius:8px;box-shadow:var(--shadow);width:max-content}
+.cell{position:relative;background:var(--paper-3);width:var(--cell);height:var(--cell)}
+.cell.block{background:transparent}
+.cell input{width:100%;height:100%;border:1px solid var(--line);background:#fffdf8;text-align:center;font-family:"Fraunces",serif;font-size:18px;font-weight:600;text-transform:uppercase;color:var(--ink);padding:0;border-radius:0}
+.cell input:focus{outline:none;background:#fff;box-shadow:inset 0 0 0 2px var(--burgundy)}
+.cell input.right{background:var(--sage-bg);color:var(--sage)}
+.cell input.wrong{background:var(--clay-bg);color:var(--clay)}
+.cell .num{position:absolute;top:0;left:1px;font-family:"JetBrains Mono",monospace;font-size:9px;font-weight:700;color:var(--burgundy);line-height:1;z-index:2;pointer-events:none}
+.clues{flex:1;min-width:240px}
+.clues h4{font-family:"Fraunces",serif;font-size:16px;margin:0 0 6px;color:var(--burgundy)}
+.clues ol{margin:0 0 14px;padding-left:0;list-style:none}
+.clues li{font-size:14.5px;padding:3px 0;display:flex;gap:8px}
+.clues li b{font-family:"JetBrains Mono",monospace;color:var(--gold);min-width:18px}
+
+.selfcheck{background:#fffdf8;border:1px solid var(--line);border-radius:var(--r);padding:22px 24px;box-shadow:var(--shadow)}
+.selfcheck label{display:flex;align-items:flex-start;gap:11px;padding:8px 0;font-size:15.5px;cursor:pointer;border-bottom:1px dotted var(--line)}
+.selfcheck label:last-child{border-bottom:none}
+.selfcheck input{margin-top:5px;accent-color:var(--sage);width:17px;height:17px}
+
+footer{padding:40px 0 60px;text-align:center;color:var(--ink-soft)}
+footer .sig{font-family:"Fraunces",serif;font-style:italic;font-size:17px;color:var(--ink)}
+footer .meta{font-family:"JetBrains Mono",monospace;font-size:12px;margin-top:6px}
+
+@media(max-width:560px){
+  body{font-size:16px}
+  :root{--cell:30px}
+  .cell input{font-size:15px}
+  .match{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <span class="brand">English <b>A2</b> · Unit 2</span>
+    <div class="progress"><span id="progBar"></span></div>
+    <span class="score" id="scoreTxt">0 / 0</span>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="unit-num">02</span>
+    <span class="eyebrow">Level A2 · Coursebook</span>
+    <h1>Free Time</h1>
+    <p class="sub">Aficiones, deportes, música y cine. Aprende a decir lo que te <b>gusta</b> hacer, lo que <b>sabes</b> hacer y a usar los verbos <b>play / do / go</b> con cada actividad.</p>
+    <div class="cando">
+      <h3>By the end of this unit, I can…</h3>
+      <ul>
+        <li>talk about my hobbies and free-time activities. <span class="es">— hablar de mis aficiones</span></li>
+        <li>say what I like, love and hate doing. <span class="es">— expresar gustos con + -ing</span></li>
+        <li>say what I can and can't do. <span class="es">— hablar de habilidades</span></li>
+        <li>use <i>play / do / go</i> with sports and activities. <span class="es">— combinar los verbos correctos</span></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- ========== A: VOCABULARY ========== -->
+<section id="vocab">
+  <span class="sec-tag">Section A · Vocabulary</span>
+  <h2>Hobbies, sports &amp; more</h2>
+  <p class="lead">El vocabulario para hablar de tu tiempo libre: lo que haces, los deportes que practicas y la música y el cine que te gustan.</p>
+
+  <h3 class="lesson"><span class="n">A1</span> Free-time activities <span class="es-note" style="font-weight:400;font-size:15px">— aficiones</span></h3>
+  <div class="vgrid">
+    <div class="vcard"><div class="w">reading</div><div class="es">leer</div></div>
+    <div class="vcard"><div class="w">cooking</div><div class="es">cocinar</div></div>
+    <div class="vcard"><div class="w">dancing</div><div class="es">bailar</div></div>
+    <div class="vcard"><div class="w">drawing</div><div class="es">dibujar</div></div>
+    <div class="vcard"><div class="w">gaming</div><div class="es">jugar a videojuegos</div></div>
+    <div class="vcard"><div class="w">gardening</div><div class="es">jardinería</div></div>
+    <div class="vcard"><div class="w">singing</div><div class="es">cantar</div></div>
+    <div class="vcard"><div class="w">photography</div><div class="es">fotografía</div></div>
+  </div>
+
+  <h3 class="lesson"><span class="n">A2</span> Sports &amp; exercise <span class="es-note" style="font-weight:400;font-size:15px">— deportes</span></h3>
+  <div class="vgrid">
+    <div class="vcard"><div class="w">football</div><div class="es">fútbol</div></div>
+    <div class="vcard"><div class="w">basketball</div><div class="es">baloncesto</div></div>
+    <div class="vcard"><div class="w">tennis</div><div class="es">tenis</div></div>
+    <div class="vcard"><div class="w">swimming</div><div class="es">natación</div></div>
+    <div class="vcard"><div class="w">running</div><div class="es">correr</div></div>
+    <div class="vcard"><div class="w">cycling</div><div class="es">ciclismo</div></div>
+    <div class="vcard"><div class="w">yoga</div><div class="es">yoga</div></div>
+    <div class="vcard"><div class="w">hiking</div><div class="es">senderismo</div></div>
+  </div>
+
+  <h3 class="lesson"><span class="n">A3</span> Music &amp; film <span class="es-note" style="font-weight:400;font-size:15px">— música y cine</span></h3>
+  <div class="tbl-scroll"><table class="tbl">
+    <tr><th>Music genres</th><th>Film genres</th></tr>
+    <tr><td>rock, pop, jazz</td><td>comedy <span class="es-note">(comedia)</span></td></tr>
+    <tr><td>classical <span class="es-note">(clásica)</span></td><td>horror <span class="es-note">(terror)</span></td></tr>
+    <tr><td>hip-hop, electronic</td><td>action <span class="es-note">(acción)</span></td></tr>
+    <tr><td>guitar, piano <span class="es-note">(instruments)</span></td><td>cartoon <span class="es-note">(dibujos)</span></td></tr>
+  </table></div>
+
+  <!-- EX1 match -->
+  <div class="ex" data-ex>
+    <div class="ex-head"><span class="ex-num">EX 1</span><span class="ex-title">Which group?</span></div>
+    <p class="ex-instr">Clasifica cada palabra. <span class="es-note">Choose the correct category for each word.</span></p>
+    <div class="match" data-grader="match">
+      <div class="ml">1. tennis →
+        <select data-answer="a sport"><option value="">—</option><option>a sport</option><option>an instrument</option><option>a film genre</option></select></div>
+      <div class="ml">2. piano →
+        <select data-answer="an instrument"><option value="">—</option><option>a sport</option><option>an instrument</option><option>a music genre</option></select></div>
+      <div class="ml">3. comedy →
+        <select data-answer="a film genre"><option value="">—</option><option>a sport</option><option>a film genre</option><option>an instrument</option></select></div>
+      <div class="ml">4. jazz →
+        <select data-answer="a music genre"><option value="">—</option><option>a music genre</option><option>a film genre</option><option>a sport</option></select></div>
+      <div class="ml">5. hiking →
+        <select data-answer="a sport"><option value="">—</option><option>an instrument</option><option>a sport</option><option>a film genre</option></select></div>
+      <div class="ml">6. horror →
+        <select data-answer="a film genre"><option value="">—</option><option>a music genre</option><option>a film genre</option><option>a sport</option></select></div>
+    </div>
+    <div class="ex-foot">
+      <button class="btn" data-check>Check</button>
+      <button class="btn ghost" data-reveal>Show answers</button>
+      <span class="fb" data-fb></span>
+    </div>
+  </div>
+</section>
+
+<!-- ========== B: LIKE/LOVE/HATE + -ING ========== -->
+<section id="likes">
+  <span class="sec-tag">Section B · Grammar 1</span>
+  <h2>like / love / hate + -ing</h2>
+  <p class="lead">Para expresar gustos sobre <i>actividades</i>, usamos un verbo de gusto + el verbo terminado en <span class="eng">-ing</span>. <span class="eng">I like cooking. She loves dancing.</span></p>
+
+  <div class="tbl-scroll"><table class="tbl">
+    <tr><th>Feeling</th><th>Meaning</th><th>Example</th></tr>
+    <tr><td>love ❤️</td><td>encantar</td><td>I <span class="hl">love</span> read<span class="hl">ing</span>.</td></tr>
+    <tr><td>like 🙂</td><td>gustar</td><td>I <span class="hl">like</span> cook<span class="hl">ing</span>.</td></tr>
+    <tr><td>don't mind 😐</td><td>no importar</td><td>I <span class="hl">don't mind</span> clean<span class="hl">ing</span>.</td></tr>
+    <tr><td>don't like 🙁</td><td>no gustar</td><td>I <span class="hl">don't like</span> run<span class="hl">ing</span>.</td></tr>
+    <tr><td>hate 😣</td><td>odiar</td><td>I <span class="hl">hate</span> wait<span class="hl">ing</span>.</td></tr>
+  </table></div>
+  <div class="box warn">
+    <div class="label">Typical Spanish error</div>
+    <p style="margin:0">Tras un verbo de gusto, el segundo verbo va en <b>-ing</b>, no en infinitivo con "to" como pensarías del español. <br><span class="ok">I like swimming.</span> &nbsp; <span class="xt">I like swim.</span> &nbsp; <span class="es-note">(También existe</span> I like to swim<span class="es-note">, pero en esta unidad practicamos -ing.)</span></p>
+  </div>
+
+  <h4 style="font-family:'Fraunces',serif;margin:22px 0 6px">Spelling of the <span style="color:var(--burgundy)">-ing</span></h4>
+  <div class="tbl-scroll"><table class="tbl">
+    <tr><th>Ending</th><th>Rule</th><th>Examples</th></tr>
+    <tr><td>most verbs</td><td>+ ing</td><td>read → read<span class="hl">ing</span>, play → play<span class="hl">ing</span></td></tr>
+    <tr><td>verb + e</td><td>drop e, + ing</td><td>dance → danc<span class="hl">ing</span>, make → mak<span class="hl">ing</span>, ride → rid<span class="hl">ing</span></td></tr>
+    <tr><td>1 vowel + 1 consonant (stressed)</td><td>double the consonant</td><td>run → ru<span class="hl">nn</span>ing, swim → swi<span class="hl">mm</span>ing, sit → si<span class="hl">tt</span>ing</td></tr>
+  </table></div>
+
+  <!-- EX2 -ing spelling -->
+  <div class="ex" data-ex>
+    <div class="ex-head"><span class="ex-num">EX 2</span><span class="ex-title">Make the -ing form</span></div>
+    <p class="ex-instr">Escribe el verbo en <b>-ing</b>. <span class="es-note">Write the -ing form.</span></p>
+    <div data-grader="gap">
+      <div class="qrow"><span class="qn">1</span> cook → <input class="gap" data-answer="cooking"> <span class="sol" data-sol>cooking</span></div>
+      <div class="qrow"><span class="qn">2</span> dance → <input class="gap" data-answer="dancing"> <span class="sol" data-sol>dancing</span></div>
+      <div class="qrow"><span class="qn">3</span> run → <input class="gap" data-answer="running"> <span class="sol" data-sol>running</span></div>
+      <div class="qrow"><span class="qn">4</span> swim → <input class="gap" data-answer="swimming"> <span class="sol" data-sol>swimming</span></div>
+      <div class="qrow"><span class="qn">5</span> read → <input class="gap" data-answer="reading"> <span class="sol" data-sol>reading</span></div>
+      <div class="qrow"><span class="qn">6</span> ride → <input class="gap" data-answer="riding"> <span class="sol" data-sol>riding</span></div>
+      <div class="qrow"><span class="qn">7</span> sit → <input class="gap" data-answer="sitting"> <span class="sol" data-sol>sitting</span></div>
+      <div class="qrow"><span class="qn">8</span> play → <input class="gap" data-answer="playing"> <span class="sol" data-sol>playing</span></div>
+    </div>
+    <div class="ex-foot">
+      <button class="btn" data-check>Check</button>
+      <button class="btn ghost" data-reveal>Show answers</button>
+      <span class="fb" data-fb></span>
+    </div>
+  </div>
+
+  <!-- EX3 like + -ing gap -->
+  <div class="ex" data-ex>
+    <div class="ex-head"><span class="ex-num">EX 3</span><span class="ex-title">Say what they like</span></div>
+    <p class="ex-instr">Completa con el verbo de gusto y el verbo en <b>-ing</b>. <span class="es-note">Complete with the feeling + -ing.</span></p>
+    <div data-grader="gap">
+      <div class="qrow"><span class="qn">1</span> She ❤️ <input class="gap wide" data-answer="loves dancing"> at parties. <span class="hintword">love / dance</span> <span class="sol" data-sol>loves dancing</span></div>
+      <div class="qrow"><span class="qn">2</span> I 😣 <input class="gap wide" data-answer="hate running"> in the rain. <span class="hintword">hate / run</span> <span class="sol" data-sol>hate running</span></div>
+      <div class="qrow"><span class="qn">3</span> They 🙂 <input class="gap wide" data-answer="like cooking"> together. <span class="hintword">like / cook</span> <span class="sol" data-sol>like cooking</span></div>
+      <div class="qrow"><span class="qn">4</span> He 😐 <input class="gap wide" data-answer="doesn't mind|does not mind"> <input class="gap" data-answer="cleaning"> the house. <span class="hintword">not mind / clean</span> <span class="sol" data-sol>doesn't mind cleaning</span></div>
+      <div class="qrow"><span class="qn">5</span> We ❤️ <input class="gap wide" data-answer="love swimming"> in the sea. <span class="hintword">love / swim</span> <span class="sol" data-sol>love swimming</span></div>
+    </div>
+    <div class="ex-foot">
+      <button class="btn" data-check>Check</button>
+      <button class="btn ghost" data-reveal>Show answers</button>
+      <span class="fb" data-fb></span>
+    </div>
+  </div>
+</section>
+
+<!-- ========== C: CAN / CAN'T ========== -->
+<section id="can">
+  <span class="sec-tag">Section C · Grammar 2</span>
+  <h2>can / can't — ability</h2>
+  <p class="lead">Para hablar de lo que <i>sabes</i> o <i>puedes</i> hacer: <span class="eng">I can swim. She can't drive.</span> Es un verbo modal: fácil, porque <b>no cambia</b> con la persona.</p>
+
+  <div class="tbl-scroll"><table class="tbl">
+    <tr><th>Form</th><th>Structure</th><th>Example</th></tr>
+    <tr><td>Affirmative</td><td>can + base verb</td><td>I <span class="hl">can play</span> the guitar.</td></tr>
+    <tr><td>Negative</td><td>can't + base verb</td><td>He <span class="hl">can't swim</span>.</td></tr>
+    <tr><td>Question</td><td>Can + subject + verb?</td><td><span class="hl">Can</span> you cook?</td></tr>
+    <tr><td>Short answers</td><td>Yes, … can / No, … can't</td><td>Yes, I can. / No, I can't.</td></tr>
+  </table></div>
+  <div class="box rule">
+    <div class="label">Two golden rules</div>
+    <p style="margin:0 0 5px">1. <b>Sin -s</b> en la tercera persona: <span class="ok">She can dance.</span> <span class="xt">She cans dance.</span></p>
+    <p style="margin:0">2. <b>Verbo base</b> después (sin "to"): <span class="ok">I can swim.</span> <span class="xt">I can to swim.</span></p>
+  </div>
+
+  <!-- EX4 can/can't MCQ -->
+  <div class="ex" data-ex>
+    <div class="ex-head"><span class="ex-num">EX 4</span><span class="ex-title">Choose the correct option</span></div>
+    <p class="ex-instr">Elige la forma correcta de <i>can / can't</i>. <span class="es-note">Choose the right option.</span></p>
+    <div data-grader="mcq">
+      <div class="mcq"><div class="stem"><span class="qn">1</span> My sister ___ the piano very well.</div>
+        <div class="opts" data-correct="b">
+          <label class="opt"><input type="radio" name="c1"> can plays</label>
+          <label class="opt"><input type="radio" name="c1"> can play</label>
+          <label class="opt"><input type="radio" name="c1"> cans play</label></div></div>
+      <div class="mcq"><div class="stem"><span class="qn">2</span> ___ you ride a bike?</div>
+        <div class="opts" data-correct="a">
+          <label class="opt"><input type="radio" name="c2"> Can</label>
+          <label class="opt"><input type="radio" name="c2"> Do</label>
+          <label class="opt"><input type="radio" name="c2"> Are</label></div></div>
+      <div class="mcq"><div class="stem"><span class="qn">3</span> Sorry, I ___ come to the party.</div>
+        <div class="opts" data-correct="c">
+          <label class="opt"><input type="radio" name="c3"> don't can</label>
+          <label class="opt"><input type="radio" name="c3"> can not to</label>
+          <label class="opt"><input type="radio" name="c3"> can't</label></div></div>
+      <div class="mcq"><div class="stem"><span class="qn">4</span> "Can he cook?" — "No, he ___."</div>
+        <div class="opts" data-correct="b">
+          <label class="opt"><input type="radio" name="c4"> doesn't</label>
+          <label class="opt"><input type="radio" name="c4"> can't</label>
+          <label class="opt"><input type="radio" name="c4"> isn't</label></div></div>
+    </div>
+    <div class="ex-foot">
+      <button class="btn" data-check>Check</button>
+      <button class="btn ghost" data-reveal>Show answers</button>
+      <span class="fb" data-fb></span>
+    </div>
+  </div>
+</section>
+
+<!-- ========== D: PLAY / DO / GO ========== -->
+<section id="collocations">
+  <span class="sec-tag">Section D · Grammar 3</span>
+  <h2>play · do · go</h2>
+  <p class="lead">Tres verbos para las actividades. En español dirías "hacer deporte" para casi todo, pero el inglés elige uno u otro según la actividad. Apréndelos juntos.</p>
+
+  <div class="tbl-scroll"><table class="tbl">
+    <tr><th>Verb</th><th>Use it with…</th><th>Examples</th></tr>
+    <tr><td class="hl">play</td><td>deportes de pelota, juegos e instrumentos</td><td>play football, play tennis, play chess, play the guitar</td></tr>
+    <tr><td class="hl">do</td><td>actividades sin pelota / individuales</td><td>do yoga, do karate, do exercise</td></tr>
+    <tr><td class="hl">go</td><td>actividades terminadas en <b>-ing</b></td><td>go swimming, go running, go cycling, go hiking, go dancing</td></tr>
+  </table></div>
+  <div class="box tip">
+    <div class="label">Quick trick</div>
+    <p style="margin:0">Si la actividad acaba en <b>-ing</b>, casi siempre es <span class="eng">go</span>: <span class="eng">go swimming, go shopping, go skiing</span>. Si es un deporte con pelota o un juego, es <span class="eng">play</span>.</p>
+  </div>
+
+  <!-- EX5 play/do/go MCQ -->
+  <div class="ex" data-ex>
+    <div class="ex-head"><span class="ex-num">EX 5</span><span class="ex-title">play, do or go?</span></div>
+    <p class="ex-instr">Elige el verbo correcto. <span class="es-note">Choose play, do or go.</span></p>
+    <div data-grader="mcq">
+      <div class="mcq"><div class="stem"><span class="qn">1</span> On Sundays we ___ hiking in the mountains.</div>
+        <div class="opts" data-correct="c">
+          <label class="opt"><input type="radio" name="d1"> play</label>
+          <label class="opt"><input type="radio" name="d1"> do</label>
+          <label class="opt"><input type="radio" name="d1"> go</label></div></div>
+      <div class="mcq"><div class="stem"><span class="qn">2</span> My brother ___ basketball every week.</div>
+        <div class="opts" data-correct="a">
+          <label class="opt"><input type="radio" name="d2"> plays</label>
+          <label class="opt"><input type="radio" name="d2"> does</label>
+          <label class="opt"><input type="radio" name="d2"> goes</label></div></div>
+      <div class="mcq"><div class="stem"><span class="qn">3</span> I ___ yoga to relax.</div>
+        <div class="opts" data-correct="b">
+          <label class="opt"><input type="radio" name="d3"> play</label>
+          <label class="opt"><input type="radio" name="d3"> do</label>
+          <label class="opt"><input type="radio" name="d3"> go</label></div></div>
+      <div class="mcq"><div class="stem"><span class="qn">4</span> They ___ swimming at the beach.</div>
+        <div class="opts" data-correct="c">
+          <label class="opt"><input type="radio" name="d4"> play</label>
+          <label class="opt"><input type="radio" name="d4"> do</label>
+          <label class="opt"><input type="radio" name="d4"> go</label></div></div>
+      <div class="mcq"><div class="stem"><span class="qn">5</span> Can you ___ the guitar?</div>
+        <div class="opts" data-correct="a">
+          <label class="opt"><input type="radio" name="d5"> play</label>
+          <label class="opt"><input type="radio" name="d5"> do</label>
+          <label class="opt"><input type="radio" name="d5"> go</label></div></div>
+    </div>
+    <div class="ex-foot">
+      <button class="btn" data-check>Check</button>
+      <button class="btn ghost" data-reveal>Show answers</button>
+      <span class="fb" data-fb></span>
+    </div>
+  </div>
+</section>
+
+<!-- ========== E: READING ========== -->
+<section id="reading">
+  <span class="sec-tag">Section E · Reading</span>
+  <h2>Tom's weekend</h2>
+  <p class="lead">Lee el texto y fíjate en los gustos (<i>like/love/hate + -ing</i>), las habilidades (<i>can/can't</i>) y los verbos <i>play/do/go</i>.</p>
+
+  <div class="reading">
+    <h4>What I do at the weekend</h4>
+    <div class="by">by Tom, a student from Galway</div>
+    <p>Hi! I'm Tom and I love my weekends. On Saturday morning I always <span class="hl">go running</span> with my dad. I can't run very fast, but I really <span class="hl">like running</span> outside.</p>
+    <p>In the afternoon, my friends and I <span class="hl">play football</span> in the park. I'm not a great player — I <span class="hl">can't</span> kick the ball very well! — but it's fun. After that, I usually <span class="hl">go home</span> and <span class="hl">play</span> video games. I love <span class="hl">gaming</span>.</p>
+    <p>On Sunday it's different. My mum <span class="hl">does yoga</span> and my sister Lucy <span class="hl">plays the piano</span>. She <span class="hl">can play</span> really beautiful music. I <span class="hl">can't play</span> any instrument, but I like <span class="hl">listening</span> to her.</p>
+    <p>In the evening, we often watch a film together. My sister loves <span class="hl">horror</span> films, but I <span class="hl">hate</span> them! I prefer <span class="hl">comedy</span>. It's the perfect end to the weekend.</p>
+  </div>
+
+  <!-- EX6 reading T/F -->
+  <div class="ex" data-ex>
+    <div class="ex-head"><span class="ex-num">EX 6</span><span class="ex-title">True or False?</span></div>
+    <p class="ex-instr">Lee otra vez y decide. <span class="es-note">Read again and decide.</span></p>
+    <div data-grader="mcq">
+      <div class="mcq"><div class="stem"><span class="qn">1</span> Tom can run very fast.</div>
+        <div class="opts" data-correct="b">
+          <label class="opt"><input type="radio" name="t1"> True</label>
+          <label class="opt"><input type="radio" name="t1"> False</label></div></div>
+      <div class="mcq"><div class="stem"><span class="qn">2</span> Tom plays football with his friends.</div>
+        <div class="opts" data-correct="a">
+          <label class="opt"><input type="radio" name="t2"> True</label>
+          <label class="opt"><input type="radio" name="t2"> False</label></div></div>
+      <div class="mcq"><div class="stem"><span class="qn">3</span> Lucy can play the piano.</div>
+        <div class="opts" data-correct="a">
+          <label class="opt"><input type="radio" name="t3"> True</label>
+          <label class="opt"><input type="radio" name="t3"> False</label></div></div>
+      <div class="mcq"><div class="stem"><span class="qn">4</span> Tom can play the guitar.</div>
+        <div class="opts" data-correct="b">
+          <label class="opt"><input type="radio" name="t4"> True</label>
+          <label class="opt"><input type="radio" name="t4"> False</label></div></div>
+      <div class="mcq"><div class="stem"><span class="qn">5</span> Tom loves horror films.</div>
+        <div class="opts" data-correct="b">
+          <label class="opt"><input type="radio" name="t5"> True</label>
+          <label class="opt"><input type="radio" name="t5"> False</label></div></div>
+    </div>
+    <div class="ex-foot">
+      <button class="btn" data-check>Check</button>
+      <button class="btn ghost" data-reveal>Show answers</button>
+      <span class="fb" data-fb></span>
+    </div>
+  </div>
+</section>
+
+<!-- ========== F: CROSSWORD ========== -->
+<section id="crossword">
+  <span class="sec-tag">Section F · Vocabulary game</span>
+  <h2>Crossword: free time</h2>
+  <p class="lead">Completa el crucigrama con vocabulario de tiempo libre. Una letra por casilla. <span class="es-note">One letter per square.</span></p>
+
+  <div class="cw-wrap">
+    <div class="cw-grid" id="cwGrid" aria-label="crossword"></div>
+    <div class="clues">
+      <h4>Across →</h4>
+      <ol>
+        <li><b>2</b> A musical instrument with six strings.</li>
+        <li><b>5</b> Moving through water in a pool or the sea.</li>
+        <li><b>7</b> Playing video games.</li>
+      </ol>
+      <h4>Down ↓</h4>
+      <ol>
+        <li><b>1</b> Relaxing exercise with breathing and stretching.</li>
+        <li><b>3</b> A sport you play with a racket and a ball, on a court.</li>
+        <li><b>4</b> Walking in the countryside or the mountains.</li>
+        <li><b>5</b> Making music with your voice.</li>
+        <li><b>6</b> You listen to this — pop, rock or jazz.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="ex-foot">
+    <button class="btn" id="cwCheck">Check crossword</button>
+    <button class="btn ghost" id="cwReveal">Show answers</button>
+    <span class="fb" id="cwFb"></span>
+  </div>
+</section>
+
+<!-- ========== G: SELF CHECK ========== -->
+<section id="review" style="border-bottom:none">
+  <span class="sec-tag">Section G · Review</span>
+  <h2>Can-do check</h2>
+  <p class="lead">Marca lo que ya puedes hacer con seguridad. Si dudas, vuelve a esa sección.</p>
+  <div class="selfcheck">
+    <label><input type="checkbox"> I know vocabulary for hobbies, sports and music/film genres.</label>
+    <label><input type="checkbox"> I can use <b>like / love / hate / don't mind + -ing</b> with the correct spelling.</label>
+    <label><input type="checkbox"> I can talk about ability with <b>can</b> and <b>can't</b> (no -s, base verb).</label>
+    <label><input type="checkbox"> I can choose <b>play, do</b> or <b>go</b> with the right activity.</label>
+    <label><input type="checkbox"> I can ask and answer questions about free time.</label>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="sig">English Coursebook · Unit 2 — Free Time</div>
+    <div class="meta">Level A2 · Creado por Juan Carlos Navarro</div>
+  </div>
+</footer>
+
+<script>
+"use strict";
+
+/* ===== scoring ===== */
+const exResults=new Map();
+function refreshScore(){
+  let c=0,t=0; exResults.forEach(r=>{c+=r.correct;t+=r.total;});
+  document.getElementById('scoreTxt').textContent=c+' / '+t;
+  document.getElementById('progBar').style.width=(t?(c/t*100):0)+'%';
+}
+function commit(id,correct,total){ exResults.set(id,{correct,total}); refreshScore(); }
+
+/* ===== normalisation ===== */
+function norm(s){
+  return (s||"").toLowerCase().replace(/[’‘`´]/g,"'").replace(/\s+/g," ").replace(/[.,;:!?]+$/,"").trim();
+}
+
+/* ===== graders ===== */
+function gradeGap(ex){
+  const inputs=[...ex.querySelectorAll('[data-grader="gap"] input.gap')];
+  let correct=0;
+  inputs.forEach(inp=>{
+    const accepted=(inp.dataset.answer||"").split("|").map(norm);
+    const val=norm(inp.value);
+    const ok=val!=="" && accepted.includes(val);
+    inp.classList.remove('right','wrong'); inp.classList.add(ok?'right':'wrong');
+    if(ok) correct++;
+  });
+  return {correct,total:inputs.length};
+}
+function gradeMcq(ex){
+  const groups=[...ex.querySelectorAll('[data-grader="mcq"] .opts')];
+  let correct=0;
+  groups.forEach(g=>{
+    const labels=[...g.querySelectorAll('.opt')];
+    const ci={a:0,b:1,c:2,d:3}[g.dataset.correct];
+    labels.forEach(l=>l.classList.remove('right','wrong','miss'));
+    let chosen=-1; labels.forEach((l,i)=>{ if(l.querySelector('input').checked) chosen=i; });
+    if(chosen===ci){ labels[ci].classList.add('right'); correct++; }
+    else{ if(chosen>-1) labels[chosen].classList.add('wrong'); labels[ci].classList.add('miss'); }
+  });
+  return {correct,total:groups.length};
+}
+function gradeMatch(ex){
+  const sels=[...ex.querySelectorAll('[data-grader="match"] select')];
+  let correct=0;
+  sels.forEach(s=>{
+    const ok=norm(s.value)!=="" && norm(s.value)===norm(s.dataset.answer);
+    s.classList.remove('right','wrong'); s.classList.add(ok?'right':'wrong');
+    if(ok) correct++;
+  });
+  return {correct,total:sels.length};
+}
+
+/* ===== wire exercises ===== */
+document.querySelectorAll('[data-ex]').forEach((ex,idx)=>{
+  const id='ex'+idx;
+  const fb=ex.querySelector('[data-fb]');
+  const checkBtn=ex.querySelector('[data-check]');
+  const revealBtn=ex.querySelector('[data-reveal]');
+  let total=0;
+  if(ex.querySelector('[data-grader="gap"]')) total+=ex.querySelectorAll('[data-grader="gap"] input.gap').length;
+  if(ex.querySelector('[data-grader="mcq"]')) total+=ex.querySelectorAll('[data-grader="mcq"] .opts').length;
+  if(ex.querySelector('[data-grader="match"]')) total+=ex.querySelectorAll('[data-grader="match"] select').length;
+  commit(id,0,total);
+
+  checkBtn.addEventListener('click',()=>{
+    let correct=0,tot=0;
+    if(ex.querySelector('[data-grader="gap"]')){ const r=gradeGap(ex); correct+=r.correct; tot+=r.total; }
+    if(ex.querySelector('[data-grader="mcq"]')){ const r=gradeMcq(ex); correct+=r.correct; tot+=r.total; }
+    if(ex.querySelector('[data-grader="match"]')){ const r=gradeMatch(ex); correct+=r.correct; tot+=r.total; }
+    commit(id,correct,tot);
+    fb.className='fb show '+(correct===tot?'good':'partial');
+    fb.textContent=correct+' / '+tot+(correct===tot?'  ✓ Perfect!':'  · keep trying');
+  });
+  revealBtn.addEventListener('click',()=>{
+    ex.querySelectorAll('[data-sol]').forEach(s=>s.classList.add('show'));
+    ex.querySelectorAll('[data-grader="mcq"] .opts').forEach(g=>{
+      const ci={a:0,b:1,c:2,d:3}[g.dataset.correct];
+      const labels=[...g.querySelectorAll('.opt')];
+      labels.forEach(l=>l.classList.remove('miss'));
+      if(labels[ci]) labels[ci].classList.add('miss');
+    });
+    ex.querySelectorAll('[data-grader="match"] select').forEach(s=>{
+      [...s.options].forEach(o=>{ if(norm(o.value)===norm(s.dataset.answer)) s.value=o.value; });
+    });
+  });
+});
+
+/* ===== crossword (verified 12x9, no ghost runs) ===== */
+const SOL=[
+  ".......Y.",
+  ".......O.",
+  ".......G.",
+  "...GUITAR",
+  "..H...E..",
+  "SWIMMING.",
+  "I.K.U.N..",
+  "N.I.S.I..",
+  "G.N.I.S..",
+  "I.G.C....",
+  "N........",
+  "GAMING...",
+];
+const NUMS={"0,7":1,"3,3":2,"3,6":3,"4,2":4,"5,0":5,"5,4":6,"11,0":7};
+
+(function buildCrossword(){
+  const grid=document.getElementById('cwGrid');
+  const rows=SOL.length, cols=SOL[0].length;
+  grid.style.gridTemplateColumns='repeat('+cols+',var(--cell))';
+  grid.style.gridTemplateRows='repeat('+rows+',var(--cell))';
+  for(let r=0;r<rows;r++){
+    for(let c=0;c<cols;c++){
+      const ch=SOL[r][c];
+      const cell=document.createElement('div');
+      cell.className='cell'+(ch==='.'?' block':'');
+      if(ch!=='.'){
+        const key=r+','+c;
+        if(NUMS[key]!==undefined){
+          const n=document.createElement('span'); n.className='num'; n.textContent=NUMS[key]; cell.appendChild(n);
+        }
+        const inp=document.createElement('input');
+        inp.maxLength=1; inp.dataset.sol=ch;
+        inp.setAttribute('aria-label','row '+(r+1)+' col '+(c+1));
+        inp.addEventListener('input',function(){
+          this.classList.remove('right','wrong');
+          this.value=this.value.toUpperCase().replace(/[^A-Z]/g,'');
+          if(this.value){
+            const all=[...grid.querySelectorAll('input')];
+            const i=all.indexOf(this);
+            if(i>-1 && i+1<all.length) all[i+1].focus();
+          }
+        });
+        cell.appendChild(inp);
+      }
+      grid.appendChild(cell);
+    }
+  }
+})();
+
+(function wireCrossword(){
+  const grid=document.getElementById('cwGrid');
+  const inputs=[...grid.querySelectorAll('input')];
+  const fb=document.getElementById('cwFb');
+  commit('crossword',0,inputs.length);
+  document.getElementById('cwCheck').addEventListener('click',()=>{
+    let correct=0;
+    inputs.forEach(inp=>{
+      inp.classList.remove('right','wrong');
+      const ok=(inp.value||'').toUpperCase()===inp.dataset.sol;
+      inp.classList.add(ok?'right':'wrong'); if(ok) correct++;
+    });
+    commit('crossword',correct,inputs.length);
+    fb.className='fb show '+(correct===inputs.length?'good':'partial');
+    fb.textContent=correct+' / '+inputs.length+(correct===inputs.length?'  ✓ Solved!':'  · keep going');
+  });
+  document.getElementById('cwReveal').addEventListener('click',()=>{
+    inputs.forEach(inp=>{ inp.value=inp.dataset.sol; inp.classList.remove('wrong'); inp.classList.add('right'); });
+    commit('crossword',inputs.length,inputs.length);
+    fb.className='fb show good'; fb.textContent='Answers shown';
+  });
+})();
+
+refreshScore();
+</script>
+</body>
+</html>
