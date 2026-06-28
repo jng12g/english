@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generador de Crucigramas Aleatorios</title>
+    <title>Generador de Crucigramas</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -15,12 +15,13 @@
             padding: 20px;
             margin: 0;
         }
-        h1 {
-            color: #2c3e50;
-            margin-bottom: 10px;
+        .header-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
         }
         button {
-            background-color: #3498db;
+            background-color: #2c3e50;
             color: white;
             border: none;
             padding: 10px 20px;
@@ -28,16 +29,28 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background 0.2s;
-            margin-bottom: 20px;
         }
         button:hover {
-            background-color: #2980b9;
+            background-color: #1a252f;
+        }
+        .btn-check {
+            background-color: #27ae60;
+        }
+        .btn-check:hover {
+            background-color: #219653;
         }
         .container {
             display: flex;
             gap: 40px;
             flex-wrap: wrap;
             justify-content: center;
+            width: 100%;
+            max-width: 1400px;
+        }
+        #crossword-wrapper {
+            overflow-x: auto;
+            max-width: 100%;
+            padding: 10px;
         }
         #crossword {
             border: 2px solid #2c3e50;
@@ -46,38 +59,54 @@
             gap: 1px;
             padding: 1px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            width: max-content; /* Fuerza a que no se rompa la cuadrícula */
         }
         .cell {
-            width: 30px;
-            height: 30px;
+            width: 32px;
+            height: 32px;
             background-color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-            font-size: 16px;
-            text-transform: uppercase;
             position: relative;
-            user-select: none;
         }
         .cell.black {
             background-color: #2c3e50;
         }
+        .cell-input {
+            width: 100%;
+            height: 100%;
+            border: none;
+            outline: none;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            box-sizing: border-box;
+            background: transparent;
+            padding: 0;
+            margin: 0;
+            color: #333;
+        }
+        .cell-input:focus {
+            background-color: #e8f4f8;
+        }
         .cell-number {
             position: absolute;
-            top: 2px;
+            top: 1px;
             left: 2px;
-            font-size: 9px;
-            color: #7f8c8d;
-            font-weight: normal;
+            font-size: 10px;
+            color: #555;
+            pointer-events: none; /* Para que no interfiera al hacer clic en el input */
+            font-weight: bold;
         }
         .clues-box {
             background: white;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            min-width: 250px;
-            max-width: 400px;
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            max-height: 800px;
+            overflow-y: auto;
         }
         .clues-box h3 {
             margin-top: 0;
@@ -91,22 +120,28 @@
             margin: 0 0 20px 0;
         }
         li {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             font-size: 14px;
             line-height: 1.4;
         }
         li strong {
             color: #e74c3c;
+            display: inline-block;
+            width: 25px;
         }
     </style>
 </head>
 <body>
 
-    <h1>Crucigrama Aleatorio</h1>
-    <button onclick="generateNewCrossword()">Generar Nuevo</button>
+    <div class="header-buttons">
+        <button onclick="generateNewCrossword()">Generar Nuevo Tablero</button>
+        <button class="btn-check" onclick="checkAnswers()">Comprobar Respuestas</button>
+    </div>
 
     <div class="container">
-        <div id="crossword"></div>
+        <div id="crossword-wrapper">
+            <div id="crossword"></div>
+        </div>
         
         <div class="clues-box">
             <h3>Horizontales</h3>
@@ -118,211 +153,216 @@
     </div>
 
     <script>
-        // Banco de palabras temático (Medicina, Tecnología y General)
-        const wordBank = [
-    { word: "TIME", clue: "A period when things happen. (time sound taym)" },
-    { word: "YEAR", clue: "A period of 365 days. (year sound yir)" },
-    { word: "PEOPLE", clue: "Human beings in general. (people sound pi-pl)" },
-    { word: "WATER", clue: "The clear liquid we drink. (water sound wo-ter)" },
-    { word: "THING", clue: "An object or item. (thing sound thing)" },
-    { word: "WOMAN", clue: "An adult female human. (woman sound wu-man)" },
-    { word: "LIFE", clue: "The state of being alive. (life sound layf)" },
-    { word: "CHILD", clue: "A young human being. (child sound chayld)" },
-    { word: "WORLD", clue: "The earth and all its countries. (world sound werld)" },
-    { word: "SCHOOL", clue: "A place where children learn. (school sound skul)" },
-    { word: "FAMILY", clue: "Parents and their children. (family sound fa-mi-li)" },
-    { word: "STUDENT", clue: "A person who is learning at school. (student sound stu-dent)" },
-    { word: "GROUP", clue: "A number of people or things together. (group sound grup)" },
-    { word: "COUNTRY", clue: "A nation with its own land and government. (country sound kan-tri)" },
-    { word: "PROBLEM", clue: "A situation that needs to be solved. (problem sound prob-lem)" },
-    { word: "HAND", clue: "The part of the body at the end of the arm. (hand sound hand)" },
-    { word: "PART", clue: "A piece of a whole. (part sound part)" },
-    { word: "PLACE", clue: "A particular position or area. (place sound pleys)" },
-    { word: "CASE", clue: "A particular situation or example. (case sound keys)" },
-    { word: "WEEK", clue: "A period of seven days. (week sound wik)" },
-    { word: "COMPANY", clue: "A business organization. (company sound kom-pa-ni)" },
-    { word: "SYSTEM", clue: "A set of connected things working together. (system sound sis-tem)" },
-    { word: "PROGRAM", clue: "A planned series of future events. (program sound pro-gram)" },
-    { word: "QUESTION", clue: "A sentence worded to get information. (question sound kwes-chon)" },
-    { word: "WORK", clue: "Activity done to achieve a result. (work sound werk)" },
-    { word: "NIGHT", clue: "The period of darkness in every twenty-four hours. (night sound nayt)" },
-    { word: "POINT", clue: "An idea or opinion. (point sound poynt)" },
-    { word: "HOME", clue: "The place where one lives. (home sound hom)" },
-    { word: "ROOM", clue: "A part of a building enclosed by walls. (room sound rum)" },
-    { word: "MOTHER", clue: "A female parent. (mother sound mo-ther)" },
-    { word: "AREA", clue: "A region or part of a town. (area sound e-ri-a)" },
-    { word: "MONEY", clue: "Coins or notes used to buy things. (money sound ma-ni)" },
-    { word: "STORY", clue: "A tale about true or imagined events. (story sound sto-ri)" },
-    { word: "FACT", clue: "A thing that is known to be true. (fact sound fakt)" },
-    { word: "MONTH", clue: "A period of about four weeks. (month sound manth)" },
-    { word: "RIGHT", clue: "What is morally good and fair. (right sound rayt)" },
-    { word: "STUDY", clue: "The activity of learning about something. (study sound sta-di)" },
-    { word: "BOOK", clue: "Written pages fastened together. (book sound buk)" },
-    { word: "JOB", clue: "Paid work that someone does regularly. (job sound job)" },
-    { word: "WORD", clue: "A single element of speech or writing. (word sound werd)" },
-    { word: "BUSINESS", clue: "The activity of making or selling goods. (business sound biz-nes)" },
-    { word: "ISSUE", clue: "An important topic or problem for debate. (issue sound i-shu)" },
-    { word: "SIDE", clue: "A position to the left or right. (side sound sayd)" },
-    { word: "KIND", clue: "A class or type of similar things. (kind sound kaynd)" },
-    { word: "HEAD", clue: "The upper part of the human body. (head sound hed)" },
-    { word: "HOUSE", clue: "A building for human habitation. (house sound haus)" },
-    { word: "FRIEND", clue: "A person whom one knows and likes. (friend sound frend)" },
-    { word: "FATHER", clue: "A male parent. (father sound fa-ther)" },
-    { word: "POWER", clue: "The ability to do something or act. (power sound pa-wer)" },
-    { word: "HOUR", clue: "A period of sixty minutes. (hour sound a-wer)" },
-    { word: "GAME", clue: "An activity done for fun. (game sound geym)" },
-    { word: "LINE", clue: "A long, narrow mark or band. (line sound layn)" },
-    { word: "MEMBER", clue: "A person belonging to a group. (member sound mem-ber)" },
-    { word: "CAR", clue: "A road vehicle with four wheels. (car sound kar)" },
-    { word: "CITY", clue: "A large town. (city sound si-ti)" },
-    { word: "NAME", clue: "A word by which a person is known. (name sound neym)" },
-    { word: "TEAM", clue: "A group of players on the same side. (team sound tim)" },
-    { word: "MINUTE", clue: "A period of sixty seconds. (minute sound mi-nit)" },
-    { word: "IDEA", clue: "A thought or suggestion. (idea sound ay-di-a)" },
-    { word: "BODY", clue: "The physical structure of a person. (body sound bo-di)" },
-    { word: "PARENT", clue: "A mother or father. (parent sound pe-rent)" },
-    { word: "FACE", clue: "The front part of a person's head. (face sound feys)" },
-    { word: "OFFICE", clue: "A room or building where people work. (office sound o-fis)" },
-    { word: "DOOR", clue: "A hinged, sliding, or revolving barrier. (door sound dor)" },
-    { word: "HEALTH", clue: "The state of being free from illness. (health sound helth)" },
-    { word: "PERSON", clue: "A human being. (person sound per-son)" },
-    { word: "ART", clue: "The expression of creative skill. (art sound art)" },
-    { word: "HISTORY", clue: "The study of past events. (history sound his-to-ri)" },
-    { word: "PARTY", clue: "A social gathering of invited guests. (party sound par-ti)" },
-    { word: "RESULT", clue: "A consequence or outcome. (result sound ri-zalt)" },
-    { word: "CHANGE", clue: "The act of making or becoming different. (change sound cheynj)" },
-    { word: "MORNING", clue: "The early part of the day. (morning sound mor-ning)" },
-    { word: "REASON", clue: "A cause or explanation for an action. (reason sound ri-zon)" },
-    { word: "GIRL", clue: "A female child or young woman. (girl sound gerl)" },
-    { word: "BOY", clue: "A male child or young man. (boy sound boy)" },
-    { word: "MOMENT", clue: "A very brief period of time. (moment sound mo-ment)" },
-    { word: "AIR", clue: "The invisible gas surrounding the earth. (air sound er)" },
-    { word: "TEACHER", clue: "A person who instructs students. (teacher sound ti-cher)" },
-    { word: "FOOD", clue: "What people or animals eat. (food sound fud)" },
-    { word: "ANIMAL", clue: "A living organism that feeds on organic matter. (animal sound a-ni-mal)" },
-    { word: "BIRD", clue: "A creature with feathers and wings. (bird sound berd)" },
-    { word: "TREE", clue: "A woody plant with a tall trunk. (tree sound tri)" },
-    { word: "ROAD", clue: "A wide way leading from one place to another. (road sound rod)" },
-    { word: "BOAT", clue: "A small vessel for traveling over water. (boat sound bot)" },
-    { word: "MUSIC", clue: "Vocal or instrumental sounds combined. (music sound myu-zik)" },
-    { word: "COLOR", clue: "Different visual sensations like red, blue, or green. (color sound ko-lor)" },
-    { word: "SUN", clue: "The star around which the earth orbits. (sun sound san)" },
-    { word: "MOON", clue: "The natural satellite of the earth. (moon sound mun)" },
-    { word: "RIVER", clue: "A large natural stream of water. (river sound ri-ver)" },
-    { word: "PAPER", clue: "Material manufactured in thin sheets from wood. (paper sound pey-per)" },
-    { word: "COMPUTER", clue: "An electronic device for storing and processing data. (computer sound kom-pyu-ter)" },
-    { word: "PHONE", clue: "A device used for talking to people far away. (phone sound fon)" },
-    { word: "WINDOW", clue: "An opening in a wall to let in light. (window sound win-do)" },
-    { word: "TABLE", clue: "A piece of furniture with a flat top and legs. (table sound tey-bl)" },
-    { word: "CHAIR", clue: "A separate seat for one person. (chair sound cher)" },
-    { word: "BED", clue: "A piece of furniture for sleep or rest. (bed sound bed)" },
-    { word: "WALL", clue: "A continuous vertical brick or stone structure. (wall sound wol)" },
-    { word: "STREET", clue: "A public road in a city or town. (street sound strit)" },
-    { word: "SHOE", clue: "A covering for the foot. (shoe sound shu)" },
-    { word: "CLOTHES", clue: "Items worn to cover the body. (clothes sound kloths)" },
-    { word: "HAVE", clue: "To possess or own something. (have sound hav)" },
-    { word: "SAY", clue: "To speak words. (say sound sey)" },
-    { word: "MAKE", clue: "To form something by putting parts together. (make sound meyk)" },
-    { word: "KNOW", clue: "To be aware of through observation. (know sound no)" },
-    { word: "TAKE", clue: "To reach for and hold. (take sound teyk)" },
-    { word: "COME", clue: "To move or travel towards. (come sound kam)" },
-    { word: "THINK", clue: "To direct one's mind towards someone or something. (think sound think)" },
-    { word: "LOOK", clue: "To direct one's gaze toward someone or something. (look sound luk)" },
-    { word: "WANT", clue: "To have a desire to possess or do. (want sound wont)" },
-    { word: "GIVE", clue: "To freely transfer the possession of something. (give sound giv)" },
-    { word: "USE", clue: "To take, hold, or deploy something. (use sound yuz)" },
-    { word: "FIND", clue: "To discover or perceive by chance. (find sound faynd)" },
-    { word: "TELL", clue: "To communicate information to someone. (tell sound tel)" },
-    { word: "ASK", clue: "To say something in order to obtain an answer. (ask sound ask)" },
-    { word: "SEEM", clue: "To give the impression of being. (seem sound sim)" },
-    { word: "FEEL", clue: "To experience an emotion or sensation. (feel sound fil)" },
-    { word: "LEAVE", clue: "To go away from. (leave sound liv)" },
-    { word: "CALL", clue: "To give a name to or phone someone. (call sound kol)" },
-    { word: "NEED", clue: "To require something because it is essential. (need sound nid)" },
-    { word: "MEAN", clue: "To intend to convey or refer to. (mean sound min)" },
-    { word: "KEEP", clue: "To have or retain possession of. (keep sound kip)" },
-    { word: "BEGIN", clue: "To start performing or dealing with. (begin sound bi-gin)" },
-    { word: "HELP", clue: "To make it easier for someone to do something. (help sound help)" },
-    { word: "TALK", clue: "To speak in order to give information. (talk sound tok)" },
-    { word: "TURN", clue: "To move in a circular direction. (turn sound tern)" },
-    { word: "START", clue: "To begin doing something. (start sound start)" },
-    { word: "SHOW", clue: "To allow or cause to be visible. (show sound sho)" },
-    { word: "HEAR", clue: "To perceive with the ear. (hear sound hir)" },
-    { word: "PLAY", clue: "To engage in activity for enjoyment. (play sound pley)" },
-    { word: "RUN", clue: "To move at a speed faster than a walk. (run sound ran)" },
-    { word: "MOVE", clue: "To go in a specified direction. (move sound muv)" },
-    { word: "LIKE", clue: "To find agreeable or enjoyable. (like sound layk)" },
-    { word: "LIVE", clue: "To remain alive or have one's home in a place. (live sound liv)" },
-    { word: "HOLD", clue: "To grasp, carry, or support. (hold sound hold)" },
-    { word: "BRING", clue: "To take or go with to a place. (bring sound bring)" },
-    { word: "MUST", clue: "To be obliged to do something. (must sound mast)" },
-    { word: "WRITE", clue: "To mark letters, words, or symbols on a surface. (write sound rayt)" },
-    { word: "STOP", clue: "To come to an end or cease to happen. (stop sound stop)" },
-    { word: "READ", clue: "To look at and comprehend the meaning of written matter. (read sound rid)" },
-    { word: "OPEN", clue: "To move a door or window so as to leave a space. (open sound o-pen)" },
-    { word: "WALK", clue: "To move at a regular pace by lifting and setting down feet. (walk sound wok)" },
-    { word: "WIN", clue: "To be successful or victorious in a contest. (win sound win)" },
-    { word: "LOVE", clue: "To feel deep affection for someone. (love sound lav)" },
-    { word: "WAIT", clue: "To stay where one is or delay action. (wait sound weyt)" },
-    { word: "SEND", clue: "To cause to go or be taken to a particular destination. (send sound send)" },
-    { word: "BUILD", clue: "To construct something by putting parts together. (build sound bild)" },
-    { word: "STAY", clue: "To remain in the same place. (stay sound stey)" },
-    { word: "FALL", clue: "To move downward rapidly and without control. (fall sound fol)" },
-    { word: "CUT", clue: "To make an opening or incision with a sharp tool. (cut sound kat)" },
-    { word: "EAT", clue: "To put food into the mouth, chew, and swallow it. (eat sound it)" },
-    { word: "GOOD", clue: "To be desired or approved of. (good sound gud)" },
-    { word: "NEW", clue: "Produced, introduced, or discovered recently. (new sound nyu)" },
-    { word: "FIRST", clue: "Coming before all others in time or order. (first sound ferst)" },
-    { word: "LAST", clue: "Coming after all others in time or order. (last sound last)" },
-    { word: "LONG", clue: "Measuring a great distance from end to end. (long sound long)" },
-    { word: "GREAT", clue: "Considerably above average in ability, amount, or size. (great sound greyt)" },
-    { word: "LITTLE", clue: "Small in size, amount, or degree. (little sound li-tl)" },
-    { word: "OTHER", clue: "Used to refer to a person or thing that is different. (other sound o-ther)" },
-    { word: "OLD", clue: "Having lived for a long time; no longer young. (old sound old)" },
-    { word: "BIG", clue: "Of considerable size or extent. (big sound big)" },
-    { word: "HIGH", clue: "Of great vertical extent. (high sound hay)" },
-    { word: "SMALL", clue: "Of a size that is less than normal or usual. (small sound smol)" },
-    { word: "LARGE", clue: "Of relatively great size, extent, or capacity. (large sound larj)" },
-    { word: "NEXT", clue: "Coming immediately after the present one. (next sound nekst)" },
-    { word: "EARLY", clue: "Happening or done before the usual or expected time. (early sound er-li)" },
-    { word: "YOUNG", clue: "Having lived or existed for only a short time. (young sound yang)" },
-    { word: "BAD", clue: "Of poor quality or a low standard. (bad sound bad)" },
-    { word: "SAME", clue: "Identical; not different. (same sound seym)" },
-    { word: "ABLE", clue: "Having the power, skill, or opportunity to do something. (able sound ey-bl)" },
-    { word: "HAPPY", clue: "Feeling or showing pleasure or contentment. (happy sound ha-pi)" },
-    { word: "SAD", clue: "Feeling or showing sorrow; unhappy. (sad sound sad)" },
-    { word: "HOT", clue: "Having a high degree of heat. (hot sound hot)" },
-    { word: "COLD", clue: "Of or at a low temperature. (cold sound kold)" },
-    { word: "FAST", clue: "Moving or capable of moving at high speed. (fast sound fast)" },
-    { word: "SLOW", clue: "Moving or operating at a low speed. (slow sound slo)" },
-    { word: "HARD", clue: "Solid, firm, and rigid; not easily broken. (hard sound hard)" },
-    { word: "SOFT", clue: "Easy to mold, cut, compress, or fold. (soft sound soft)" },
-    { word: "EASY", clue: "Achieved without great effort. (easy sound i-zi)" },
-    { word: "POOR", clue: "Lacking sufficient money to live comfortably. (poor sound pur)" },
-    { word: "RICH", clue: "Having a great deal of money or assets. (rich sound rich)" },
-    { word: "VERY", clue: "In a high degree. (very sound ve-ri)" },
-    { word: "JUST", clue: "Exactly or only. (just sound jast)" },
-    { word: "ABOUT", clue: "On the subject of; concerning. (about sound a-baut)" },
-    { word: "THEN", clue: "At that time in the past or future. (then sound then)" },
-    { word: "WELL", clue: "In a good or satisfactory way. (well sound wel)" },
-    { word: "ONLY", clue: "And no one or nothing more besides. (only sound on-li)" },
-    { word: "ALWAYS", clue: "At all times; on all occasions. (always sound ol-weyz)" },
-    { word: "NEVER", clue: "At no time in the past or future. (never sound ne-ver)" },
-    { word: "OFTEN", clue: "Frequently; many times. (often sound of-en)" },
-    { word: "HERE", clue: "In, at, or to this place or position. (here sound hir)" },
-    { word: "THERE", clue: "In, at, or to that place or position. (there sound ther)" },
-    { word: "TODAY", clue: "On or in the course of this present day. (today sound tu-dey)" },
-    { word: "SOON", clue: "In or after a short time. (soon sound sun)" },
-    { word: "AWAY", clue: "To or at a distance from a particular place. (away sound a-wey)" },
-    { word: "AGAIN", clue: "Another time; once more. (again sound a-gen)" },
-    { word: "ALMOST", clue: "Not quite; very nearly. (almost sound ol-most)" },
-    { word: "ALSO", clue: "In addition; too. (also sound ol-so)" },
-    { word: "REALLY", clue: "In actual fact, as opposed to what is said. (really sound ri-li)" },
-    { word: "MAYBE", clue: "Perhaps; possibly. (maybe sound mey-bi)" },
-    { word: "TOGETHER", clue: "With or in proximity to another person or people. (together sound tu-ge-ther)" }
+        // PEGA AQUÍ TU LISTA DE 200 PALABRAS. Dejo un ejemplo corto para que funcione al abrirlo.
+ const wordBank = [
+    // Sustantivos
+    { word: "TIME", clue: "A period when things happen." },
+    { word: "YEAR", clue: "A period of 365 days." },
+    { word: "PEOPLE", clue: "Human beings in general." },
+    { word: "WATER", clue: "The clear liquid you drink." },
+    { word: "THING", clue: "An object or item." },
+    { word: "WOMAN", clue: "An adult female human." },
+    { word: "LIFE", clue: "The state of being alive." },
+    { word: "CHILD", clue: "A young human being." },
+    { word: "WORLD", clue: "The earth and all its countries." },
+    { word: "SCHOOL", clue: "A place where students learn." },
+    { word: "FAMILY", clue: "Parents and their kids." },
+    { word: "STUDENT", clue: "A person who is learning at an institution." },
+    { word: "GROUP", clue: "A number of individuals together." },
+    { word: "COUNTRY", clue: "A nation with its own land and government." },
+    { word: "PROBLEM", clue: "A situation that needs a solution." },
+    { word: "HAND", clue: "The part of the body at the end of the arm." },
+    { word: "PART", clue: "A piece of a whole." },
+    { word: "PLACE", clue: "A particular position or area." },
+    { word: "CASE", clue: "A particular situation or example." },
+    { word: "WEEK", clue: "A period of seven days." },
+    { word: "COMPANY", clue: "A business organization." },
+    { word: "SYSTEM", clue: "A set of connected things working together." },
+    { word: "PROGRAM", clue: "A planned series of future events or a computer application." },
+    { word: "QUESTION", clue: "A sentence worded to get an answer." },
+    { word: "WORK", clue: "Activity done to achieve a result or earn money." },
+    { word: "NIGHT", clue: "The period of darkness in every twenty-four hours." },
+    { word: "POINT", clue: "An idea or opinion, or a sharp end." },
+    { word: "HOME", clue: "The place where you live." },
+    { word: "ROOM", clue: "A space in a building enclosed by walls." },
+    { word: "MOTHER", clue: "A female parent." },
+    { word: "AREA", clue: "A region or part of a town." },
+    { word: "MONEY", clue: "Coins or notes used to buy items." },
+    { word: "STORY", clue: "A tale about true or imagined events." },
+    { word: "FACT", clue: "A piece of information known to be true." },
+    { word: "MONTH", clue: "A period of about four weeks." },
+    { word: "RIGHT", clue: "The opposite of left; or something morally good." },
+    { word: "STUDY", clue: "The activity of learning about a subject." },
+    { word: "BOOK", clue: "Written pages fastened together." },
+    { word: "JOB", clue: "Paid occupation that someone does regularly." },
+    { word: "WORD", clue: "A single element of speech or writing." },
+    { word: "BUSINESS", clue: "The activity of making or selling goods." },
+    { word: "ISSUE", clue: "An important topic for debate or a problem." },
+    { word: "SIDE", clue: "A position to the left or right of an object." },
+    { word: "KIND", clue: "A class or type of similar items." },
+    { word: "HEAD", clue: "The upper part of the human body containing the brain." },
+    { word: "HOUSE", clue: "A building for human habitation." },
+    { word: "FRIEND", clue: "A person you know and like." },
+    { word: "FATHER", clue: "A male parent." },
+    { word: "POWER", clue: "The ability or strength to do something." },
+    { word: "HOUR", clue: "A period of sixty minutes." },
+    { word: "GAME", clue: "An activity done for fun or sport." },
+    { word: "LINE", clue: "A long, narrow mark or band." },
+    { word: "MEMBER", clue: "A person belonging to a group or team." },
+    { word: "CAR", clue: "A road vehicle with four wheels." },
+    { word: "CITY", clue: "A large town." },
+    { word: "NAME", clue: "The title by which a person is known." },
+    { word: "TEAM", clue: "A group of players on the same side." },
+    { word: "MINUTE", clue: "A period of sixty seconds." },
+    { word: "IDEA", clue: "A thought or suggestion in the mind." },
+    { word: "BODY", clue: "The physical structure of a person or animal." },
+    { word: "PARENT", clue: "A mother or dad." },
+    { word: "FACE", clue: "The front part of a person's head." },
+    { word: "OFFICE", clue: "A room or building where employees sit at desks." },
+    { word: "DOOR", clue: "A hinged barrier used to enter a room." },
+    { word: "HEALTH", clue: "The state of being free from illness." },
+    { word: "PERSON", clue: "A single human being." },
+    { word: "ART", clue: "The expression of creative skill, like painting." },
+    { word: "HISTORY", clue: "The study of past events." },
+    { word: "PARTY", clue: "A social gathering of invited guests for fun." },
+    { word: "RESULT", clue: "A consequence or outcome of an action." },
+    { word: "CHANGE", clue: "The act of making or becoming different." },
+    { word: "MORNING", clue: "The early part of the day before noon." },
+    { word: "REASON", clue: "A cause or explanation for an action." },
+    { word: "GIRL", clue: "A female child." },
+    { word: "BOY", clue: "A male child." },
+    { word: "MOMENT", clue: "A very brief period of time." },
+    { word: "AIR", clue: "The invisible gas surrounding the earth that we breathe." },
+    { word: "TEACHER", clue: "A person who instructs in a school." },
+    { word: "FOOD", clue: "What you eat to survive." },
+    { word: "ANIMAL", clue: "A living creature that is not a plant or human." },
+    { word: "BIRD", clue: "A creature with feathers and wings that usually flies." },
+    { word: "TREE", clue: "A tall plant with a wooden trunk and leaves." },
+    { word: "ROAD", clue: "A paved way for vehicles to travel on." },
+    { word: "BOAT", clue: "A small vessel for traveling on water." },
+    { word: "MUSIC", clue: "Sounds arranged to be beautiful to listen to." },
+    { word: "COLOR", clue: "Red, blue, green, and yellow are examples of this." },
+    { word: "SUN", clue: "The bright star that gives light during the day." },
+    { word: "MOON", clue: "The white object you see in the sky at night." },
+    { word: "RIVER", clue: "A long, natural stream of moving water." },
+    { word: "PAPER", clue: "Flat material you write or draw on." },
+    { word: "COMPUTER", clue: "An electronic machine with a screen and keyboard." },
+    { word: "PHONE", clue: "A small device you use to call or text." },
+    { word: "WINDOW", clue: "A glass opening in a wall to look outside." },
+    { word: "TABLE", clue: "A piece of furniture with a flat top and legs to eat on." },
+    { word: "CHAIR", clue: "A piece of furniture designed for one person to sit on." },
+    { word: "BED", clue: "A piece of furniture where you sleep." },
+    { word: "WALL", clue: "The vertical structure that divides rooms." },
+    { word: "STREET", clue: "A public road in a city or town with houses." },
+    { word: "SHOE", clue: "Something you wear on your foot to walk outside." },
+    { word: "CLOTHES", clue: "Shirts, pants, and dresses you wear on your body." },
+
+    // Verbos
+    { word: "HAVE", clue: "To possess or own something." },
+    { word: "MAKE", clue: "To create or produce something." },
+    { word: "KNOW", clue: "To possess information in your mind." },
+    { word: "TAKE", clue: "To get into your hands or carry away." },
+    { word: "COME", clue: "To move towards the speaker or arrive." },
+    { word: "THINK", clue: "To use your brain to consider an idea." },
+    { word: "LOOK", clue: "To direct your eyes toward something to see it." },
+    { word: "WANT", clue: "To desire or wish for something." },
+    { word: "GIVE", clue: "To transfer a gift or item to someone else." },
+    { word: "USE", clue: "To operate a tool or machine for a purpose." },
+    { word: "FIND", clue: "To discover something that was lost." },
+    { word: "TELL", clue: "To communicate information to someone with words." },
+    { word: "ASK", clue: "To speak a question to get an answer." },
+    { word: "SEEM", clue: "To give the impression of being a certain way." },
+    { word: "FEEL", clue: "To experience an emotion or physical sensation." },
+    { word: "LEAVE", clue: "To go away from a place." },
+    { word: "CALL", clue: "To telephone someone or shout their name." },
+    { word: "NEED", clue: "To require something because it is essential to survive." },
+    { word: "MEAN", clue: "To intend to convey a specific definition." },
+    { word: "KEEP", clue: "To continue having or holding something." },
+    { word: "BEGIN", clue: "To start the first step of an action." },
+    { word: "HELP", clue: "To assist someone in doing a task." },
+    { word: "TALK", clue: "To speak in conversation with others." },
+    { word: "TURN", clue: "To move in a circular direction or change direction." },
+    { word: "START", clue: "To initiate an activity or turn on a machine." },
+    { word: "SHOW", clue: "To make something visible to others." },
+    { word: "HEAR", clue: "To perceive sound with your ears." },
+    { word: "PLAY", clue: "To participate in a sport or fun activity." },
+    { word: "RUN", clue: "To move your legs faster than a walk." },
+    { word: "MOVE", clue: "To change your position or location." },
+    { word: "LIVE", clue: "To reside in a house or remain alive." },
+    { word: "HOLD", clue: "To grasp or carry something in your hands." },
+    { word: "BRING", clue: "To carry something with you to a destination." },
+    { word: "MUST", clue: "To be absolutely required to do an action." },
+    { word: "WRITE", clue: "To mark letters on paper with a pen." },
+    { word: "STOP", clue: "To cease moving or doing an activity." },
+    { word: "READ", clue: "To look at and understand written words in a book." },
+    { word: "OPEN", clue: "To unclose a door, window, or box." },
+    { word: "WALK", clue: "To travel on foot at a slow pace." },
+    { word: "WIN", clue: "To achieve victory in a game or contest." },
+    { word: "LOVE", clue: "To feel deep affection for a person or thing." },
+    { word: "WAIT", clue: "To stay in one place until something happens." },
+    { word: "SEND", clue: "To dispatch a letter, email, or package to a destination." },
+    { word: "BUILD", clue: "To construct a structure by putting parts together." },
+    { word: "STAY", clue: "To remain in the exact same spot or state." },
+    { word: "FALL", clue: "To drop downward towards the ground by accident." },
+    { word: "CUT", clue: "To divide or slice something with scissors or a knife." },
+    { word: "EAT", clue: "To put a meal in your mouth, chew, and swallow." },
+
+    // Adjetivos
+    { word: "GOOD", clue: "Of high quality; morally right." },
+    { word: "NEW", clue: "Recently created or bought; not old." },
+    { word: "FIRST", clue: "Number one in a sequence or order." },
+    { word: "LAST", clue: "At the very end; after all others." },
+    { word: "LONG", clue: "Measuring a great distance from end to end." },
+    { word: "GREAT", clue: "Very good, large, or important." },
+    { word: "LITTLE", clue: "Small in size or amount." },
+    { word: "OTHER", clue: "Different from the one already mentioned." },
+    { word: "OLD", clue: "Having existed for many years; not young." },
+    { word: "BIG", clue: "Large in size or shape." },
+    { word: "HIGH", clue: "Tall or far above the ground." },
+    { word: "SMALL", clue: "Not large; tiny in dimensions." },
+    { word: "LARGE", clue: "Very big in size or capacity." },
+    { word: "NEXT", clue: "Coming immediately after this one." },
+    { word: "EARLY", clue: "Before the usual or expected time." },
+    { word: "YOUNG", clue: "In the early stage of life; not old." },
+    { word: "BAD", clue: "Of poor quality; not good." },
+    { word: "SAME", clue: "Identical; not different at all." },
+    { word: "ABLE", clue: "Having the skill or power to do a task." },
+    { word: "HAPPY", clue: "Feeling joy or pleasure; smiling." },
+    { word: "SAD", clue: "Feeling sorrow or unhappiness; crying." },
+    { word: "HOT", clue: "Having a very high temperature, like fire." },
+    { word: "COLD", clue: "Having a very low temperature, like ice." },
+    { word: "FAST", clue: "Moving at high speed; quick." },
+    { word: "SLOW", clue: "Taking a long time to move or act." },
+    { word: "HARD", clue: "Solid and rigid; difficult to break or do." },
+    { word: "SOFT", clue: "Easy to press or mold; not hard." },
+    { word: "EASY", clue: "Not difficult to do or understand." },
+    { word: "POOR", clue: "Having very little wealth or resources." },
+    { word: "RICH", clue: "Having a lot of wealth or expensive things." },
+
+    // Conectores y otros
+    { word: "VERY", clue: "Used to emphasize an adjective, meaning 'in a high degree'." },
+    { word: "JUST", clue: "Exactly; or a moment ago." },
+    { word: "ABOUT", clue: "On the subject of; or approximately." },
+    { word: "THEN", clue: "At that time in the past or next in a sequence." },
+    { word: "WELL", clue: "In a good or satisfactory manner." },
+    { word: "ONLY", clue: "Nothing or no one else besides this." },
+    { word: "ALWAYS", clue: "At all times; 100 percent of the time." },
+    { word: "NEVER", clue: "At no time; zero percent of the time." },
+    { word: "OFTEN", clue: "Frequently; happening many times." },
+    { word: "HERE", clue: "In this exact location." },
+    { word: "THERE", clue: "In that location away from the speaker." },
+    { word: "TODAY", clue: "On this present day." },
+    { word: "SOON", clue: "In a short time from now." },
+    { word: "AWAY", clue: "At a distance from a particular location." },
+    { word: "AGAIN", clue: "One more time; repeating an action." },
+    { word: "ALMOST", clue: "Very nearly, but not completely." },
+    { word: "ALSO", clue: "In addition; too." },
+    { word: "REALLY", clue: "In actual truth; used to express surprise." },
+    { word: "MAYBE", clue: "Perhaps; possibly true but not certain." },
+    { word: "TOGETHER", clue: "With another person or in a single group." }
 ];
 
-        const GRID_SIZE = 15;
+        const GRID_SIZE = 25; // Ampliado a 25 para dar más espacio a listas largas
 
         class CrosswordGenerator {
             constructor(size) {
@@ -336,15 +376,17 @@
                 this.placedWords = [];
             }
 
-            generate(words, maxAttempts = 100) {
-                // Mezclar palabras aleatoriamente
+            generate(words, maxAttempts = 200) {
+                // Ordenar por longitud (las largas primero) ayuda a crear un mejor esqueleto central
                 let availableWords = [...words].sort(() => Math.random() - 0.5);
+                availableWords.sort((a, b) => b.word.length - a.word.length);
                 
-                // Colocar la primera palabra en el centro horizontalmente
-                const first = availableWords.pop();
+                if (availableWords.length === 0) return [];
+
+                const first = availableWords.shift();
                 const startRow = Math.floor(this.size / 2);
                 const startCol = Math.floor((this.size - first.word.length) / 2);
-                this.placeWord(first, startRow, startCol, 'H', 1);
+                this.placeWord(first, startRow, startCol, 'H');
 
                 let attempts = 0;
                 while (availableWords.length > 0 && attempts < maxAttempts) {
@@ -354,7 +396,7 @@
                         const bestFit = this.findBestFit(wordObj.word);
                         
                         if (bestFit) {
-                            this.placeWord(wordObj, bestFit.row, bestFit.col, bestFit.orientation, this.placedWords.length + 1);
+                            this.placeWord(wordObj, bestFit.row, bestFit.col, bestFit.orientation);
                             availableWords.splice(i, 1);
                             wordPlaced = true;
                             break;
@@ -371,7 +413,6 @@
                 let bestIntersections = -1;
                 let bestPlacement = null;
 
-                // Probar todas las celdas y orientaciones
                 for (let r = 0; r < this.size; r++) {
                     for (let c = 0; c < this.size; c++) {
                         for (let orient of ['H', 'V']) {
@@ -385,7 +426,6 @@
                         }
                     }
                 }
-                // Exigir al menos una intersección para que tenga sentido arquitectónico
                 return bestIntersections > 0 ? bestPlacement : null;
             }
 
@@ -393,18 +433,15 @@
                 if (orientation === 'H' && col + word.length > this.size) return false;
                 if (orientation === 'V' && row + word.length > this.size) return false;
 
-                let hasIntersection = false;
-
                 for (let i = 0; i < word.length; i++) {
                     let r = row + (orientation === 'V' ? i : 0);
                     let c = col + (orientation === 'H' ? i : 0);
                     let currentCell = this.grid[r][c];
 
                     if (currentCell !== '' && currentCell !== word[i]) {
-                        return false; // Conflicto de letras
+                        return false; 
                     }
 
-                    // Comprobar celdas adyacentes paralelas para evitar colapsos de palabras pegadas
                     if (currentCell === '') {
                         if (orientation === 'H') {
                             if (r > 0 && this.grid[r-1][c] !== '') return false;
@@ -415,7 +452,6 @@
                         }
                     }
 
-                    // Comprobar extremos de la palabra para que no se pegue a otra
                     if (i === 0) {
                         if (orientation === 'H' && c > 0 && this.grid[r][c-1] !== '') return false;
                         if (orientation === 'V' && r > 0 && this.grid[r-1][c] !== '') return false;
@@ -440,7 +476,7 @@
                 return count;
             }
 
-            placeWord(wordObj, row, col, orientation, number) {
+            placeWord(wordObj, row, col, orientation) {
                 for (let i = 0; i < wordObj.word.length; i++) {
                     let r = row + (orientation === 'V' ? i : 0);
                     let c = col + (orientation === 'H' ? i : 0);
@@ -461,22 +497,31 @@
         function generateNewCrossword() {
             generator.clear();
             const result = generator.generate(wordBank);
-            renderGrid();
-            renderClues(result);
+            renderGrid(result);
         }
 
-        function renderGrid() {
+        function renderGrid(placedWords) {
             const crosswordElement = document.getElementById('crossword');
             crosswordElement.innerHTML = '';
-            crosswordElement.style.gridTemplateColumns = `repeat(${GRID_SIZE}, 30px)`;
+            crosswordElement.style.gridTemplateColumns = `repeat(${GRID_SIZE}, 32px)`;
+            crosswordElement.style.gridTemplateRows = `repeat(${GRID_SIZE}, 32px)`;
 
-            // Mapear números de pistas basados en las posiciones iniciales
+            // Ordenar las palabras de arriba a abajo y de izquierda a derecha (Regla estándar)
+            let sortedStarts = [...placedWords].sort((a, b) => {
+                if (a.row === b.row) return a.col - b.col;
+                return a.row - b.row;
+            });
+
+            // Asignar numeración cronológica estándar
             const startCells = {};
-            generator.placedWords.forEach((pw, index) => {
+            let currentNum = 1;
+            
+            sortedStarts.forEach((pw) => {
                 const key = `${pw.row}-${pw.col}`;
                 if (!startCells[key]) {
-                    startCells[key] = index + 1;
+                    startCells[key] = currentNum++;
                 }
+                pw.displayNum = startCells[key]; // Guardamos el número en el objeto de la palabra
             });
 
             for (let r = 0; r < GRID_SIZE; r++) {
@@ -487,9 +532,23 @@
                     if (generator.grid[r][c] === '') {
                         cellDiv.classList.add('black');
                     } else {
-                        cellDiv.textContent = generator.grid[r][c]; // Muestra la solución directamente
+                        // Crear el input jugable
+                        const input = document.createElement('input');
+                        input.type = 'text';
+                        input.className = 'cell-input';
+                        input.maxLength = 1;
+                        input.dataset.answer = generator.grid[r][c]; // Ocultamos la respuesta en código
                         
-                        // Si es el inicio de una palabra, añadir el identificador numérico
+                        // Autoguardado visual para que siempre se ponga en mayúscula al escribir
+                        input.addEventListener('input', function() {
+                            this.value = this.value.toUpperCase();
+                            this.style.backgroundColor = 'transparent'; // Quitar el color si corrige
+                            this.style.color = '#333';
+                        });
+
+                        cellDiv.appendChild(input);
+                        
+                        // Añadir número indicador si es el principio de una palabra
                         const key = `${r}-${c}`;
                         if (startCells[key]) {
                             const numSpan = document.createElement('span');
@@ -501,6 +560,8 @@
                     crosswordElement.appendChild(cellDiv);
                 }
             }
+
+            renderClues(placedWords);
         }
 
         function renderClues(placedWords) {
@@ -509,19 +570,12 @@
             acrossUl.innerHTML = '';
             downUl.innerHTML = '';
 
-            // Estructurar numeración real compartida por celdas iniciales comunes
-            const startCells = {};
-            let currentNum = 1;
-            
+            // Ordenar numéricamente las pistas
+            placedWords.sort((a, b) => a.displayNum - b.displayNum);
+
             placedWords.forEach((pw) => {
-                const key = `${pw.row}-${pw.col}`;
-                if (!startCells[key]) {
-                    startCells[key] = currentNum++;
-                }
-                
-                const num = startCells[key];
                 const li = document.createElement('li');
-                li.innerHTML = `<strong>${num}.</strong> ${pw.clue}`;
+                li.innerHTML = `<strong>${pw.displayNum}.</strong> ${pw.clue}`;
 
                 if (pw.orientation === 'H') {
                     acrossUl.appendChild(li);
@@ -531,7 +585,28 @@
             });
         }
 
-        // Ejecutar al cargar la página
+        // Función para validar los aciertos
+        function checkAnswers() {
+            const inputs = document.querySelectorAll('.cell-input');
+            inputs.forEach(input => {
+                const correct = input.dataset.answer;
+                const val = input.value.toUpperCase();
+                
+                if (val === '') {
+                    // Ignorar casillas en blanco
+                    input.style.backgroundColor = 'transparent';
+                    input.style.color = '#333';
+                } else if (val === correct) {
+                    input.style.backgroundColor = '#d4edda'; // Verde éxito
+                    input.style.color = '#155724';
+                } else {
+                    input.style.backgroundColor = '#f8d7da'; // Rojo error
+                    input.style.color = '#721c24';
+                }
+            });
+        }
+
+        // Iniciar en carga
         generateNewCrossword();
     </script>
 </body>
