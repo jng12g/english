@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Generador de Crucigramas Dinámico</title>
+    <style>
+        :root {
+            var(--cell-size): 32px;
+            var(--font-size-cell): 18px;
+        }
+
+        @media (max-width: 600px) {
+            :root {
+                --cell-size: 28px;
+                --font-size-cell: 16px;
+            }
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+            margin: 0;
+        }
+        
+        /* Panel de entrada personalizada */
+        .custom-input-panel {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            width: 100%;
+            max-width: 1400px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            border-left: 4px solid #3498db;
+        }
+        .custom-input-panel h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .custom-input-panel p {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin-top: 0;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+            font-family: monospace;
+            resize: vertical;
+            margin-bottom: 10px;
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+            max-width: 800px;
+        }
+        button {
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.2s;
+            flex: 1 1 auto;
+            text-align: center;
+            min-width: 140px;
+        }
+        button:hover {
+            background-color: #1a252f;
+        }
+        .btn-check { background-color: #27ae60; }
+        .btn-check:hover { background-color: #219653; }
+        .btn-index { background-color: #e74c3c; }
+        .btn-index:hover { background-color: #c0392b; }
+        .btn-generate { background-color: #3498db; }
+        .btn-generate:hover { background-color: #2980b9; }
+        
+        .btn-reveal {
+            background-color: #f39c12;
+            padding: 4px 8px;
+            font-size: 12px;
+            margin-left: 10px;
+            border-radius: 3px;
+            flex: 0 0 auto;
+            min-width: auto;
+        }
+        .btn-reveal:hover { background-color: #e67e22; }
+
+        .container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+            max-width: 1400px;
+        }
+        #crossword-wrapper {
+            overflow-x: auto;
+            max-width: 100%;
+            padding: 5px;
+            -webkit-overflow-scrolling: touch; 
+            border-radius: 4px;
+        }
+        #crossword {
+            border: 2px solid #2c3e50;
+            background-color: #2c3e50;
+            display: grid;
+            gap: 1px;
+            padding: 1px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            width: max-content; 
+        }
+        .cell {
+            width: var(--cell-size, 32px);
+            height: var(--cell-size, 32px);
+            background-color: #fff;
+            position: relative;
+        }
+        .cell.black {
+            background-color: #2c3e50;
+        }
+        .cell-input {
+            width: 100%;
+            height: 100%;
+            border: none;
+            outline: none;
+            text-align: center;
+            font-size: var(--font-size-cell, 18px);
+            font-weight: bold;
+            text-transform: uppercase;
+            box-sizing: border-box;
+            background: transparent;
+            padding: 0;
+            margin: 0;
+            color: #333;
+            transition: background-color 0.1s;
+        }
+        .cell-input.highlight-word { background-color: #e8f4f8; }
+        .cell-input.highlight-cell { background-color: #bce0fd; }
+        .cell-input.correct { background-color: #d4edda; color: #155724; }
+        .cell-input.error { background-color: #f8d7da; color: #721c24; }
+
+        .cell-number {
+            position: absolute;
+            top: 1px;
+            left: 2px;
+            font-size: 9px;
+            color: #555;
+            pointer-events: none; 
+            font-weight: bold;
+            line-height: 1;
+        }
+        .clues-box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            flex: 1;
+            min-width: 280px;
+            width: 100%;
+            max-width: 500px;
+            max-height: 60vh;
+            overflow-y: auto;
+            box-sizing: border-box;
+        }
+        .clues-box h3 {
+            margin-top: 0;
+            color: #2c3e50;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+        }
+        li {
+            margin-bottom: 12px;
+            font-size: 14px;
+            line-height: 1.4;
+            display: flex;
+            align-items: flex-start;
+        }
+        .clue-text { flex: 1; }
+        li strong {
+            color: #e74c3c;
+            display: inline-block;
+            width: 22px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="custom-input-panel">
+        <h3>Crea tu propio tablero</h3>
+        <p>Escribe tu lista de palabras. Usa el formato: <strong>PALABRA - Definición</strong>. Si lo dejas vacío, se usará el vocabulario por defecto.</p>
+        <textarea id="custom-words" placeholder="Ejemplo:
+DOG - A popular pet that barks.
+CAT - A small furry animal that meows.
+APPLE - A round fruit with red or green skin."></textarea>
+        <div style="display:flex; justify-content: flex-end;">
+            <button class="btn-generate" onclick="window.generateNewCrossword()">Generar con mi lista</button>
+        </div>
+    </div>
+
+    <div class="header-buttons">
+        <button class="btn-index" onclick="window.location.href='index.html'">Volver</button>
+        <button onclick="window.generateNewCrossword()">Tablero Aleatorio</button>
+        <button class="btn-check" onclick="window.checkAnswers()">Comprobar</button>
+    </div>
+
+    <div class="container">
+        <div id="crossword-wrapper">
+            <div id="crossword"></div>
+        </div>
+        
+        <div class="clues-box">
+            <h3>Horizontales</h3>
+            <ul id="across-clues"></ul>
+            
+            <h3>Verticales</h3>
+            <ul id="down-clues"></ul>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // Banco de respaldo (por si el usuario genera sin escribir nada)
+            const defaultWordBank = [
+                { word: "TIME", clue: "A period when things happen." },
+                { word: "YEAR", clue: "A period of 365 days." },
+                { word: "PEOPLE", clue: "Human beings in general." },
+                { word: "WATER", clue: "The clear liquid you drink." },
+                { word: "THING", clue: "An object or item." },
+                { word: "WOMAN", clue: "An adult female human." },
+                { word: "LIFE", clue: "The state of being alive." },
+                { word: "CHILD", clue: "A young human being." },
+                { word: "WORLD", clue: "The earth and all its countries." },
+                { word: "SCHOOL", clue: "A place where students learn." }
+            ];
+
+            const GRID_SIZE = 25; 
+            const MAX_WORDS = 12; 
+            let currentDir = 'H'; 
+
+            class CrosswordGenerator {
+                constructor(size) {
+                    this.size = size;
+                    this.grid = Array(size).fill(null).map(() => Array(size).fill(''));
+                    this.placedWords = [];
+                }
+
+                clear() {
+                    this.grid = Array(this.size).fill(null).map(() => Array(this.size).fill(''));
+                    this.placedWords = [];
+                }
+
+                generate(words, maxAttempts = 300) {
+                    let availableWords = [...words].sort(() => Math.random() - 0.5);
+                    if (availableWords.length === 0) return [];
+
+                    let longestIdx = 0;
+                    let maxLen = 0;
+                    for (let i = 0; i < Math.min(20, availableWords.length); i++) {
+                        if (availableWords[i].word.length > maxLen) {
+                            maxLen = availableWords[i].word.length;
+                            longestIdx = i;
+                        }
+                    }
+                    const first = availableWords.splice(longestIdx, 1)[0];
+
+                    const startRow = Math.floor(this.size / 2);
+                    const startCol = Math.floor((this.size - first.word.length) / 2);
+                    this.placeWord(first, startRow, startCol, 'H');
+
+                    let attempts = 0;
+                    while (availableWords.length > 0 && attempts < maxAttempts && this.placedWords.length < MAX_WORDS) {
+                        let wordPlaced = false;
+                        for (let i = 0; i < availableWords.length; i++) {
+                            const wordObj = availableWords[i];
+                            const bestFit = this.findBestFit(wordObj.word);
+                            
+                            if (bestFit) {
+                                this.placeWord(wordObj, bestFit.row, bestFit.col, bestFit.orientation);
+                                availableWords.splice(i, 1);
+                                wordPlaced = true;
+                                break;
+                            }
+                        }
+                        if (!wordPlaced) attempts++;
+                    }
+                    return this.placedWords;
+                }
+
+                findBestFit(word) {
+                    let bestIntersections = -1;
+                    let bestPlacement = null;
+
+                    for (let r = 0; r < this.size; r++) {
+                        for (let c = 0; c < this.size; c++) {
+                            for (let orient of ['H', 'V']) {
+                                if (this.canPlaceWord(word, r, c, orient)) {
+                                    let intersections = this.countIntersections(word, r, c, orient);
+                                    if (intersections > bestIntersections) {
+                                        bestIntersections = intersections;
+                                        bestPlacement = { row: r, col: c, orientation: orient };
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    return bestIntersections > 0 ? bestPlacement : null;
+                }
+
+                canPlaceWord(word, row, col, orientation) {
+                    if (orientation === 'H' && col + word.length > this.size) return false;
+                    if (orientation === 'V' && row + word.length > this.size) return false;
+
+                    for (let i = 0; i < word.length; i++) {
+                        let r = row + (orientation === 'V' ? i : 0);
+                        let c = col + (orientation === 'H' ? i : 0);
+                        let currentCell = this.grid[r][c];
+
+                        if (currentCell !== '' && currentCell !== word[i]) return false; 
+
+                        if (currentCell === '') {
+                            if (orientation === 'H') {
+                                if (r > 0 && this.grid[r-1][c] !== '') return false;
+                                if (r < this.size - 1 && this.grid[r+1][c] !== '') return false;
+                            } else {
+                                if (c > 0 && this.grid[r][c-1] !== '') return false;
+                                if (c < this.size - 1 && this.grid[r][c+1] !== '') return false;
+                            }
+                        }
+
+                        if (i === 0) {
+                            if (orientation === 'H' && c > 0 && this.grid[r][c-1] !== '') return false;
+                            if (orientation === 'V' && r > 0 && this.grid[r-1][c] !== '') return false;
+                        }
+                        if (i === word.length - 1) {
+                            if (orientation === 'H' && c < this.size - 1 && this.grid[r][c+1] !== '') return false;
+                            if (orientation === 'V' && r < this.size - 1 && this.grid[r+1][c] !== '') return false;
+                        }
+                    }
+                    return true;
+                }
+
+                countIntersections(word, row, col, orientation) {
+                    let count = 0;
+                    for (let i = 0; i < word.length; i++) {
+                        let r = row + (orientation === 'V' ? i : 0);
+                        let c = col + (orientation === 'H' ? i : 0);
+                        if (this.grid[r][c] === word[i]) count++;
+                    }
+                    return count;
+                }
+
+                placeWord(wordObj, row, col, orientation) {
+                    for (let i = 0; i < wordObj.word.length; i++) {
+                        let r = row + (orientation === 'V' ? i : 0);
+                        let c = col + (orientation === 'H' ? i : 0);
+                        this.grid[r][c] = wordObj.word[i];
+                    }
+                    this.placedWords.push({
+                        word: wordObj.word,
+                        clue: wordObj.clue,
+                        row: row,
+                        col: col,
+                        orientation: orientation
+                    });
+                }
+            }
+
+            const generator = new CrosswordGenerator(GRID_SIZE);
+
+            // NUEVO: Función para parsear lo que el usuario ha escrito
+            function parseCustomInput() {
+                const text = document.getElementById('custom-words').value;
+                if (!text.trim()) return defaultWordBank; // Si está vacío, usa el de defecto
+
+                const lines = text.split('\n');
+                const customBank = [];
+
+                for (let line of lines) {
+                    if (!line.trim()) continue;
+                    
+                    // Soporta separador '-' o ':'
+                    let parts = line.split('-');
+                    if (parts.length < 2) parts = line.split(':');
+                    
+                    if (parts.length >= 2) {
+                        // Limpia la palabra (quita espacios y deja solo letras mayúsculas)
+                        let rawWord = parts[0].toUpperCase();
+                        let cleanWord = rawWord.replace(/[^A-Z]/g, ''); 
+                        
+                        // Une el resto en caso de que la definición contenga guiones
+                        let clue = parts.slice(1).join('-').trim(); 
+                        
+                        if (cleanWord.length > 0) {
+                            customBank.push({ word: cleanWord, clue: clue });
+                        }
+                    }
+                }
+                
+                // Si parseó mal todo y quedó vacío, devolvemos el de defecto para no romper
+                return customBank.length > 2 ? customBank : defaultWordBank;
+            }
+
+            window.generateNewCrossword = function() {
+                const currentBank = parseCustomInput();
+                generator.clear();
+                const result = generator.generate(currentBank);
+                renderGrid(result);
+            };
+
+            function renderGrid(placedWords) {
+                const crosswordElement = document.getElementById('crossword');
+                crosswordElement.innerHTML = '';
+                crosswordElement.style.gridTemplateColumns = `repeat(${GRID_SIZE}, var(--cell-size, 32px))`;
+                crosswordElement.style.gridTemplateRows = `repeat(${GRID_SIZE}, var(--cell-size, 32px))`;
+
+                let sortedStarts = [...placedWords].sort((a, b) => {
+                    if (a.row === b.row) return a.col - b.col;
+                    return a.row - b.row;
+                });
+
+                const startCells = {};
+                let currentNum = 1;
+                
+                sortedStarts.forEach((pw) => {
+                    const key = `${pw.row}-${pw.col}`;
+                    if (!startCells[key]) startCells[key] = currentNum++;
+                    pw.displayNum = startCells[key]; 
+                });
+
+                for (let r = 0; r < GRID_SIZE; r++) {
+                    for (let c = 0; c < GRID_SIZE; c++) {
+                        const cellDiv = document.createElement('div');
+                        cellDiv.className = 'cell';
+                        
+                        if (generator.grid[r][c] === '') {
+                            cellDiv.classList.add('black');
+                        } else {
+                            const input = document.createElement('input');
+                            input.type = 'text';
+                            input.className = 'cell-input';
+                            input.maxLength = 1;
+                            input.dataset.answer = generator.grid[r][c];
+                            input.dataset.r = r;
+                            input.dataset.c = c;
+                            
+                            input.setAttribute('autocomplete', 'off');
+                            input.setAttribute('autocorrect', 'off');
+                            input.setAttribute('autocapitalize', 'characters');
+                            input.setAttribute('spellcheck', 'false');
+                            
+                            const isH = (c > 0 && generator.grid[r][c-1] !== '') || (c < GRID_SIZE - 1 && generator.grid[r][c+1] !== '');
+                            const isV = (r > 0 && generator.grid[r-1][c] !== '') || (r < GRID_SIZE - 1 && generator.grid[r+1][c] !== '');
+                            input.dataset.isH = isH;
+                            input.dataset.isV = isV;
+
+                            setupInputEvents(input, r, c, isH, isV);
+
+                            cellDiv.appendChild(input);
+                            
+                            const key = `${r}-${c}`;
+                            if (startCells[key]) {
+                                const numSpan = document.createElement('span');
+                                numSpan.className = 'cell-number';
+                                numSpan.textContent = startCells[key];
+                                cellDiv.appendChild(numSpan);
+                            }
+                        }
+                        crosswordElement.appendChild(cellDiv);
+                    }
+                }
+                renderClues(placedWords);
+            }
+
+            function setupInputEvents(input, r, c, isH, isV) {
+                input.addEventListener('click', function() {
+                    if (isH && isV) {
+                        if (window.currentActiveInput === this) {
+                            currentDir = currentDir === 'H' ? 'V' : 'H';
+                        } else if ((currentDir === 'H' && !isH) || (currentDir === 'V' && !isV)) {
+                            currentDir = isH ? 'H' : 'V';
+                        }
+                    } else {
+                        currentDir = isH ? 'H' : 'V';
+                    }
+                    window.currentActiveInput = this;
+                    highlightCurrentWord(r, c);
+                });
+
+                input.addEventListener('focus', function() {
+                    window.currentActiveInput = this;
+                    if (!isH && isV) currentDir = 'V';
+                    if (isH && !isV) currentDir = 'H';
+                    highlightCurrentWord(r, c);
+                    this.select(); 
+                });
+
+                input.addEventListener('keydown', function(e) {
+                    if (e.key === 'Backspace') {
+                        if (this.value === '') {
+                            let prevR = currentDir === 'V' ? r - 1 : r;
+                            let prevC = currentDir === 'H' ? c - 1 : c;
+                            let prevInput = document.querySelector(`.cell-input[data-r="${prevR}"][data-c="${prevC}"]`);
+                            
+                            if (prevInput && prevInput.dataset['is' + currentDir] === 'true') {
+                                e.preventDefault();
+                                prevInput.focus();
+                                prevInput.value = '';
+                                prevInput.classList.remove('correct', 'error');
+                            }
+                        } else {
+                            this.value = '';
+                            this.classList.remove('correct', 'error');
+                        }
+                    }
+                    else if (e.key.length === 1 && e.key.match(/[a-zA-Z]/)) {
+                        e.preventDefault(); 
+                        this.value = e.key.toUpperCase();
+                        this.classList.remove('correct', 'error');
+
+                        let nextR = currentDir === 'V' ? r + 1 : r;
+                        let nextC = currentDir === 'H' ? c + 1 : c;
+                        let nextInput = document.querySelector(`.cell-input[data-r="${nextR}"][data-c="${nextC}"]`);
+                        
+                        if (nextInput && nextInput.dataset['is' + currentDir] === 'true') {
+                            nextInput.focus();
+                        }
+                    }
+                });
+            }
+
+            function highlightCurrentWord(r, c) {
+                document.querySelectorAll('.cell-input').forEach(inp => {
+                    inp.classList.remove('highlight-word', 'highlight-cell');
+                });
+
+                let activeInp = document.querySelector(`.cell-input[data-r="${r}"][data-c="${c}"]`);
+                if (activeInp) activeInp.classList.add('highlight-cell');
+
+                if (currentDir === 'H') {
+                    let startC = c;
+                    while (startC > 0 && generator.grid[r][startC - 1] !== '') startC--;
+                    let currC = startC;
+                    while (currC < GRID_SIZE && generator.grid[r][currC] !== '') {
+                        if (currC !== c) {
+                            let inp = document.querySelector(`.cell-input[data-r="${r}"][data-c="${currC}"]`);
+                            if (inp) inp.classList.add('highlight-word');
+                        }
+                        currC++;
+                    }
+                } else {
+                    let startR = r;
+                    while (startR > 0 && generator.grid[startR - 1][c] !== '') startR--;
+                    let currR = startR;
+                    while (currR < GRID_SIZE && generator.grid[currR][c] !== '') {
+                        if (currR !== r) {
+                            let inp = document.querySelector(`.cell-input[data-r="${currR}"][data-c="${c}"]`);
+                            if (inp) inp.classList.add('highlight-word');
+                        }
+                        currR++;
+                    }
+                }
+            }
+
+            function renderClues(placedWords) {
+                const acrossUl = document.getElementById('across-clues');
+                const downUl = document.getElementById('down-clues');
+                acrossUl.innerHTML = '';
+                downUl.innerHTML = '';
+
+                placedWords.sort((a, b) => a.displayNum - b.displayNum);
+
+                placedWords.forEach((pw) => {
+                    const li = document.createElement('li');
+                    
+                    const spanClue = document.createElement('span');
+                    spanClue.className = 'clue-text';
+                    spanClue.innerHTML = `<strong>${pw.displayNum}.</strong> ${pw.clue}`;
+                    
+                    const btnReveal = document.createElement('button');
+                    btnReveal.className = 'btn-reveal';
+                    btnReveal.textContent = 'Revelar';
+                    btnReveal.onclick = () => window.revealWord(pw.row, pw.col, pw.orientation, pw.word);
+
+                    li.appendChild(spanClue);
+                    li.appendChild(btnReveal);
+
+                    if (pw.orientation === 'H') {
+                        acrossUl.appendChild(li);
+                    } else {
+                        downUl.appendChild(li);
+                    }
+                });
+            }
+
+            window.revealWord = function(row, col, orientation, word) {
+                for (let i = 0; i < word.length; i++) {
+                    let r = row + (orientation === 'V' ? i : 0);
+                    let c = col + (orientation === 'H' ? i : 0);
+                    let input = document.querySelector(`.cell-input[data-r="${r}"][data-c="${c}"]`);
+                    
+                    if (input) {
+                        input.value = word[i];
+                        input.classList.remove('error');
+                        input.classList.add('correct');
+                    }
+                }
+            };
+
+            window.checkAnswers = function() {
+                const inputs = document.querySelectorAll('.cell-input');
+                inputs.forEach(input => {
+                    const correct = input.dataset.answer;
+                    const val = input.value.toUpperCase();
+                    
+                    input.classList.remove('correct', 'error', 'highlight-word', 'highlight-cell');
+                    
+                    if (val !== '') {
+                        if (val === correct) {
+                            input.classList.add('correct');
+                        } else {
+                            input.classList.add('error');
+                        }
+                    }
+                });
+            };
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', window.generateNewCrossword);
+            } else {
+                window.generateNewCrossword();
+            }
+
+        })();
+    </script>
+</body>
+</html>
