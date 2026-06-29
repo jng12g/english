@@ -1,378 +1,380 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aprende inglés</title>
-<meta name="description" content="Recursos para aprender inglés: curso A2, crucigramas, gramática, vocabulario, verbos irregulares y phrasal verbs.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn English</title>
+    <meta name="description" content="Resources to learn English: A2 course, crosswords, grammar, vocabulary, irregular verbs, and phrasal verbs.">
 
-<!-- Tipografías -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-<style>
-  :root{
-    --paper:    #F5F7F2;   /* blanco con un punto de verde, fresco */
-    --card:     #FFFFFF;
-    --ink:      #16271E;   /* verde casi negro */
-    --ink-soft: #5C6C62;
-    --line:     rgba(22,39,30,.12);
-    --green:    #169B62;   /* verde de la tricolor */
-    --orange:   #FF883E;   /* naranja de la tricolor */
-    --serif: "Instrument Serif", Georgia, serif;
-    --sans: "Inter", -apple-system, system-ui, sans-serif;
-  }
+    <style>
+        :root{
+            --paper:    #F5F7F2;   /* white with a hint of green, fresh */
+            --card:     #FFFFFF;
+            --ink:      #16271E;   /* almost black green */
+            --ink-soft: #5C6C62;
+            --line:     rgba(22,39,30,.12);
+            --green:    #169B62;   /* tricolor green */
+            --orange:   #FF883E;   /* tricolor orange */
+            --serif: "Instrument Serif", Georgia, serif;
+            --sans: "Inter", -apple-system, system-ui, sans-serif;
+        }
 
-  *{ box-sizing:border-box; margin:0; padding:0; }
+        *{ box-sizing:border-box; margin:0; padding:0; }
 
-  html{ scroll-behavior:smooth; }
+        html{ scroll-behavior:smooth; }
 
-  body{
-    font-family:var(--sans);
-    background:var(--paper);
-    color:var(--ink);
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-  }
+        body{
+            font-family:var(--sans);
+            background:var(--paper);
+            color:var(--ink);
+            line-height:1.6;
+            -webkit-font-smoothing:antialiased;
+            min-height:100vh;
+            display:flex;
+            flex-direction:column;
+        }
 
-  .wrap{
-    width:100%;
-    max-width:920px;
-    margin-inline:auto;
-    padding:0 28px;
-  }
+        .wrap{
+            width:100%;
+            max-width:920px;
+            margin-inline:auto;
+            padding:0 28px;
+        }
 
-  /* ---------- Cabecera ---------- */
-  header{
-    padding-top:34px;
-  }
-  .topbar{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    border-bottom:1px solid var(--line);
-    padding-bottom:18px;
-  }
-  .wordmark{
-    font-family:var(--serif);
-    font-size:1.35rem;
-    letter-spacing:.2px;
-  }
-  .wordmark em{ font-style:italic; color:var(--green); }
+        /* ---------- Header ---------- */
+        header{
+            padding-top:34px;
+        }
+        .topbar{
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            border-bottom:1px solid var(--line);
+            padding-bottom:18px;
+        }
+        .wordmark{
+            font-family:var(--serif);
+            font-size:1.35rem;
+            letter-spacing:.2px;
+        }
+        .wordmark em{ font-style:italic; color:var(--green); }
 
-  /* Banderita irlandesa */
-  .flag{
-    display:inline-flex;
-    width:33px; height:22px;
-    border-radius:3px;
-    overflow:hidden;
-    box-shadow:0 1px 3px rgba(22,39,30,.18);
-    flex-shrink:0;
-  }
-  .flag span{ flex:1; }
-  .flag .g{ background:var(--green); }
-  .flag .w{ background:#fff; }
-  .flag .o{ background:var(--orange); }
+        /* Irish flag */
+        .flag{
+            display:inline-flex;
+            width:33px; height:22px;
+            border-radius:3px;
+            overflow:hidden;
+            box-shadow:0 1px 3px rgba(22,39,30,.18);
+            flex-shrink:0;
+        }
+        .flag span{ flex:1; }
+        .flag .g{ background:var(--green); }
+        .flag .w{ background:#fff; }
+        .flag .o{ background:var(--orange); }
 
-  /* ---------- Hero ---------- */
-  .hero{
-    padding:72px 0 18px;
-  }
-  .eyebrow{
-    font-size:.78rem;
-    font-weight:600;
-    letter-spacing:.16em;
-    text-transform:uppercase;
-    color:var(--ink-soft);
-    margin-bottom:22px;
-  }
-  .hero h1{
-    font-family:var(--serif);
-    font-weight:400;
-    font-size:clamp(2.9rem, 8vw, 5.2rem);
-    line-height:1.02;
-    letter-spacing:-.5px;
-  }
-  .hero h1 em{ font-style:italic; }
-  .hero h1 .accent{ color:var(--green); }
+        /* ---------- Hero ---------- */
+        .hero{
+            padding:72px 0 18px;
+        }
+        .eyebrow{
+            font-size:.78rem;
+            font-weight:600;
+            letter-spacing:.16em;
+            text-transform:uppercase;
+            color:var(--ink-soft);
+            margin-bottom:22px;
+        }
+        .hero h1{
+            font-family:var(--serif);
+            font-weight:400;
+            font-size:clamp(2.9rem, 8vw, 5.2rem);
+            line-height:1.02;
+            letter-spacing:-.5px;
+        }
+        .hero h1 em{ font-style:italic; }
+        .hero h1 .accent{ color:var(--green); }
 
-  /* Regla tricolor: la firma irlandesa de la página */
-  .rule{
-    display:flex;
-    width:148px; height:5px;
-    border-radius:3px;
-    overflow:hidden;
-    margin:30px 0 22px;
-  }
-  .rule span{ flex:1; }
-  .rule .g{ background:var(--green); }
-  .rule .w{ background:#E7EBE4; }
-  .rule .o{ background:var(--orange); }
+        /* Tricolor rule: Irish signature */
+        .rule{
+            display:flex;
+            width:148px; height:5px;
+            border-radius:3px;
+            overflow:hidden;
+            margin:30px 0 22px;
+        }
+        .rule span{ flex:1; }
+        .rule .g{ background:var(--green); }
+        .rule .w{ background:#E7EBE4; }
+        .rule .o{ background:var(--orange); }
 
-  .lede{
-    font-size:1.12rem;
-    color:var(--ink-soft);
-    max-width:44ch;
-  }
+        .lede{
+            font-size:1.12rem;
+            color:var(--ink-soft);
+            max-width:44ch;
+        }
 
-  /* ---------- Secciones ---------- */
-  .sections{ padding:46px 0 8px; }
-  .sections h2{
-    font-size:.78rem;
-    font-weight:600;
-    letter-spacing:.16em;
-    text-transform:uppercase;
-    color:var(--ink-soft);
-    margin-bottom:22px;
-  }
-  .grid{
-    display:grid;
-    grid-template-columns:repeat(2, 1fr);
-    gap:18px;
-  }
+        /* ---------- Sections ---------- */
+        .sections{ padding:46px 0 8px; }
+        .sections h2{
+            font-size:.78rem;
+            font-weight:600;
+            letter-spacing:.16em;
+            text-transform:uppercase;
+            color:var(--ink-soft);
+            margin-bottom:22px;
+        }
+        .grid{
+            display:grid;
+            grid-template-columns:repeat(2, 1fr);
+            gap:18px;
+        }
 
-  .card{
-    position:relative;
-    display:block;
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:14px;
-    padding:26px 26px 24px;
-    text-decoration:none;
-    color:inherit;
-    transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-    overflow:hidden;
-  }
-  /* filo verde que asoma al pasar el ratón */
-  .card::before{
-    content:"";
-    position:absolute;
-    left:0; top:0; bottom:0;
-    width:4px;
-    background:var(--green);
-    transform:scaleY(0);
-    transform-origin:top;
-    transition:transform .25s ease;
-  }
-  .card:hover,
-  .card:focus-visible{
-    transform:translateY(-4px);
-    box-shadow:0 14px 30px -18px rgba(22,39,30,.4);
-    border-color:rgba(22,39,30,.2);
-    outline:none;
-  }
-  .card:hover::before,
-  .card:focus-visible::before{ transform:scaleY(1); }
+        .card{
+            position:relative;
+            display:block;
+            background:var(--card);
+            border:1px solid var(--line);
+            border-radius:14px;
+            padding:26px 26px 24px;
+            text-decoration:none;
+            color:inherit;
+            transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+            overflow:hidden;
+        }
+        /* Green border on hover */
+        .card::before{
+            content:"";
+            position:absolute;
+            left:0; top:0; bottom:0;
+            width:4px;
+            background:var(--green);
+            transform:scaleY(0);
+            transform-origin:top;
+            transition:transform .25s ease;
+        }
+        .card:hover,
+        .card:focus-visible{
+            transform:translateY(-4px);
+            box-shadow:0 14px 30px -18px rgba(22,39,30,.4);
+            border-color:rgba(22,39,30,.2);
+            outline:none;
+        }
+        .card:hover::before,
+        .card:focus-visible::before{ transform:scaleY(1); }
 
-  .card .tag{
-    font-size:.72rem;
-    font-weight:600;
-    letter-spacing:.1em;
-    text-transform:uppercase;
-    color:var(--ink-soft);
-  }
-  .card h3{
-    font-family:var(--serif);
-    font-weight:400;
-    font-size:1.85rem;
-    line-height:1.1;
-    margin:6px 0 10px;
-  }
-  .card p{
-    font-size:.96rem;
-    color:var(--ink-soft);
-    max-width:34ch;
-  }
-  .card .go{
-    margin-top:16px;
-    font-size:.9rem;
-    font-weight:500;
-    color:var(--green);
-    display:inline-flex;
-    align-items:center;
-    gap:6px;
-  }
-  .card .go .arrow{ transition:transform .25s ease; }
-  .card:hover .go .arrow,
-  .card:focus-visible .go .arrow{ transform:translateX(4px); }
+        .card .tag{
+            font-size:.72rem;
+            font-weight:600;
+            letter-spacing:.1em;
+            text-transform:uppercase;
+            color:var(--ink-soft);
+        }
+        .card h3{
+            font-family:var(--serif);
+            font-weight:400;
+            font-size:1.85rem;
+            line-height:1.1;
+            margin:6px 0 10px;
+        }
+        .card p{
+            font-size:.96rem;
+            color:var(--ink-soft);
+            max-width:34ch;
+        }
+        .card .go{
+            margin-top:16px;
+            font-size:.9rem;
+            font-weight:500;
+            color:var(--green);
+            display:inline-flex;
+            align-items:center;
+            gap:6px;
+        }
+        .card .go .arrow{ transition:transform .25s ease; }
+        .card:hover .go .arrow,
+        .card:focus-visible .go .arrow{ transform:translateX(4px); }
 
-  /* Tarjeta "próximamente": señala que el sitio sigue creciendo */
-  .card.soon{
-    background:transparent;
-    border-style:dashed;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    cursor:default;
-  }
-  .card.soon:hover{
-    transform:none;
-    box-shadow:none;
-    border-color:var(--line);
-  }
-  .card.soon::before{ display:none; }
-  .card.soon h3{ color:var(--ink-soft); }
-  .card.soon p{ margin:0; }
+        /* Coming soon card */
+        .card.soon{
+            background:transparent;
+            border-style:dashed;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            cursor:default;
+        }
+        .card.soon:hover{
+            transform:none;
+            box-shadow:none;
+            border-color:var(--line);
+        }
+        .card.soon::before{ display:none; }
+        .card.soon h3{ color:var(--ink-soft); }
+        .card.soon p{ margin:0; }
 
-  /* ---------- Pie ---------- */
-  footer{
-    margin-top:auto;
-    padding:54px 0 40px;
-  }
-  .footer-inner{
-    border-top:1px solid var(--line);
-    padding-top:22px;
-    display:flex;
-    align-items:center;
-    gap:14px;
-    flex-wrap:wrap;
-  }
-  .footer-inner .credit{
-    font-size:.92rem;
-    color:var(--ink-soft);
-  }
-  .footer-inner .credit strong{
-    color:var(--ink);
-    font-weight:600;
-  }
+        /* ---------- Footer ---------- */
+        footer{
+            margin-top:auto;
+            padding:54px 0 40px;
+        }
+        .footer-inner{
+            border-top:1px solid var(--line);
+            padding-top:22px;
+            display:flex;
+            align-items:center;
+            gap:14px;
+            flex-wrap:wrap;
+        }
+        .footer-inner .credit{
+            font-size:.92rem;
+            color:var(--ink-soft);
+        }
+        .footer-inner .credit strong{
+            color:var(--ink);
+            font-weight:600;
+        }
 
-  /* ---------- Entrada animada ---------- */
-  .reveal{ opacity:0; transform:translateY(14px); }
-  .ready .reveal{
-    opacity:1; transform:none;
-    transition:opacity .6s ease, transform .6s ease;
-  }
-  .ready .reveal:nth-child(2){ transition-delay:.06s; }
-  .stagger > *{ opacity:0; transform:translateY(14px); }
-  .ready .stagger > *{
-    opacity:1; transform:none;
-    transition:opacity .55s ease, transform .55s ease;
-  }
-  .ready .stagger > *:nth-child(1){ transition-delay:.05s; }
-  .ready .stagger > *:nth-child(2){ transition-delay:.12s; }
-  .ready .stagger > *:nth-child(3){ transition-delay:.19s; }
-  .ready .stagger > *:nth-child(4){ transition-delay:.26s; }
-  .ready .stagger > *:nth-child(5){ transition-delay:.33s; }
-  .ready .stagger > *:nth-child(6){ transition-delay:.40s; }
-  .ready .stagger > *:nth-child(7){ transition-delay:.47s; }
+        /* ---------- Animations ---------- */
+        .reveal{ opacity:0; transform:translateY(14px); }
+        .ready .reveal{
+            opacity:1; transform:none;
+            transition:opacity .6s ease, transform .6s ease;
+        }
+        .ready .reveal:nth-child(2){ transition-delay:.06s; }
+        .stagger > *{ opacity:0; transform:translateY(14px); }
+        .ready .stagger > *{
+            opacity:1; transform:none;
+            transition:opacity .55s ease, transform .55s ease;
+        }
+        .ready .stagger > *:nth-child(1){ transition-delay:.05s; }
+        .ready .stagger > *:nth-child(2){ transition-delay:.12s; }
+        .ready .stagger > *:nth-child(3){ transition-delay:.19s; }
+        .ready .stagger > *:nth-child(4){ transition-delay:.26s; }
+        .ready .stagger > *:nth-child(5){ transition-delay:.33s; }
+        .ready .stagger > *:nth-child(6){ transition-delay:.40s; }
+        .ready .stagger > *:nth-child(7){ transition-delay:.47s; }
+        .ready .stagger > *:nth-child(8){ transition-delay:.54s; }
 
-  @media (max-width:640px){
-    .grid{ grid-template-columns:1fr; }
-    .hero{ padding:52px 0 12px; }
-    .wordmark{ font-size:1.2rem; }
-  }
+        @media (max-width:640px){
+            .grid{ grid-template-columns:1fr; }
+            .hero{ padding:52px 0 12px; }
+            .wordmark{ font-size:1.2rem; }
+        }
 
-  @media (prefers-reduced-motion:reduce){
-    *{ transition:none !important; scroll-behavior:auto; }
-    .reveal,.stagger > *{ opacity:1 !important; transform:none !important; }
-  }
-</style>
+        @media (prefers-reduced-motion:reduce){
+            *{ transition:none !important; scroll-behavior:auto; }
+            .reveal,.stagger > *{ opacity:1 !important; transform:none !important; }
+        }
+    </style>
 </head>
 <body>
 
 <header>
-  <div class="wrap">
-    <div class="topbar">
-      <span class="wordmark">Aprende <em>inglés</em></span>
-      <span class="flag" role="img" aria-label="Bandera de Irlanda">
-        <span class="g"></span><span class="w"></span><span class="o"></span>
-      </span>
+    <div class="wrap">
+        <div class="topbar">
+            <span class="wordmark">Learn <em>English</em></span>
+            <span class="flag" role="img" aria-label="Flag of Ireland">
+                <span class="g"></span><span class="w"></span><span class="o"></span>
+            </span>
+        </div>
     </div>
-  </div>
 </header>
 
 <main>
-  <section class="hero wrap">
-    <p class="eyebrow reveal">Inglés para hispanohablantes</p>
-    <h1 class="reveal">Aprende inglés<br><em class="accent">desde el español.</em></h1>
-    <div class="rule reveal" aria-hidden="true">
-      <span class="g"></span><span class="w"></span><span class="o"></span>
-    </div>
-    <p class="lede reveal">Gramática, vocabulario y práctica explicados con claridad, en tu idioma y a tu ritmo.</p>
-  </section>
+    <section class="hero wrap">
+        <p class="eyebrow reveal">English for Spanish Speakers</p>
+        <h1 class="reveal">Learn English<br><em class="accent">from Spanish.</em></h1>
+        <div class="rule reveal" aria-hidden="true">
+            <span class="g"></span><span class="w"></span><span class="o"></span>
+        </div>
+        <p class="lede reveal">Grammar, vocabulary, and practice explained clearly, in your language, and at your own pace.</p>
+    </section>
 
-  <section class="sections wrap">
-    <h2>Secciones</h2>
+    <section class="sections wrap">
+        <h2>Sections</h2>
 
-    <!-- ====================================================== -->
-    <!--  Para añadir una sección nueva: copia un bloque <a>    -->
-    <!--  cambia tag / título / texto y la carpeta del href.    -->
-    <!--  Crea esa carpeta con su index.html y listo.           -->
-    <!-- ====================================================== -->
-    <div class="grid stagger">
+        <div class="grid stagger">
 
-      <a class="card" href="grammar/index.html">
-        <span class="tag">Grammar</span>
-        <h3>Gramática</h3>
-        <p>Tiempos verbales, estructuras y reglas explicadas paso a paso.</p>
-        <span class="go">Entrar <span class="arrow">→</span></span>
-      </a>
+            <a class="card" href="grammar/index.html">
+                <span class="tag">Grammar</span>
+                <h3>Grammar</h3>
+                <p>Verb tenses, structures, and rules explained step by step.</p>
+                <span class="go">Enter <span class="arrow">→</span></span>
+            </a>
 
-      <a class="card" href="vocabulario/index.html">
-        <span class="tag">Vocabulary</span>
-        <h3>Vocabulario</h3>
-        <p>Palabras por temas, con fonética y traducción al español.</p>
-        <span class="go">Entrar <span class="arrow">→</span></span>
-      </a>
+            <a class="card" href="vocabulario/index.html">
+                <span class="tag">Vocabulary</span>
+                <h3>Vocabulary</h3>
+                <p>Words by topic, with phonetics and Spanish translation.</p>
+                <span class="go">Enter <span class="arrow">→</span></span>
+            </a>
 
-      <a class="card" href="verbos/index.html">
-        <span class="tag">verbs</span>
-        <h3>Verbos irregulares</h3>
-        <p>Listas, patrones y práctica de los verbos más usados.</p>
-        <span class="go">Entrar <span class="arrow">→</span></span>
-      </a>
+            <a class="card" href="verbos/index.html">
+                <span class="tag">Verbs</span>
+                <h3>Irregular Verbs</h3>
+                <p>Lists, patterns, and practice of the most used verbs.</p>
+                <span class="go">Enter <span class="arrow">→</span></span>
+            </a>
 
-      <a class="card" href="phrasal-verbs.html">
-        <span class="tag">Phrasal verbs</span>
-        <h3>Phrasal verbs</h3>
-        <p>Los más frecuentes, con ejemplos y significado en contexto.</p>
-        <span class="go">Entrar <span class="arrow">→</span></span>
-      </a>
-      <a class="card" href="cursoA2/index.html">
-        <span class="tag">Course A2</span>
-        <h3>Curso A2</h3>
-        <p>Un curso completo por unidades, con teoría clara y ejercicios interactivos.</p>
-        <span class="go">Entrar <span class="arrow">→</span></span>
-      </a>
+            <a class="card" href="phrasal-verbs.html">
+                <span class="tag">Phrasal verbs</span>
+                <h3>Phrasal Verbs</h3>
+                <p>The most frequent ones, with examples and meaning in context.</p>
+                <span class="go">Enter <span class="arrow">→</span></span>
+            </a>
+            
+            <a class="card" href="cursoA2/index.html">
+                <span class="tag">Course A2</span>
+                <h3>A2 Course</h3>
+                <p>A complete course by units, with clear theory and interactive exercises.</p>
+                <span class="go">Enter <span class="arrow">→</span></span>
+            </a>
 
-      <a class="card" href="crucigramas.html">
-        <span class="tag">Crosswords</span>
-        <h3>Crucigramas!</h3>
-        <p>Practica vocabulario jugando: completa, revisa y repite cuando quieras.</p>
-        <span class="go">Entrar <span class="arrow">→</span></span>
-      </a>
+            <a class="card" href="crucigramas.html">
+                <span class="tag">Crosswords</span>
+                <h3>Crosswords!</h3>
+                <p>Practice vocabulary by playing: complete, check, and repeat whenever you want.</p>
+                <span class="go">Enter <span class="arrow">→</span></span>
+            </a>
 
-      <!-- Hueco para crecer -->
-      <div class="card soon">
-        <span class="tag">Próximamente</span>
-        <h3>Más en camino</h3>
-        <p>Pronunciación, falsos amigos, conectores… el sitio sigue creciendo.</p>
-      </div>
+            <a class="card" href="crucialeatorio.html">
+                <span class="tag">Custom Game</span>
+                <h3>Create your own crossword</h3>
+                <p>Generate custom crossword puzzles using your own vocabulary lists and definitions.</p>
+                <span class="go">Enter <span class="arrow">→</span></span>
+            </a>
 
-    </div>
-  </section>
+            <div class="card soon">
+                <span class="tag">Coming Soon</span>
+                <h3>More on the way</h3>
+                <p>Pronunciation, false friends, connectors... the site keeps growing.</p>
+            </div>
+
+        </div>
+    </section>
 </main>
 
 <footer>
-  <div class="wrap">
-    <div class="footer-inner">
-      <span class="flag" role="img" aria-label="Bandera de Irlanda">
-        <span class="g"></span><span class="w"></span><span class="o"></span>
-      </span>
-      <span class="credit">Creada por <strong>Juan Carlos Navarro</strong></span>
+    <div class="wrap">
+        <div class="footer-inner">
+            <span class="flag" role="img" aria-label="Flag of Ireland">
+                <span class="g"></span><span class="w"></span><span class="o"></span>
+            </span>
+            <span class="credit">Created by <strong>Juan Carlos Navarro</strong></span>
+        </div>
     </div>
-  </div>
 </footer>
 
 <script>
-  // Activa la animación de entrada salvo que se prefiera menos movimiento.
-  window.addEventListener('load', function(){
-    document.body.classList.add('ready');
-  });
+    // Activates the entrance animation unless reduced motion is preferred.
+    window.addEventListener('load', function(){
+        document.body.classList.add('ready');
+    });
 </script>
 
 </body>
