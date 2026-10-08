@@ -1,1 +1,1094 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Listening 2">
+<meta name="description" content="100 preguntas en inglés con audio, un hueco por palabra y corrección de respuestas.">
+<meta name="theme-color" content="#10263c">
+<title>Listening 2 · 100 preguntas | Learn English</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2310263c'/%3E%3Cpath d='M8 18v-3a8 8 0 0 1 16 0v3M8 16v8m16-8v8' fill='none' stroke='%234adcc8' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
 
+<style>
+:root{color-scheme:light;--ink:#10263c;--muted:#53657a;--paper:#fff;--page:#edf2f7;--line:#d5dfeb;--accent:#00796d;--good:#126245;--bad:#a32a38;--empty:#8a5b12}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:16px;line-height:1.55;-webkit-text-size-adjust:100%;text-size-adjust:100%;padding-bottom:env(safe-area-inset-bottom)}
+button,input,select,textarea{font:inherit}
+button,a,select,input{touch-action:manipulation}
+button{cursor:pointer;min-height:44px;border-radius:9px;padding:.65rem 1rem;border:1px solid var(--line);background:var(--paper);color:var(--ink);font-weight:600}
+button:hover:not(:disabled){background:#f1f6fa;border-color:#9babbe}
+button:disabled{cursor:default;opacity:.48}
+:focus-visible{outline:3px solid #028bcb;outline-offset:3px}
+a{color:var(--accent);text-underline-offset:3px}
+[hidden]{display:none!important}
+.top{background:var(--ink);color:white}
+.top-inner{max-width:1170px;margin:auto;padding:1.1rem 1.5rem;display:flex;gap:1rem;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:.85rem}
+.brand svg{width:31px;height:31px;color:#4adcc8}
+.brand-name{font-size:1.2rem;font-weight:650;letter-spacing:-.02em}
+.brand-note{display:block;font-size:.875rem;color:#bfcfe1;font-weight:400}
+.completed{font-size:.875rem;white-space:nowrap;color:#dbe5ef}
+main{max-width:1170px;margin:1.6rem auto 2rem;padding:0 1.5rem}
+.breadcrumbs{display:flex;gap:1rem;flex-wrap:wrap;align-items:center;margin:0 0 .85rem;font-size:.9rem}
+.breadcrumbs a{display:inline-flex;align-items:center;min-height:44px}
+.navigation{display:flex;align-items:center;gap:.8rem;margin-bottom:1rem;flex-wrap:wrap}
+.navigation label{font-size:.9rem;font-weight:600}
+.navigation select{background:white;border:1px solid var(--line);padding:.6rem 2rem .6rem .75rem;border-radius:8px;min-height:44px;min-width:166px}
+.position{margin-left:auto;font-variant-numeric:tabular-nums;color:var(--muted);font-size:.95rem}
+.workspace{display:grid;grid-template-columns:minmax(0,1fr) 325px;gap:1.25rem;align-items:start}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:15px;box-shadow:0 5px 24px #20394f06}
+.exercise{padding:1.7rem}
+.exercise-head{display:flex;justify-content:space-between;gap:1rem;align-items:flex-start;margin-bottom:1.2rem}
+h1{font-size:1.8rem;line-height:1.2;letter-spacing:-.035em;margin:0 0 .35rem}
+.category{color:var(--muted);font-size:.95rem;margin:0}
+.count{font-size:.9rem;background:#e8f5f2;color:#075d54;border-radius:7px;padding:.35rem .6rem;white-space:nowrap}
+.audio-area{padding:1.15rem;background:#f1f5f9;border-radius:11px}
+audio{width:100%;height:46px;display:block}
+.audio-tools{display:flex;align-items:center;flex-wrap:wrap;gap:.75rem;margin-top:.75rem}
+.audio-tools button{min-height:39px;padding:.4rem .8rem;background:white;font-size:.9rem}
+.audio-tools .listen{background:var(--accent);color:white;border-color:var(--accent)}
+.audio-tools .listen:hover{background:#00685e}
+.field-nav{display:flex;gap:.65rem;flex-wrap:wrap;align-items:center;margin-top:.6rem}
+.field-nav button{min-height:44px;font-size:.9rem;flex:1;padding:.55rem .6rem}
+.field-position{font-size:.85rem;color:var(--muted);min-width:100%;text-align:center;font-variant-numeric:tabular-nums}
+.speed{display:flex;align-items:center;gap:.45rem;font-size:.875rem;color:var(--muted)}
+.speed select{border:1px solid #bac9d8;background:white;border-radius:6px;padding:.4rem .35rem;min-height:39px;color:var(--ink)}
+.loop{font-size:.9rem;display:flex;gap:.4rem;align-items:center;margin-left:auto}
+.loop input{width:17px;height:17px;accent-color:var(--accent)}
+.duration{font-size:.875rem;color:var(--muted);margin-top:.35rem;text-align:right;font-variant-numeric:tabular-nums}
+.instruction{margin:1.5rem 0 1.1rem;font-size:.95rem;color:var(--muted)}
+.instruction strong{color:var(--ink);font-weight:600}
+.words{display:grid;grid-template-columns:repeat(auto-fill,minmax(6.3rem,1fr));gap:1rem .7rem}
+.word-field{min-width:0;position:relative;display:block}
+.word-number{display:block;font-size:.8rem;color:#60738a;margin-bottom:.35rem;letter-spacing:.06em;font-variant-numeric:tabular-nums}
+.word-input{width:100%;height:44px;background:#f7f9fc;border:1px solid #d6dfeb;border-bottom:2px solid #9bafc3;border-radius:6px 6px 3px 3px;text-align:center;padding:.4rem .35rem;color:var(--ink);min-width:0;font-size:1rem}
+.word-field.good .word-input{background:#eaf7ef;border-color:#93c7a9;border-bottom-color:var(--good);color:#105336}
+.word-field.bad .word-input{background:#fff0f2;border-color:#e7b1b9;border-bottom-color:var(--bad);color:#942230}
+.word-field.empty .word-input{background:#fff7e9;border-color:#e9d1a4;border-bottom-color:var(--empty)}
+.word-state{display:block;height:1rem;font-size:.75rem;margin-top:.25rem;line-height:1.2;color:var(--muted)}
+.good .word-state{color:var(--good)}
+.bad .word-state{color:var(--bad)}
+.empty .word-state{color:var(--empty)}
+.punctuation{position:absolute;right:3px;top:39px;color:var(--muted);pointer-events:none}
+.actions{display:flex;align-items:center;flex-wrap:wrap;gap:.7rem;margin-top:1.25rem}
+.primary{background:var(--accent);color:white;border-color:var(--accent)}
+.primary:hover:not(:disabled){background:#00685e;border-color:#00685e}
+.text-button{font-weight:500;background:transparent;border-color:transparent;padding:.55rem .4rem}
+.text-button:hover:not(:disabled){background:#eef4f8;border-color:transparent}
+.notes{color:var(--muted);font-size:.875rem;margin:.8rem 0 0}
+.result{margin-top:1.3rem;border-top:1px solid var(--line);padding-top:1rem}
+.result-title{font-size:1.1rem;font-weight:650;margin:0 0 .35rem}
+.result-caption{color:var(--muted);font-size:.9rem;margin:.3rem 0 .9rem}
+.table-scroll{width:100%;overflow-x:auto}
+table{width:100%;border-collapse:collapse;text-align:left;font-size:.9rem}
+th{color:var(--muted);font-size:.85rem;font-weight:600;padding:.55rem .35rem;border-bottom:1px solid var(--line)}
+td{padding:.6rem .35rem;border-bottom:1px solid #e8edf3;vertical-align:top;overflow-wrap:anywhere}
+td.original-answer{color:var(--bad)}
+td.expected-answer{color:var(--good);font-weight:600}
+td:last-child{font-size:.85rem;color:var(--muted)}
+.transcript{background:#eaf5f2;border-left:3px solid var(--accent);padding:.9rem 1rem;margin:1rem 0 0;border-radius:0 8px 8px 0}
+.transcript p{margin:0;font-size:1.05rem}
+.transcript-label{font-size:.8rem!important;color:#35695f;margin-bottom:.35rem!important}
+.bottom-nav{display:flex;justify-content:space-between;gap:1rem;margin-top:1.3rem}
+.analysis{padding:1.3rem}
+h2{font-size:1.15rem;line-height:1.3;margin:0 0 .65rem;letter-spacing:-.02em}
+.analysis p{font-size:.9rem;color:var(--muted);margin:.6rem 0 1rem}
+.analysis .prepare{width:100%;font-size:.9rem;margin-bottom:.85rem}
+.analysis label{font-size:.875rem;color:var(--muted)}
+.analysis textarea{width:100%;min-height:250px;resize:vertical;background:#f7f9fc;border:1px solid #bdcddd;border-radius:8px;padding:.8rem;margin:.4rem 0 .7rem;font-size:.875rem;line-height:1.5;color:var(--ink)}
+.analysis .copy{width:100%;font-size:.9rem}
+.chat-link{display:block;text-align:center;margin-top:.85rem;font-size:.9rem}
+.status{font-size:.875rem;color:var(--muted);min-height:1.5rem;margin:.6rem 0 0;overflow-wrap:anywhere}
+.analysis .status{margin:.7rem 0 0}
+.footer{color:var(--muted);font-size:.8rem;margin-top:1.2rem;text-align:center}
+.audio-error{color:var(--bad);font-size:.9rem;margin-top:.65rem}
+@media(max-width:900px){.workspace{grid-template-columns:1fr}.analysis textarea{min-height:210px}.analysis{margin-top:.2rem}.analysis .prepare,.analysis .copy{max-width:360px;display:block}.chat-link{text-align:left}}
+@media(max-width:540px){.top-inner{padding:1rem}.brand-name{font-size:1.08rem}.brand-note{font-size:.8rem}.completed{font-size:.8rem}.brand svg{width:25px;height:25px}main{padding:0 .85rem;margin-top:1.1rem}.exercise{padding:1.15rem}.exercise-head{gap:.4rem}h1{font-size:1.5rem}.count{font-size:.8rem}.navigation{gap:.5rem}.navigation label{font-size:.875rem}.navigation select{min-width:145px}.position{font-size:.85rem}.words{grid-template-columns:repeat(auto-fill,minmax(5.8rem,1fr));gap:.85rem .55rem}.loop{margin-left:0}.audio-area{padding:.75rem}.audio-tools{gap:.55rem}.actions{gap:.3rem}.actions button{font-size:.9rem}.analysis{padding:1.15rem}.bottom-nav button{font-size:.9rem;padding:.6rem .8rem}}
+@media(pointer:coarse){button,.audio-tools button,.speed select{min-height:44px}.loop{min-height:44px;padding:.3rem}.loop input{width:22px;height:22px}.word-input{height:48px;font-size:16px}.navigation select,.speed select,.analysis textarea{font-size:16px}.analysis textarea{-webkit-user-select:text;user-select:text}.chat-link{padding:.65rem 0;min-height:44px}.punctuation{top:41px}}
+@media(max-width:430px){.words{grid-template-columns:repeat(3,minmax(0,1fr))}.word-input{font-size:16px}.top-inner{gap:.5rem;flex-wrap:wrap}.audio-tools .listen{flex:1}.audio-tools .loop{width:100%}.navigation select{max-width:100%}.analysis textarea{font-size:16px}}
+@media(orientation:landscape) and (pointer:coarse){main{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(safe-area-inset-right))}.top-inner{padding-left:max(1rem,env(safe-area-inset-left));padding-right:max(1rem,env(safe-area-inset-right))}}
+@media(prefers-reduced-motion:no-preference){button,input{transition:background-color .12s,border-color .12s}}
+</style>
+</head>
+
+<body>
+<header class="top">
+ <div class="top-inner">
+  <div class="brand">
+   <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7 19v-4a9 9 0 0 1 18 0v4M7 17v8m18-8v8" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>
+   <div class="brand-name">Listening 2<span class="brand-note">100 preguntas · Dictado</span></div>
+  </div>
+  <div class="completed" id="completed">0 / 100 corregidas</div>
+ </div>
+</header>
+
+<main>
+ <nav class="breadcrumbs" aria-label="Navegación de la sección">
+  <a href="index.html">← Volver a Listening</a>
+  <a href="../index.html">Inicio</a>
+ </nav>
+
+ <nav class="navigation" aria-label="Elegir pregunta">
+  <label for="exercise-select">Ir a la pregunta</label>
+  <select id="exercise-select"></select>
+  <div class="position" id="position">001 / 100</div>
+ </nav>
+
+ <div class="workspace">
+  <section class="card exercise" aria-labelledby="exercise-title">
+   <div class="exercise-head">
+    <div>
+     <h1 id="exercise-title">Pregunta 001</h1>
+     <p class="category" id="category"></p>
+    </div>
+    <div class="count" id="word-count"></div>
+   </div>
+
+   <div class="audio-area">
+    <audio id="audio" controls preload="metadata" playsinline webkit-playsinline aria-label="Audio de la pregunta"></audio>
+    <div class="audio-tools">
+     <button type="button" class="listen" id="listen">Escuchar</button>
+     <button type="button" id="replay">Repetir audio</button>
+
+     <label class="speed" for="speed">
+      Velocidad
+      <select id="speed">
+       <option value="0.5">0,5×</option>
+       <option value="0.75">0,75×</option>
+       <option value="1" selected>1×</option>
+       <option value="1.25">1,25×</option>
+      </select>
+     </label>
+
+     <label class="loop">
+      <input type="checkbox" id="loop"> En bucle
+     </label>
+    </div>
+
+    <div class="duration" id="duration"></div>
+    <div id="audio-error" class="audio-error" role="alert" hidden></div>
+   </div>
+
+   <p class="instruction">
+    <strong>Escribe una palabra en cada hueco.</strong>
+    Las contracciones cuentan como una palabra: haven’t, I’m, didn’t…
+   </p>
+
+   <form id="dictation-form" autocomplete="off">
+    <div class="words" id="words"></div>
+
+    <div class="field-nav" aria-label="Moverse entre los huecos">
+     <button type="button" id="field-previous">Hueco anterior</button>
+     <button type="button" id="field-next">Siguiente hueco</button>
+     <span class="field-position" id="field-position"></span>
+    </div>
+
+    <div class="actions">
+     <button type="submit" class="primary" id="check">Corregir</button>
+     <button type="button" id="retry">Volver a intentar</button>
+     <button type="button" class="text-button" id="show-transcript" aria-expanded="false" aria-controls="transcript">Ver transcripción</button>
+    </div>
+   </form>
+
+   <p class="notes">
+    Mayúsculas y puntuación no afectan a la corrección. Los apóstrofos sí.
+    Espacio, Tab o Intro: siguiente hueco. En el último, Intro corrige.
+   </p>
+
+   <div class="result" id="result" hidden aria-live="polite">
+    <p class="result-title" id="result-title"></p>
+    <p class="result-caption" id="result-caption"></p>
+
+    <div class="table-scroll" id="error-table-wrap">
+     <table aria-label="Diferencias entre tus respuestas y la transcripción">
+      <thead>
+       <tr>
+        <th>Hueco</th>
+        <th>Tu respuesta</th>
+        <th>Correcto</th>
+        <th>Diferencia</th>
+       </tr>
+      </thead>
+      <tbody id="error-rows"></tbody>
+     </table>
+    </div>
+   </div>
+
+   <div class="transcript" id="transcript" hidden>
+    <p class="transcript-label">Transcripción original</p>
+    <p id="transcript-text"></p>
+   </div>
+
+   <div class="bottom-nav">
+    <button type="button" id="previous">Anterior</button>
+    <button type="button" id="next">Siguiente</button>
+   </div>
+
+   <div class="status" id="exercise-status" role="status"></div>
+  </section>
+
+  <aside class="card analysis" aria-labelledby="analysis-title">
+   <h2 id="analysis-title">Analiza tus fallos en ChatGPT</h2>
+   <p>Prepara el texto, cópialo y pégalo en ChatGPT para pedir explicaciones sobre esta pregunta.</p>
+
+   <button type="button" class="prepare" id="prepare">Preparar análisis</button>
+
+   <label for="analysis-text">Transcripción, respuestas y fallos</label>
+   <textarea id="analysis-text" placeholder="Al corregir, aquí aparecerán tus respuestas y las diferencias con la transcripción. Puedes editar el texto antes de copiarlo." spellcheck="false"></textarea>
+
+   <button type="button" class="primary copy" id="copy" disabled>Copiar para ChatGPT</button>
+   <a class="chat-link" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">Abrir ChatGPT</a>
+
+   <p class="status" id="copy-status" role="status"></p>
+  </aside>
+ </div>
+
+ <p class="footer">100 preguntas · Una palabra por hueco</p>
+</main>
+
+<noscript>
+ <p style="padding:1rem;font:16px system-ui">
+  Si no aparecen los huecos, abre la versión web en Safari.
+  Los dictados necesitan JavaScript para funcionar.
+ </p>
+</noscript>
+
+<script id="dictation-data" type="application/json">
+[
+{"id":1,"category":"questions","text":"How's your day going so far?","audio":"pregunta_001.mp3"},
+{"id":2,"category":"questions","text":"What time did you get up this morning?","audio":"pregunta_002.mp3"},
+{"id":3,"category":"questions","text":"Did you sleep well last night?","audio":"pregunta_003.mp3"},
+{"id":4,"category":"questions","text":"Have you had breakfast yet?","audio":"pregunta_004.mp3"},
+{"id":5,"category":"questions","text":"What do you usually have for breakfast?","audio":"pregunta_005.mp3"},
+{"id":6,"category":"questions","text":"How do you normally get to class?","audio":"pregunta_006.mp3"},
+{"id":7,"category":"questions","text":"Did it take you long to get here?","audio":"pregunta_007.mp3"},
+{"id":8,"category":"questions","text":"Is this seat taken?","audio":"pregunta_008.mp3"},
+{"id":9,"category":"questions","text":"Are you waiting for someone?","audio":"pregunta_009.mp3"},
+{"id":10,"category":"questions","text":"How long have you been waiting?","audio":"pregunta_010.mp3"},
+{"id":11,"category":"questions","text":"Would you like a cup of tea?","audio":"pregunta_011.mp3"},
+{"id":12,"category":"questions","text":"Do you take milk in your coffee?","audio":"pregunta_012.mp3"},
+{"id":13,"category":"questions","text":"Have you tried the food here before?","audio":"pregunta_013.mp3"},
+{"id":14,"category":"questions","text":"What would you recommend from the menu?","audio":"pregunta_014.mp3"},
+{"id":15,"category":"questions","text":"Are you warm enough, or shall I close the window?","audio":"pregunta_015.mp3"},
+{"id":16,"category":"questions","text":"Do you mind if I sit here?","audio":"pregunta_016.mp3"},
+{"id":17,"category":"questions","text":"What's the weather supposed to be like tomorrow?","audio":"pregunta_017.mp3"},
+{"id":18,"category":"questions","text":"Do you live nearby?","audio":"pregunta_018.mp3"},
+{"id":19,"category":"questions","text":"How far is it from here to your place?","audio":"pregunta_019.mp3"},
+{"id":20,"category":"questions","text":"What do you usually do after class?","audio":"pregunta_020.mp3"},
+{"id":21,"category":"questions","text":"What did you get up to yesterday?","audio":"pregunta_021.mp3"},
+{"id":22,"category":"questions","text":"Did you do anything interesting last weekend?","audio":"pregunta_022.mp3"},
+{"id":23,"category":"questions","text":"Where did you go on your last holiday?","audio":"pregunta_023.mp3"},
+{"id":24,"category":"questions","text":"Who did you go with?","audio":"pregunta_024.mp3"},
+{"id":25,"category":"questions","text":"How long did you stay there?","audio":"pregunta_025.mp3"},
+{"id":26,"category":"questions","text":"Was it as good as you expected?","audio":"pregunta_026.mp3"},
+{"id":27,"category":"questions","text":"Did anything go wrong while you were away?","audio":"pregunta_027.mp3"},
+{"id":28,"category":"questions","text":"Have you ever missed a flight?","audio":"pregunta_028.mp3"},
+{"id":29,"category":"questions","text":"When was the last time you went to the cinema?","audio":"pregunta_029.mp3"},
+{"id":30,"category":"questions","text":"What was the film like?","audio":"pregunta_030.mp3"},
+{"id":31,"category":"questions","text":"Have you seen any good films recently?","audio":"pregunta_031.mp3"},
+{"id":32,"category":"questions","text":"Did you manage to finish what you were working on?","audio":"pregunta_032.mp3"},
+{"id":33,"category":"questions","text":"Have you sent that email yet?","audio":"pregunta_033.mp3"},
+{"id":34,"category":"questions","text":"Did you get my message this morning?","audio":"pregunta_034.mp3"},
+{"id":35,"category":"questions","text":"What were you doing when I called?","audio":"pregunta_035.mp3"},
+{"id":36,"category":"questions","text":"Why didn't you answer your phone?","audio":"pregunta_036.mp3"},
+{"id":37,"category":"questions","text":"How did you find out about this place?","audio":"pregunta_037.mp3"},
+{"id":38,"category":"questions","text":"Have you been here before?","audio":"pregunta_038.mp3"},
+{"id":39,"category":"questions","text":"What made you decide to come to Ireland?","audio":"pregunta_039.mp3"},
+{"id":40,"category":"questions","text":"How long have you been living here?","audio":"pregunta_040.mp3"},
+{"id":41,"category":"questions","text":"What are you doing this weekend?","audio":"pregunta_041.mp3"},
+{"id":42,"category":"questions","text":"Have you got any plans for tonight?","audio":"pregunta_042.mp3"},
+{"id":43,"category":"questions","text":"Are you going out later, or are you staying in?","audio":"pregunta_043.mp3"},
+{"id":44,"category":"questions","text":"What time are you leaving tomorrow?","audio":"pregunta_044.mp3"},
+{"id":45,"category":"questions","text":"How are you going to get there?","audio":"pregunta_045.mp3"},
+{"id":46,"category":"questions","text":"Will you be back before dinner?","audio":"pregunta_046.mp3"},
+{"id":47,"category":"questions","text":"Would you rather eat here or get a takeaway?","audio":"pregunta_047.mp3"},
+{"id":48,"category":"questions","text":"Where would you go if you had a few days off?","audio":"pregunta_048.mp3"},
+{"id":49,"category":"questions","text":"Is there anything you'd like to do while you're here?","audio":"pregunta_049.mp3"},
+{"id":50,"category":"questions","text":"What are you looking forward to at the moment?","audio":"pregunta_050.mp3"},
+{"id":51,"category":"questions","text":"What kind of music do you usually listen to?","audio":"pregunta_051.mp3"},
+{"id":52,"category":"questions","text":"Which series are you watching at the moment?","audio":"pregunta_052.mp3"},
+{"id":53,"category":"questions","text":"Do you prefer watching films at home or at the cinema?","audio":"pregunta_053.mp3"},
+{"id":54,"category":"questions","text":"What's your favourite thing about living here?","audio":"pregunta_054.mp3"},
+{"id":55,"category":"questions","text":"Is there anything you miss about home?","audio":"pregunta_055.mp3"},
+{"id":56,"category":"questions","text":"What do you find most difficult about learning English?","audio":"pregunta_056.mp3"},
+{"id":57,"category":"questions","text":"How often do you get a chance to speak English?","audio":"pregunta_057.mp3"},
+{"id":58,"category":"questions","text":"Would you like to stay here a bit longer?","audio":"pregunta_058.mp3"},
+{"id":59,"category":"questions","text":"What would you do differently if you started again?","audio":"pregunta_059.mp3"},
+{"id":60,"category":"questions","text":"Do you think you'll have time to do that tomorrow?","audio":"pregunta_060.mp3"},
+{"id":61,"category":"questions","text":"Could you give me a hand with this?","audio":"pregunta_061.mp3"},
+{"id":62,"category":"questions","text":"Can you pass me that bottle, please?","audio":"pregunta_062.mp3"},
+{"id":63,"category":"questions","text":"Would you mind turning the music down a little?","audio":"pregunta_063.mp3"},
+{"id":64,"category":"questions","text":"Could you move your bag so I can sit down?","audio":"pregunta_064.mp3"},
+{"id":65,"category":"questions","text":"Do you mind if I open the window?","audio":"pregunta_065.mp3"},
+{"id":66,"category":"questions","text":"Can I borrow your charger for a minute?","audio":"pregunta_066.mp3"},
+{"id":67,"category":"questions","text":"Would you be able to pick me up from the station?","audio":"pregunta_067.mp3"},
+{"id":68,"category":"questions","text":"Could you let me know when you're ready?","audio":"pregunta_068.mp3"},
+{"id":69,"category":"questions","text":"Can you remind me to send that email later?","audio":"pregunta_069.mp3"},
+{"id":70,"category":"questions","text":"Would you mind waiting here while I check?","audio":"pregunta_070.mp3"},
+{"id":71,"category":"questions","text":"Could you show me how this works?","audio":"pregunta_071.mp3"},
+{"id":72,"category":"questions","text":"Can you tell me where the nearest bus stop is?","audio":"pregunta_072.mp3"},
+{"id":73,"category":"questions","text":"Would you happen to know what time the shop closes?","audio":"pregunta_073.mp3"},
+{"id":74,"category":"questions","text":"Could you tell me which bus goes to the town centre?","audio":"pregunta_074.mp3"},
+{"id":75,"category":"questions","text":"Do you know whether we need to book in advance?","audio":"pregunta_075.mp3"},
+{"id":76,"category":"questions","text":"Can you check if there's enough room for another person?","audio":"pregunta_076.mp3"},
+{"id":77,"category":"questions","text":"Could you explain what you mean by that?","audio":"pregunta_077.mp3"},
+{"id":78,"category":"questions","text":"Would you mind saying that again a little more slowly?","audio":"pregunta_078.mp3"},
+{"id":79,"category":"questions","text":"Can you spell your surname for me?","audio":"pregunta_079.mp3"},
+{"id":80,"category":"questions","text":"Could you tell me how much it costs altogether?","audio":"pregunta_080.mp3"},
+{"id":81,"category":"questions","text":"You haven't been waiting long, have you?","audio":"pregunta_081.mp3"},
+{"id":82,"category":"questions","text":"You know where we're going, don't you?","audio":"pregunta_082.mp3"},
+{"id":83,"category":"questions","text":"You didn't forget your keys, did you?","audio":"pregunta_083.mp3"},
+{"id":84,"category":"questions","text":"You're still coming tomorrow, aren't you?","audio":"pregunta_084.mp3"},
+{"id":85,"category":"questions","text":"You've already booked the tickets, haven't you?","audio":"pregunta_085.mp3"},
+{"id":86,"category":"questions","text":"Are you sure you don't want anything else?","audio":"pregunta_086.mp3"},
+{"id":87,"category":"questions","text":"Haven't you tried this before?","audio":"pregunta_087.mp3"},
+{"id":88,"category":"questions","text":"Didn't you say you were working tomorrow?","audio":"pregunta_088.mp3"},
+{"id":89,"category":"questions","text":"What have you been up to since we last spoke?","audio":"pregunta_089.mp3"},
+{"id":90,"category":"questions","text":"How come you decided to change your plans?","audio":"pregunta_090.mp3"},
+{"id":91,"category":"questions","text":"What are you supposed to do if the bus doesn't turn up?","audio":"pregunta_091.mp3"},
+{"id":92,"category":"questions","text":"Have you got used to the weather here yet?","audio":"pregunta_092.mp3"},
+{"id":93,"category":"questions","text":"How are you getting on with your English classes?","audio":"pregunta_093.mp3"},
+{"id":94,"category":"questions","text":"Do you feel like going for a walk before it gets dark?","audio":"pregunta_094.mp3"},
+{"id":95,"category":"questions","text":"Is there anything you'd like me to pick up on my way back?","audio":"pregunta_095.mp3"},
+{"id":96,"category":"questions","text":"Have you worked out how to get there yet?","audio":"pregunta_096.mp3"},
+{"id":97,"category":"questions","text":"Would it be all right if we met a little later?","audio":"pregunta_097.mp3"},
+{"id":98,"category":"questions","text":"What would you have done if you'd missed the last bus?","audio":"pregunta_098.mp3"},
+{"id":99,"category":"questions","text":"Do you reckon you'll be able to make it on time?","audio":"pregunta_099.mp3"},
+{"id":100,"category":"questions","text":"Is there anything else you'd like to ask me before we finish?","audio":"pregunta_100.mp3"}
+]
+</script>
+
+<script id="dictation-core">
+const DictationCore = (() => {
+ const words = text => text.trim().split(/\s+/).filter(word => /[\p{L}\p{N}]/u.test(word));
+
+ const normalise = value => String(value)
+  .normalize('NFKC')
+  .replace(/[‘’]/g, "'")
+  .trim()
+  .replace(/^[.,!?;:"“”()]+|[.,!?;:"“”()]+$/g, '')
+  .toLocaleLowerCase('en-GB');
+
+ function distance(left, right) {
+  let row = Array.from({length:right.length + 1}, (_, index) => index);
+
+  for(let i=1;i<=left.length;i++){
+   const next=[i];
+
+   for(let j=1;j<=right.length;j++){
+    next[j]=Math.min(
+     next[j-1]+1,
+     row[j]+1,
+     row[j-1]+(left[i-1]===right[j-1]?0:1)
+    );
+   }
+
+   row=next;
+  }
+
+  return row[right.length];
+ }
+
+ function compare(expectedWords, answers) {
+  const results = expectedWords.map((expected,index) => {
+   const answer=String(answers[index] || '');
+   const target=normalise(expected);
+   const actual=normalise(answer);
+
+   let type='Palabra distinta';
+
+   if(!actual) type='Sin responder';
+   else if(/\s/.test(actual)) type='Más de una palabra';
+   else if(actual===target) type='Correcto';
+   else if(actual.replace(/'/g,'')===target.replace(/'/g,'')) type='Apóstrofo';
+   else if(distance(actual,target)===1) type='Una letra distinta';
+
+   return {
+    index:index+1,
+    expected:expected,
+    answer:answer,
+    correct:type==='Correcto',
+    type:type
+   };
+  });
+
+  return {
+   results:results,
+   correct:results.filter(r=>r.correct).length,
+   total:expectedWords.length
+  };
+ }
+
+ function report(item, answers, result) {
+  const numbered=result.results.map(r=>
+   String(r.index).padStart(2,'0')+'. '+
+   (r.answer.trim()?JSON.stringify(r.answer):'[sin responder]')
+  );
+
+  const differences=result.results.filter(r=>!r.correct).map(r=>
+   'Hueco '+r.index+': escribí '+
+   (r.answer.trim()?JSON.stringify(r.answer):'[sin responder]')+
+   '; transcripción '+JSON.stringify(normalise(r.expected))+
+   '; diferencia: '+r.type+'.'
+  );
+
+  return [
+   'Actúa como profesor de inglés para un estudiante B1–B2. Estoy practicando un dictado de preguntas en inglés.',
+   '',
+   'Pregunta '+String(item.id).padStart(3,'0')+' · '+result.total+' palabras',
+   'Transcripción original: '+item.text,
+   '',
+   'MIS RESPUESTAS POR HUECO (conserva exactamente lo que escribí):',
+   numbered.join('\n'),
+   '',
+   'Comparación automática: '+result.correct+' de '+result.total+' palabras coinciden. Se ignoran mayúsculas y puntuación exterior; se conservan los apóstrofos. Cada contracción cuenta como una palabra.',
+   differences.length ? 'DIFERENCIAS:\n'+differences.join('\n') : 'No hay diferencias de palabras con la transcripción.',
+   '',
+   'Explícame en español qué he escrito mal y por qué la palabra o forma de la transcripción es la correcta en esta frase. Centra la explicación en mis diferencias, sin corregir mayúsculas ni puntuación.',
+   'Cuando sea pertinente, explica la gramática, las contracciones, los phrasal verbs y las diferencias de significado. No inventes un error de pronunciación a partir de mi respuesta escrita.',
+   'Si propones una posible confusión al escuchar (sonidos parecidos, palabras débiles, enlaces o reducciones), etiqueta la causa como [Inferencia]. La causa de mi fallo no se puede confirmar solo con este texto.',
+   'Conserva mi respuesta original en cada explicación. Si no hay errores, indícalo brevemente.'
+  ].join('\n');
+ }
+
+ return {
+  words:words,
+  normalise:normalise,
+  distance:distance,
+  compare:compare,
+  report:report
+ };
+})();
+
+globalThis.DictationCore=DictationCore;
+</script>
+
+<script id="dictation-app">
+(() => {
+ 'use strict';
+
+ const DATA=JSON.parse(document.getElementById('dictation-data').textContent);
+ const $=id=>document.getElementById(id);
+ const CATEGORIES={questions:'Preguntas'};
+
+ const states=DATA.map(item=>({
+  answers:DictationCore.words(item.text).map(()=>''),
+  result:null,
+  report:'',
+  showTranscript:false
+ }));
+
+ let current=0;
+ let focusedWord=0;
+
+ const audio=$('audio');
+ const fields=()=>Array.from($('words').querySelectorAll('input'));
+
+ function updateFieldNavigation(){
+  const inputs=fields();
+
+  focusedWord=Math.max(0,Math.min(focusedWord,inputs.length-1));
+
+  $('field-position').textContent='Hueco '+(focusedWord+1)+' de '+inputs.length;
+  $('field-previous').disabled=focusedWord===0;
+  $('field-next').disabled=focusedWord===inputs.length-1;
+ }
+
+ function focusWord(index){
+  const inputs=fields();
+
+  focusedWord=Math.max(0,Math.min(index,inputs.length-1));
+  inputs[focusedWord]?.focus();
+
+  updateFieldNavigation();
+ }
+
+ function setAudio(source){
+  audio.pause();
+  audio.src=source;
+  audio.load();
+  audio.playbackRate=Number($('speed').value);
+  audio.loop=$('loop').checked;
+ }
+
+ function playAudio(restart){
+  if(restart && audio.readyState>0){
+   try{audio.currentTime=0;}catch{}
+  }
+
+  const playing=audio.play();
+
+  if(playing && playing.catch){
+   playing.catch(()=>{
+    $('audio-error').hidden=false;
+    $('audio-error').textContent=
+     'Pulsa el botón de reproducción del reproductor para escuchar el audio.';
+   });
+  }
+ }
+
+ const optionNodes=[];
+
+ DATA.forEach((item,index)=>{
+  const option=document.createElement('option');
+
+  option.value=String(index);
+  option.textContent='Pregunta '+String(item.id).padStart(3,'0');
+
+  $('exercise-select').appendChild(option);
+  optionNodes.push(option);
+ });
+
+ function readAnswers(){
+  states[current].answers=fields().map(input=>input.value);
+ }
+
+ function clearMarkings(){
+  fields().forEach(input=>{
+   input.closest('.word-field').classList.remove('good','bad','empty');
+   input.removeAttribute('aria-invalid');
+   input.closest('.word-field').querySelector('.word-state').textContent='';
+  });
+ }
+
+ function invalidate(){
+  states[current].result=null;
+  states[current].report='';
+
+  clearMarkings();
+
+  $('result').hidden=true;
+  $('analysis-text').value='';
+  $('copy').disabled=true;
+  $('copy-status').textContent='';
+  $('exercise-status').textContent='';
+
+  updateProgress();
+ }
+
+ function updateProgress(){
+  const count=states.filter(state=>state.result!==null).length;
+
+  $('completed').textContent=count+' / '+DATA.length+' corregidas';
+
+  optionNodes.forEach((option,index)=>{
+   const result=states[index].result;
+
+   option.textContent=
+    'Pregunta '+String(DATA[index].id).padStart(3,'0')+
+    (result?' · '+result.correct+'/'+result.total:'');
+  });
+ }
+
+ function displayResult(){
+  const state=states[current];
+  const result=state.result;
+
+  $('result').hidden=!result;
+
+  if(!result){
+   clearMarkings();
+   return;
+  }
+
+  fields().forEach((input,index)=>{
+   const row=result.results[index];
+   const group=input.closest('.word-field');
+
+   group.classList.remove('good','bad','empty');
+   group.classList.add(
+    row.correct?'good':row.type==='Sin responder'?'empty':'bad'
+   );
+
+   input.setAttribute('aria-invalid',row.correct?'false':'true');
+
+   group.querySelector('.word-state').textContent=
+    row.correct?'✓ Correcto':row.type==='Sin responder'?'Sin responder':'Revisar';
+  });
+
+  $('result-title').textContent=
+   result.correct+' / '+result.total+' palabras correctas';
+
+  const errors=result.results.filter(row=>!row.correct);
+
+  $('result-caption').textContent=errors.length
+   ?'Estas son las diferencias con la transcripción:'
+   :'Todas tus palabras coinciden con la transcripción.';
+
+  $('error-table-wrap').hidden=errors.length===0;
+  $('error-rows').replaceChildren();
+
+  errors.forEach(error=>{
+   const row=document.createElement('tr');
+
+   [
+    String(error.index),
+    error.answer.trim()?error.answer:'—',
+    DictationCore.normalise(error.expected),
+    error.type
+   ].forEach((text,index)=>{
+    const cell=document.createElement('td');
+
+    cell.textContent=text;
+
+    if(index===1)cell.className='original-answer';
+    if(index===2)cell.className='expected-answer';
+
+    row.appendChild(cell);
+   });
+
+   $('error-rows').appendChild(row);
+  });
+ }
+
+ function render(){
+  const item=DATA[current];
+  const state=states[current];
+  const expected=DictationCore.words(item.text);
+  const number=String(item.id).padStart(3,'0');
+
+  setAudio(item.audio);
+
+  focusedWord=0;
+
+  $('listen').textContent='Escuchar';
+  $('audio-error').hidden=true;
+  $('exercise-title').textContent='Pregunta '+number;
+  $('category').textContent=CATEGORIES[item.category] || item.category;
+  $('position').textContent=number+' / '+DATA.length;
+  $('word-count').textContent=expected.length+' palabras';
+  $('duration').textContent='';
+  $('exercise-select').value=String(current);
+  $('words').replaceChildren();
+
+  expected.forEach((word,index)=>{
+   const label=document.createElement('label');
+   label.className='word-field';
+
+   const pos=document.createElement('span');
+   pos.className='word-number';
+   pos.textContent=String(index+1).padStart(2,'0');
+
+   const input=document.createElement('input');
+   input.type='text';
+   input.className='word-input';
+   input.id='word-'+index;
+   input.value=state.answers[index] || '';
+   input.autocomplete='off';
+   input.spellcheck=false;
+   input.maxLength=80;
+
+   input.setAttribute('autocapitalize','none');
+   input.setAttribute('autocorrect','off');
+   input.setAttribute('inputmode','text');
+   input.setAttribute('enterkeyhint',index===expected.length-1?'done':'next');
+   input.setAttribute('aria-label','Palabra '+(index+1)+' de '+expected.length);
+
+   const status=document.createElement('span');
+   status.className='word-state';
+   status.id='word-status-'+index;
+
+   input.setAttribute('aria-describedby',status.id);
+
+   input.addEventListener('input',()=>{
+    readAnswers();
+    invalidate();
+   });
+
+   input.addEventListener('focus',()=>{
+    focusedWord=index;
+    updateFieldNavigation();
+   });
+
+   input.addEventListener('keydown',event=>{
+    if(event.isComposing)return;
+
+    if(event.key===' '){
+     event.preventDefault();
+
+     if(index<expected.length-1)focusWord(index+1);
+    }
+
+    if(event.key==='Enter'){
+     event.preventDefault();
+
+     if(index<expected.length-1 && !event.ctrlKey && !event.metaKey){
+      focusWord(index+1);
+     }else{
+      check();
+     }
+    }
+   });
+
+   input.addEventListener('paste',event=>{
+    const text=event.clipboardData?.getData('text');
+
+    if(!text || !/\s/.test(text.trim()))return;
+
+    event.preventDefault();
+
+    const pasted=DictationCore.words(text);
+    const inputs=fields();
+    const remaining=inputs.length-index;
+
+    pasted.slice(0,remaining).forEach((value,offset)=>{
+     inputs[index+offset].value=value;
+    });
+
+    readAnswers();
+    invalidate();
+
+    inputs[Math.min(index+pasted.length,inputs.length-1)].focus();
+
+    if(pasted.length>remaining){
+     $('exercise-status').textContent=
+      'No caben todas las palabras pegadas. Revisa el número de huecos.';
+    }
+   });
+
+   label.append(pos,input,status);
+
+   const punctuation=word.match(/[.,!?;:]+$/)?.[0];
+
+   if(punctuation){
+    const span=document.createElement('span');
+    span.className='punctuation';
+    span.textContent=punctuation;
+    span.setAttribute('aria-hidden','true');
+
+    label.appendChild(span);
+   }
+
+   $('words').appendChild(label);
+  });
+
+  $('transcript-text').textContent=item.text;
+  $('transcript').hidden=!state.showTranscript;
+
+  $('show-transcript').textContent=state.showTranscript
+   ?'Ocultar transcripción'
+   :'Ver transcripción';
+
+  $('show-transcript').setAttribute(
+   'aria-expanded',
+   String(state.showTranscript)
+  );
+
+  $('previous').disabled=current===0;
+  $('next').disabled=current===DATA.length-1;
+
+  $('analysis-text').value=state.report;
+  $('copy').disabled=!state.report.trim();
+  $('copy-status').textContent='';
+  $('exercise-status').textContent='';
+
+  displayResult();
+  updateProgress();
+  updateFieldNavigation();
+ }
+
+ function check(){
+  readAnswers();
+
+  const item=DATA[current];
+  const state=states[current];
+
+  state.result=DictationCore.compare(
+   DictationCore.words(item.text),
+   state.answers
+  );
+
+  state.report=DictationCore.report(item,state.answers,state.result);
+
+  $('analysis-text').value=state.report;
+  $('copy').disabled=false;
+  $('copy-status').textContent='Texto preparado para copiar a ChatGPT.';
+
+  displayResult();
+  updateProgress();
+ }
+
+ function navigate(index){
+  if(index<0 || index>=DATA.length)return;
+
+  readAnswers();
+  states[current].report=$('analysis-text').value;
+
+  current=index;
+  render();
+ }
+
+ $('dictation-form').addEventListener('submit',event=>{
+  event.preventDefault();
+  check();
+ });
+
+ $('prepare').addEventListener('click',check);
+ $('previous').addEventListener('click',()=>navigate(current-1));
+ $('next').addEventListener('click',()=>navigate(current+1));
+
+ $('exercise-select').addEventListener('change',event=>{
+  navigate(Number(event.target.value));
+ });
+
+ $('retry').addEventListener('click',()=>{
+  states[current]={
+   answers:DictationCore.words(DATA[current].text).map(()=>''),
+   result:null,
+   report:'',
+   showTranscript:false
+  };
+
+  render();
+  fields()[0]?.focus();
+ });
+
+ $('show-transcript').addEventListener('click',()=>{
+  const state=states[current];
+
+  state.showTranscript=!state.showTranscript;
+  $('transcript').hidden=!state.showTranscript;
+
+  $('show-transcript').textContent=state.showTranscript
+   ?'Ocultar transcripción'
+   :'Ver transcripción';
+
+  $('show-transcript').setAttribute(
+   'aria-expanded',
+   String(state.showTranscript)
+  );
+ });
+
+ $('listen').addEventListener('click',()=>{
+  if(audio.paused)playAudio(false);
+  else audio.pause();
+ });
+
+ $('replay').addEventListener('click',()=>playAudio(true));
+ $('field-previous').addEventListener('click',()=>focusWord(focusedWord-1));
+ $('field-next').addEventListener('click',()=>focusWord(focusedWord+1));
+
+ ['field-previous','field-next'].forEach(id=>{
+  $(id).addEventListener('pointerdown',event=>{
+   if(event.pointerType==='touch')event.preventDefault();
+  });
+ });
+
+ audio.addEventListener('play',()=>{
+  $('listen').textContent='Pausar';
+  $('audio-error').hidden=true;
+ });
+
+ audio.addEventListener('pause',()=>{
+  $('listen').textContent='Escuchar';
+ });
+
+ audio.addEventListener('ended',()=>{
+  $('listen').textContent='Escuchar';
+ });
+
+ $('speed').addEventListener('change',()=>{
+  audio.playbackRate=Number($('speed').value);
+ });
+
+ $('loop').addEventListener('change',()=>{
+  audio.loop=$('loop').checked;
+ });
+
+ function updateDuration(){
+  const seconds=audio.duration;
+
+  $('duration').textContent=Number.isFinite(seconds) && seconds>0
+   ?seconds.toLocaleString(
+     'es-ES',
+     {minimumFractionDigits:1,maximumFractionDigits:1}
+    )+' s'
+   :'';
+ }
+
+ audio.addEventListener('loadedmetadata',()=>{
+  audio.playbackRate=Number($('speed').value);
+  updateDuration();
+ });
+
+ audio.addEventListener('durationchange',updateDuration);
+
+ audio.addEventListener('error',()=>{
+  $('audio-error').hidden=false;
+
+  $('audio-error').textContent=
+   'No se pudo cargar '+DATA[current].audio+
+   '. Comprueba que el MP3 esté en la misma carpeta que listening2.html y que su nombre coincida exactamente.';
+ });
+
+ $('analysis-text').addEventListener('input',()=>{
+  states[current].report=$('analysis-text').value;
+  $('copy').disabled=!$('analysis-text').value.trim();
+  $('copy-status').textContent='';
+ });
+
+ $('copy').addEventListener('click',async()=>{
+  const textarea=$('analysis-text');
+  const text=textarea.value;
+
+  if(!text.trim())return;
+
+  let copied=false;
+
+  if(navigator.clipboard && window.isSecureContext){
+   try{
+    await navigator.clipboard.writeText(text);
+    copied=true;
+   }catch{}
+  }
+
+  if(!copied){
+   textarea.focus();
+   textarea.select();
+   textarea.setSelectionRange(0,text.length);
+
+   try{
+    copied=document.execCommand('copy');
+   }catch{}
+  }
+
+  $('copy-status').textContent=copied
+   ?'Copiado. Pégalo en ChatGPT.'
+   :'Selecciona y copia el texto del recuadro con Ctrl+C o con el menú de tu móvil.';
+ });
+
+ window.addEventListener('pagehide',()=>audio.pause());
+
+ let toolLifecycle=null;
+
+ function registerPageTools(){
+  const context=document.modelContext;
+
+  if(!context || typeof context.registerTool!=='function')return;
+  if(toolLifecycle && !toolLifecycle.signal.aborted)return;
+
+  toolLifecycle=new AbortController();
+
+  const tools=[
+   {
+    name:'read_dictation',
+    description:'Read the selected dictation, learner answers and correction status.',
+    inputSchema:{
+     type:'object',
+     properties:{},
+     additionalProperties:false
+    },
+    annotations:{
+     readOnlyHint:true,
+     untrustedContentHint:true
+    },
+    execute(input){
+     if(
+      !input ||
+      typeof input!=='object' ||
+      Array.isArray(input) ||
+      Object.keys(input).length
+     ){
+      throw new Error('Expected an empty object.');
+     }
+
+     readAnswers();
+
+     return {
+      id:DATA[current].id,
+      wordCount:states[current].answers.length,
+      answers:states[current].answers.slice(),
+      result:states[current].result
+     };
+    }
+   },
+   {
+    name:'navigate_dictation',
+    description:'Select a dictation from 1 to 100, preserving the current answers.',
+    inputSchema:{
+     type:'object',
+     properties:{
+      id:{type:'integer',minimum:1,maximum:100}
+     },
+     required:['id'],
+     additionalProperties:false
+    },
+    annotations:{
+     readOnlyHint:false,
+     untrustedContentHint:false
+    },
+    execute(input){
+     if(
+      !input ||
+      Object.keys(input).some(key=>key!=='id') ||
+      !Number.isInteger(input.id) ||
+      input.id<1 ||
+      input.id>DATA.length
+     ){
+      throw new Error('id must be an integer from 1 to 100.');
+     }
+
+     navigate(input.id-1);
+
+     return {
+      id:DATA[current].id,
+      wordCount:states[current].answers.length
+     };
+    }
+   },
+   {
+    name:'check_dictation',
+    description:'Correct the current learner answers and prepare the ChatGPT analysis text.',
+    inputSchema:{
+     type:'object',
+     properties:{},
+     additionalProperties:false
+    },
+    annotations:{
+     readOnlyHint:false,
+     untrustedContentHint:true
+    },
+    execute(input){
+     if(
+      !input ||
+      typeof input!=='object' ||
+      Array.isArray(input) ||
+      Object.keys(input).length
+     ){
+      throw new Error('Expected an empty object.');
+     }
+
+     check();
+
+     return {
+      id:DATA[current].id,
+      result:states[current].result
+     };
+    }
+   }
+  ];
+
+  tools.forEach(tool=>{
+   try{
+    Promise.resolve(
+     context.registerTool(tool,{signal:toolLifecycle.signal})
+    ).catch(()=>{});
+   }catch{}
+  });
+ }
+
+ window.addEventListener('pagehide',()=>{
+  if(toolLifecycle)toolLifecycle.abort();
+ });
+
+ window.addEventListener('pageshow',registerPageTools);
+
+ render();
+ registerPageTools();
+})();
+</script>
+
+</body>
+</html>
