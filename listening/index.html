@@ -1,1 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listening | Learn English</title>
+    <meta name="description" content="Practica listening en inglés con frases, preguntas y dictados de historias.">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --paper: #F5F7F2;
+            --card: #FFFFFF;
+            --ink: #16271E;
+            --ink-soft: #5C6C62;
+            --line: rgba(22,39,30,.12);
+            --green: #169B62;
+            --orange: #FF883E;
+            --serif: "Instrument Serif", Georgia, serif;
+            --sans: "Inter", -apple-system, system-ui, sans-serif;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: var(--sans);
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .wrap {
+            width: 100%;
+            max-width: 920px;
+            margin-inline: auto;
+            padding: 0 28px;
+        }
+
+        header { padding-top: 34px; }
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .wordmark {
+            font-family: var(--serif);
+            font-size: 1.35rem;
+            color: var(--ink);
+            text-decoration: none;
+        }
+
+        .wordmark em { color: var(--green); }
+
+        .flag {
+            display: inline-flex;
+            width: 33px;
+            height: 22px;
+            border-radius: 3px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(22,39,30,.18);
+            flex-shrink: 0;
+        }
+
+        .flag span { flex: 1; }
+        .flag .g { background: var(--green); }
+        .flag .w { background: #fff; }
+        .flag .o { background: var(--orange); }
+
+        .back {
+            display: inline-flex;
+            align-items: center;
+            min-height: 44px;
+            margin-top: 22px;
+            color: var(--ink-soft);
+            text-decoration: none;
+            font-size: .92rem;
+        }
+
+        .back:hover { color: var(--green); }
+
+        .hero { padding: 34px 0 12px; }
+
+        .eyebrow {
+            margin: 0 0 18px;
+            font-size: .78rem;
+            font-weight: 600;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+        }
+
+        h1 {
+            margin: 0;
+            font-family: var(--serif);
+            font-weight: 400;
+            font-size: clamp(3rem, 8vw, 5.2rem);
+            line-height: 1.05;
+        }
+
+        h1 em { color: var(--green); }
+
+        .rule {
+            display: flex;
+            width: 148px;
+            height: 5px;
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 28px 0 22px;
+        }
+
+        .rule span { flex: 1; }
+        .rule .g { background: var(--green); }
+        .rule .w { background: #E7EBE4; }
+        .rule .o { background: var(--orange); }
+
+        .lede {
+            margin: 0;
+            max-width: 52ch;
+            font-size: 1.08rem;
+            color: var(--ink-soft);
+        }
+
+        .sections { padding: 36px 0 8px; }
+
+        .section-title {
+            margin: 0 0 22px;
+            font-size: .78rem;
+            font-weight: 600;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 26px;
+            color: inherit;
+            text-decoration: none;
+            transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 30px -18px rgba(22,39,30,.4);
+            border-color: var(--green);
+        }
+
+        a:focus-visible {
+            outline: 3px solid var(--green);
+            outline-offset: 5px;
+        }
+
+        .tag {
+            font-size: .72rem;
+            font-weight: 600;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+        }
+
+        .card h3 {
+            margin: 8px 0 10px;
+            font-family: var(--serif);
+            font-weight: 400;
+            font-size: 1.85rem;
+            line-height: 1.15;
+        }
+
+        .card p {
+            margin: 0 0 18px;
+            font-size: .96rem;
+            color: var(--ink-soft);
+        }
+
+        .go {
+            margin-top: auto;
+            font-size: .92rem;
+            font-weight: 500;
+            color: var(--green);
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 48px 0 32px;
+        }
+
+        .footer-inner {
+            padding-top: 22px;
+            border-top: 1px solid var(--line);
+            font-size: .92rem;
+            color: var(--ink-soft);
+        }
+
+        .footer-inner strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        @media (max-width: 640px) {
+            .wrap { padding: 0 20px; }
+            .grid { grid-template-columns: 1fr; }
+            .hero { padding-top: 24px; }
+            .card { padding: 24px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .card { transition: none; }
+            .card:hover { transform: none; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="wrap">
+    <div class="topbar">
+        <a class="wordmark" href="../index.html">
+            Learn <em>English</em>
+        </a>
+
+        <span class="flag" role="img" aria-label="Bandera de Irlanda">
+            <span class="g"></span>
+            <span class="w"></span>
+            <span class="o"></span>
+        </span>
+    </div>
+
+    <nav aria-label="Volver al inicio">
+        <a class="back" href="../index.html">← Volver al inicio</a>
+    </nav>
+</header>
+
+<main>
+    <section class="hero wrap">
+        <p class="eyebrow">Comprensión oral en inglés</p>
+
+        <h1>Practise your<br><em>listening.</em></h1>
+
+        <div class="rule" aria-hidden="true">
+            <span class="g"></span>
+            <span class="w"></span>
+            <span class="o"></span>
+        </div>
+
+        <p class="lede">
+            Elige un ejercicio para practicar con frases, preguntas o historias.
+        </p>
+    </section>
+
+    <section class="sections wrap" aria-labelledby="exercises-title">
+        <h2 class="section-title" id="exercises-title">
+            Ejercicios de listening
+        </h2>
+
+        <div class="grid">
+
+            <a class="card" href="listening1.html">
+                <span class="tag">100 frases</span>
+                <h3>Listening 1</h3>
+                <p>Dictado de 100 frases en inglés.</p>
+                <span class="go">Entrar →</span>
+            </a>
+
+            <a class="card" href="listening2.html">
+                <span class="tag">Preguntas</span>
+                <h3>Listening 2</h3>
+                <p>Practica la comprensión de preguntas en inglés.</p>
+                <span class="go">Entrar →</span>
+            </a>
+
+            <a class="card" href="listening3.html">
+                <span class="tag">Dictado · Historia 1</span>
+                <h3>Listening 3</h3>
+                <p>Primera historia para practicar el dictado.</p>
+                <span class="go">Entrar →</span>
+            </a>
+
+            <a class="card" href="listening4.html">
+                <span class="tag">Dictado · Historia 2</span>
+                <h3>Listening 4</h3>
+                <p>Segunda historia para practicar el dictado.</p>
+                <span class="go">Entrar →</span>
+            </a>
+
+            <a class="card" href="listening5.html">
+                <span class="tag">Dictado · Historia 3</span>
+                <h3>Listening 5</h3>
+                <p>Tercera historia para practicar el dictado.</p>
+                <span class="go">Entrar →</span>
+            </a>
+
+        </div>
+    </section>
+</main>
+
+<footer class="wrap">
+    <div class="footer-inner">
+        Created by <strong>Juan Carlos Navarro</strong>
+    </div>
+</footer>
+
+</body>
+</html>
