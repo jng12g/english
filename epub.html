@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#142b32">
+<meta name="description" content="Lector EPUB con traducción de palabras y colección de vocabulario para Anki.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<title>Readmark — Lee, traduce, recuerda</title>
+<style>
+:root { --deep:#132a31; --deep2:#203b43; --paper:#fffdf7; --canvas:#f3f0e7; --white:#fff; --muted:#70818a; --ink:#19323a; --accent:#f4b85e; --accent-light:#fff1d5; --line:#e4e3db; --ok:#247e67; --danger:#a23e3e; --shadow:0 12px 40px rgba(21,42,47,.08); font-synthesis:none; }
+* { box-sizing:border-box }
+html,body { margin:0; min-height:100%; }
+body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Arial,sans-serif; color:var(--ink); background:var(--canvas); }
+button,input,select,textarea { font:inherit }
+button { cursor:pointer }
+button:disabled { opacity:.46; cursor:not-allowed }
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible { outline:3px solid #efa831; outline-offset:2px }
+.topbar { min-height:76px; display:flex; align-items:center; padding:13px 31px; background:var(--deep); color:white; gap:18px; }
+.brand { display:flex; gap:11px; align-items:center; white-space:nowrap; }
+.brandmark { width:39px;height:39px;border-radius:13px;background:var(--accent);color:var(--deep);display:grid;place-items:center;font-size:22px;font-weight:800; }
+.brandtext { font-size:23px;font-weight:790;letter-spacing:-1px }
+.brandtext span { color:var(--accent) }
+.top-book { border-left:1px solid #4b5f64;padding-left:21px;margin-left:15px; min-width:0; flex:1 }
+.top-book small { display:block; color:#a6b8bd; font-size:11px;text-transform:uppercase;letter-spacing:1.4px }
+.top-book strong { display:block; font-size:13px; overflow:hidden;text-overflow:ellipsis; white-space:nowrap;max-width:380px;margin-top:4px }
+.top-actions { display:flex;gap:10px;align-items:center }
+.btn { border:1px solid var(--line);border-radius:11px;min-height:40px;padding:10px 15px;font-weight:700;display:inline-flex;gap:8px;align-items:center;justify-content:center;background:white;color:var(--ink);transition:background .15s,border-color .15s }
+.btn:hover:not(:disabled) { background:#f9f6ed }
+.btn-amber { background:var(--accent); color:var(--deep);border-color:var(--accent) }
+.btn-amber:hover:not(:disabled) { background:#ffd082 }
+.btn-dark { background:var(--deep);color:white;border-color:var(--deep) }
+.btn-dark:hover:not(:disabled) { background:var(--deep2) }
+.btn-outline-dark { border-color:#52676c;background:transparent;color:white }
+.btn-outline-dark:hover:not(:disabled) { background:#27434a }
+.btn-icon { min-width:39px;padding:8px 10px;font-size:19px;font-weight:500 }
+.btn-text { border:0;background:transparent;color:var(--ink);padding:8px }
+.btn-small { min-height:32px;padding:7px 10px;font-size:12px;border-radius:9px }
+.shell { max-width:1530px;margin:0 auto;padding:24px 26px 34px;display:grid;grid-template-columns:minmax(0,1.8fr) minmax(320px,.88fr);gap:22px;min-height:calc(100dvh - 76px) }
+.panel { background:white;border:1px solid #e8e6df;border-radius:20px;box-shadow:var(--shadow);min-width:0;overflow:hidden; }
+.reader-panel { display:flex;flex-direction:column;min-height:calc(100dvh - 130px) }
+.reader-top { padding:15px 18px; display:flex;align-items:center;gap:9px;border-bottom:1px solid var(--line);flex-wrap:wrap; }
+.reader-top .label { font-weight:750;color:#55656c; font-size:12px;letter-spacing:.7px;text-transform:uppercase;margin-right:auto }
+.tool-separator { height:26px;width:1px;background:var(--line);margin:0 4px }
+.chapter-select { border:1px solid var(--line);padding:7px 9px;border-radius:9px;background:white;color:var(--ink);max-width:200px;font-size:12px; }
+.reader-stage { flex:1;min-height:500px;display:flex;flex-direction:column;position:relative;background:var(--paper); }
+#viewer { flex:1;width:100%; min-height:470px; overflow:hidden;position:relative; }
+#viewer iframe { border:0; }
+.empty-reader { flex:1;min-height:475px; display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:36px 26px; }
+.ebook-art { width:105px;height:124px;position:relative;margin-bottom:28px; }
+.ebook-art:before { content:"";position:absolute;inset:0 9px 7px 0; border-radius:10px 18px 15px 10px;background:#f4ba65;box-shadow:8px 8px 0 #e39e47,15px 15px 25px #d6c6a7;transform:rotate(-7deg); }
+.ebook-art:after { content:"Aa";position:absolute;top:30px;left:19px;color:#173039;font-family:Georgia,serif;font-size:44px;font-weight:700;transform:rotate(-7deg) }
+.empty-reader h1 { font-family:Georgia,serif;font-size:37px;letter-spacing:-1px;line-height:1.12;margin:0 0 10px; }
+.empty-reader p { font-size:15px;max-width:355px;line-height:1.7;color:#69797d;margin:0 0 24px }
+.file-note { margin:17px 0 0!important;font-size:12px!important;line-height:1.5!important;color:#87969a!important }
+.recent-books { margin-top:17px; display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:520px }
+.recent-item { border:1px solid #e4d9c5;background:#fff9ed;padding:9px 11px;border-radius:9px;max-width:260px;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;color:var(--ink);font-weight:600 }
+.bottom-bar { height:55px;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);background:white;padding:7px 16px;gap:8px }
+.progress-note { font-size:12px;color:#73838a;text-align:center; }
+.tip { margin:0;padding:11px 17px;color:#73838a;font-size:12px;line-height:1.5;background:#fffefb;border-top:1px solid var(--line) }
+.side-panel { min-height:670px;display:flex;flex-direction:column; }
+.side-tabs { padding:14px 17px 0;display:flex;gap:7px;border-bottom:1px solid var(--line) }
+.side-tab { color:#72838a;border:0;border-bottom:3px solid transparent;padding:12px 12px 13px;background:transparent;font-weight:800;font-size:13px }
+.side-tab.active { color:var(--deep);border-color:var(--accent) }
+.count { background:#e9eee9;border-radius:100px;padding:2px 7px;margin-left:4px;font-size:11px }
+.side-content { padding:23px;min-height:0;flex:1; }
+.section-title { font-size:12px;text-transform:uppercase;letter-spacing:1.5px;font-weight:800;color:#86969a;margin:0 0 17px }
+.empty-lookup { display:flex;flex-direction:column;align-items:flex-start;justify-content:center;height:390px; }
+.lookup-icon { border-radius:17px;background:#f5f0e2;width:55px;height:55px;display:grid;place-items:center;font-size:26px;color:#3a5157;margin-bottom:20px; }
+.empty-lookup h2 { font-size:21px;margin:0 0 9px;letter-spacing:-.5px }
+.empty-lookup p { font-size:14px;line-height:1.7;color:#78898d;max-width:310px;margin:0 }
+.field-label { display:block;text-transform:uppercase;letter-spacing:1.1px;color:#87969b;font-size:11px;font-weight:800;margin:18px 0 8px }
+.entry-header { display:flex;justify-content:space-between;align-items:center;gap:10px }
+.term-input { width:100%;font-family:Georgia,serif;font-size:30px;color:var(--ink);border:0;border-bottom:1px solid #d7dfdc;outline:0!important;padding:3px 0 9px;min-width:0;background:transparent }
+.term-input:focus { border-color:#cb942e }
+.word-type { font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--ok);background:#e9f3ec;padding:6px 10px;border-radius:100px;white-space:nowrap }
+textarea { background:#fffdf7;resize:vertical; width:100%;border:1px solid var(--line);border-radius:11px;padding:12px;line-height:1.5;color:var(--ink);min-height:89px;font-size:14px }
+.context-area { min-height:96px }
+.field-hint { margin:6px 0 0;color:#9ba6a7;font-size:11px;line-height:1.4 }
+.translation-status { color:#74878a;font-size:12px;min-height:18px;margin-top:6px }
+.translation-status.error { color:var(--danger) }
+.editor-actions { display:flex;gap:9px;flex-wrap:wrap;margin-top:18px }
+.editor-actions .btn-dark { flex:1 }
+.preview { border-top:1px dashed #e2e6e2;margin-top:22px;padding-top:19px }
+.preview-card { background:#f6f4ed;border-radius:12px;padding:16px 18px;margin-top:10px }
+.preview-card strong { font-family:Georgia,serif;font-size:20px; }
+.preview-card p { font-size:13px;line-height:1.6;color:#60737a;margin-bottom:0; }
+.privacy-box { padding:15px 20px;border-top:1px solid #e9ece7;font-size:11px;color:#8c9898;line-height:1.6;background:#fefefc }
+.vocab-head { display:flex;justify-content:space-between;align-items:center;gap:8px; }
+.vocab-head h2 {font-size:23px;margin:0 0 5px;letter-spacing:-.6px}
+.vocab-head p {font-size:12px;line-height:1.5;color:#859399;margin:0 0 14px}
+.search { width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:11px; background:#fdfcf8;color:var(--ink);outline:0 }
+.vocab-list { margin-top:16px;display:flex;flex-direction:column;gap:10px;max-height:calc(100dvh - 400px);overflow-y:auto;padding-right:5px }
+.vocab-item { padding:15px;border:1px solid #e7e6dd;border-radius:12px;background:#fffefa; }
+.vocab-name {display:flex;justify-content:space-between;gap:10px;align-items:flex-start;}
+.vocab-name strong { font-size:16px;line-height:1.35 }
+.vocab-name span {color:var(--ok);font-size:11px;background:#eaf3ef;padding:4px 7px;border-radius:7px;white-space:nowrap}
+.vocab-meaning { color:#40545c;font-size:14px;margin:5px 0 7px;font-weight:600 }
+.vocab-context { color:#879398;font-size:12px;font-style:italic;line-height:1.6;margin:0 }
+.vocab-book { color:#9aa8a6;font-size:11px;margin:9px 0 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis }
+.vocab-acts { display:flex;gap:8px }
+.empty-vocab {text-align:center;color:#899899;font-size:14px;line-height:1.6;padding:34px 10px }
+.vocab-footer {border-top:1px solid var(--line);padding:13px 20px;display:flex;gap:9px;flex-wrap:wrap;justify-content:space-between;background:#fefefd}
+.notice { position:fixed;bottom:22px;left:50%;transform:translate(-50%,30px);opacity:0;pointer-events:none;background:#1a3940;color:white;box-shadow:0 9px 35px #15343e33;padding:12px 17px;border-radius:12px;z-index:30;transition:all .2s;font-size:13px;max-width:min(90vw,550px);text-align:center }
+.notice.show { opacity:1;transform:translate(-50%,0) }
+.hidden { display:none!important }
+.mobile-vocab {display:none}
+@media(max-width:1070px){.shell{grid-template-columns:minmax(0,1.3fr) minmax(305px,.9fr);gap:13px;padding:14px}.topbar{padding:13px 18px}.top-book{margin-left:0;padding-left:13px}.reader-top{padding:11px}}
+@media(max-width:760px){
+ .topbar{min-height:66px;padding:12px 13px;gap:10px}.brandtext{font-size:19px}.brandmark{width:34px;height:34px;font-size:19px}.top-book{display:none}.top-actions{margin-left:auto;gap:6px}.top-actions .label-desktop{display:none}.top-actions .btn{min-height:36px;padding:8px 10px;font-size:13px}.shell{display:flex;flex-direction:column;gap:12px;padding:11px;min-height:auto}.reader-panel{min-height:60dvh;border-radius:14px}.reader-top{gap:6px;justify-content:flex-end}.reader-top .label{flex:1;min-width:70px}.chapter-select{max-width:150px}.reader-stage{min-height:380px}#viewer{min-height:60dvh}.empty-reader{min-height:64dvh;padding:35px 16px}.empty-reader h1{font-size:31px}.empty-reader p{font-size:13px}.side-panel{border-radius:14px;min-height:420px}.side-content{padding:17px 18px}.empty-lookup{height:210px}.vocab-list{max-height:60dvh}.tip{font-size:11px}.mobile-vocab{display:inline}.notice{bottom:18px}
+}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+<!-- EPUB.js requires JSZip for compressed .epub files. Local files may be added for offline hosting. -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/epubjs@0.3.93/dist/epub.min.js"></script>
+</head>
+<body>
+<header class="topbar">
+ <div class="brand"><div class="brandmark">R<span style="font-size:14px">↗</span></div><div class="brandtext">read<span>mark</span></div></div>
+ <div class="top-book"><small>Leyendo ahora</small><strong id="topBook">Ningún libro abierto</strong></div>
+ <div class="top-actions">
+  <button class="btn btn-outline-dark" id="openBookTop" title="Abrir EPUB">＋ <span class="label-desktop">Abrir EPUB</span></button>
+  <button class="btn btn-amber" id="goVocab" title="Abrir vocabulario">▤ <span class="label-desktop">Mis palabras</span> <span id="headerCount">0</span></button>
+ </div>
+</header>
+<main class="shell">
+<section class="panel reader-panel" aria-label="Lector de libros EPUB">
+ <div class="reader-top">
+  <span class="label">✦ Tu rincón de lectura</span>
+  <select class="chapter-select hidden" id="toc" aria-label="Capítulos"><option value="">Índice de capítulos</option></select>
+  <button class="btn btn-small btn-icon" id="fontDown" title="Reducir letra">A−</button>
+  <button class="btn btn-small btn-icon" id="fontUp" title="Ampliar letra">A+</button>
+  <span class="tool-separator"></span>
+  <button class="btn btn-small" id="themeToggle" title="Alternar tono del papel">☾ <span id="themeLabel">Sepia</span></button>
+ </div>
+ <div class="reader-stage" id="readerStage">
+  <div class="empty-reader" id="emptyReader">
+   <div class="ebook-art" aria-hidden="true"></div>
+   <h1>Una palabra cada vez.</h1>
+   <p>Lee tus libros en inglés, toca las palabras que no conozcas y conviértelas en tarjetas que recordarás.</p>
+   <button class="btn btn-dark" id="openBookMain">📖 &nbsp;Elegir un EPUB</button>
+   <p class="file-note">El libro se guarda en este navegador.<br>Admite archivos .epub sin DRM.</p>
+   <div class="recent-books" id="recentBooks"></div>
+  </div>
+  <div id="viewer" class="hidden" aria-label="Contenido del EPUB"></div>
+ </div>
+ <div class="bottom-bar">
+  <button class="btn btn-small btn-icon" id="prev" disabled aria-label="Página anterior">←</button>
+  <span class="progress-note" id="pageInfo">Abre un EPUB para comenzar</span>
+  <button class="btn btn-small btn-icon" id="next" disabled aria-label="Página siguiente">→</button>
+ </div>
+ <p class="tip">💡 <strong>Toca</strong> una palabra para traducirla. <strong>Selecciona</strong> varias palabras para guardar una expresión o frase. Después, pulsa «Guardar tarjeta».</p>
+</section>
+<aside class="panel side-panel" id="sidePanel">
+ <nav class="side-tabs" aria-label="Panel de estudio">
+  <button class="side-tab active" id="tabTranslate" aria-selected="true">✧ Traducción</button>
+  <button class="side-tab" id="tabVocab" aria-selected="false">▤ Vocabulario <span class="count" id="vocabCount">0</span></button>
+ </nav>
+ <div class="side-content" id="translatePanel">
+  <p class="section-title">Tu diccionario contextual</p>
+  <div class="empty-lookup" id="emptyLookup"><div class="lookup-icon">◉</div><h2>El significado, sin salir del libro.</h2><p>Al pulsar una palabra, aparecerá aquí su traducción. Puedes corregirla y guardarla con una frase de ejemplo.</p></div>
+  <div id="lookupEditor" class="hidden">
+    <div class="entry-header"><div style="flex:1;min-width:0"><input type="text" class="term-input" id="termInput" aria-label="Palabra o expresión" autocomplete="off" spellcheck="false"></div><span class="word-type" id="termType">PALABRA</span></div>
+    <div style="display:flex;gap:8px;margin-top:11px"><button class="btn btn-small" id="listenBtn" title="Escuchar pronunciación británica">🔊 Escuchar (UK)</button><button class="btn btn-small" id="translateBtn">↻ Traducir</button></div>
+    <label class="field-label" for="meaningInput">Traducción al español</label>
+    <textarea id="meaningInput" rows="3" placeholder="Escribe o corrige la traducción..."></textarea>
+    <div class="translation-status" id="translationStatus" aria-live="polite"></div>
+    <label class="field-label" for="contextInput">Frase original del libro</label>
+    <textarea class="context-area" id="contextInput" rows="3" placeholder="Contexto de lectura"></textarea>
+    <p class="field-hint">Puedes editar ambos campos antes de crear la tarjeta.</p>
+    <div class="editor-actions"><button class="btn btn-dark" id="saveCard">✦ Guardar tarjeta</button><button class="btn" id="clearEditor">Cancelar</button></div>
+    <div class="preview"><p class="section-title" style="margin-bottom:0">Así será tu tarjeta</p><div class="preview-card"><strong id="previewTerm">—</strong><p id="previewMeaning">—</p><p id="previewContext" style="font-style:italic"></p></div></div>
+  </div>
+ </div>
+ <div class="side-content hidden" id="vocabPanel">
+  <div class="vocab-head"><div><h2>Mi colección <span id="vocabTotal">0</span></h2><p>Las palabras que has elegido recordar.</p></div></div>
+  <input type="search" class="search" id="searchCards" placeholder="Buscar palabras o traducciones..." aria-label="Buscar tarjetas">
+  <div class="vocab-list" id="vocabList"></div>
+ </div>
+ <div class="vocab-footer hidden" id="vocabFooter"><button class="btn btn-amber" id="exportAnki">↧ Exportar para Anki</button><button class="btn btn-small" id="exportBackup" title="Descargar copia de seguridad">Copia JSON</button><button class="btn btn-small" id="importBackup">Importar copia</button></div>
+ <div class="privacy-box">🔒 EPUB y vocabulario se almacenan en este navegador. <strong>Solo el texto que traduzcas</strong> se envía al servicio externo MyMemory. La traducción requiere internet.</div>
+</aside>
+</main>
+<input type="file" accept=".epub,application/epub+zip" id="fileInput" class="hidden">
+<input type="file" accept=".json,application/json" id="jsonInput" class="hidden">
+<div class="notice" id="notice" role="status" aria-live="polite"></div>
+<script>
+(() => {
+ 'use strict';
+ const $ = id => document.getElementById(id);
+ const KEY = 'readmark_cards_v1';
+ const POS_KEY = 'readmark_pos_v1';
+ const THEME_KEY = 'readmark_theme_v1';
+ const FONT_KEY = 'readmark_font_v1';
+ const DB_NAME = 'readmark_epubs_v1';
+ const state = {book:null,rendition:null,bookId:'',bookTitle:'',cards:readCards(),pending:null,requestId:0,toc:[],activeTab:'translate',activeChapter:'',font: Number(localStorage.getItem(FONT_KEY)||110),theme:localStorage.getItem(THEME_KEY)||'sepia',toastTimer:null};
+ function readCards() { try {let x=JSON.parse(localStorage.getItem(KEY)||'[]');return Array.isArray(x)?x:[]} catch(e) {return []} }
+ function persist() {try {localStorage.setItem(KEY,JSON.stringify(state.cards))} catch(e) { toast('Almacenamiento lleno: exporta una copia JSON.') } updateCounts();}
+ function toast(message) {const el=$('notice');el.textContent=message;el.classList.add('show');clearTimeout(state.toastTimer);state.toastTimer=setTimeout(()=>el.classList.remove('show'),3500)}
+ function safe(text) { return String(text==null?'':text).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+ function clean(text) {return String(text||'').replace(/\s+/g,' ').trim()}
+ function shortContext(text, term) {let s=clean(text);if(s.length<=320)return s;let i=s.toLocaleLowerCase().indexOf(term.toLocaleLowerCase());if(i<0) i=0;let st=Math.max(0,i-100);return (st?'…':'')+s.slice(st,st+300)+(st+300<s.length?'…':'');}
+ function uniqueId() {return globalThis.crypto?.randomUUID?.() || 'card-'+Date.now()+'-'+Math.random().toString(36).slice(2)}
+ function updateCounts(){let n=state.cards.length; $('vocabCount').textContent=n;$('headerCount').textContent=n;$('vocabTotal').textContent=n;}
+ function openDatabase(){return new Promise((resolve,reject)=>{if(!('indexedDB' in window)){reject(new Error('Sin IndexedDB'));return}const req=indexedDB.open(DB_NAME,1);req.onupgradeneeded=()=>{const db=req.result;db.createObjectStore('books',{keyPath:'id'})};req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error)})}
+ async function dbPut(book){const db=await openDatabase();return new Promise((resolve,reject)=>{const tx=db.transaction('books','readwrite');tx.objectStore('books').put(book);tx.oncomplete=()=>{db.close();resolve()};tx.onerror=()=>{db.close();reject(tx.error)}})}
+ async function dbAll(){const db=await openDatabase();return new Promise((resolve,reject)=>{const tx=db.transaction('books','readonly');const req=tx.objectStore('books').getAll();req.onsuccess=()=>{db.close();resolve(req.result||[])};req.onerror=()=>{db.close();reject(req.error)}})}
+ async function dbGet(id){const db=await openDatabase();return new Promise((resolve,reject)=>{const tx=db.transaction('books','readonly');const req=tx.objectStore('books').get(id);req.onsuccess=()=>{db.close();resolve(req.result)};req.onerror=()=>{db.close();reject(req.error)}})}
+ async function renderRecent(){let list=[];try {list=await dbAll()}catch(e){return}const target=$('recentBooks');target.replaceChildren();list.sort((a,b)=>(b.opened||0)-(a.opened||0)).slice(0,3).forEach(b=>{let button=document.createElement('button');button.className='recent-item';button.textContent='↗ '+(b.title||b.name);button.title='Volver a abrir '+(b.title||b.name);button.addEventListener('click',()=>loadStoredBook(b.id));target.appendChild(button)})}
+ async function loadStoredBook(id){try{const stored=await dbGet(id);if(!stored)throw new Error('Libro no encontrado');await loadBook(stored.file,stored.id,stored.name, false)}catch(e){console.error(e);toast('No se ha podido recuperar ese EPUB. Ábrelo de nuevo.') }}
+ async function openFile(file){if(!file)return;if(!/\.epub$/i.test(file.name)){toast('Selecciona un archivo .epub.');return}const id='bk_'+hash(file.name+'|'+file.size);await loadBook(file,id,file.name,true)}
+ function hash(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return (h>>>0).toString(36)}
+ async function loadBook(file,id,name,persistBook){
+  if(typeof window.ePub!=='function' || typeof window.JSZip!=='function'){toast('No se cargaron las bibliotecas EPUB. Comprueba tu conexión.');return}
+  const old=state.rendition;try{old?.destroy()}catch(e){};try{state.book?.destroy()}catch(e){};
+  state.book=null;state.rendition=null;state.bookId=id;state.activeChapter='';state.bookTitle=name.replace(/\.epub$/i,'');state.pending=null;
+  $('pageInfo').textContent='Abriendo libro...';$('emptyReader').classList.add('hidden');$('viewer').classList.remove('hidden');$('viewer').replaceChildren();$('prev').disabled=true;$('next').disabled=true;
+  try{
+   const bytes=await file.arrayBuffer();const book=ePub(bytes);state.book=book;
+   await book.ready;
+   const metadata=book.packaging?.metadata||{};const title=clean(metadata.title)||state.bookTitle;state.bookTitle=title;
+   $('topBook').textContent=title;
+   if(persistBook){try{await dbPut({id,name,title,file,opened:Date.now()})}catch(e){toast('El libro se abrió, pero no se pudo conservar para otra sesión.')}}
+   else {try{await dbPut({id,name,title,file,opened:Date.now()})}catch(e){}}
+   const rendition=book.renderTo('viewer',{width:'100%',height:'100%',flow:'paginated',manager:'default',spread:'none',allowScriptedContent:false});state.rendition=rendition;
+   rendition.hooks.content.register(contents=>{
+    contents.document.addEventListener('click',event=>clickedWord(event,contents));
+   });
+   rendition.on('selected',(cfi,contents)=>selectedText(cfi,contents));
+   rendition.on('relocated',location=>{
+    if(state.bookId!==id)return;
+    const begin=location?.start;if(!begin)return;
+    if(begin.cfi){try{const pos=JSON.parse(localStorage.getItem(POS_KEY)||'{}');pos[id]=begin.cfi;localStorage.setItem(POS_KEY,JSON.stringify(pos))}catch(e){}}
+    const page=begin.displayed?.page, total=begin.displayed?.total;
+    $('pageInfo').textContent=(page&&total)?`Página ${page} de ${total} · capítulo actual`:'Leyendo '+state.bookTitle;
+    state.activeChapter=begin.href||'';
+   });
+   applyReaderTheme();
+   let position=null;try{position=JSON.parse(localStorage.getItem(POS_KEY)||'{}')[id]}catch(e){}
+   try{await rendition.display(position||undefined)}catch(e){await rendition.display()}
+   $('prev').disabled=false;$('next').disabled=false;
+   state.cards.filter(c=>c.bookId===id&&c.cfi).forEach(putHighlight);
+   book.loaded.navigation.then(nav=>{
+    if(state.bookId!==id)return;
+    state.toc=nav.toc||[];const sel=$('toc');sel.replaceChildren();let empty=new Option('Índice de capítulos','');sel.add(empty);
+    function append(items,depth=0){items.forEach(item=>{let option=new Option('  '.repeat(depth)+(item.label||'Capítulo').trim(),item.href||'');sel.add(option);if(item.subitems?.length)append(item.subitems,depth+1)})}
+    append(state.toc);sel.classList.toggle('hidden',sel.options.length<=1);
+   }).catch(()=>{});
+   clearEditor();await renderRecent();toast('Libro abierto. ¡Toca cualquier palabra!');
+  }catch(error){console.error('EPUB:',error);$('pageInfo').textContent='Error al abrir EPUB';$('viewer').classList.add('hidden');$('emptyReader').classList.remove('hidden');$('topBook').textContent='Ningún libro abierto';state.book=null;state.rendition=null;toast('No se pudo abrir el EPUB. Comprueba que no tenga DRM y que sea válido.');}
+ }
+ function applyReaderTheme(){if(!state.rendition)return;const isDark=state.theme==='dark';let background=isDark?'#15262a':state.theme==='white'?'#ffffff':'#fffdf7';let color=isDark?'#e4e7de':'#283b3e';$('readerStage').style.background=background;
+  state.rendition.themes.default({'body':{'color':color+' !important','background':background+' !important','line-height':'1.7 !important'},'p':{'line-height':'1.7 !important'},'::selection':{'background':'rgba(244,184,94,.43)'},'.epubjs-hl':{'fill':'#efc168','fill-opacity':'0.40','mix-blend-mode':'multiply'}});
+  state.rendition.themes.fontSize(state.font+'%');$('themeLabel').textContent=state.theme==='dark'?'Noche':state.theme==='white'?'Blanco':'Sepia';}
+ function changeTheme(){state.theme=state.theme==='sepia'?'white':state.theme==='white'?'dark':'sepia';localStorage.setItem(THEME_KEY,state.theme);applyReaderTheme()}
+ function adjustFont(delta){state.font=Math.max(75,Math.min(180,state.font+delta));localStorage.setItem(FONT_KEY,state.font);if(state.rendition)state.rendition.themes.fontSize(state.font+'%');toast('Tamaño de texto: '+state.font+'%')}
+ function getContext(node,term){let element=node?.nodeType===3?node.parentElement:node;if(!element)return '';let p=element.closest('p,li,blockquote,dd,dt,h1,h2,h3,h4');if(!p){p=element.closest('div,section')||element}return shortContext(p.textContent||'',term)}
+ function wordCharacter(ch){return !!ch&&/[\p{L}\p{M}’'\-]/u.test(ch)}
+ function clickedWord(event,contents){
+  if(!state.book||event.defaultPrevented)return;
+  if(event.target?.closest('a,button,input,select,textarea'))return;
+  const selection=contents.window.getSelection();if(selection && !selection.isCollapsed)return;
+  const doc=contents.document;let range;
+  try{if(doc.caretRangeFromPoint)range=doc.caretRangeFromPoint(event.clientX,event.clientY);else if(doc.caretPositionFromPoint){let p=doc.caretPositionFromPoint(event.clientX,event.clientY);if(p){range=doc.createRange();range.setStart(p.offsetNode,p.offset);range.collapse(true)}}}catch(e){}
+  if(!range||range.startContainer.nodeType!==3)return;
+  const node=range.startContainer,all=node.textContent||'';let at=range.startOffset;
+  if(!wordCharacter(all[at])&&wordCharacter(all[at-1]))at--;
+  if(!wordCharacter(all[at]))return;
+  let a=at,b=at;while(a>0&&wordCharacter(all[a-1]))a--;while(b<all.length&&wordCharacter(all[b]))b++;
+  while(a<b&&/[’'\-]/.test(all[a]))a++;while(b>a&&/[’'\-]/.test(all[b-1]))b--;
+  const term=all.slice(a,b);if(!term||term.length>85)return;
+  range.setStart(node,a);range.setEnd(node,b);
+  let cfi='';try{cfi=contents.cfiFromRange(range)}catch(e){}
+  inspect({term,context:getContext(node,term),cfi,bookId:state.bookId,book:state.bookTitle,chapter:state.activeChapter});
+ }
+ function selectedText(cfi,contents){
+  try{const selection=contents.window.getSelection();const text=clean(selection?.toString()||'');if(!text||text.length>280){if(text.length>280)toast('Selecciona un fragmento más corto (máximo 280 caracteres).');return}
+   let context='';try{context=getContext(selection.anchorNode,text)}catch(e){}
+   if(!context || !context.includes(text)) {context=shortContext(context+' '+text,text)}
+   inspect({term:text,context,cfi,bookId:state.bookId,book:state.bookTitle,chapter:state.activeChapter});
+  }catch(e){console.error(e)}
+ }
+ function inspect(data){state.pending={...data,id:data.id||null};switchTab('translate');$('emptyLookup').classList.add('hidden');$('lookupEditor').classList.remove('hidden');$('termInput').value=data.term||'';$('meaningInput').value=data.meaning||'';$('contextInput').value=data.context||'';$('termType').textContent=clean(data.term).includes(' ')?'EXPRESIÓN':'PALABRA';$('translationStatus').textContent='';$('translationStatus').classList.remove('error');$('saveCard').textContent=data.id?'✦ Actualizar tarjeta':'✦ Guardar tarjeta';updatePreview();if(!data.id) translate(data.term);
+  if(window.matchMedia('(max-width:760px)').matches){$('sidePanel').scrollIntoView({behavior:'smooth',block:'start'})}
+ }
+ async function translate(term){term=clean(term);if(!term)return;const request=++state.requestId;const status=$('translationStatus');status.classList.remove('error');status.textContent='Traduciendo…';$('translateBtn').disabled=true;
+  try{if(term.length>450)throw new Error('Fragmento demasiado largo');const url='https://api.mymemory.translated.net/get?q='+encodeURIComponent(term)+'&langpair=en%7Ces';const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),9000);let response;
+   try{response=await fetch(url,{signal:controller.signal})}finally{clearTimeout(timeout)}
+   if(!response.ok)throw new Error('Servicio de traducción no disponible');const data=await response.json();if(request!==state.requestId)return;
+   if(Number(data.responseStatus)!==200||!data.responseData?.translatedText)throw new Error(data.responseDetails||'Sin traducción');
+   const el=document.createElement('textarea');el.innerHTML=data.responseData.translatedText;let output=clean(el.value||data.responseData.translatedText);
+   if(!output||/MYMEMORY WARNING|QUERY LENGTH LIMIT EXCEEDED|PLEASE SELECT TWO DISTINCT LANGUAGES/i.test(output))throw new Error('Límite del servicio');
+   $('meaningInput').value=output;$('translationStatus').textContent='Traducción automática · revísala según el contexto.';updatePreview();
+  }catch(err){if(request!==state.requestId)return;status.classList.add('error');status.textContent='No se pudo traducir automáticamente. Puedes escribir la traducción a mano.';console.warn('Traducción:',err)}finally{if(request===state.requestId)$('translateBtn').disabled=false}
+ }
+ function updatePreview(){$('previewTerm').textContent=$('termInput').value.trim()||'—';$('previewMeaning').textContent=$('meaningInput').value.trim()||'—';$('previewContext').textContent=$('contextInput').value.trim()||'';$('termType').textContent=clean($('termInput').value).includes(' ')?'EXPRESIÓN':'PALABRA'}
+ function clearEditor(){state.requestId++;state.pending=null;$('lookupEditor').classList.add('hidden');$('emptyLookup').classList.remove('hidden');$('termInput').value='';$('meaningInput').value='';$('contextInput').value='';$('translationStatus').textContent='';$('translateBtn').disabled=false;}
+ function saveCard(){const term=clean($('termInput').value),meaning=clean($('meaningInput').value),context=clean($('contextInput').value);if(!term){toast('Escribe una palabra o expresión.');return}if(!meaning){toast('Escribe la traducción para guardar la tarjeta.');$('meaningInput').focus();return}
+  const p=state.pending||{};const match=state.cards.find(c=>c.id===p.id)||state.cards.find(c=>c.bookId===p.bookId&&c.term.toLocaleLowerCase()===term.toLocaleLowerCase());
+  if(match){const oldCfi=match.cfi;Object.assign(match,{term,meaning,context,book:p.book||match.book,cfi:p.cfi||match.cfi,chapter:p.chapter||match.chapter,updated:new Date().toISOString()});if(oldCfi!==match.cfi&&oldCfi)try{state.rendition.annotations.remove(oldCfi,'highlight')}catch(e){};if(match.bookId===state.bookId)putHighlight(match);toast('Tarjeta actualizada.');}
+  else {const card={id:uniqueId(),term,meaning,context,bookId:p.bookId||'',book:p.book||'Sin libro',chapter:p.chapter||'',cfi:p.cfi||'',created:new Date().toISOString()};state.cards.unshift(card);if(card.bookId===state.bookId)putHighlight(card);toast('Guardada en tu vocabulario.');}
+  persist();renderVocabulary();clearEditor();
+ }
+ function putHighlight(card){if(!state.rendition||!card.cfi)return;try{state.rendition.annotations.highlight(card.cfi,{},null,'readmark-highlight',{fill:'#edb75a','fill-opacity':'0.36','mix-blend-mode':'multiply'})}catch(e){console.warn('No se pudo mostrar subrayado:',e)}}
+ function deleteCard(id){let index=state.cards.findIndex(c=>c.id===id);if(index<0)return;const card=state.cards[index];if(card.bookId===state.bookId&&card.cfi)try{state.rendition.annotations.remove(card.cfi,'highlight')}catch(e){};state.cards.splice(index,1);persist();renderVocabulary();toast('Tarjeta eliminada.');}
+ function switchTab(tab){state.activeTab=tab;const v=tab==='vocab';$('translatePanel').classList.toggle('hidden',v);$('vocabPanel').classList.toggle('hidden',!v);$('vocabFooter').classList.toggle('hidden',!v);$('tabTranslate').classList.toggle('active',!v);$('tabVocab').classList.toggle('active',v);$('tabTranslate').setAttribute('aria-selected',String(!v));$('tabVocab').setAttribute('aria-selected',String(v));if(v)renderVocabulary()}
+ function renderVocabulary(){const q=clean($('searchCards').value).toLocaleLowerCase();const cards=state.cards.filter(c=>(c.term+' '+c.meaning+' '+c.context+' '+c.book).toLocaleLowerCase().includes(q));const list=$('vocabList');list.replaceChildren();if(!cards.length){const e=document.createElement('p');e.className='empty-vocab';e.textContent=q?'No hay coincidencias.':'Todavía no has guardado palabras. Empieza a leer y toca alguna.';list.appendChild(e);return}
+  for(const c of cards){const box=document.createElement('article');box.className='vocab-item';box.innerHTML=`<div class="vocab-name"><strong>${safe(c.term)}</strong><span>${c.term.includes(' ')?'EXPRESIÓN':'PALABRA'}</span></div><p class="vocab-meaning">${safe(c.meaning)}</p><p class="vocab-context">${safe(c.context)}</p><p class="vocab-book">📘 ${safe(c.book)}</p><div class="vocab-acts"><button class="btn btn-small edit" data-id="${safe(c.id)}">✎ Editar</button><button class="btn btn-small locate" data-id="${safe(c.id)}" ${(!c.cfi||!state.book||state.bookId!==c.bookId)?'disabled':''}>↗ Ir al texto</button><button class="btn btn-small remove" data-id="${safe(c.id)}" style="margin-left:auto;color:#9d4a4a">✕</button></div>`;list.appendChild(box)}
+ }
+ function editCard(card){inspect(card)}
+ function playPronunciation(){const word=clean($('termInput').value);if(!word)return;if(!('speechSynthesis' in window)){toast('Este navegador no tiene síntesis de voz.');return}speechSynthesis.cancel();const utter=new SpeechSynthesisUtterance(word);utter.lang='en-GB';utter.rate=.83;let voice=speechSynthesis.getVoices().find(v=>v.lang==='en-GB')||speechSynthesis.getVoices().find(v=>v.lang.startsWith('en-'));if(voice)utter.voice=voice;speechSynthesis.speak(utter)}
+ function download(filename,content,mime){const blob=new Blob([content],{type:mime});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=filename;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000)}
+ function exportAnki(){if(!state.cards.length){toast('Guarda alguna palabra antes de exportar.');return}
+  // Anki's documented text-import headers. Two fields map directly to Basic Front/Back.
+  // HTML is escaped before markup is added, avoiding injection from EPUB contents.
+  const lines=['#separator:Tab','#html:true','#deck:Readmark - Lecturas','#columns:Frente\tReverso'];
+  for(const c of state.cards){const front=safe(c.term);const back=`<b>${safe(c.meaning)}</b>${c.context?'<br><br><i>'+safe(c.context)+'</i>':''}${c.book?'<br><br><small>📖 '+safe(c.book)+'</small>':''}`;
+   lines.push([front,back].map(s=>s.replace(/[\t\r\n]+/g,' ')).join('\t'))}
+  download('readmark-anki-'+new Date().toISOString().slice(0,10)+'.txt','\ufeff'+lines.join('\n'),'text/plain;charset=utf-8');toast(`Exportadas ${state.cards.length} tarjetas. Importa el .txt en Anki (tipo Básico).`)
+ }
+ function exportBackup(){download('readmark-copia-'+new Date().toISOString().slice(0,10)+'.json',JSON.stringify({app:'readmark',version:1,exported:new Date().toISOString(),cards:state.cards},null,2),'application/json;charset=utf-8');toast('Copia JSON exportada. Guárdala en un lugar seguro.')}
+ async function importBackup(file){try{const input=JSON.parse(await file.text());if(!Array.isArray(input.cards))throw new Error('Formato incorrecto');let added=0;const ids=new Set(state.cards.map(c=>c.id));for(const c of input.cards){if(!c||typeof c.term!=='string'||typeof c.meaning!=='string')continue;if(ids.has(c.id))continue;state.cards.push({id:c.id||uniqueId(),term:clean(c.term),meaning:clean(c.meaning),context:clean(c.context),bookId:String(c.bookId||''),book:String(c.book||''),chapter:String(c.chapter||''),cfi:String(c.cfi||''),created:c.created||new Date().toISOString()});added++}persist();renderVocabulary();toast(`Importadas ${added} tarjetas nuevas.`)}catch(e){console.warn(e);toast('La copia JSON no es válida.')}}
+ // Interface events
+ $('openBookTop').addEventListener('click',()=>$('fileInput').click());$('openBookMain').addEventListener('click',()=>$('fileInput').click());
+ $('fileInput').addEventListener('change',async e=>{const file=e.target.files?.[0];e.target.value='';if(file)await openFile(file)});
+ $('prev').addEventListener('click',()=>state.rendition?.prev().catch(()=>{}));$('next').addEventListener('click',()=>state.rendition?.next().catch(()=>{}));
+ $('toc').addEventListener('change',e=>{if(e.target.value)state.rendition?.display(e.target.value).catch(()=>toast('No se encontró ese capítulo.'))});
+ $('themeToggle').addEventListener('click',changeTheme);$('fontDown').addEventListener('click',()=>adjustFont(-10));$('fontUp').addEventListener('click',()=>adjustFont(10));
+ $('tabTranslate').addEventListener('click',()=>switchTab('translate'));$('tabVocab').addEventListener('click',()=>switchTab('vocab'));$('goVocab').addEventListener('click',()=>{switchTab('vocab');$('sidePanel').scrollIntoView({behavior:'smooth',block:'start'})});
+ $('saveCard').addEventListener('click',saveCard);$('clearEditor').addEventListener('click',clearEditor);$('translateBtn').addEventListener('click',()=>translate($('termInput').value));$('listenBtn').addEventListener('click',playPronunciation);
+ ['termInput','meaningInput','contextInput'].forEach(id=>$(id).addEventListener('input',updatePreview));$('searchCards').addEventListener('input',renderVocabulary);
+ $('vocabList').addEventListener('click',event=>{const b=event.target.closest('button[data-id]');if(!b)return;const card=state.cards.find(c=>c.id===b.dataset.id);if(!card)return;if(b.classList.contains('edit')){editCard(card)}else if(b.classList.contains('locate')){state.rendition?.display(card.cfi).then(()=>{window.scrollTo({top:0,behavior:'smooth'})}).catch(()=>toast('No se pudo localizar el fragmento.'))}else if(b.classList.contains('remove')){if(confirm('¿Eliminar «'+card.term+'» de tu vocabulario?'))deleteCard(card.id)}});
+ $('exportAnki').addEventListener('click',exportAnki);$('exportBackup').addEventListener('click',exportBackup);$('importBackup').addEventListener('click',()=>$('jsonInput').click());$('jsonInput').addEventListener('change',e=>{const file=e.target.files?.[0];e.target.value='';if(file)importBackup(file)});
+ document.addEventListener('keydown',e=>{if(e.target.closest('input,select,textarea,button'))return;if(e.key==='ArrowLeft')state.rendition?.prev().catch(()=>{});if(e.key==='ArrowRight')state.rendition?.next().catch(()=>{})});
+ updateCounts();renderRecent();
+ if('serviceWorker' in navigator && /^https?:$/.test(location.protocol))window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+})();
+</script>
+</body>
+</html>
