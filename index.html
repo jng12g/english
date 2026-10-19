@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,13 +13,13 @@
 
     <style>
         :root{
-            --paper:    #F5F7F2;   /* white with a hint of green, fresh */
+            --paper:    #F5F7F2;
             --card:     #FFFFFF;
-            --ink:      #16271E;   /* almost black green */
+            --ink:      #16271E;
             --ink-soft: #5C6C62;
             --line:     rgba(22,39,30,.12);
-            --green:    #169B62;   /* tricolor green */
-            --orange:   #FF883E;   /* tricolor orange */
+            --green:    #169B62;
+            --orange:   #FF883E;
             --serif: "Instrument Serif", Georgia, serif;
             --sans: "Inter", -apple-system, system-ui, sans-serif;
         }
@@ -61,12 +62,16 @@
             font-size:1.35rem;
             letter-spacing:.2px;
         }
-        .wordmark em{ font-style:italic; color:var(--green); }
+        .wordmark em{
+            font-style:italic;
+            color:var(--green);
+        }
 
         /* Irish flag */
         .flag{
             display:inline-flex;
-            width:33px; height:22px;
+            width:33px;
+            height:22px;
             border-radius:3px;
             overflow:hidden;
             box-shadow:0 1px 3px rgba(22,39,30,.18);
@@ -99,10 +104,11 @@
         .hero h1 em{ font-style:italic; }
         .hero h1 .accent{ color:var(--green); }
 
-        /* Tricolor rule: Irish signature */
+        /* Tricolor rule */
         .rule{
             display:flex;
-            width:148px; height:5px;
+            width:148px;
+            height:5px;
             border-radius:3px;
             overflow:hidden;
             margin:30px 0 22px;
@@ -143,14 +149,17 @@
             padding:26px 26px 24px;
             text-decoration:none;
             color:inherit;
-            transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+            transition:transform .25s ease,
+                       box-shadow .25s ease,
+                       border-color .25s ease;
             overflow:hidden;
         }
-        /* Green border on hover */
         .card::before{
             content:"";
             position:absolute;
-            left:0; top:0; bottom:0;
+            left:0;
+            top:0;
+            bottom:0;
             width:4px;
             background:var(--green);
             transform:scaleY(0);
@@ -165,7 +174,9 @@
             outline:none;
         }
         .card:hover::before,
-        .card:focus-visible::before{ transform:scaleY(1); }
+        .card:focus-visible::before{
+            transform:scaleY(1);
+        }
 
         .card .tag{
             font-size:.72rem;
@@ -195,11 +206,15 @@
             align-items:center;
             gap:6px;
         }
-        .card .go .arrow{ transition:transform .25s ease; }
+        .card .go .arrow{
+            transition:transform .25s ease;
+        }
         .card:hover .go .arrow,
-        .card:focus-visible .go .arrow{ transform:translateX(4px); }
+        .card:focus-visible .go .arrow{
+            transform:translateX(4px);
+        }
 
-        /* Coming soon card */
+        /* Coming soon */
         .card.soon{
             background:transparent;
             border-style:dashed;
@@ -240,16 +255,28 @@
         }
 
         /* ---------- Animations ---------- */
-        .reveal{ opacity:0; transform:translateY(14px); }
-        .ready .reveal{
-            opacity:1; transform:none;
-            transition:opacity .6s ease, transform .6s ease;
+        .reveal{
+            opacity:0;
+            transform:translateY(14px);
         }
-        .ready .reveal:nth-child(2){ transition-delay:.06s; }
-        .stagger > *{ opacity:0; transform:translateY(14px); }
+        .ready .reveal{
+            opacity:1;
+            transform:none;
+            transition:opacity .6s ease,
+                       transform .6s ease;
+        }
+        .ready .reveal:nth-child(2){
+            transition-delay:.06s;
+        }
+        .stagger > *{
+            opacity:0;
+            transform:translateY(14px);
+        }
         .ready .stagger > *{
-            opacity:1; transform:none;
-            transition:opacity .55s ease, transform .55s ease;
+            opacity:1;
+            transform:none;
+            transition:opacity .55s ease,
+                       transform .55s ease;
         }
         .ready .stagger > *:nth-child(1){ transition-delay:.05s; }
         .ready .stagger > *:nth-child(2){ transition-delay:.12s; }
@@ -259,6 +286,8 @@
         .ready .stagger > *:nth-child(6){ transition-delay:.40s; }
         .ready .stagger > *:nth-child(7){ transition-delay:.47s; }
         .ready .stagger > *:nth-child(8){ transition-delay:.54s; }
+        .ready .stagger > *:nth-child(9){ transition-delay:.61s; }
+        .ready .stagger > *:nth-child(10){ transition-delay:.68s; }
 
         @media (max-width:640px){
             .grid{ grid-template-columns:1fr; }
@@ -267,8 +296,14 @@
         }
 
         @media (prefers-reduced-motion:reduce){
-            *{ transition:none !important; scroll-behavior:auto; }
-            .reveal,.stagger > *{ opacity:1 !important; transform:none !important; }
+            *{
+                transition:none !important;
+                scroll-behavior:auto;
+            }
+            .reveal,.stagger > *{
+                opacity:1 !important;
+                transform:none !important;
+            }
         }
     </style>
 </head>
@@ -279,7 +314,9 @@
         <div class="topbar">
             <span class="wordmark">Learn <em>English</em></span>
             <span class="flag" role="img" aria-label="Flag of Ireland">
-                <span class="g"></span><span class="w"></span><span class="o"></span>
+                <span class="g"></span>
+                <span class="w"></span>
+                <span class="o"></span>
             </span>
         </div>
     </div>
@@ -287,12 +324,22 @@
 
 <main>
     <section class="hero wrap">
-        <p class="eyebrow reveal">English for Spanish Speakers</p>
-        <h1 class="reveal">Learn English<br><em class="accent">from Spanish.</em></h1>
+        <p class="eyebrow reveal">
+            English for Spanish Speakers
+        </p>
+        <h1 class="reveal">
+            Learn English<br>
+            <em class="accent">from Spanish.</em>
+        </h1>
         <div class="rule reveal" aria-hidden="true">
-            <span class="g"></span><span class="w"></span><span class="o"></span>
+            <span class="g"></span>
+            <span class="w"></span>
+            <span class="o"></span>
         </div>
-        <p class="lede reveal">Grammar, vocabulary, and practice explained clearly, in your language, and at your own pace.</p>
+        <p class="lede reveal">
+            Grammar, vocabulary, and practice explained clearly,
+            in your language, and at your own pace.
+        </p>
     </section>
 
     <section class="sections wrap">
@@ -356,6 +403,14 @@
                 <span class="go">Enter <span class="arrow">→</span></span>
             </a>
 
+            <!-- NUEVA SECCIÓN: EPUB READER -->
+            <a class="card" href="epub.html">
+                <span class="tag">Reading · EPUB</span>
+                <h3>EPUB Reader</h3>
+                <p>Read books in English, tap words to translate, and save vocabulary for Anki.</p>
+                <span class="go">Enter <span class="arrow">→</span></span>
+            </a>
+
             <div class="card soon">
                 <span class="tag">Coming Soon</span>
                 <h3>More on the way</h3>
@@ -370,15 +425,18 @@
     <div class="wrap">
         <div class="footer-inner">
             <span class="flag" role="img" aria-label="Flag of Ireland">
-                <span class="g"></span><span class="w"></span><span class="o"></span>
+                <span class="g"></span>
+                <span class="w"></span>
+                <span class="o"></span>
             </span>
-            <span class="credit">Created by <strong>Juan Carlos Navarro</strong></span>
+            <span class="credit">
+                Created by <strong>Juan Carlos Navarro</strong>
+            </span>
         </div>
     </div>
 </footer>
 
 <script>
-    // Activates the entrance animation unless reduced motion is preferred.
     window.addEventListener('load', function(){
         document.body.classList.add('ready');
     });
