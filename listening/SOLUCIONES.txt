@@ -1,0 +1,249 @@
+001. I could've called you, but I didn't think you'd still be awake.
+FOCUS: could've; you'd
+LISTEN FOR: Listen for the weak vowel in could've and the very short contraction you'd.
+MEANING: Podría haberte llamado, pero no pensé que todavía estarías despierto.
+
+002. You should've told me earlier instead of waiting until today.
+FOCUS: should've
+LISTEN FOR: Should have is strongly reduced in natural speech and often sounds like one compact unit.
+MEANING: Deberías habérmelo dicho antes en vez de esperar hasta hoy.
+
+003. I would've gone with you if you'd asked me.
+FOCUS: would've; you'd
+LISTEN FOR: Listen for the weak have in would've and the contraction you'd.
+MEANING: Habría ido contigo si me lo hubieras pedido.
+
+004. She might've left already, but I'm not completely sure.
+FOCUS: might've
+LISTEN FOR: The word have is reduced and can be difficult to hear.
+MEANING: Puede que ya se haya ido, pero no estoy completamente seguro.
+
+005. There must've been a mistake somewhere in the system.
+FOCUS: must've
+LISTEN FOR: The final consonants of must and the weak have can merge in fast speech.
+MEANING: Debe de haber habido algún error en el sistema.
+
+006. I don't know if I'll be able to finish it today.
+FOCUS: if I'll; be able to
+LISTEN FOR: Listen for the linking between if and I'll, and the weak to.
+MEANING: No sé si podré terminarlo hoy.
+
+007. You won't be able to hear me if everyone keeps talking.
+FOCUS: hear me if everyone
+LISTEN FOR: Several words link across vowel and consonant boundaries.
+MEANING: No podrás oírme si todo el mundo sigue hablando.
+
+008. I'd rather stay here than drive for another two hours.
+FOCUS: I'd rather
+LISTEN FOR: I'd is very short; the important stress falls later in the phrase.
+MEANING: Preferiría quedarme aquí que conducir otras dos horas.
+
+009. We'd better leave now if we want to catch the last train.
+FOCUS: we'd better; last train
+LISTEN FOR: We'd better forms a common chunk, and the t in last may weaken before train.
+MEANING: Será mejor que salgamos ya si queremos coger el último tren.
+
+010. He doesn't usually eat breakfast, although he always has coffee.
+FOCUS: doesn't usually; usually eat
+LISTEN FOR: Listen to how the unstressed syllables become compressed.
+MEANING: Normalmente no desayuna, aunque siempre toma café.
+
+011. Can you pick it up on your way home?
+FOCUS: can you; pick it up
+LISTEN FOR: Pick it up flows as one unit through consonant-to-vowel linking.
+MEANING: ¿Puedes recogerlo de camino a casa?
+
+012. Could you turn it off before you leave?
+FOCUS: could you; turn it off
+LISTEN FOR: Could you may blend, and turn it off links across all three words.
+MEANING: ¿Podrías apagarlo antes de irte?
+
+013. I need to find out what happened before I make a decision.
+FOCUS: find out; what happened
+LISTEN FOR: The final consonant of find links directly into out.
+MEANING: Necesito averiguar qué pasó antes de tomar una decisión.
+
+014. We ran out of milk, so I went to the shop.
+FOCUS: ran out of
+LISTEN FOR: Ran out of is commonly heard as a continuous sequence rather than three separate words.
+MEANING: Nos quedamos sin leche, así que fui a la tienda.
+
+015. She came in and sat down without saying anything.
+FOCUS: came in; sat down
+LISTEN FOR: Listen for linking in came in and the weak and between the two actions.
+MEANING: Entró y se sentó sin decir nada.
+
+016. I left it on the table next to your phone.
+FOCUS: left it on
+LISTEN FOR: Left it on contains several consecutive links and may sound very compressed.
+MEANING: Lo dejé en la mesa junto a tu teléfono.
+
+017. Take it away if you don't need it anymore.
+FOCUS: take it away
+LISTEN FOR: The three words connect smoothly with almost no pause between them.
+MEANING: Llévatelo si ya no lo necesitas.
+
+018. He looked at me and smiled without saying a word.
+FOCUS: looked at; me and
+LISTEN FOR: Looked at links strongly, and and is usually very weak.
+MEANING: Me miró y sonrió sin decir una palabra.
+
+019. I saw an old friend when I was walking into town.
+FOCUS: saw an; walking into
+LISTEN FOR: Listen for linking across the word boundaries rather than separate words.
+MEANING: Vi a un viejo amigo cuando iba andando al centro.
+
+020. We need an answer before the end of the day.
+FOCUS: need an; end of
+LISTEN FOR: Need an links together, while of is normally unstressed.
+MEANING: Necesitamos una respuesta antes de que termine el día.
+
+021. What are you going to do when you get there?
+FOCUS: what are you; going to
+LISTEN FOR: Going to may be strongly reduced in casual speech, and what are you is often compressed.
+MEANING: ¿Qué vas a hacer cuando llegues allí?
+
+022. Do you want to come with us after work?
+FOCUS: do you; want to
+LISTEN FOR: Want to is commonly reduced in casual speech, and do you may blend.
+MEANING: ¿Quieres venir con nosotros después del trabajo?
+
+023. I've got to leave in about ten minutes.
+FOCUS: got to; in about
+LISTEN FOR: Got to can be reduced, while in about links across the vowel.
+MEANING: Tengo que irme dentro de unos diez minutos.
+
+024. I have to get up early tomorrow morning.
+FOCUS: have to; get up
+LISTEN FOR: Have to often has a weak vowel, and get up links consonant to vowel.
+MEANING: Tengo que levantarme temprano mañana.
+
+025. It's kind of difficult to explain without showing you.
+FOCUS: kind of; to explain
+LISTEN FOR: Kind of is often compressed, and to becomes weak before explain.
+MEANING: Es un poco difícil de explicar sin enseñártelo.
+
+026. There are a lot of things we still need to discuss.
+FOCUS: a lot of; need to
+LISTEN FOR: Of and to are both weak forms here and may be hard to hear.
+MEANING: Todavía hay muchas cosas que tenemos que hablar.
+
+027. Let me know if you change your mind.
+FOCUS: let me; know if
+LISTEN FOR: Let me is often compressed into one smooth chunk.
+MEANING: Avísame si cambias de opinión.
+
+028. Give me a minute and I'll check it for you.
+FOCUS: give me; and I'll; for you
+LISTEN FOR: Several grammatical words become weak, especially and and for.
+MEANING: Dame un minuto y te lo compruebo.
+
+029. Did you see what happened outside?
+FOCUS: did you; what happened
+LISTEN FOR: Did you often blends strongly in natural speech.
+MEANING: ¿Viste lo que pasó fuera?
+
+030. Would you mind opening the window?
+FOCUS: would you
+LISTEN FOR: Would you can blend into one compact sound sequence.
+MEANING: ¿Te importaría abrir la ventana?
+
+031. I missed the last train, so I had to get a taxi.
+FOCUS: last train; had to
+LISTEN FOR: The t in last may weaken before train, while had to is compressed.
+MEANING: Perdí el último tren, así que tuve que coger un taxi.
+
+032. We spent most of the day walking around the city.
+FOCUS: most of; of the
+LISTEN FOR: The t in most may weaken and of is unstressed.
+MEANING: Pasamos la mayor parte del día caminando por la ciudad.
+
+033. She asked me to send the report before lunch.
+FOCUS: asked me; to send
+LISTEN FOR: The consonant cluster in asked me can simplify, while to is weak.
+MEANING: Me pidió que enviara el informe antes de comer.
+
+034. I don't know exactly what time we'll get back.
+FOCUS: what time; we'll get
+LISTEN FOR: Two adjacent t sounds in what time can merge into one.
+MEANING: No sé exactamente a qué hora volveremos.
+
+035. He used to work there when he was younger.
+FOCUS: used to
+LISTEN FOR: Used to has a characteristic reduced pronunciation in connected speech.
+MEANING: Antes trabajaba allí cuando era más joven.
+
+036. I was just thinking about calling you.
+FOCUS: just thinking; about
+LISTEN FOR: The final t in just may weaken before th, and about is unstressed.
+MEANING: Justo estaba pensando en llamarte.
+
+037. I can't believe you left the door open all night.
+FOCUS: left the; all night
+LISTEN FOR: The t in left can be weak before the, while all night links smoothly.
+MEANING: No puedo creer que dejaras la puerta abierta toda la noche.
+
+038. She told me she'd already finished the work.
+FOCUS: she'd already
+LISTEN FOR: The contracted d links directly into the vowel at the start of already.
+MEANING: Me dijo que ya había terminado el trabajo.
+
+039. I asked you to wait outside for a minute.
+FOCUS: asked you; to wait; for a
+LISTEN FOR: Asked you may blend strongly; to and for are weak forms.
+MEANING: Te pedí que esperaras fuera un minuto.
+
+040. We should probably leave before it gets too late.
+FOCUS: should probably; before it
+LISTEN FOR: Should is unstressed and before it links consonant to vowel.
+MEANING: Probablemente deberíamos irnos antes de que sea demasiado tarde.
+
+041. I would've told you if I'd known you were coming.
+FOCUS: would've; if I'd; you were
+LISTEN FOR: Two contractions plus weak function words make the sentence compact.
+MEANING: Te lo habría dicho si hubiera sabido que venías.
+
+042. You could've picked it up on your way home.
+FOCUS: could've; picked it up
+LISTEN FOR: A reduced modal-perfect form is followed by strong consonant-vowel linking.
+MEANING: Podrías haberlo recogido de camino a casa.
+
+043. I'm going to have to leave a little earlier tomorrow.
+FOCUS: going to; have to; a little
+LISTEN FOR: Two common reductions appear close together in the same sentence.
+MEANING: Voy a tener que irme un poco antes mañana.
+
+044. What do you want to do about it?
+FOCUS: what do you; want to; about it
+LISTEN FOR: Function words become weak and several boundaries disappear.
+MEANING: ¿Qué quieres hacer al respecto?
+
+045. You shouldn't have left it until the last minute.
+FOCUS: shouldn't have; left it; last minute
+LISTEN FOR: Have is weak, left it links, and the t in last can weaken.
+MEANING: No deberías haberlo dejado hasta el último momento.
+
+046. There might've been something we could've done about it.
+FOCUS: might've; could've; about it
+LISTEN FOR: Two modal-perfect contractions occur in the same sentence.
+MEANING: Puede que hubiera algo que podríamos haber hecho al respecto.
+
+047. Did you manage to pick it up before the shop closed?
+FOCUS: did you; to pick; pick it up
+LISTEN FOR: Assimilation, a weak to, and consonant-vowel linking appear together.
+MEANING: ¿Conseguiste recogerlo antes de que cerrara la tienda?
+
+048. I'd have gone earlier if I'd known how busy it was.
+FOCUS: I'd have; if I'd; busy it
+LISTEN FOR: The two contractions are very short and the surrounding words link.
+MEANING: Habría ido antes si hubiera sabido lo ocupado que estaba.
+
+049. We're going to run out of time if we don't leave soon.
+FOCUS: going to; run out of; time if
+LISTEN FOR: A common reduction combines with a strongly linked phrasal verb.
+MEANING: Nos vamos a quedar sin tiempo si no salimos pronto.
+
+050. I don't know what you're talking about, but it sounds important.
+FOCUS: what you're; talking about; but it
+LISTEN FOR: Listen for linking and weak unstressed syllables around the stressed words.
+MEANING: No sé de qué estás hablando, pero parece importante.
